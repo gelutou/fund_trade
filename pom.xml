@@ -21,6 +21,8 @@
         <shiro-version>1.6.0</shiro-version>
         <druid-version>1.1.23</druid-version>
         <mybatis-plus-version>3.4.0</mybatis-plus-version>
+        <thymeleaf-extras-shiro-version>2.0.0</thymeleaf-extras-shiro-version>
+        <fastjson-version>1.2.73</fastjson-version>
     </properties>
 
     <dependencies>
@@ -46,11 +48,11 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-spring-boot-web-starter -->
-        <!--<dependency>
+        <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring-boot-web-starter</artifactId>
             <version>${shiro-version}</version>
-        </dependency>-->
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
         <dependency>
@@ -65,6 +67,22 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis-plus-version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.github.theborakompanioni/thymeleaf-extras-shiro -->
+        <dependency>
+            <groupId>com.github.theborakompanioni</groupId>
+            <artifactId>thymeleaf-extras-shiro</artifactId>
+            <version>${thymeleaf-extras-shiro-version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson-version}</version>
+        </dependency>
+
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
