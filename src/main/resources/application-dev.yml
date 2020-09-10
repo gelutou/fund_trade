@@ -4,7 +4,7 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     #druid连接池配置
     druid:
-     url: jdbc:mysql://192.168.3.166:3306/fund_trade?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=UTC
+     url: jdbc:mysql://81.68.92.240:3306/fund_trade?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=UTC
      username: root
      password: 314159
      initial-size: 10

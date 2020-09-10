@@ -3,6 +3,8 @@ package com.zw.ft.entity.sys;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.zw.ft.common.base.BaseEntity;
 
+import java.util.List;
+
 /**
  * @ClassName SysUser
  * @Description 系统用户基本信息实体
@@ -30,6 +32,11 @@ public class SysUser extends BaseEntity {
      *@description: 性别 0 男 1 女
      */
     private Integer gender;
+
+    /**
+     *@description: 角色集合
+     */
+    private List<SysRole> roles;
 
     public String getUserName() {
         return userName;
@@ -63,6 +70,14 @@ public class SysUser extends BaseEntity {
         this.gender = gender;
     }
 
+    public List<SysRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<SysRole> roles) {
+        this.roles = roles;
+    }
+
     @Override
     public String toString() {
         return "SysUser{" +
@@ -70,6 +85,7 @@ public class SysUser extends BaseEntity {
                 ", password='" + password + '\'' +
                 ", realName='" + realName + '\'' +
                 ", gender=" + gender +
+                ", roles=" + roles +
                 '}';
     }
 }

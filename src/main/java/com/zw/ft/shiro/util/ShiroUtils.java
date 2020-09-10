@@ -1,42 +1,36 @@
 package com.zw.ft.shiro.util;
 
+import com.zw.ft.entity.sys.SysUser;
+import com.zw.ft.shiro.service.MyShiroRealm;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.mgt.RealmSecurityManager;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.apache.shiro.subject.Subject;
-import com.fc.model.auto.TsysUser;
-import com.fc.shiro.service.MyShiroRealm;
-import com.fc.util.BeanUtils;
-import com.fc.util.StringUtils;
-
-
 /**
- * shiro 工具类
- *	
- * @author fuce
+ *@description: shiro工具类
+ *@author:  Oliver
+ *@date  2020/9/10
  */
 public class ShiroUtils {
 
     private ShiroUtils(){}
     
     /**
-     * 获取shiro subject
-     * @return
-     * @author fuce
-     * @Date 2019年11月21日 上午10:00:55
+     *@description: 获取shiro subject
+     *@author:  Oliver
+     *@date  2020/9/10
      */
     public static Subject getSubjct()
     {
         return SecurityUtils.getSubject();
     }
-    
+
     /**
-     * 获取登录session
-     * @return
-     * @author fuce
-     * @Date 2019年11月21日 上午10:00:41
+     *@description: 获取登录session
+     *@author:  Oliver
+     *@date  2020/9/10
      */
     public static Session getSession()
     {
@@ -44,40 +38,38 @@ public class ShiroUtils {
     }
 
     /**
-     * 退出登录
-     * @author fuce
-     * @Date 2019年11月21日 上午10:00:24
+     *@description: 退出登录
+     *@author:  Oliver
+     *@date  2020/9/10
      */
     public static void logout()
     {
         getSubjct().logout();
     }
-    
+
     /**
-     * 获取登录用户model
-     * @return
-     * @author fuce
-     * @Date 2019年11月21日 上午10:00:10
+     *@description: 获取登录用户model
+     *@author:  Oliver
+     *@date  2020/9/10
      */
-    public static TsysUser getUser()
+    public static SysUser getUser()
     {
-    	TsysUser user = null;
+        SysUser user = null;
         Object obj = getSubjct().getPrincipal();
         if (StringUtils.isNotNull(obj))
         {
-            user = new TsysUser();
+            user = new SysUser();
             BeanUtils.copyBeanProp(user, obj);
         }
         return user;
     }
     
     /**
-     * set用户
-     * @param user
-     * @author fuce
-     * @Date 2019年11月21日 上午9:59:52
+     *@description: set用户
+     *@author:  Oliver
+     *@date  2020/9/10
      */
-    public static void setUser(TsysUser user)
+    public static void setUser(SysUser user)
     {
         Subject subject = getSubjct();
         PrincipalCollection principalCollection = subject.getPrincipals();
@@ -86,65 +78,55 @@ public class ShiroUtils {
         // 重新加载Principal
         subject.runAs(newPrincipalCollection);
     }
-    
     /**
-     * 清除授权信息
-     * @author fuce
-     * @Date 2019年11月21日 上午9:59:37
+     *@description: 清除授权信息
+     *@author:  Oliver
+     *@date  2020/9/10
      */
-    public static void clearCachedAuthorizationInfo()
-    {
+    public static void clearCachedAuthorizationInfo(){
         RealmSecurityManager rsm = (RealmSecurityManager) SecurityUtils.getSecurityManager();
         MyShiroRealm realm = (MyShiroRealm) rsm.getRealms().iterator().next();
         realm.clearCachedAuthorizationInfo();
     }
-    
+
     /**
-     * 获取登录用户id
-     * @return
-     * @author fuce
-     * @Date 2019年11月21日 上午9:58:55
+     *@description: 获取登录用户id
+     *@author:  Oliver
+     *@date  2020/9/10
      */
-    public static String getUserId()
-    {
-        TsysUser tsysUser = getUser();
+    public static String getUserId(){
+        SysUser tsysUser = getUser();
         if (tsysUser == null || tsysUser.getId() == null){
             throw new RuntimeException("用户不存在！");
         }
-        return tsysUser.getId().trim();
+        return tsysUser.getId().toString();
     }
-
     /**
-     * 获取登录用户name
-     * @return
-     * @author fuce
-     * @Date 2019年11月21日 上午9:58:48
+     *@description: 获取登录用户name
+     *@author:  Oliver
+     *@date  2020/9/10
      */
-    public static String getLoginName()
-    {
-        TsysUser tsysUser = getUser();
+    public static String getLoginName(){
+        SysUser tsysUser = getUser();
         if (tsysUser == null){
             throw new RuntimeException("用户不存在！");
         }
-        return tsysUser.getUsername();
+        return tsysUser.getUserName();
     }
-    
     /**
-     * 获取登录用户ip
-     * @return
-     * @author fuce
-     * @Date 2019年11月21日 上午9:58:26
+     *@description: 获取登录用户ip
+     *@author:  Oliver
+     *@date  2020/9/10
      */
     public static String getIp()
     {
         return getSubjct().getSession().getHost();
     }
-    
+
     /**
-     * 获取登录用户sessionid
-     * @return
-     * @author fuce
-     * @Date 2019年11月21日 上午9:58:37
+     *@description: 获取登录用户sessionid
+     *@author:  Oliver
+     *@date  2020/9/10
      */
     public static String getSessionId()
     {
