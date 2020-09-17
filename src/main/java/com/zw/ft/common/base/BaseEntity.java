@@ -2,6 +2,7 @@ package com.zw.ft.common.base;
 
 import com.baomidou.mybatisplus.annotation.*;
 
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -19,24 +20,29 @@ public class BaseEntity implements Serializable {
      *@description: 主键ID
      */
     @TableId
+    @NotEmpty(message = "主键不能为空")
     private Long id;
     /**
      *@description: 乐观锁
      */
     @Version
+    @NotEmpty(message = "版本不能为空")
     private Integer revision;
     /**
      *@description: 状态（包括逻辑删除）
      */
     @TableLogic
+    @NotEmpty(message = "状态不能为空")
     private Integer status;
     /**
      *@description: 创建人ID
      */
+    @NotEmpty(message = "创建者不能为空")
     private Long createdUserId;
     /**
      *@description: 创建时间
      */
+    @NotEmpty(message = "创建时间不能为空")
     private Timestamp createdTime;
     /**
      *@description: 修改人ID

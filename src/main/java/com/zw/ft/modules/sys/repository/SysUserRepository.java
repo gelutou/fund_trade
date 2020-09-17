@@ -1,9 +1,8 @@
-package com.zw.ft.repository.sys;
+package com.zw.ft.modules.sys.repository;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zw.ft.entity.sys.SysRole;
-import com.zw.ft.entity.sys.SysUser;
+import com.zw.ft.modules.sys.entity.SysUserEntity;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -14,8 +13,8 @@ import java.util.List;
  *@author:  Oliver
  *@date  2020/9/10
  */
-@Repository
-public interface SysUserRepository extends BaseMapper<SysUser> {
+@Mapper
+public interface SysUserRepository extends BaseMapper<SysUserEntity> {
 
     /**
      *@description: 查询用户的主要信息，包含角色等
@@ -28,11 +27,11 @@ public interface SysUserRepository extends BaseMapper<SysUser> {
             @Result(column = "id",property = "id"),
             @Result(column = "id",property = "roles",
                 many = @Many(
-                        select = "com.zw.ft.repository.sys.SysRoleRepository.getRoleList"
+                        select = "com.zw.ft.modules.sys.repository.SysRoleRepository.getRoleList"
                 )
             )
     })
-    List<SysUser> getMainUserListByWrapper(@Param("qw") QueryWrapper<SysUser> sysUserQueryWrapper);
+    List<SysUserEntity> getMainUserListByWrapper(@Param("qw") QueryWrapper<SysUserEntity> sysUserQueryWrapper);
     /**
      *@description: 根据userId查询用户信息集合
      *@param: userId 用户ID
@@ -40,5 +39,5 @@ public interface SysUserRepository extends BaseMapper<SysUser> {
      *@date  2020/9/10
      */
     @Select("SELECT * FROM sys_user su,sys_user_role sur WHERE su.ID = sur.user_id AND su.ID = #{userId}")
-    List<SysUser> getUserList(@Param("userId") long userId);
+    List<SysUserEntity> getUserList(@Param("userId") long userId);
 }

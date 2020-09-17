@@ -1,4 +1,4 @@
-package com.zw.ft.entity.sys;
+package com.zw.ft.modules.sys.entity;
 
 import com.zw.ft.common.base.BaseEntity;
 
@@ -11,7 +11,7 @@ import java.util.List;
  * @Date 2020/9/10 9:36
  * @Version 1.0
  **/
-public class SysRole extends BaseEntity {
+public class SysRoleEntity extends BaseEntity {
 
     private static final long serialVersionUID = 2102161014072264011L;
     /**
@@ -26,7 +26,7 @@ public class SysRole extends BaseEntity {
     /**
      *@description: 用户集合
      */
-    private List<SysUser> users;
+    private List<SysUserEntity> users;
 
     public String getRoleCode() {
         return roleCode;
@@ -44,11 +44,11 @@ public class SysRole extends BaseEntity {
         this.roleName = roleName;
     }
 
-    public List<SysUser> getUsers() {
+    public List<SysUserEntity> getUsers() {
         return users;
     }
 
-    public void setUsers(List<SysUser> users) {
+    public void setUsers(List<SysUserEntity> users) {
         this.users = users;
     }
 
