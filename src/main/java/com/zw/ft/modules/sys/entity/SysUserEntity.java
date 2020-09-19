@@ -1,5 +1,6 @@
 package com.zw.ft.modules.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.zw.ft.common.base.BaseEntity;
 import io.swagger.annotations.Api;
@@ -9,6 +10,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @ClassName SysUser
@@ -21,7 +23,6 @@ import java.util.List;
 @TableName(value = "sys_user")
 public class SysUserEntity extends BaseEntity {
     private static final long serialVersionUID = -127682095331146479L;
-
     /**
      *@description: 用户名
      */
@@ -29,7 +30,7 @@ public class SysUserEntity extends BaseEntity {
     @Length(min = 5,max = 16,message = "账号长度为 5-16 位")
     @Pattern(regexp = "^[A-Za-z0-9]+$",message = "账号内容只能是数字和字母")
     @ApiModelProperty(value = "用户名")
-    private String userName;
+    private String username;
     /**
      *@description: 密码
      */
@@ -54,14 +55,15 @@ public class SysUserEntity extends BaseEntity {
      *@description: 角色集合
      */
     @ApiModelProperty(value = "角色")
+    @TableField(exist = false)
     private List<SysRoleEntity> roles;
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -98,8 +100,8 @@ public class SysUserEntity extends BaseEntity {
 
     @Override
     public String toString() {
-        return "SysUser{" +
-                "userName='" + userName + '\'' +
+        return "SysUserEntity{" +
+                "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", realName='" + realName + '\'' +
                 ", gender=" + gender +

@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  *@description: 角色Mapper
@@ -17,16 +18,16 @@ import java.util.List;
 @Repository
 public interface SysRoleRepository extends BaseMapper<SysRoleEntity> {
 
-    @Select("SELECT * FROM sys_role WHERE ${qw.sqlSegment}")
+    @Select("SELECT * FROM sys_role WHERE ${ew.sqlSegment}")
     @Results({
             @Result(column = "id",property = "id"),
             @Result(column = "id",property = "users",
                 many = @Many(
-                        select = "com.zw.ft.modules.sys.repository.SysUserRepository.getUserList"
+                        select = "com.zw.ft.modules.sys.repository.SysUserRepository.getUserListJoinRole"
                 )
             )
     })
-    List<SysRoleEntity> getAllRoleListByWrapper(@Param("qw") QueryWrapper<SysRoleEntity> roleQueryWrapper);
+    List<SysRoleEntity> getUserAllMessage(@Param("ew") QueryWrapper<SysRoleEntity> roleQueryWrapper);
     /**
      *@description: 根据roleId查询角色信息集合
      *@param: roleId 角色Id
@@ -34,5 +35,5 @@ public interface SysRoleRepository extends BaseMapper<SysRoleEntity> {
      *@date  2020/9/10
      */
     @Select("SELECT * FROM sys_role sr,sys_user_role sur WHERE sr.ID = sur.role_id AND sr.ID = #{roleId}")
-    List<SysUserEntity> getRoleList(@Param("roleId") long roleId);
+    Set<SysRoleEntity> getRoleSetJoinUser(@Param("roleId") long roleId);
 }

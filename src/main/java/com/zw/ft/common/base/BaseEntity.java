@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 /**
  * @ClassName BaseEntity
@@ -22,36 +23,49 @@ public class BaseEntity implements Serializable {
     @TableId
     @NotEmpty(message = "主键不能为空")
     private Long id;
+
     /**
      *@description: 乐观锁
      */
     @Version
     @NotEmpty(message = "版本不能为空")
     private Integer revision;
+
     /**
-     *@description: 状态（包括逻辑删除）
+     *@description: 状态
      */
     @TableLogic
     @NotEmpty(message = "状态不能为空")
     private Integer status;
+
     /**
      *@description: 创建人ID
      */
     @NotEmpty(message = "创建者不能为空")
-    private Long createdUserId;
+    private Long createdBy;
+
     /**
      *@description: 创建时间
      */
+    @TableField(fill = FieldFill.INSERT)
     @NotEmpty(message = "创建时间不能为空")
-    private Timestamp createdTime;
+    private LocalDateTime createdTime;
+
     /**
      *@description: 修改人ID
      */
-    private Long updatedUserId;
+    private Long updatedBy;
+
     /**
      *@description: 修改时间
      */
-    private Timestamp updatedTime;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime updatedTime;
+
+    /**
+     *@description: 逻辑删除
+     */
+    private Integer deleted;
 
     @Override
     public boolean equals(Object o) {
@@ -65,9 +79,10 @@ public class BaseEntity implements Serializable {
         return id.equals(that.id) &&
                 revision.equals(that.revision) &&
                 status.equals(that.status) &&
-                createdUserId.equals(that.createdUserId) &&
+                createdBy.equals(that.createdBy) &&
                 createdTime.equals(that.createdTime) &&
-                updatedUserId.equals(that.updatedUserId) &&
+                updatedBy.equals(that.updatedBy) &&
+                deleted.equals(that.deleted) &&
                 updatedTime.equals(that.updatedTime);
     }
 
@@ -78,10 +93,11 @@ public class BaseEntity implements Serializable {
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((revision == null) ? 0 : revision.hashCode());
         result = prime * result + ((status == null) ? 0 : status.hashCode());
-        result = prime * result + ((createdUserId == null) ? 0 : createdUserId.hashCode());
+        result = prime * result + ((createdBy == null) ? 0 : createdBy.hashCode());
         result = prime * result + ((createdTime == null) ? 0 : createdTime.hashCode());
-        result = prime * result + ((updatedUserId == null) ? 0 : updatedUserId.hashCode());
+        result = prime * result + ((updatedBy == null) ? 0 : updatedBy.hashCode());
         result = prime * result + ((updatedTime == null) ? 0 : updatedTime.hashCode());
+        result = prime * result + ((deleted == null) ? 0 : deleted.hashCode());
         return result;
     }
 
@@ -109,36 +125,44 @@ public class BaseEntity implements Serializable {
         this.status = status;
     }
 
-    public Long getCreatedUserId() {
-        return createdUserId;
+    public Long getCreatedBy() {
+        return createdBy;
     }
 
-    public void setCreatedUserId(Long createdUserId) {
-        this.createdUserId = createdUserId;
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
     }
 
-    public Timestamp getCreatedTime() {
+    public LocalDateTime getCreatedTime() {
         return createdTime;
     }
 
-    public void setCreatedTime(Timestamp createdTime) {
+    public void setCreatedTime(LocalDateTime createdTime) {
         this.createdTime = createdTime;
     }
 
-    public Long getUpdatedUserId() {
-        return updatedUserId;
+    public Long getUpdatedBy() {
+        return updatedBy;
     }
 
-    public void setUpdatedUserId(Long updatedUserId) {
-        this.updatedUserId = updatedUserId;
+    public void setUpdatedBy(Long updatedBy) {
+        this.updatedBy = updatedBy;
     }
 
-    public Timestamp getUpdatedTime() {
+    public LocalDateTime getUpdatedTime() {
         return updatedTime;
     }
 
-    public void setUpdatedTime(Timestamp updatedTime) {
+    public void setUpdatedTime(LocalDateTime updatedTime) {
         this.updatedTime = updatedTime;
+    }
+
+    public Integer getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Integer deleted) {
+        this.deleted = deleted;
     }
 
     @Override
@@ -147,10 +171,11 @@ public class BaseEntity implements Serializable {
                 "id=" + id +
                 ", revision=" + revision +
                 ", status=" + status +
-                ", createdUserId=" + createdUserId +
+                ", createdBy=" + createdBy +
                 ", createdTime=" + createdTime +
-                ", updatedUserId=" + updatedUserId +
+                ", updatedBy=" + updatedBy +
                 ", updatedTime=" + updatedTime +
+                ", deleted=" + deleted +
                 '}';
     }
 }

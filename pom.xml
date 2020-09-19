@@ -24,6 +24,7 @@
         <thymeleaf-extras-shiro-version>2.0.0</thymeleaf-extras-shiro-version>
         <fastjson-version>1.2.73</fastjson-version>
         <swagger-version>3.0.0</swagger-version>
+        <p6spy-version>3.9.1</p6spy-version>
     </properties>
 
     <dependencies>
@@ -62,11 +63,11 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-spring-boot-web-starter -->
-        <!--<dependency>
+        <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring-boot-web-starter</artifactId>
             <version>${shiro-version}</version>
-        </dependency>-->
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
         <dependency>
@@ -82,12 +83,13 @@
             <version>${mybatis-plus-version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.github.theborakompanioni/thymeleaf-extras-shiro -->
-        <!--<dependency>
-            <groupId>com.github.theborakompanioni</groupId>
-            <artifactId>thymeleaf-extras-shiro</artifactId>
-            <version>${thymeleaf-extras-shiro-version}</version>
-        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/p6spy/p6spy -->
+        <dependency>
+            <groupId>p6spy</groupId>
+            <artifactId>p6spy</artifactId>
+            <version>${p6spy-version}</version>
+        </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
         <dependency>

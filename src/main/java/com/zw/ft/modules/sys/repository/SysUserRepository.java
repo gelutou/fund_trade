@@ -22,16 +22,16 @@ public interface SysUserRepository extends BaseMapper<SysUserEntity> {
      *@author:  Oliver
      *@date  2020/9/10
      */
-    @Select("SELECT * FROM sys_user WHERE ${qw.sqlSegment}")
+    @Select("SELECT * FROM sys_user WHERE ${ew.sqlSegment}")
     @Results({
             @Result(column = "id",property = "id"),
             @Result(column = "id",property = "roles",
                 many = @Many(
-                        select = "com.zw.ft.modules.sys.repository.SysRoleRepository.getRoleList"
+                        select = "com.zw.ft.modules.sys.repository.SysRoleRepository.getRoleSetJoinUser"
                 )
             )
     })
-    List<SysUserEntity> getMainUserListByWrapper(@Param("qw") QueryWrapper<SysUserEntity> sysUserQueryWrapper);
+    List<SysUserEntity> getUserAllMessage(@Param("ew") QueryWrapper<SysUserEntity> sysUserQueryWrapper);
     /**
      *@description: 根据userId查询用户信息集合
      *@param: userId 用户ID
@@ -39,5 +39,5 @@ public interface SysUserRepository extends BaseMapper<SysUserEntity> {
      *@date  2020/9/10
      */
     @Select("SELECT * FROM sys_user su,sys_user_role sur WHERE su.ID = sur.user_id AND su.ID = #{userId}")
-    List<SysUserEntity> getUserList(@Param("userId") long userId);
+    List<SysUserEntity> getUserListJoinRole(@Param("userId") long userId);
 }
