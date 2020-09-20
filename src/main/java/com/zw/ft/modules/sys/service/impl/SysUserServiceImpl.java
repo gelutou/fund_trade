@@ -3,7 +3,7 @@ package com.zw.ft.modules.sys.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zw.ft.modules.sys.entity.SysUserEntity;
-import com.zw.ft.modules.sys.repository.SysUserRepository;
+import com.zw.ft.modules.sys.repository.SysUserMapper;
 import com.zw.ft.modules.sys.service.SysUserService;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +18,17 @@ import java.util.List;
  * @Version 1.0
  **/
 @Service("sysUserService")
-public class SysUserServiceImpl extends ServiceImpl<SysUserRepository, SysUserEntity> implements SysUserService {
+public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity> implements SysUserService {
 
     @Resource
-    SysUserRepository sysUserRepository;
+    SysUserMapper sysUserMapper;
     @Override
     public List<SysUserEntity> getUserAllMessage(QueryWrapper<SysUserEntity> sysUserQueryWrapper) {
-        return sysUserRepository.getUserAllMessage(sysUserQueryWrapper);
+        return sysUserMapper.getUserAllMessage(sysUserQueryWrapper);
+    }
+
+    @Override
+    public List<String> getUserPerms(long userId) {
+        return sysUserMapper.getUserPerms(userId);
     }
 }

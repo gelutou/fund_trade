@@ -14,7 +14,7 @@ import java.util.List;
  *@date  2020/9/10
  */
 @Mapper
-public interface SysUserRepository extends BaseMapper<SysUserEntity> {
+public interface SysUserMapper extends BaseMapper<SysUserEntity> {
 
     /**
      *@description: 查询用户的主要信息，包含角色等
@@ -40,4 +40,10 @@ public interface SysUserRepository extends BaseMapper<SysUserEntity> {
      */
     @Select("SELECT * FROM sys_user su,sys_user_role sur WHERE su.ID = sur.user_id AND su.ID = #{userId}")
     List<SysUserEntity> getUserListJoinRole(@Param("userId") long userId);
+
+    @Select("SELECT sp.perms FROM sys_permission_role spr" +
+            " LEFT JOIN sys_permission sp on sp.ID = spr.permission_id" +
+            " LEFT JOIN sys_user_role sur on spr.role_id = sur.id" +
+            " WHERE sur.user_id = #{userId}")
+    List<String> getUserPerms(@Param("userId") long userId);
 }

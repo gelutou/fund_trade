@@ -36,7 +36,7 @@ public class ShiroConfig {
         Map<String,String> map = new LinkedHashMap<>();
         map.put("/main","authc");
         map.put("/manage","perms[manage]");
-        map.put("/admin","roles[admin]");
+        map.put("/admin","perms[admin]");
         factoryBean.setFilterChainDefinitionMap(map);
         return factoryBean;
     }

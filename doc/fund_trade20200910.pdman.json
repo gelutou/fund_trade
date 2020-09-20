@@ -646,6 +646,137 @@
           ],
           "chnname": "系统权限表",
           "remark": "系统权限表"
+        },
+        {
+          "title": "sys_department",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "主键ID",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "com_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "所属公司",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "parent_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "父级ID"
+            },
+            {
+              "name": "dept_name",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "部门名称",
+              "notNull": true
+            },
+            {
+              "name": "leader",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "部门负责人"
+            },
+            {
+              "name": "STATUS",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "状态（逻辑删除）",
+              "notNull": true
+            },
+            {
+              "name": "REVISION",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "乐观锁",
+              "notNull": true
+            },
+            {
+              "name": "CREATED_BY",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "创建人",
+              "notNull": true
+            },
+            {
+              "name": "CREATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            },
+            {
+              "name": "UPDATED_BY",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "更新人",
+              "notNull": true
+            },
+            {
+              "name": "UPDATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "系统部门表"
         }
       ],
       "graphCanvas": {
@@ -1158,8 +1289,14 @@
         "name": "STATUS",
         "type": "Integer",
         "remark": "",
-        "chnname": "状态（逻辑删除）",
+        "chnname": "状态",
         "notNull": true
+      },
+      {
+        "name": "DELETED",
+        "type": "YesNo",
+        "remark": "0正常1删除",
+        "chnname": "逻辑删除"
       },
       {
         "name": "REVISION",

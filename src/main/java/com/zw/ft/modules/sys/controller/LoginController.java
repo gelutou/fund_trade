@@ -1,5 +1,6 @@
 package com.zw.ft.modules.sys.controller;
 
+import com.zw.ft.common.base.BaseController;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysUserEntity;
 import io.swagger.annotations.Api;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/sys/")
 @Api(value = "用户接口")
-public class LoginController {
+public class LoginController extends BaseController {
     @ApiOperation(value = "用户控制")
     @GetMapping("/get_user")
     public String hello(@ApiParam(value = "用户实体") String name){
@@ -43,6 +44,7 @@ public class LoginController {
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username,password);
         try {
             subject.login(usernamePasswordToken);
+            logger.info("wo 登录了");
             SysUserEntity principal = (SysUserEntity)subject.getPrincipal();
             subject.getSession().setAttribute("user",principal);
         }catch (UnknownAccountException e){

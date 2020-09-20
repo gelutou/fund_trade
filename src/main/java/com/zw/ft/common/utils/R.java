@@ -1,5 +1,7 @@
 package com.zw.ft.common.utils;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zw.ft.common.base.BaseEntity;
 import org.springframework.http.HttpStatus;
 
 import java.util.HashMap;
@@ -48,6 +50,15 @@ public class R extends HashMap<String, Object> {
 	
 	public static R ok() {
 		return new R();
+	}
+
+	public static R page(Page<?> page) {
+		R r = new R();
+		r.put("code", 0);
+		r.put("msg", "success");
+		r.put("data", page.getRecords());
+		r.put("count", page.getTotal());
+		return r;
 	}
 
 	@Override

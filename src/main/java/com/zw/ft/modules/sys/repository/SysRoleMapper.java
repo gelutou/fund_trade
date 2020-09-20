@@ -16,7 +16,7 @@ import java.util.Set;
  *@date  2020/9/10
  */
 @Repository
-public interface SysRoleRepository extends BaseMapper<SysRoleEntity> {
+public interface SysRoleMapper extends BaseMapper<SysRoleEntity> {
 
     @Select("SELECT * FROM sys_role WHERE ${ew.sqlSegment}")
     @Results({

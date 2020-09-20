@@ -3,6 +3,7 @@ package com.zw.ft.shiro;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zw.ft.modules.sys.entity.SysRoleEntity;
 import com.zw.ft.modules.sys.entity.SysUserEntity;
+import com.zw.ft.modules.sys.service.SysPermissionService;
 import com.zw.ft.modules.sys.service.SysUserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -11,10 +12,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
-
 import javax.annotation.Resource;
-import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -27,6 +25,8 @@ public class ShiroRealm extends AuthorizingRealm {
 
     @Resource
     SysUserService sysUserService;
+    @Resource
+    SysPermissionService sysPermissionService;
     /**
      * @Author Oliver
      * @Description 权限认证
@@ -40,22 +40,11 @@ public class ShiroRealm extends AuthorizingRealm {
         Subject subject = SecurityUtils.getSubject();
         //获取当前登录用户信息
         SysUserEntity principal = (SysUserEntity) subject.getPrincipal();
-        System.out.println("principal = " + principal);
-        //设置角色
-        QueryWrapper<SysUserEntity> userEntityQueryWrapper = new QueryWrapper<>();
-        userEntityQueryWrapper.eq("id",principal.getId());
-        List<SysUserEntity> userAllMessage = sysUserService.getUserAllMessage(userEntityQueryWrapper);
-        List<SysRoleEntity> roles = userAllMessage.get(0).getRoles();
-
-        Set<String> roleIdSet = new LinkedHashSet<>();
-        for(SysRoleEntity roleEntity : roles){
-            roleIdSet.add(roleEntity.getId().toString());
-        }
-        //设置角色
-        SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo(roleIdSet);
         //设置权限
-        //simpleAuthorizationInfo.addStringPermission();
-        return null;
+        Set<String> userPermissions = sysPermissionService.getUserPermissions(principal.getId());
+        SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+        simpleAuthorizationInfo.setStringPermissions(userPermissions);
+        return simpleAuthorizationInfo;
     }
 
     /**

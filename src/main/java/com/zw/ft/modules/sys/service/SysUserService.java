@@ -23,4 +23,14 @@ public interface SysUserService extends IService<SysUserEntity> {
      * @Date: 2020/9/19 21:07
      */
     List<SysUserEntity> getUserAllMessage(QueryWrapper<SysUserEntity> sysUserQueryWrapper);
+
+    /**
+     * 功能描述: <br>
+     * 〈查询用户的权限〉
+     * @Param: [userId]
+     * @Return: java.util.List<java.lang.String>
+     * @Author: Oliver
+     * @Date: 2020/9/20 13:13
+     */
+    List<String> getUserPerms(long userId);
 }
