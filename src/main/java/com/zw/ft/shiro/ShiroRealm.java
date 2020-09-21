@@ -57,8 +57,8 @@ public class ShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) authenticationToken;
-        System.out.println("usernamePasswordToken = " + usernamePasswordToken);
         QueryWrapper<SysUserEntity> entityQueryWrapper = new QueryWrapper<>();
+
         entityQueryWrapper.eq("username",usernamePasswordToken.getUsername());
         SysUserEntity currentUser = sysUserService.getOne(entityQueryWrapper);
 

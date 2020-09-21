@@ -5,7 +5,7 @@ import com.zw.ft.common.base.BaseEntity;
 
 /**
  * @ClassName SysPermission
- * @Description TODO
+ * @Description SysPermission
  * @Author Oliver
  * @Date 2020/9/14 18:04
  * @Version 1.0

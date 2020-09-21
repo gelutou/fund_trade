@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class BaseController {
 
-    protected Logger logger = (Logger) LoggerFactory.getLogger(getClass());
+    protected Logger logger = LoggerFactory.getLogger(getClass());
     @GetMapping(value = "/{url}")
     public String redirect(@PathVariable("url") String url){
         return url;
