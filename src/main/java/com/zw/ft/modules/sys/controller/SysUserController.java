@@ -36,6 +36,8 @@ public class SysUserController {
         String username = params.get("username").toString();
         String realname = params.get("realname") == null?"":params.get("realname").toString();
         String status = params.get("status") == null?"":params.get("realname").toString();
+        String current = params.get("current") == null?"":params.get("current").toString();
+        String size = params.get("size") == null?"":params.get("size").toString();
         if(!"".equals(username)){
             userEntityQueryWrapper.eq("username",username);
         }
@@ -45,7 +47,14 @@ public class SysUserController {
         if(!"".equals(status)){
             userEntityQueryWrapper.eq("status",status);
         }
+
         Page<SysUserEntity> usersPage = new Page<>();
+        if(!"".equals(current)){
+            usersPage.setCurrent(Long.parseLong(current));
+        }
+        if(!"".equals(size)){
+            usersPage.setSize(Long.parseLong(size));
+        }
         usersPage = sysUserService.queryUsersPageByComAndWrapper(usersPage, comId, userEntityQueryWrapper);
         return R.page(usersPage);
     }
