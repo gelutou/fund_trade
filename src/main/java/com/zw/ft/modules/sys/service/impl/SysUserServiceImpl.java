@@ -1,6 +1,7 @@
 package com.zw.ft.modules.sys.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zw.ft.modules.sys.entity.SysUserEntity;
 import com.zw.ft.modules.sys.repository.SysUserMapper;
@@ -30,5 +31,10 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
     @Override
     public List<String> getUserPerms(long userId) {
         return sysUserMapper.getUserPerms(userId);
+    }
+
+    @Override
+    public Page<SysUserEntity> queryUsersPageByComAndWrapper(Page<SysUserEntity> page, long comId, QueryWrapper<SysUserEntity> userEntityQueryWrapper) {
+        return sysUserMapper.queryUsersPageByComAndWrapper(page,comId,userEntityQueryWrapper);
     }
 }

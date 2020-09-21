@@ -1,6 +1,8 @@
 package com.zw.ft.sys;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysPermissionEntity;
 import com.zw.ft.modules.sys.entity.SysUserEntity;
 import com.zw.ft.modules.sys.repository.SysPermissionMapper;
@@ -50,6 +52,14 @@ public class SysUserTest {
         entityQueryWrapper.eq("username","admin");
         List<SysUserEntity> mainUserListByWrapper = sysUserMapper.getUserAllMessage(entityQueryWrapper);
         mainUserListByWrapper.forEach(System.out::println);
+    }
+    @Test
+    public void selectUserPage(){
+        Page<SysUserEntity> usersPage = new Page<>();
+        QueryWrapper<SysUserEntity> userEntityQueryWrapper = new QueryWrapper<>();
+        userEntityQueryWrapper.eq("username","admin");
+        Page<SysUserEntity> sysUserEntityPage = sysUserMapper.queryUsersPageByComAndWrapper(usersPage, 1L, userEntityQueryWrapper);
+        System.out.println("R.page(sysUserEntityPage) = " + R.page(sysUserEntityPage));
     }
 
     @Test

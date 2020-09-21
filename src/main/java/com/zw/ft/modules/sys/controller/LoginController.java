@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
  * @Version 1.0
  **/
 @RestController
-@RequestMapping(value = "/sys/")
+@RequestMapping(value = "/ft/sys/")
 @Api(value = "用户接口")
 public class LoginController extends BaseController {
     @ApiOperation(value = "用户控制")
@@ -38,8 +38,8 @@ public class LoginController extends BaseController {
      * @Author: Oliver
      * @Date: 2020/9/19 22:17
      */
-    @PostMapping("/login")
-    public R login(String username,String password){
+    @PostMapping("/login/{username}/{password}")
+    public R login(@PathVariable("username") String username,@PathVariable("password") String password){
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username,password);
         try {

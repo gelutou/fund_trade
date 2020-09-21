@@ -1,6 +1,7 @@
 package com.zw.ft.modules.sys.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zw.ft.modules.sys.entity.SysUserEntity;
 import org.apache.ibatis.annotations.Param;
@@ -33,4 +34,11 @@ public interface SysUserService extends IService<SysUserEntity> {
      * @Date: 2020/9/20 13:13
      */
     List<String> getUserPerms(long userId);
+
+    /**
+     *@description: 返回公司下所有符合条件的人员分页
+     *@author:  Oliver
+     *@date  2020/9/21
+     */
+    Page<SysUserEntity> queryUsersPageByComAndWrapper(Page<SysUserEntity> page, long comId, QueryWrapper<SysUserEntity> userEntityQueryWrapper);
 }

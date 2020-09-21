@@ -2,6 +2,7 @@ package com.zw.ft.modules.sys.repository;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.modules.sys.entity.SysUserEntity;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
@@ -46,4 +47,14 @@ public interface SysUserMapper extends BaseMapper<SysUserEntity> {
             " LEFT JOIN sys_user_role sur on spr.role_id = sur.id" +
             " WHERE sur.user_id = #{userId}")
     List<String> getUserPerms(@Param("userId") long userId);
+
+
+    @Select("SELECT *" +
+            " FROM sys_user su" +
+            " LEFT JOIN sys_user_company suc ON su.ID = suc.user_id" +
+            " WHERE ${ew.sqlSegment} AND suc.com_id = #{comId}")
+    Page<SysUserEntity> queryUsersPageByComAndWrapper(
+            Page<SysUserEntity> page
+            , @Param("comId") long comId
+            , @Param("ew") QueryWrapper<SysUserEntity> userEntityQueryWrapper);
 }

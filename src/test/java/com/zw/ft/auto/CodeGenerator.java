@@ -24,6 +24,8 @@ import java.util.ArrayList;
 public class CodeGenerator {
 
     public static void main(String[] args) {
+        //设置要映射的表名
+        String setInclude = "sys_user_company";
 
         AutoGenerator autoGenerator = new AutoGenerator();
         GlobalConfig globalConfig = new GlobalConfig();
@@ -66,8 +68,8 @@ public class CodeGenerator {
 
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
-        //设置要映射的表名
-        strategy.setInclude("sys_department");
+
+        strategy.setInclude(setInclude);
         //下划线转驼峰
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
