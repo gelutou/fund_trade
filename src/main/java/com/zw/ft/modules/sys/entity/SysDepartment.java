@@ -1,9 +1,6 @@
 package com.zw.ft.modules.sys.entity;
 
 import com.zw.ft.common.base.BaseEntity;
-import com.baomidou.mybatisplus.annotation.Version;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
 /**
  * <p>
@@ -13,21 +10,16 @@ import io.swagger.annotations.ApiModelProperty;
  * @author Oliver
  * @since 2020-09-20
  */
-@ApiModel(value="SysDepartment对象", description="系统部门表")
 public class SysDepartment extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "所属公司")
     private Integer comId;
 
-    @ApiModelProperty(value = "父级ID")
     private Integer parentId;
 
-    @ApiModelProperty(value = "部门名称")
     private String deptName;
 
-    @ApiModelProperty(value = "部门负责人")
     private Integer leader;
 
 

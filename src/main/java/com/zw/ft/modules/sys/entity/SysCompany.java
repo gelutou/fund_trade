@@ -1,10 +1,6 @@
 package com.zw.ft.modules.sys.entity;
 
 import com.zw.ft.common.base.BaseEntity;
-import com.baomidou.mybatisplus.annotation.Version;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
 /**
  * <p>
  * 公司信息表
@@ -13,36 +9,26 @@ import io.swagger.annotations.ApiModelProperty;
  * @author Oliver
  * @since 2020-09-21
  */
-@ApiModel(value="SysCompany对象", description="公司信息表")
 public class SysCompany extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "公司编码")
     private String comCode;
 
-    @ApiModelProperty(value = "公司名称")
     private String comName;
 
-    @ApiModelProperty(value = "公司简称")
     private String shortComName;
 
-    @ApiModelProperty(value = "公司联系人")
     private Integer contactUser;
 
-    @ApiModelProperty(value = "公司所属省份")
     private String province;
 
-    @ApiModelProperty(value = "公司所属城市")
     private String city;
 
-    @ApiModelProperty(value = "公司所属区域")
     private String district;
 
-    @ApiModelProperty(value = "公司详细地址")
     private String address;
 
-    @ApiModelProperty(value = "父公司所属")
     private Integer parentId;
 
 

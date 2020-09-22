@@ -3,9 +3,6 @@ package com.zw.ft.modules.sys.controller;
 import com.zw.ft.common.base.BaseController;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysUserEntity;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -22,13 +19,7 @@ import org.springframework.web.bind.annotation.*;
  **/
 @RestController
 @RequestMapping(value = "/ft/sys/")
-@Api(value = "用户接口")
 public class LoginController extends BaseController {
-    @ApiOperation(value = "用户控制")
-    @GetMapping("/get_user")
-    public String hello(@ApiParam(value = "用户实体") String name){
-        return name;
-    }
 
     /**
      * 功能描述: <br>

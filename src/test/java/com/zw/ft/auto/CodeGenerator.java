@@ -44,7 +44,7 @@ public class CodeGenerator {
         //日期格式
         globalConfig.setDateType(DateType.ONLY_DATE);
         //是否生成swagger配置
-        globalConfig.setSwagger2(true);
+        //globalConfig.setSwagger2(true);
         autoGenerator.setGlobalConfig(globalConfig);
 
         //设置数据源
