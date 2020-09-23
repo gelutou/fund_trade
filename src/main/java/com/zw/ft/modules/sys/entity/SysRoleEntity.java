@@ -1,6 +1,8 @@
 package com.zw.ft.modules.sys.entity;
 
 import com.zw.ft.common.base.BaseEntity;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
@@ -11,6 +13,8 @@ import java.util.List;
  * @Date 2020/9/10 9:36
  * @Version 1.0
  **/
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class SysRoleEntity extends BaseEntity {
 
     private static final long serialVersionUID = 2102161014072264011L;
@@ -27,37 +31,4 @@ public class SysRoleEntity extends BaseEntity {
      *@description: 用户集合
      */
     private List<SysUserEntity> users;
-
-    public String getRoleCode() {
-        return roleCode;
-    }
-
-    public void setRoleCode(String roleCode) {
-        this.roleCode = roleCode;
-    }
-
-    public String getRoleName() {
-        return roleName;
-    }
-
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
-
-    public List<SysUserEntity> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<SysUserEntity> users) {
-        this.users = users;
-    }
-
-    @Override
-    public String toString() {
-        return "SysRole{" +
-                "roleCode='" + roleCode + '\'' +
-                ", roleName='" + roleName + '\'' +
-                ", users=" + users +
-                '}';
-    }
 }

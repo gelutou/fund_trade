@@ -24,6 +24,7 @@
         <thymeleaf-extras-shiro-version>2.0.0</thymeleaf-extras-shiro-version>
         <fastjson-version>1.2.73</fastjson-version>
         <p6spy-version>3.9.1</p6spy-version>
+        <lombok.version>1.18.4</lombok.version>
     </properties>
 
     <dependencies>
@@ -120,11 +121,11 @@
             <version>${fastjson-version}</version>
         </dependency>
 
-        <!--<dependency>
-            <groupId>com.battcn</groupId>
-            <artifactId>swagger-spring-boot-starter</artifactId>
-            <version>2.1.5-RELEASE</version>
-        </dependency>-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

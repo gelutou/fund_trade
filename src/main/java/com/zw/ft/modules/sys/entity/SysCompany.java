@@ -1,6 +1,9 @@
 package com.zw.ft.modules.sys.entity;
 
 import com.zw.ft.common.base.BaseEntity;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 /**
  * <p>
  * 公司信息表
@@ -9,113 +12,54 @@ import com.zw.ft.common.base.BaseEntity;
  * @author Oliver
  * @since 2020-09-21
  */
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class SysCompany extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     *@description: 公司代码
+     */
     private String comCode;
 
+    /**
+     *@description: 公司名称
+     */
     private String comName;
 
+    /**
+     *@description: 公司简称
+     */
     private String shortComName;
 
+    /**
+     *@description: 联系人
+     */
     private Integer contactUser;
 
+    /**
+     *@description: 所属省份
+     */
     private String province;
 
+    /**
+     *@description: 所属城市
+     */
     private String city;
 
+    /**
+     *@description: 所属区域
+     */
     private String district;
 
+    /**
+     *@description: 详细地址
+     */
     private String address;
 
+    /**
+     *@description: 父部门
+     */
     private Integer parentId;
-
-
-    public String getComCode() {
-        return comCode;
-    }
-
-    public void setComCode(String comCode) {
-        this.comCode = comCode;
-    }
-
-    public String getComName() {
-        return comName;
-    }
-
-    public void setComName(String comName) {
-        this.comName = comName;
-    }
-
-    public String getShortComName() {
-        return shortComName;
-    }
-
-    public void setShortComName(String shortComName) {
-        this.shortComName = shortComName;
-    }
-
-    public Integer getContactUser() {
-        return contactUser;
-    }
-
-    public void setContactUser(Integer contactUser) {
-        this.contactUser = contactUser;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public Integer getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
-    }
-
-    @Override
-    public String toString() {
-        return "SysCompany{" +
-        "comCode=" + comCode +
-        ", comName=" + comName +
-        ", shortComName=" + shortComName +
-        ", contactUser=" + contactUser +
-        ", province=" + province +
-        ", city=" + city +
-        ", district=" + district +
-        ", address=" + address +
-        ", parentId=" + parentId +
-        "}";
-    }
 }

@@ -1,6 +1,11 @@
 package com.zw.ft.modules.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.zw.ft.common.base.BaseEntity;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import java.util.List;
 
 /**
  * <p>
@@ -10,58 +15,34 @@ import com.zw.ft.common.base.BaseEntity;
  * @author Oliver
  * @since 2020-09-20
  */
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class SysDepartment extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer comId;
+    /**
+     *@description: 公司ID
+     */
+    private long comId;
+    /**
+     *@description: 上级ID
+     */
+    private long parentId;
 
-    private Integer parentId;
-
+    /**
+     *@description: 部门名称
+     */
     private String deptName;
 
+    /**
+     *@description: 领导
+     */
     private Integer leader;
 
-
-    public Integer getComId() {
-        return comId;
-    }
-
-    public void setComId(Integer comId) {
-        this.comId = comId;
-    }
-
-    public Integer getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
-    }
-
-    public String getDeptName() {
-        return deptName;
-    }
-
-    public void setDeptName(String deptName) {
-        this.deptName = deptName;
-    }
-
-    public Integer getLeader() {
-        return leader;
-    }
-
-    public void setLeader(Integer leader) {
-        this.leader = leader;
-    }
-
-    @Override
-    public String toString() {
-        return "SysDepartment{" +
-        "comId=" + comId +
-        ", parentId=" + parentId +
-        ", deptName=" + deptName +
-        ", leader=" + leader +
-        "}";
-    }
+    /**
+     *@description: 下级部门
+     */
+    @TableField(exist = false)
+    private List<SysDepartment> childs;
 }

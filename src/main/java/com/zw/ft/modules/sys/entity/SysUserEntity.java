@@ -3,6 +3,8 @@ package com.zw.ft.modules.sys.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.zw.ft.common.base.BaseEntity;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -15,7 +17,9 @@ import java.util.List;
  * @Date 2020/9/9 16:50
  * @Version 1.0
  **/
+@EqualsAndHashCode(callSuper = true)
 @TableName(value = "sys_user")
+@Data
 public class SysUserEntity extends BaseEntity {
     private static final long serialVersionUID = -127682095331146479L;
     /**
@@ -47,55 +51,4 @@ public class SysUserEntity extends BaseEntity {
      */
     @TableField(exist = false)
     private List<SysRoleEntity> roles;
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
-    }
-
-    public Integer getGender() {
-        return gender;
-    }
-
-    public void setGender(Integer gender) {
-        this.gender = gender;
-    }
-
-    public List<SysRoleEntity> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<SysRoleEntity> roles) {
-        this.roles = roles;
-    }
-
-    @Override
-    public String toString() {
-        return "SysUserEntity{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", realName='" + realName + '\'' +
-                ", gender=" + gender +
-                ", roles=" + roles +
-                '}';
-    }
 }
