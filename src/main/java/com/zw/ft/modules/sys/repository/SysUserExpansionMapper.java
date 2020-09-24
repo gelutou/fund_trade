@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
  *@date  2020/9/10
  */
 @Repository
-public interface SysUserExpansionRepository extends BaseMapper<SysUserExpansionEntity> {
+public interface SysUserExpansionMapper extends BaseMapper<SysUserExpansionEntity> {
 }
