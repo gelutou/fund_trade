@@ -1,5 +1,6 @@
 package com.zw.ft.modules.sys.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zw.ft.modules.sys.entity.SysCompany;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.apache.ibatis.annotations.Param;
@@ -25,4 +26,13 @@ public interface SysCompanyService extends IService<SysCompany> {
      * @Date: 2020/9/21 10:53
      */
     List<SysCompany> getFuzzy(String username,String shortName);
+    /**
+     * 功能描述: <br>
+     * 〈查询所有公司〉
+     * @Param: [sysCompanyQueryWrapper 查询条件]
+     * @Return: com.zw.ft.common.utils.R
+     * @Author: Oliver
+     * @Date: 2020/9/23 16:00
+     */
+    /*List<SysCompany> getCompanyByWrapper(QueryWrapper<SysCompany> sysCompanyQueryWrapper);*/
 }

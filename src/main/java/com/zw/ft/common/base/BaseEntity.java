@@ -34,7 +34,6 @@ public class BaseEntity implements Serializable {
     /**
      *@description: 状态
      */
-    @TableLogic
     @NotEmpty(message = "状态不能为空")
     private Integer status;
 
@@ -65,6 +64,7 @@ public class BaseEntity implements Serializable {
     /**
      *@description: 逻辑删除
      */
+    @TableLogic
     private Integer deleted;
 
     @Override

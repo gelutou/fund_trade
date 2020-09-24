@@ -62,4 +62,9 @@ public class SysCompany extends BaseEntity {
      *@description: 父部门
      */
     private Integer parentId;
+
+    /**
+     *@description: 公司联系电话
+     */
+    private String mobile;
 }

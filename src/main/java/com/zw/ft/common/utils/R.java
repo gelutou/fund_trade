@@ -3,8 +3,8 @@ package com.zw.ft.common.utils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.common.base.BaseEntity;
 import org.springframework.http.HttpStatus;
-
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,6 +39,11 @@ public class R extends HashMap<String, Object> {
 	public static R ok(String msg) {
 		R r = new R();
 		r.put("msg", msg);
+		return r;
+	}
+	public static R ok(List<? extends BaseEntity> list) {
+		R r = new R();
+		r.put("data", list);
 		return r;
 	}
 	

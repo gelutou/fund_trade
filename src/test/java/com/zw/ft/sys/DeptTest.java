@@ -1,20 +1,15 @@
 package com.zw.ft.sys;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.mysql.cj.xdevapi.JsonArray;
 import com.zw.ft.modules.sys.entity.SysDepartment;
 import com.zw.ft.modules.sys.repository.SysDepartmentMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import javax.annotation.Resource;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * @ClassName DeptTest
@@ -38,7 +33,6 @@ public class DeptTest {
         List<SysDepartment> sysDepartments = sysDepartment.selectList(departmentQueryWrapper);
 
         JSONArray result = new JSONArray();
-        Set<Long> idSet = new HashSet<>();
         for(SysDepartment dept : sysDepartments){
             long parentId = dept.getParentId();
             long id = dept.getId();
@@ -48,7 +42,6 @@ public class DeptTest {
                 JSONObject firstObj = new JSONObject(2);
                 firstObj.put("label:",name);
                 firstObj.put("id",id);
-                idSet.add(id);
                 //查询所有下级
                 List<SysDepartment> trees = getTree(sysDepartments, id);
                 JSONArray childArray = new JSONArray();

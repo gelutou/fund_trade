@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.TimeZone;
 
 /**
  * @ClassName SysCompanyTest
@@ -26,4 +27,13 @@ public class SysCompanyTest {
         fuzzy.forEach(System.out::println);
     }
 
+    @Test
+    public void getCity(){
+        // 获取当前服务器TimeZone
+        String timeZoneId = TimeZone.getDefault().getID();
+        // 抓取城市名称
+        String[] arr = timeZoneId.split("/");
+        String city = arr.length > 1 ? arr[1] : timeZoneId;
+        System.out.println("city = " + city);
+    }
 }

@@ -49,7 +49,6 @@ public class LoginController extends BaseController {
     /**
      * 功能描述: <br>
      * 〈用户登出〉
-     * @Param: [username, password]
      * @Return: com.zw.ft.common.utils.R
      * @Author: Oliver
      * @Date: 2020/9/19 22:17
@@ -60,4 +59,9 @@ public class LoginController extends BaseController {
         subject.logout();
         return R.ok();
     }
+    /*@PostMapping("/get_weather")
+    public R getWeather(){
+
+    }*/
+
 }
