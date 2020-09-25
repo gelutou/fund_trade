@@ -30,7 +30,7 @@ public class SysDepartmentController {
      * @Description 根据树节点主节点公司ID,获取部门档案树信息
      * @Date: 2020/9/24
      */
-    @PostMapping("/getDeptTree/")
+    @PostMapping("/getDeptTree")
     public R loadManagerLeftTreeJson(@RequestBody Map<String,Object> params){
         JSONArray as = sysDepartmentService.getMenu(params);
         return R.data(as);
