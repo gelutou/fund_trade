@@ -1,5 +1,9 @@
 package com.zw.ft.common.utils;
 
+<<<<<<< HEAD
+=======
+import com.alibaba.fastjson.JSONArray;
+>>>>>>> Oliver
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.common.base.BaseEntity;
 import org.springframework.http.HttpStatus;
@@ -41,11 +45,23 @@ public class R extends HashMap<String, Object> {
 		r.put("msg", msg);
 		return r;
 	}
+<<<<<<< HEAD
 	public static R ok(List<? extends BaseEntity> list) {
+=======
+	public static R data(List<? extends BaseEntity> list) {
+>>>>>>> Oliver
 		R r = new R();
 		r.put("data", list);
 		return r;
 	}
+<<<<<<< HEAD
+=======
+	public static R ok(JSONArray jsonArray) {
+		R r = new R();
+		r.put("data", jsonArray);
+		return r;
+	}
+>>>>>>> Oliver
 	
 	public static R ok(Map<String, Object> map) {
 		R r = new R();
