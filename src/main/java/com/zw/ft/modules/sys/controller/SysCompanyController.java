@@ -36,11 +36,7 @@ public class SysCompanyController {
      */
     @PostMapping(value = "get_fuzzy/{username}/{shortname}")
     public R getFuzzy(@PathVariable("username") String username, @PathVariable("shortname")String shortName){
-<<<<<<< HEAD
-        return R.ok(sysCompanyService.getFuzzy(username,shortName));
-=======
         return R.data(sysCompanyService.getFuzzy(username,shortName));
->>>>>>> Oliver
     }
 
     /**
@@ -54,7 +50,7 @@ public class SysCompanyController {
     public R addCom(@RequestBody SysCompany sysCompany,@PathVariable("addUpdate") String addUpdate){
         sysCompany.setCreatedBy(ShiroUtils.getUserId());
         sysCompany.setUpdatedBy(ShiroUtils.getUserId());
-        boolean result = false;
+        boolean result;
         if("add".equals(addUpdate)){
             result = sysCompanyService.save(sysCompany);
         }else if("update".equals(addUpdate)){
