@@ -29,6 +29,7 @@ public class BaseEntity implements Serializable {
      */
     @Version
     @NotEmpty(message = "版本不能为空")
+    @TableField(fill = FieldFill.INSERT)
     private Integer revision;
 
     /**
@@ -41,6 +42,7 @@ public class BaseEntity implements Serializable {
      *@description: 创建人ID
      */
     @NotEmpty(message = "创建者不能为空")
+    @TableField(fill = FieldFill.INSERT)
     private Long createdBy;
 
     /**
@@ -53,6 +55,7 @@ public class BaseEntity implements Serializable {
     /**
      *@description: 修改人ID
      */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Long updatedBy;
 
     /**
@@ -65,6 +68,7 @@ public class BaseEntity implements Serializable {
      *@description: 逻辑删除
      */
     @TableLogic
+    @TableField(fill = FieldFill.INSERT)
     private Integer deleted;
 
     @Override

@@ -1,14 +1,23 @@
 package com.zw.ft.modules.sys.controller;
 
+import com.zw.ft.common.utils.Map2ObjUtils;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysUserEntity;
+import com.zw.ft.modules.sys.entity.SysUserExpansionEntity;
 import com.zw.ft.modules.sys.service.SysUserService;
 import org.apache.shiro.crypto.hash.SimpleHash;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 /**
  * @ClassName RegisterController
@@ -18,11 +27,14 @@ import javax.annotation.Resource;
  * @Version 1.0
  **/
 @RestController
-@RequestMapping(value = "/sys/")
+@RequestMapping(value = "/ft/sys")
 public class RegisterController {
 
     @Resource
     SysUserService sysUserService;
+
+    @Resource(name = "transactionManager")
+    private PlatformTransactionManager platformTransactionManager;
     /**
      * 功能描述: <br>
      * 〈用户注册，管理员添加用户〉
@@ -31,23 +43,40 @@ public class RegisterController {
      * @Author: Oliver
      * @Date: 2020/9/19 23:23
      */
-    @PostMapping(value = "/register")
-    public R register(String username,String password){
-        SysUserEntity sysUserEntity = new SysUserEntity();
-        sysUserEntity.setUsername(username);
-        sysUserEntity.setCreatedBy(1L);
-        sysUserEntity.setUpdatedBy(1L);
+    @PostMapping("/signup")
+    public R signup(@RequestBody Map<String,Object> params) throws Exception {
+        DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+        def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+        TransactionStatus status = platformTransactionManager.getTransaction(def);
+        SysUserEntity sysUserEntity = (SysUserEntity) Map2ObjUtils.mapToObject(params,SysUserEntity.class);
+        SysUserExpansionEntity sysUserExpansionEntity = (SysUserExpansionEntity) Map2ObjUtils.mapToObject(params,SysUserExpansionEntity.class);
+
         sysUserEntity.setPassword(new SimpleHash(
                 //加密方式
                 "MD5",
                 //要加密的密码
-                password,
+                sysUserEntity.getPassword(),
                 //盐
                 null,
                 //加密次数
                 1024
         ).toString());
-        sysUserService.save(sysUserEntity);
+        try {
+            sysUserService.save(sysUserEntity);
+            if(sysUserEntity.getId() == null){
+                platformTransactionManager.rollback(status);
+                return R.error("注册失败");
+            }
+            sysUserExpansionEntity.setUserId(sysUserEntity.getId());
+            if(sysUserExpansionEntity.getId() == null){
+                platformTransactionManager.rollback(status);
+                return R.error("注册失败");
+            }
+        }catch (Exception e){
+            platformTransactionManager.rollback(status);
+            return R.error("参数异常");
+        }
+        platformTransactionManager.commit(status);
         return R.ok();
     }
 }

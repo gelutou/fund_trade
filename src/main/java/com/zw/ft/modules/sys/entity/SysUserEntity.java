@@ -39,7 +39,7 @@ public class SysUserEntity extends BaseEntity {
      *@description: 姓名
      */
     @NotEmpty(message = "姓名不能为空")
-    private String realName;
+    private String realname;
     /**
      *@description: 性别 0 男 1 女
      */
