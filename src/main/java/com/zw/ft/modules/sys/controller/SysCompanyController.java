@@ -50,7 +50,7 @@ public class SysCompanyController {
     public R addCom(@RequestBody SysCompany sysCompany,@PathVariable("addUpdate") String addUpdate){
         sysCompany.setCreatedBy(ShiroUtils.getUserId());
         sysCompany.setUpdatedBy(ShiroUtils.getUserId());
-        boolean result = false;
+        boolean result;
         if("add".equals(addUpdate)){
             result = sysCompanyService.save(sysCompany);
         }else if("update".equals(addUpdate)){
