@@ -1,5 +1,6 @@
 package com.zw.ft.common.utils;
 
+import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import java.util.LinkedHashMap;
@@ -25,11 +26,11 @@ public class QueryUtil<T> extends LinkedHashMap<String,Object> {
         this.putAll(params);
 
         //分页参数
-        if(params.get("current") != null){
-            current = Long.parseLong((String) params.get("current"));
+        if(params.get("currentPage") != null){
+            current = Convert.toLong(params.get("currentPage"));
         }
-        if(params.get("limit") != null){
-            limit = Long.parseLong((String) params.get("limit"));
+        if(params.get("pageSize") != null){
+            limit = Convert.toLong(params.get("pageSize"));
         }
         //mybatis-plus分页
         this.page = new Page<>(current, limit);
