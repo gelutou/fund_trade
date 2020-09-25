@@ -5999,3 +5999,4 @@ Caused by: java.lang.ClassNotFoundException: com.zw.ft.shiro.ShiroRealm
 2020-09-25 16:51:05.969 [http-nio-8088-exec-1] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
 2020-09-25 16:54:11.985 [http-nio-8088-exec-1] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
 2020-09-25 16:55:47.215 [http-nio-8088-exec-3] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
+2020-09-25 16:58:02.453 [http-nio-8088-exec-1] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
