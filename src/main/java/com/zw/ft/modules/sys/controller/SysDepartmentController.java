@@ -2,6 +2,7 @@ package com.zw.ft.modules.sys.controller;
 
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysDepartment;
 import com.zw.ft.modules.sys.service.SysDepartmentService;
@@ -36,9 +37,31 @@ public class SysDepartmentController {
         return R.data(as);
     }
 
-    public R DeparTementAddto(SysDepartment sysDepartment){
+
+    @PostMapping("/addDept")
+    public R DeparTementAddto(@RequestBody SysDepartment sysDepartment){
             sysDepartmentService.DeptAddto(sysDepartment);
         return R.ok();
+    }
+
+    /**
+     * @Author savior
+     * @Description 根据id逻辑删除部门
+     * @Date: 2020/9/25
+     */
+    @PostMapping("/delete/{id}")
+    public R DeleteDept(@PathVariable("id")String id) {
+         sysDepartmentService.DeleteDept(id);
+        return R.ok("删除成功");
+    }
+
+    @ResponseBody
+    @PostMapping("/update")
+    public R UpdaDept(@RequestBody JSONObject jsonObject){
+        String id = jsonObject.get("id").toString();
+        String name = jsonObject.get("deptName").toString();
+        int i = sysDepartmentService.UpdaDept(id,name);
+        return R.ok(jsonObject);
     }
 
 }

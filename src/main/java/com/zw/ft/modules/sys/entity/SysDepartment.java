@@ -45,4 +45,8 @@ public class SysDepartment extends BaseEntity {
      */
     @TableField(exist = false)
     private List<SysDepartment> childs;
+
+    @TableField(exist = false)
+    private SysCompany comName;
+
 }

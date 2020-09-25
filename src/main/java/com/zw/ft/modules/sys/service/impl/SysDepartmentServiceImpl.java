@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zw.ft.modules.sys.entity.SysCompany;
 import com.zw.ft.modules.sys.entity.SysDepartment;
 import com.zw.ft.modules.sys.repository.SysDepartmentMapper;
 import com.zw.ft.modules.sys.service.SysDepartmentService;
@@ -34,12 +35,12 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
  * @Date: 2020/9/24
  */
     @Override
-    public JSONArray getMenu( Map<String,Object> params) {
+    public JSONArray getMenu(Map<String,Object> params) {
         Object comId = params.get("comId").toString();
         QueryWrapper<SysDepartment> departmentQueryWrapper = new QueryWrapper<>();
         departmentQueryWrapper.eq("com_id",comId);
         List<SysDepartment> sysDepartments = sysDepartmentMapper.selectList(departmentQueryWrapper);
-
+        List<SysCompany> treeTwo = sysDepartmentMapper.getTreeTwo((String) comId);
         JSONArray result = new JSONArray();
         for (SysDepartment dept : sysDepartments) {
             long parentId1 = dept.getParentId();
@@ -48,7 +49,9 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
             //如果是一级部门，添加第一层
             if (parentId1 == -1) {
                 JSONObject firstObj = new JSONObject(2);
-                firstObj.put("label:", name);
+                for (SysCompany sysCompany:treeTwo){
+                firstObj.put("label", sysCompany.getComName());
+                }
                 firstObj.put("id", id);
                 //查询所有下级
                 List<SysDepartment> trees = getTree(sysDepartments, id);
@@ -86,7 +89,9 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
         }
         return trees;
     }
+        /*public String SeleTept(){
 
+        }*/
    /**
     * @Author savior
     * @Description 添加部门信息
@@ -94,8 +99,9 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
     * @return
     */
     @Override
-    public List<SysDepartment> DeptAddto(SysDepartment sysDepartment) {
-        return null;
+    public Integer DeptAddto(SysDepartment sysDepartment) {
+        int insert = sysDepartmentMapper.insert(sysDepartment);
+        return insert;
     }
 
     /**
@@ -104,15 +110,24 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
      * @Date: 2020/9/24
      */
     @Override
-    public int DeleteDept(String DeptId) {
-        try {
-            int byId = sysDepartmentMapper.deleteById(DeptId);
+    public int DeleteDept(String id) {
+            int byId = sysDepartmentMapper.deleteById(id);
             return byId;
-        }catch (Exception e){
-            e.printStackTrace();
-            return 0;
-        }
+    }
 
+    /**
+     * @Author savior
+     * @Description 根据id修改部门
+     * @Date: 2020/9/25
+     * @return
+     */
+    @Override
+    public int UpdaDept(String id, String deptName) {
+        //SysDepartment sysDepartment1 = new SysDepartment();
+        SysDepartment DeptId = sysDepartmentMapper.selectById(id);
+        System.out.println(DeptId);
+        int update = sysDepartmentMapper.update(id, deptName);
+        return update;
     }
 
 }
