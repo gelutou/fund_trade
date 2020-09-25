@@ -3,6 +3,7 @@ package com.zw.ft.modules.sys.service;
 import com.alibaba.fastjson.JSONArray;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zw.ft.modules.sys.entity.SysDepartment;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -32,12 +33,14 @@ public interface SysDepartmentService extends IService<SysDepartment> {
        * @Date: 2020/9/24
        * @return
        */
-      public List<SysDepartment> DeptAddto(SysDepartment sysDepartment);
+      public Integer DeptAddto(SysDepartment sysDepartment);
 
       /**
        * @Author savior
        * @Description 根据id逻辑删除部门
        * @Date: 2020/9/24
        */
-      public int DeleteDept(String DeptId);
+      public int DeleteDept(String id);
+
+      public int UpdaDept(String id, @Param("deptName") String deptName);
 }
