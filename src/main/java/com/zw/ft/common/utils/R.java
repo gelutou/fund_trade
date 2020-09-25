@@ -47,7 +47,7 @@ public class R extends HashMap<String, Object> {
 		r.put("data", list);
 		return r;
 	}
-	public static R ok(JSONArray jsonArray) {
+	public static R data(JSONArray jsonArray) {
 		R r = new R();
 		r.put("data", jsonArray);
 		return r;
