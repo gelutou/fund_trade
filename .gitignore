@@ -18,7 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
-
+*.log
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
@@ -35,3 +35,7 @@ build/
 !/mvnw
 !/mvnw.cmd
 !/.mvn/
+!/logs/fund_trade_warn.log
+!/logs/fund_trade_info.log
+!/logs/fund_trade_error.log
+!/logs/fund_trade_debug.log
