@@ -1,10 +1,6 @@
 package com.zw.ft.modules.sys.controller;
 
-import com.zw.ft.common.utils.R;
-import com.zw.ft.modules.sys.entity.SysUserEntity;
 import com.zw.ft.modules.sys.service.SysUserService;
-import org.apache.shiro.crypto.hash.SimpleHash;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,7 +27,7 @@ public class RegisterController {
      * @Author: Oliver
      * @Date: 2020/9/19 23:23
      */
-    @PostMapping(value = "/register")
+    /*@PostMapping(value = "/register")
     public R register(String username,String password){
         SysUserEntity sysUserEntity = new SysUserEntity();
         sysUserEntity.setUsername(username);
@@ -49,5 +45,5 @@ public class RegisterController {
         ).toString());
         sysUserService.save(sysUserEntity);
         return R.ok();
-    }
+    }*/
 }

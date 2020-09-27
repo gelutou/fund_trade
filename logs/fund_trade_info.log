@@ -389,3 +389,45 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2020-09-27 11:20:14.154 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
 2020-09-27 11:20:14.158 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
 2020-09-27 11:20:14.177 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-09-27 11:44:39.429 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.5.Final
+2020-09-27 11:44:39.515 [main] INFO  com.zw.ft.sys.DeptTest - Starting DeptTest on DESKTOP-COS0DVS with PID 18744 (started by Administrator in D:\fund_trade)
+2020-09-27 11:44:39.516 [main] INFO  com.zw.ft.sys.DeptTest - The following profiles are active: dev
+2020-09-27 11:44:40.456 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-09-27 11:44:40.459 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-09-27 11:44:40.500 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24ms. Found 0 Redis repository interfaces.
+2020-09-27 11:44:41.276 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-09-27 11:44:42.611 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-09-27 11:44:43.929 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-27 11:44:44.083 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-09-27 11:44:45.073 [main] INFO  com.zw.ft.sys.DeptTest - Started DeptTest in 6.178 seconds (JVM running for 7.615)
+2020-09-27 11:44:45.690 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-27 11:44:45.691 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-09-27 11:44:45.704 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-09-27 11:48:22.098 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.5.Final
+2020-09-27 11:48:22.122 [main] INFO  com.zw.ft.sys.DeptTest - Starting DeptTest on DESKTOP-COS0DVS with PID 18020 (started by Administrator in D:\fund_trade)
+2020-09-27 11:48:22.122 [main] INFO  com.zw.ft.sys.DeptTest - The following profiles are active: dev
+2020-09-27 11:48:23.048 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-09-27 11:48:23.051 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-09-27 11:48:23.094 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 22ms. Found 0 Redis repository interfaces.
+2020-09-27 11:48:23.873 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-09-27 11:48:25.447 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-09-27 11:48:26.815 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-27 11:48:26.956 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-09-27 11:48:27.909 [main] INFO  com.zw.ft.sys.DeptTest - Started DeptTest in 6.309 seconds (JVM running for 7.781)
+2020-09-27 11:48:28.574 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-27 11:48:28.576 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-09-27 11:48:28.588 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-09-27 11:49:31.764 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.5.Final
+2020-09-27 11:49:31.787 [main] INFO  com.zw.ft.sys.DeptTest - Starting DeptTest on DESKTOP-COS0DVS with PID 4808 (started by Administrator in D:\fund_trade)
+2020-09-27 11:49:31.788 [main] INFO  com.zw.ft.sys.DeptTest - The following profiles are active: dev
+2020-09-27 11:49:32.758 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-09-27 11:49:32.761 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-09-27 11:49:32.802 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25ms. Found 0 Redis repository interfaces.
+2020-09-27 11:49:33.674 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-09-27 11:49:34.958 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-09-27 11:49:36.283 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-27 11:49:36.443 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-09-27 11:49:37.344 [main] INFO  com.zw.ft.sys.DeptTest - Started DeptTest in 6.138 seconds (JVM running for 7.481)
+2020-09-27 11:49:37.909 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-27 11:49:37.910 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-09-27 11:49:37.939 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
