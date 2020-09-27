@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.common.utils.QueryUtil;
 import com.zw.ft.common.utils.R;
-import com.zw.ft.common.utils.ShiroUtils;
 import com.zw.ft.modules.sys.entity.SysCompany;
 import com.zw.ft.modules.sys.service.SysCompanyService;
 import org.springframework.web.bind.annotation.*;
@@ -48,8 +47,8 @@ public class SysCompanyController {
      */
     @PostMapping(value = "/add_update_com/{addUpdate}")
     public R addCom(@RequestBody SysCompany sysCompany,@PathVariable("addUpdate") String addUpdate){
-        sysCompany.setCreatedBy(ShiroUtils.getUserId());
-        sysCompany.setUpdatedBy(ShiroUtils.getUserId());
+        sysCompany.setCreatedBy(1L);
+        sysCompany.setUpdatedBy(1L);
         boolean result;
         if("add".equals(addUpdate)){
             result = sysCompanyService.save(sysCompany);

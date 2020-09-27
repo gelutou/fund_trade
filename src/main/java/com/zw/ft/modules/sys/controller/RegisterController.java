@@ -5,11 +5,9 @@ import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysUserEntity;
 import com.zw.ft.modules.sys.entity.SysUserExpansionEntity;
 import com.zw.ft.modules.sys.service.SysUserService;
-import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,16 +49,6 @@ public class RegisterController {
         SysUserEntity sysUserEntity = (SysUserEntity) Map2ObjUtils.mapToObject(params,SysUserEntity.class);
         SysUserExpansionEntity sysUserExpansionEntity = (SysUserExpansionEntity) Map2ObjUtils.mapToObject(params,SysUserExpansionEntity.class);
 
-        sysUserEntity.setPassword(new SimpleHash(
-                //加密方式
-                "MD5",
-                //要加密的密码
-                sysUserEntity.getPassword(),
-                //盐
-                null,
-                //加密次数
-                1024
-        ).toString());
         try {
             sysUserService.save(sysUserEntity);
             if(sysUserEntity.getId() == null){
