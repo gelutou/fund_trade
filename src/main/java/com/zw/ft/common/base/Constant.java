@@ -11,4 +11,13 @@ public class Constant {
 
     /** 超级管理员ID */
     public static final int SUPER_ADMIN = 1;
+
+    /**
+     *@description: 半个小时
+     */
+    public static final long HALF_AN_HOUR = 1800;
+    /**
+     *@description: 一个小时
+     */
+    public static final long AN_HOUR = 3600;
 }

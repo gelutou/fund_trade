@@ -1,9 +1,15 @@
 package com.zw.ft.modules.sys.controller;
 
+import cn.hutool.core.util.RandomUtil;
+import cn.hutool.crypto.SecureUtil;
 import com.zw.ft.common.base.BaseController;
+import com.zw.ft.common.base.Constant;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysUserEntity;
+import com.zw.ft.modules.sys.redis.RedisService;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 /**
  * @ClassName SysLoginController
@@ -16,6 +22,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/ft/sys/")
 public class LoginController extends BaseController {
 
+    @Resource
+    RedisService redisService;
+
     /**
      * 功能描述: <br>
      * 〈用户登录〉
@@ -26,10 +35,12 @@ public class LoginController extends BaseController {
      */
     @PostMapping("/login/{username}/{password}")
     public R login(@PathVariable("username") String username,@PathVariable("password") String password){
+        String token = SecureUtil.md5(RandomUtil.randomString(16));
+        redisService.set(username,token, Constant.AN_HOUR);
         return R.ok();
     }
 
-    /**
+    /*
      * 功能描述: <br>
      * 〈用户登出〉
      * @Return: com.zw.ft.common.utils.R

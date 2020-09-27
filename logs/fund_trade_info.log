@@ -1909,3 +1909,128 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2020-09-27 12:14:36.710 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
 2020-09-27 12:14:36.712 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
 2020-09-27 12:14:36.726 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-09-27 14:22:52.773 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.5.Final
+2020-09-27 14:22:52.826 [main] INFO  com.zw.ft.sys.RedisTest - Starting RedisTest on DESKTOP-COS0DVS with PID 18764 (started by Administrator in D:\fund_trade)
+2020-09-27 14:22:52.859 [main] INFO  com.zw.ft.sys.RedisTest - The following profiles are active: dev
+2020-09-27 14:22:53.932 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-09-27 14:22:53.935 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-09-27 14:22:53.973 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21ms. Found 0 Redis repository interfaces.
+2020-09-27 14:22:54.979 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-09-27 14:22:56.399 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-09-27 14:22:58.337 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-09-27 14:22:58.347 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-09-27 14:22:58.364 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-09-27 14:53:32.695 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.5.Final
+2020-09-27 14:53:32.776 [main] INFO  com.zw.ft.sys.RedisTest - Starting RedisTest on DESKTOP-COS0DVS with PID 21372 (started by Administrator in D:\fund_trade)
+2020-09-27 14:53:32.776 [main] INFO  com.zw.ft.sys.RedisTest - The following profiles are active: dev
+2020-09-27 14:53:33.721 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-09-27 14:53:33.723 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-09-27 14:53:33.767 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 28ms. Found 0 Redis repository interfaces.
+2020-09-27 14:53:34.546 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-09-27 14:53:35.625 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-09-27 14:53:36.704 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-09-27 14:53:36.717 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-09-27 14:53:36.734 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-09-27 14:57:36.886 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.5.Final
+2020-09-27 14:57:36.907 [main] INFO  com.zw.ft.sys.RedisTest - Starting RedisTest on DESKTOP-COS0DVS with PID 22868 (started by Administrator in D:\fund_trade)
+2020-09-27 14:57:36.907 [main] INFO  com.zw.ft.sys.RedisTest - The following profiles are active: dev
+2020-09-27 14:57:37.857 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-09-27 14:57:37.860 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-09-27 14:57:37.900 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23ms. Found 0 Redis repository interfaces.
+2020-09-27 14:57:38.694 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-09-27 14:57:39.752 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-09-27 14:57:41.301 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-27 14:57:41.438 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-09-27 14:57:41.863 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-27 14:57:41.864 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-09-27 14:57:41.879 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-09-27 14:57:41.887 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-09-27 15:27:02.341 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.5.Final
+2020-09-27 15:27:02.436 [main] INFO  com.zw.ft.sys.RedisTest - Starting RedisTest on DESKTOP-COS0DVS with PID 4928 (started by Administrator in D:\fund_trade)
+2020-09-27 15:27:02.437 [main] INFO  com.zw.ft.sys.RedisTest - The following profiles are active: dev
+2020-09-27 15:27:03.944 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-09-27 15:27:03.950 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-09-27 15:27:04.007 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 33ms. Found 0 Redis repository interfaces.
+2020-09-27 15:27:05.232 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-09-27 15:27:07.889 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-09-27 15:27:09.660 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-09-27 15:27:09.678 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-09-27 15:27:09.693 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-09-27 15:33:53.534 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.5.Final
+2020-09-27 15:33:53.604 [main] INFO  com.zw.ft.sys.RedisTest - Starting RedisTest on DESKTOP-COS0DVS with PID 21496 (started by Administrator in D:\fund_trade)
+2020-09-27 15:33:53.605 [main] INFO  com.zw.ft.sys.RedisTest - The following profiles are active: dev
+2020-09-27 15:33:54.888 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-09-27 15:33:54.891 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-09-27 15:33:54.940 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 29ms. Found 0 Redis repository interfaces.
+2020-09-27 15:33:55.895 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-09-27 15:33:57.302 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-09-27 15:33:59.988 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-27 15:34:00.239 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-09-27 15:34:01.206 [main] INFO  com.zw.ft.sys.RedisTest - Started RedisTest in 8.434 seconds (JVM running for 10.493)
+2020-09-27 15:34:02.614 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-27 15:34:02.762 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-09-27 15:34:02.789 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-09-27 15:34:31.264 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.5.Final
+2020-09-27 15:34:31.300 [main] INFO  com.zw.ft.sys.RedisTest - Starting RedisTest on DESKTOP-COS0DVS with PID 21780 (started by Administrator in D:\fund_trade)
+2020-09-27 15:34:31.301 [main] INFO  com.zw.ft.sys.RedisTest - The following profiles are active: dev
+2020-09-27 15:34:32.722 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-09-27 15:34:32.724 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-09-27 15:34:32.772 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 28ms. Found 0 Redis repository interfaces.
+2020-09-27 15:34:33.775 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-09-27 15:34:35.373 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-09-27 15:34:37.931 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-27 15:34:38.107 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-09-27 15:34:39.002 [main] INFO  com.zw.ft.sys.RedisTest - Started RedisTest in 8.471 seconds (JVM running for 10.438)
+2020-09-27 15:34:46.415 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-27 15:34:46.575 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-09-27 15:34:46.612 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-09-27 15:46:15.654 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.5.Final
+2020-09-27 15:46:15.775 [main] INFO  com.zw.ft.sys.RedisTest - Starting RedisTest on DESKTOP-COS0DVS with PID 22548 (started by Administrator in D:\fund_trade)
+2020-09-27 15:46:15.779 [main] INFO  com.zw.ft.sys.RedisTest - The following profiles are active: dev
+2020-09-27 15:46:17.065 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-09-27 15:46:17.068 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-09-27 15:46:17.115 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 26ms. Found 0 Redis repository interfaces.
+2020-09-27 15:46:18.094 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-09-27 15:46:19.347 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-09-27 15:46:21.850 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-27 15:46:22.083 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-09-27 15:46:23.034 [main] INFO  com.zw.ft.sys.RedisTest - Started RedisTest in 8.01 seconds (JVM running for 9.978)
+2020-09-27 15:46:30.420 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-27 15:46:30.549 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-09-27 15:46:30.567 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-09-27 15:46:46.050 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.5.Final
+2020-09-27 15:46:46.091 [main] INFO  com.zw.ft.sys.RedisTest - Starting RedisTest on DESKTOP-COS0DVS with PID 17256 (started by Administrator in D:\fund_trade)
+2020-09-27 15:46:46.134 [main] INFO  com.zw.ft.sys.RedisTest - The following profiles are active: dev
+2020-09-27 15:46:47.400 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-09-27 15:46:47.407 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-09-27 15:46:47.451 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 26ms. Found 0 Redis repository interfaces.
+2020-09-27 15:46:48.408 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-09-27 15:46:50.329 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-09-27 15:46:53.030 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-27 15:46:53.233 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-09-27 15:46:54.250 [main] INFO  com.zw.ft.sys.RedisTest - Started RedisTest in 8.871 seconds (JVM running for 10.738)
+2020-09-27 15:46:55.601 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-27 15:46:55.738 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-09-27 15:46:55.757 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-09-27 15:55:22.452 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.5.Final
+2020-09-27 15:55:22.477 [main] INFO  com.zw.ft.sys.RedisTest - Starting RedisTest on DESKTOP-COS0DVS with PID 22896 (started by Administrator in D:\fund_trade)
+2020-09-27 15:55:22.477 [main] INFO  com.zw.ft.sys.RedisTest - The following profiles are active: dev
+2020-09-27 15:55:23.388 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-09-27 15:55:23.391 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-09-27 15:55:23.435 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 27ms. Found 0 Redis repository interfaces.
+2020-09-27 15:55:24.584 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-09-27 15:55:26.510 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-09-27 15:55:27.895 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-27 15:55:28.020 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-09-27 15:55:28.609 [main] INFO  com.zw.ft.sys.RedisTest - Started RedisTest in 6.684 seconds (JVM running for 8.188)
+2020-09-27 15:55:29.610 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-27 15:55:29.611 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-09-27 15:55:29.625 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
