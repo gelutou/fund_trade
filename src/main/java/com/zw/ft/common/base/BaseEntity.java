@@ -27,11 +27,12 @@ public class BaseEntity implements Serializable {
      *@description: 乐观锁
      */
     @Version
-    @TableField(fill =FieldFill.INSERT)
     @NotEmpty(message = "版本不能为空")
+    @TableField(fill = FieldFill.INSERT)
     private Integer revision;
 
     /**
+<<<<<<< HEAD
      *@description: 状态
      */
    /* @TableField(fill =FieldFill.INSERT)
@@ -39,10 +40,12 @@ public class BaseEntity implements Serializable {
     private Integer status;*/
 
     /**
+=======
+>>>>>>> 182355ee1ffc96de8a8cd1bfa30f0dd7a69d4dfb
      *@description: 创建人ID
      */
-    @TableField(fill =FieldFill.INSERT)
     @NotEmpty(message = "创建者不能为空")
+    @TableField(fill = FieldFill.INSERT)
     private Long createdBy;
 
     /**
@@ -56,7 +59,8 @@ public class BaseEntity implements Serializable {
     /**
      *@description: 修改人ID
      */
-    @TableField(fill =FieldFill.INSERT_UPDATE)
+
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Long updatedBy;
 
     /**
@@ -68,8 +72,8 @@ public class BaseEntity implements Serializable {
     /**
      *@description: 逻辑删除
      */
-    @TableField(fill =FieldFill.INSERT)
     @TableLogic
+    @TableField(fill = FieldFill.INSERT)
     private Integer deleted;
 
     @Override
@@ -97,7 +101,9 @@ public class BaseEntity implements Serializable {
         int result = 1;
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((revision == null) ? 0 : revision.hashCode());
+
       //  result = prime * result + ((status == null) ? 0 : status.hashCode());
+
         result = prime * result + ((createdBy == null) ? 0 : createdBy.hashCode());
         result = prime * result + ((createdTime == null) ? 0 : createdTime.hashCode());
         result = prime * result + ((updatedBy == null) ? 0 : updatedBy.hashCode());
