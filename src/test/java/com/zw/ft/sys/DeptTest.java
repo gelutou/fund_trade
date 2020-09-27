@@ -22,7 +22,7 @@ import java.util.List;
 public class DeptTest {
 
     @Resource
-    SysDepartmentMapper sysDepartment;
+    SysDepartmentMapper sysDepartmentMapper;
     @Test
     public void getMenu(){
 
@@ -30,7 +30,7 @@ public class DeptTest {
         departmentQueryWrapper.eq("com_id","1");
         departmentQueryWrapper.orderByAsc("parent_id");
 
-        List<SysDepartment> sysDepartments = sysDepartment.selectList(departmentQueryWrapper);
+        List<SysDepartment> sysDepartments = sysDepartmentMapper.selectList(departmentQueryWrapper);
 
         JSONArray result = new JSONArray();
         for(SysDepartment dept : sysDepartments){
@@ -75,5 +75,14 @@ public class DeptTest {
             }
         }
         return trees;
+    }
+
+    @Test
+    public void add(){
+        SysDepartment sysDepartment = new SysDepartment();
+        sysDepartment.setComId(1L);
+        sysDepartment.setDeptName("测试部门名称");
+        int insert = sysDepartmentMapper.insert(sysDepartment);
+        System.out.println("insert = " + insert);
     }
 }
