@@ -77,12 +77,12 @@ public class DeptTest {
         return trees;
     }
 
-    @Test
+    /*@Test
     public void add(){
         SysDepartment sysDepartment = new SysDepartment();
         sysDepartment.setComId(1L);
         sysDepartment.setDeptName("测试部门名称");
         int insert = sysDepartmentMapper.insert(sysDepartment);
         System.out.println("insert = " + insert);
-    }
+    }*/
 }
