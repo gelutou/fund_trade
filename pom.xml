@@ -68,11 +68,11 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-spring-boot-web-starter -->
-        <!--<dependency>
+        <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring-boot-web-starter</artifactId>
             <version>${shiro-version}</version>
-        </dependency>--><!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+        </dependency><!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>

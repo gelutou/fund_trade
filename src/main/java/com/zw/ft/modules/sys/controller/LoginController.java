@@ -7,6 +7,7 @@ import com.zw.ft.common.base.Constant;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysUserEntity;
 import com.zw.ft.modules.sys.redis.RedisService;
+import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -37,6 +38,7 @@ public class LoginController extends BaseController {
     public R login(@PathVariable("username") String username,@PathVariable("password") String password){
         String token = SecureUtil.md5(RandomUtil.randomString(16));
         redisService.set(username,token, Constant.AN_HOUR);
+
         return R.ok();
     }
 
