@@ -49,4 +49,5 @@ public class SysDepartment extends BaseEntity {
     @TableField(exist = false)
     private SysCompany comName;
 
+    private Integer status;
 }

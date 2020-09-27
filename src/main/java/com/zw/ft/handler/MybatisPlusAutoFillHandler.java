@@ -23,8 +23,7 @@ public class MybatisPlusAutoFillHandler implements MetaObjectHandler {
         this.strictInsertFill(metaObject, "createdBy", Long.class, ShiroUtils.getUserId());
         this.strictInsertFill(metaObject, "deleted", Integer.class, 0);
         this.strictInsertFill(metaObject, "revision", Integer.class, 1);
-        this.strictInsertFill(metaObject, "status", Integer.class, 0);
-
+        //this.strictInsertFill(metaObject, "status", Integer.class, 0);
     }
 
     @Override

@@ -40,7 +40,7 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
         QueryWrapper<SysDepartment> departmentQueryWrapper = new QueryWrapper<>();
         departmentQueryWrapper.eq("com_id",comId);
         List<SysDepartment> sysDepartments = sysDepartmentMapper.selectList(departmentQueryWrapper);
-        List<SysCompany> treeTwo = sysDepartmentMapper.getTreeTwo((String) comId);
+        List<SysCompany> treeTwo = sysDepartmentMapper.getCompanyNameBycomId(comId.toString());
         JSONArray result = new JSONArray();
         for (SysDepartment dept : sysDepartments) {
             long parentId1 = dept.getParentId();

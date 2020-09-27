@@ -7,6 +7,7 @@ import com.zw.ft.modules.sys.entity.SysDepartment;
 import com.zw.ft.modules.sys.repository.SysDepartmentMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import javax.annotation.Resource;
 import java.util.LinkedList;
 import java.util.List;
@@ -75,5 +76,26 @@ public class DeptTest {
             }
         }
         return trees;
+    }
+
+
+    @Resource
+    SysDepartmentMapper sysDepartmentMapper;
+    /**
+     * @Author savior
+     * @Description 添加部门信息
+     * @Date: 2020/9/24
+     * @return
+     */
+
+    @Test
+    public void DeptAddto() {
+        SysDepartment sysDepartment = new SysDepartment();
+        sysDepartment.setComId(1);
+        sysDepartment.setDeptName("sd");
+        sysDepartment.setStatus(0);
+        //sysDepartment.setCreatedTime(metaObject,"" , LocalDateTime.class,LocalDateTime.now());
+        int insert = sysDepartmentMapper.insert(sysDepartment);
+        System.out.println(insert);
     }
 }
