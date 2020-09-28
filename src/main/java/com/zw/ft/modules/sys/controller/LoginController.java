@@ -2,11 +2,17 @@ package com.zw.ft.modules.sys.controller;
 
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.crypto.SecureUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zw.ft.common.base.BaseController;
 import com.zw.ft.common.base.Constant;
 import com.zw.ft.common.utils.R;
-import com.zw.ft.modules.sys.entity.SysUserEntity;
+import com.zw.ft.modules.sys.entity.SysUser;
+import com.zw.ft.modules.sys.entity.SysUserToken;
+import com.zw.ft.modules.sys.oauth2.OAuth2Token;
 import com.zw.ft.modules.sys.redis.RedisService;
+import com.zw.ft.modules.sys.service.SysUserService;
+import com.zw.ft.modules.sys.service.SysUserTokenService;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +31,10 @@ public class LoginController extends BaseController {
 
     @Resource
     RedisService redisService;
-
+    @Resource
+    SysUserService sysUserService;
+    @Resource
+    SysUserTokenService sysUserTokenService;
     /**
      * 功能描述: <br>
      * 〈用户登录〉
@@ -36,12 +45,41 @@ public class LoginController extends BaseController {
      */
     @PostMapping("/login/{username}/{password}")
     public R login(@PathVariable("username") String username,@PathVariable("password") String password){
-        String token = SecureUtil.md5(RandomUtil.randomString(16));
-        redisService.set(username,token, Constant.AN_HOUR);
+        QueryWrapper<SysUser> entityQueryWrapper = new QueryWrapper<>();
+        entityQueryWrapper.eq("username",username);
+        SysUser one = sysUserService.getOne(entityQueryWrapper);
+        if(one == null){
+            return R.error("无此用户");
+        }else if (new Sha256Hash(password, username).toHex().equals(one.getPassword())){
+            String token = redisService.get(username);
+            if(token == null){
+                token = SecureUtil.md5(RandomUtil.randomString(16));
+                redisService.set(username,token, Constant.AN_DAY);
+            }
+            //将token存进数据库
+            QueryWrapper<SysUserToken> tokenQueryWrapper = new QueryWrapper<>();
+            tokenQueryWrapper.eq("user_id",one.getId());
+            SysUserToken userToken = sysUserTokenService.getOne(tokenQueryWrapper);
+            if(userToken == null){
+                userToken = new SysUserToken();
+                userToken.setUserId(one.getId());
+                userToken.setToken(token);
+                sysUserTokenService.save(userToken);
+            }else {
+                SysUserToken updateToke = new SysUserToken();
+                updateToke.setId(userToken.getId());
+                updateToke.setUserId(userToken.getUserId());
+                updateToke.setToken(token);
+                sysUserTokenService.updateById(updateToke);
+            }
 
-        return R.ok();
+            OAuth2Token oAuth2Token = new OAuth2Token(token);
+            SecurityUtils.getSubject().login(oAuth2Token);
+            return R.ok(token);
+        }else {
+            return R.error("密码错误");
+        }
     }
-
     /*
      * 功能描述: <br>
      * 〈用户登出〉

@@ -1,7 +1,7 @@
 package com.zw.ft.modules.sys.oauth2;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.zw.ft.modules.sys.entity.SysUserEntity;
+import com.zw.ft.modules.sys.entity.SysUser;
 import com.zw.ft.modules.sys.entity.SysUserToken;
 import com.zw.ft.modules.sys.redis.RedisService;
 import com.zw.ft.modules.sys.service.ShiroService;
@@ -15,10 +15,10 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * 认证
- *
- * @author DongC
- * @date 2017-05-20 14:00
+ *@description: 认证授权
+ *@author:  Oliver
+ *@date  2020/9/28
+ *@修改人和其它信息
  */
 @Component
 public class OAuth2Realm extends AuthorizingRealm {
@@ -55,12 +55,12 @@ public class OAuth2Realm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        String accessToken = (String) token.getPrincipal();
+        String accessToken =  token.getPrincipal().toString();
 
         QueryWrapper<SysUserToken> tokenQueryWrapper = new QueryWrapper<>();
-        tokenQueryWrapper.eq("token",token);
+        tokenQueryWrapper.eq("token",accessToken);
         SysUserToken tokenUserByToken = tokenService.getTokenUserByToken(tokenQueryWrapper);
-        SysUserEntity user = tokenUserByToken.getUser();
+        SysUser user = tokenUserByToken.getUser();
         String username = user.getUsername();
         String rKey = redisService.get(username);
         if(rKey == null){

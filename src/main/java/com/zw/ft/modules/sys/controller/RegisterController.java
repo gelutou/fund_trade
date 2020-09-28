@@ -2,9 +2,11 @@ package com.zw.ft.modules.sys.controller;
 
 import com.zw.ft.common.utils.Map2ObjUtils;
 import com.zw.ft.common.utils.R;
-import com.zw.ft.modules.sys.entity.SysUserEntity;
-import com.zw.ft.modules.sys.entity.SysUserExpansionEntity;
+import com.zw.ft.modules.sys.entity.SysUser;
+import com.zw.ft.modules.sys.entity.SysUserExpansion;
+import com.zw.ft.modules.sys.service.SysUserExpansionService;
 import com.zw.ft.modules.sys.service.SysUserService;
+import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
@@ -30,6 +32,8 @@ public class RegisterController {
 
     @Resource
     SysUserService sysUserService;
+    @Resource
+    SysUserExpansionService sysUserExpansionService;
 
     @Resource(name = "transactionManager")
     private PlatformTransactionManager platformTransactionManager;
@@ -46,17 +50,22 @@ public class RegisterController {
         DefaultTransactionDefinition def = new DefaultTransactionDefinition();
         def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
         TransactionStatus status = platformTransactionManager.getTransaction(def);
-        SysUserEntity sysUserEntity = (SysUserEntity) Map2ObjUtils.mapToObject(params,SysUserEntity.class);
-        SysUserExpansionEntity sysUserExpansionEntity = (SysUserExpansionEntity) Map2ObjUtils.mapToObject(params,SysUserExpansionEntity.class);
+        SysUser sysUser = (SysUser) Map2ObjUtils.mapToObject(params, SysUser.class);
+
+        String username = sysUser.getUsername();
+        String password = sysUser.getPassword();
+        sysUser.setPassword(new Sha256Hash(password, username).toHex());
+        SysUserExpansion sysUserExpansion = (SysUserExpansion) Map2ObjUtils.mapToObject(params, SysUserExpansion.class);
 
         try {
-            sysUserService.save(sysUserEntity);
-            if(sysUserEntity.getId() == null){
+            sysUserService.save(sysUser);
+            if(sysUser.getId() == null){
                 platformTransactionManager.rollback(status);
                 return R.error("注册失败");
             }
-            sysUserExpansionEntity.setUserId(sysUserEntity.getId());
-            if(sysUserExpansionEntity.getId() == null){
+            sysUserExpansion.setUserId(sysUser.getId());
+            sysUserExpansionService.save(sysUserExpansion);
+            if(sysUserExpansion.getId() == null){
                 platformTransactionManager.rollback(status);
                 return R.error("注册失败");
             }

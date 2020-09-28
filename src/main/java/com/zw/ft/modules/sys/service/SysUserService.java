@@ -3,8 +3,7 @@ package com.zw.ft.modules.sys.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.zw.ft.modules.sys.entity.SysUserEntity;
-import org.apache.ibatis.annotations.Param;
+import com.zw.ft.modules.sys.entity.SysUser;
 
 import java.util.List;
 
@@ -13,7 +12,7 @@ import java.util.List;
  *@author:  Oliver
  *@date  2020/9/15
  */
-public interface SysUserService extends IService<SysUserEntity> {
+public interface SysUserService extends IService<SysUser> {
 
     /**
      * 功能描述: <br>
@@ -23,7 +22,7 @@ public interface SysUserService extends IService<SysUserEntity> {
      * @Author: Oliver
      * @Date: 2020/9/19 21:07
      */
-    List<SysUserEntity> getUserAllMessage(QueryWrapper<SysUserEntity> sysUserQueryWrapper);
+    List<SysUser> getUserAllMessage(QueryWrapper<SysUser> sysUserQueryWrapper);
 
     /**
      * 功能描述: <br>
@@ -40,5 +39,5 @@ public interface SysUserService extends IService<SysUserEntity> {
      *@author:  Oliver
      *@date  2020/9/21
      */
-    Page<SysUserEntity> queryUsersPageByComAndWrapper(Page<SysUserEntity> page, long comId, QueryWrapper<SysUserEntity> userEntityQueryWrapper);
+    Page<SysUser> queryUsersPageByComAndWrapper(Page<SysUser> page, long comId, QueryWrapper<SysUser> userEntityQueryWrapper);
 }

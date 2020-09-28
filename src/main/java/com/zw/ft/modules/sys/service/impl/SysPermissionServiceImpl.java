@@ -2,7 +2,7 @@ package com.zw.ft.modules.sys.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zw.ft.common.base.Constant;
-import com.zw.ft.modules.sys.entity.SysPermissionEntity;
+import com.zw.ft.modules.sys.entity.SysPermission;
 import com.zw.ft.modules.sys.repository.SysPermissionMapper;
 import com.zw.ft.modules.sys.service.SysPermissionService;
 import com.zw.ft.modules.sys.service.SysUserService;
@@ -20,7 +20,7 @@ import java.util.*;
  * @Version 1.0
  **/
 @Service("sysPermissionService")
-public class SysPermissionServiceImpl extends ServiceImpl<SysPermissionMapper, SysPermissionEntity> implements SysPermissionService {
+public class SysPermissionServiceImpl extends ServiceImpl<SysPermissionMapper, SysPermission> implements SysPermissionService {
 
     @Resource
     SysPermissionMapper sysPermissionMapper;
@@ -28,12 +28,12 @@ public class SysPermissionServiceImpl extends ServiceImpl<SysPermissionMapper, S
     SysUserService sysUserService;
 
     @Override
-    public List<SysPermissionEntity> getRootMenu(long userId) {
+    public List<SysPermission> getRootMenu(long userId) {
         return sysPermissionMapper.getRootMenu(userId);
     }
 
     @Override
-    public List<SysPermissionEntity> getChildMenu(long userId, long parentId) {
+    public List<SysPermission> getChildMenu(long userId, long parentId) {
         return sysPermissionMapper.getChildMenu(userId,parentId);
     }
 
@@ -42,9 +42,9 @@ public class SysPermissionServiceImpl extends ServiceImpl<SysPermissionMapper, S
         List<String> permsList;
         //当是超级管理员拥有全部权限
         if(userId == Constant.SUPER_ADMIN){
-            List<SysPermissionEntity> sysPermissionEntities = sysPermissionMapper.selectList(null);
+            List<SysPermission> sysPermissionEntities = sysPermissionMapper.selectList(null);
             permsList = new ArrayList<>(sysPermissionEntities.size());
-            for(SysPermissionEntity perm : sysPermissionEntities){
+            for(SysPermission perm : sysPermissionEntities){
                 permsList.add(perm.getPerms());
             }
         }else{

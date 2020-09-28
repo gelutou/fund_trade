@@ -19,18 +19,17 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Shiro配置
- *
- * @author DongC
- * @date 2017-04-20 18:33
+ *@description: shiro 配置
+ *@author:  Oliver
+ *@date  2020/9/28
  */
 @Configuration
 public class ShiroConfig {
 
     @Bean("shiroFilterFactoryBean")
-    public ShiroFilterFactoryBean shirFilter(@Qualifier("securityManager") DefaultWebSecurityManager securityManager) {
+    public ShiroFilterFactoryBean shirFilter(DefaultWebSecurityManager defaultWebSecurityManager) {
         ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
-        shiroFilter.setSecurityManager(securityManager);
+        shiroFilter.setSecurityManager(defaultWebSecurityManager);
 
         //oauth过滤
         Map<String, Filter> filters = new HashMap<>();
@@ -38,28 +37,11 @@ public class ShiroConfig {
         shiroFilter.setFilters(filters);
 
         Map<String, String> filterMap = new LinkedHashMap<>();
-        filterMap.put("/views/**", "anon");
-        filterMap.put("/webjars/**", "anon");
-        filterMap.put("/druid/**", "anon");
-        filterMap.put("/app/**", "anon");
-        filterMap.put("/sys/login", "anon");
-        filterMap.put("/musician/signup/**", "anon");
-        filterMap.put("/musician/login/**", "anon");
-        filterMap.put("/swagger/**", "anon");
-        filterMap.put("/v2/api-docs", "anon");
-        filterMap.put("/swagger-ui.html", "anon");
-        filterMap.put("/swagger-resources/**", "anon");
-        filterMap.put("/captcha.jpg", "anon");
-        filterMap.put("/index.html", "anon");
-        filterMap.put("/signup_company.html", "anon");
-        filterMap.put("/company/signup/**", "anon");
-        filterMap.put("/company/login/**", "anon");
-        filterMap.put("/static/**", "anon");
-        filterMap.put("/layuiadmin/**", "anon");
+        filterMap.put("/ft/sys/login", "anon");
         filterMap.put("/**", "oauth2");
 
-        //filterMap.put("/**", "anon");
         shiroFilter.setFilterChainDefinitionMap(filterMap);
+        shiroFilter.setLoginUrl("/login");
 
         return shiroFilter;
     }
@@ -73,20 +55,20 @@ public class ShiroConfig {
         return securityManager;
     }
 
-    /*@Bean("sessionManager")
+    @Bean("sessionManager")
     public SessionManager sessionManager(){
         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
         sessionManager.setSessionValidationSchedulerEnabled(true);
         sessionManager.setSessionIdCookieEnabled(true);
         return sessionManager;
-    }*/
+    }
 
-    /*@Bean("lifecycleBeanPostProcessor")
+    @Bean("lifecycleBeanPostProcessor")
     public LifecycleBeanPostProcessor lifecycleBeanPostProcessor() {
         return new LifecycleBeanPostProcessor();
-    }*/
+    }
 
-    /*@Bean
+    @Bean
     public DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator() {
         DefaultAdvisorAutoProxyCreator proxyCreator = new DefaultAdvisorAutoProxyCreator();
         proxyCreator.setProxyTargetClass(true);
@@ -98,7 +80,7 @@ public class ShiroConfig {
         AuthorizationAttributeSourceAdvisor advisor = new AuthorizationAttributeSourceAdvisor();
         advisor.setSecurityManager(securityManager);
         return advisor;
-    }*/
+    }
 
     /**
      * Shiro Realm 继承自AuthorizingRealm的自定义Realm,即指定Shiro验证用户登录的类为自定义的

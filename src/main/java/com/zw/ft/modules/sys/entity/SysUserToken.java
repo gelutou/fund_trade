@@ -2,9 +2,8 @@ package com.zw.ft.modules.sys.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.zw.ft.common.base.BaseEntity;
-import java.util.Date;
-import com.baomidou.mybatisplus.annotation.Version;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * <p>
@@ -14,6 +13,7 @@ import lombok.Data;
  * @author Oliver
  * @since 2020-09-25
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class SysUserToken extends BaseEntity {
 
@@ -21,7 +21,7 @@ public class SysUserToken extends BaseEntity {
     /**
      * 用户
      */
-    private Integer userId;
+    private long userId;
 
     /**
      * token
@@ -29,14 +29,9 @@ public class SysUserToken extends BaseEntity {
     private String token;
 
     /**
-     * token更新时间
-     */
-    private Date tokenUpdateTime;
-
-    /**
      *@description: 用户实体
      */
     @TableField(exist = false)
-    private SysUserEntity user;
+    private SysUser user;
 
 }

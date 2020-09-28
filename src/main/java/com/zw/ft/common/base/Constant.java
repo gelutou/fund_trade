@@ -20,4 +20,9 @@ public class Constant {
      *@description: 一个小时
      */
     public static final long AN_HOUR = 3600;
+
+    /**
+     *@description: 一天
+     */
+    public static final long AN_DAY = 43200;
 }

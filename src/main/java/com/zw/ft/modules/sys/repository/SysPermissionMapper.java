@@ -1,7 +1,7 @@
 package com.zw.ft.modules.sys.repository;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zw.ft.modules.sys.entity.SysPermissionEntity;
+import com.zw.ft.modules.sys.entity.SysPermission;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -14,7 +14,7 @@ import java.util.List;
  *@date  2020/9/10
  */
 @Mapper
-public interface SysPermissionMapper extends BaseMapper<SysPermissionEntity> {
+public interface SysPermissionMapper extends BaseMapper<SysPermission> {
 
     /**
      * 功能描述: <br>
@@ -30,7 +30,7 @@ public interface SysPermissionMapper extends BaseMapper<SysPermissionEntity> {
             "  WHERE spr.role_id IN (select ur.role_id from sys_user_role ur where ur.user_id = #{userId})" +
             "  AND sp.type = 0" +
             "  AND sp.parent_id is null")
-    List<SysPermissionEntity> getRootMenu(@Param("userId") long userId);
+    List<SysPermission> getRootMenu(@Param("userId") long userId);
 
     /*
      * 功能描述: <br>
@@ -46,5 +46,5 @@ public interface SysPermissionMapper extends BaseMapper<SysPermissionEntity> {
             "  WHERE spr.role_id IN (select ur.role_id from sys_user_role ur where ur.user_id = #{userId})" +
             "  AND sp.type = 1" +
             "  AND sp.parent_id = ${parentId}")
-    List<SysPermissionEntity> getChildMenu(@Param("userId") long userId,@Param("parentId") long parentId);
+    List<SysPermission> getChildMenu(@Param("userId") long userId, @Param("parentId") long parentId);
 }

@@ -61,7 +61,6 @@ public class BaseEntity implements Serializable {
      *@description: 逻辑删除
      */
     @TableLogic
-    @TableField(fill = FieldFill.INSERT)
     private Integer deleted;
 
     @Override

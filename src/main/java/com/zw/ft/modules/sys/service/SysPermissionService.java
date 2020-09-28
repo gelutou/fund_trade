@@ -1,11 +1,7 @@
 package com.zw.ft.modules.sys.service;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.zw.ft.modules.sys.entity.SysPermissionEntity;
-import com.zw.ft.modules.sys.entity.SysUserEntity;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import com.zw.ft.modules.sys.entity.SysPermission;
 
 import java.util.List;
 import java.util.Set;
@@ -15,7 +11,7 @@ import java.util.Set;
  *@author:  Oliver
  *@date  2020/9/15
  */
-public interface SysPermissionService extends IService<SysPermissionEntity> {
+public interface SysPermissionService extends IService<SysPermission> {
     /**
      * 功能描述: <br>
      * 〈查询根目录〉
@@ -24,7 +20,7 @@ public interface SysPermissionService extends IService<SysPermissionEntity> {
      * @Author: Oliver
      * @Date: 2020/9/20 11:10
      */
-    List<SysPermissionEntity> getRootMenu(long userId);
+    List<SysPermission> getRootMenu(long userId);
 
     /*
      * 功能描述: <br>
@@ -34,7 +30,7 @@ public interface SysPermissionService extends IService<SysPermissionEntity> {
      * @Author: Oliver
      * @Date: 2020/9/20 11:11
      */
-    List<SysPermissionEntity> getChildMenu(long userId,long parentId);
+    List<SysPermission> getChildMenu(long userId, long parentId);
 
     /**
      * 功能描述: <br>

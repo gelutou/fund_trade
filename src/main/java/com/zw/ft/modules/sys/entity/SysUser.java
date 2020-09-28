@@ -20,7 +20,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @TableName(value = "sys_user")
 @Data
-public class SysUserEntity extends BaseEntity {
+public class SysUser extends BaseEntity {
     private static final long serialVersionUID = -127682095331146479L;
     /**
      *@description: 用户名
@@ -50,5 +50,5 @@ public class SysUserEntity extends BaseEntity {
      *@description: 角色集合
      */
     @TableField(exist = false)
-    private List<SysRoleEntity> roles;
+    private List<SysRole> roles;
 }
