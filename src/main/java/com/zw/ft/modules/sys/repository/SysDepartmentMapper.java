@@ -34,7 +34,7 @@ public interface SysDepartmentMapper extends BaseMapper<SysDepartment> {
      * @Description 根据id修改名字
      * @Date: 2020/9/27
      */
-    @Update("UPDATE sys_department SET dept_name=#{deptName} WHERE id=#{id}")
-    int update(String id,String deptName);
+    @Update("UPDATE sys_department SET dept_name=#{deptName}, parent_id=#{parentId} WHERE id=#{id}")
+    int update(SysDepartment sysDepartment);
 
 }

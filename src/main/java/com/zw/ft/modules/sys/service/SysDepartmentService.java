@@ -3,7 +3,6 @@ package com.zw.ft.modules.sys.service;
 import com.alibaba.fastjson.JSONArray;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zw.ft.modules.sys.entity.SysDepartment;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -42,5 +41,7 @@ public interface SysDepartmentService extends IService<SysDepartment> {
        */
       public int DeleteDept(String id);
 
-      public int UpdaDept(String id, @Param("deptName") String deptName);
+     // public int UpdaDept(String id, @Param("deptName") String deptName);
+
+      public int UpdaDept(SysDepartment sysDepartment);
 }

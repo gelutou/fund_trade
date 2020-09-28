@@ -91,9 +91,7 @@ public class DeptTest {
     public void DeptAddto() {
         SysDepartment sysDepartment = new SysDepartment();
         sysDepartment.setComId(1);
-        sysDepartment.setDeptName("sd");
-        sysDepartment.setStatus(0);
-        //sysDepartment.setCreatedTime(metaObject,"" , LocalDateTime.class,LocalDateTime.now());
+        sysDepartment.setDeptName("测试部门名称二");
         int insert = sysDepartmentMapper.insert(sysDepartment);
         System.out.println(insert);
     }

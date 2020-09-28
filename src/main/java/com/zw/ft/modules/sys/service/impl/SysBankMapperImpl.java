@@ -1,5 +1,6 @@
 package com.zw.ft.modules.sys.service.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zw.ft.modules.sys.entity.SysBank;
 import com.zw.ft.modules.sys.repository.SysBankMapper;
@@ -22,5 +23,9 @@ public class SysBankMapperImpl extends ServiceImpl<SysBankMapper, SysBank> imple
     @Resource
     SysBankMapper sysBankMapper;
 
+    @Override
+    public Page<SysBank> getBank(Page<SysBank> page) {
+        return sysBankMapper.querySysBankPageByComId(page);
+    }
 
 }

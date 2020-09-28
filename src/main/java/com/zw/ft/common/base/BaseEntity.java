@@ -31,17 +31,13 @@ public class BaseEntity implements Serializable {
     @TableField(fill = FieldFill.INSERT)
     private Integer revision;
 
-    /**
-<<<<<<< HEAD
-     *@description: 状态
-     */
-   /* @TableField(fill =FieldFill.INSERT)
+
+   /* @description: 状态
+    @TableField(fill =FieldFill.INSERT)
     @NotEmpty(message = "状态不能为空")
     private Integer status;*/
 
     /**
-=======
->>>>>>> 182355ee1ffc96de8a8cd1bfa30f0dd7a69d4dfb
      *@description: 创建人ID
      */
     @NotEmpty(message = "创建者不能为空")
