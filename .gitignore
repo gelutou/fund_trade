@@ -19,6 +19,10 @@ target/
 *.iml
 *.ipr
 *.log
+<<<<<<< HEAD
+
+=======
+>>>>>>> dev
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
@@ -37,3 +41,4 @@ build/
 !/.mvn/
 !/doc/
 !/http_client/
+/logs/

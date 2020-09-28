@@ -1,9 +1,8 @@
 package com.zw.ft.page;
 
-import cn.hutool.core.util.PageUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.common.utils.R;
-import com.zw.ft.modules.sys.entity.SysUserEntity;
+import com.zw.ft.modules.sys.entity.SysUser;
 import com.zw.ft.modules.sys.repository.SysUserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,8 +23,8 @@ public class PageQueryTest {
     SysUserMapper sysUserMapper;
     @Test
     public void selectPage(){
-        Page<SysUserEntity> page = new Page<>();
-        Page<SysUserEntity> page1 = sysUserMapper.selectPage(page, null);
+        Page<SysUser> page = new Page<>();
+        Page<SysUser> page1 = sysUserMapper.selectPage(page, null);
         System.out.println("page1.getCountId() = " + page1.getCountId());
         System.out.println("page1.getCurrent() = " + page1.getCurrent());
         System.out.println("page1.getMaxLimit() = " + page1.getMaxLimit());

@@ -3,7 +3,7 @@ package com.zw.ft.modules.sys.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zw.ft.modules.sys.entity.SysUserEntity;
+import com.zw.ft.modules.sys.entity.SysUser;
 import com.zw.ft.modules.sys.repository.SysUserMapper;
 import com.zw.ft.modules.sys.service.SysUserService;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ import java.util.List;
  * @Version 1.0
  **/
 @Service("sysUserService")
-public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity> implements SysUserService {
+public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
 
     @Resource
     SysUserMapper sysUserMapper;
     @Override
-    public List<SysUserEntity> getUserAllMessage(QueryWrapper<SysUserEntity> sysUserQueryWrapper) {
+    public List<SysUser> getUserAllMessage(QueryWrapper<SysUser> sysUserQueryWrapper) {
         return sysUserMapper.getUserAllMessage(sysUserQueryWrapper);
     }
 
@@ -34,7 +34,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
     }
 
     @Override
-    public Page<SysUserEntity> queryUsersPageByComAndWrapper(Page<SysUserEntity> page, long comId, QueryWrapper<SysUserEntity> userEntityQueryWrapper) {
+    public Page<SysUser> queryUsersPageByComAndWrapper(Page<SysUser> page, long comId, QueryWrapper<SysUser> userEntityQueryWrapper) {
         return sysUserMapper.queryUsersPageByComAndWrapper(page,comId,userEntityQueryWrapper);
     }
 }

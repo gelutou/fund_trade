@@ -1,10 +1,9 @@
 package com.zw.ft.modules.sys.controller;
 
-import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.common.utils.R;
-import com.zw.ft.modules.sys.entity.SysUserEntity;
+import com.zw.ft.modules.sys.entity.SysUser;
 import com.zw.ft.modules.sys.service.SysUserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +30,7 @@ public class SysUserController {
      */
     @PostMapping(value = "/com_users_page")
     public R queryUsersPageByComAndWrapper(@RequestBody Map<String,Object> params){
-        QueryWrapper<SysUserEntity> userEntityQueryWrapper = new QueryWrapper<>();
+        QueryWrapper<SysUser> userEntityQueryWrapper = new QueryWrapper<>();
         long comId = Long.parseLong(params.get("comId").toString());
         String username = params.get("username").toString();
         String realname = params.get("realname") == null?"":params.get("realname").toString();
@@ -48,7 +47,7 @@ public class SysUserController {
             userEntityQueryWrapper.eq("status",status);
         }
 
-        Page<SysUserEntity> usersPage = new Page<>();
+        Page<SysUser> usersPage = new Page<>();
         if(!"".equals(current)){
             usersPage.setCurrent(Long.parseLong(current));
         }

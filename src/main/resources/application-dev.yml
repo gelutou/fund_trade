@@ -41,6 +41,16 @@ spring:
       wall:
         config:
           multi-statement-allow: true
+  redis:
+      port: 6379
+      host: localhost
+      jedis:
+        pool:
+            max-active: 8
+            max-wait: -1ms
+            max-idle: 8
+            min-idle: 0
+      timeout: 3000ms
 mybatis-plus:
     mapper-locations: classpath:mapper/**/*.xml
     #实体扫描，多个package用逗号或者分号分隔

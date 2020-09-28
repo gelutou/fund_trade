@@ -19,7 +19,7 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @TableName(value = "sys_user_expansion")
-public class SysUserExpansionEntity extends BaseEntity {
+public class SysUserExpansion extends BaseEntity {
 
     private static final long serialVersionUID = -5209715190641447175L;
 

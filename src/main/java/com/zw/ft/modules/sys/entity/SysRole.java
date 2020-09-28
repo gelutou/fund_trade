@@ -15,7 +15,7 @@ import java.util.List;
  **/
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class SysRoleEntity extends BaseEntity {
+public class SysRole extends BaseEntity {
 
     private static final long serialVersionUID = 2102161014072264011L;
     /**
@@ -30,5 +30,5 @@ public class SysRoleEntity extends BaseEntity {
     /**
      *@description: 用户集合
      */
-    private List<SysUserEntity> users;
+    private List<SysUser> users;
 }
