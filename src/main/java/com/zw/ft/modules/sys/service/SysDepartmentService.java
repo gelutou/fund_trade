@@ -41,11 +41,5 @@ public interface SysDepartmentService extends IService<SysDepartment> {
        */
       int DeleteDept(String id);
 
-<<<<<<< HEAD
-      int UpdaDept(String id, @Param("deptName") String deptName);
-=======
-     // public int UpdaDept(String id, @Param("deptName") String deptName);
-
       public int UpdaDept(SysDepartment sysDepartment);
->>>>>>> 83d01973eb47054cf84279144640c79d3c64503d
 }
