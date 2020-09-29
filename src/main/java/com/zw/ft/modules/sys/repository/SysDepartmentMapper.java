@@ -27,9 +27,14 @@ public interface SysDepartmentMapper extends BaseMapper<SysDepartment> {
      * @Date: 2020/9/23
      */
     @Select("SELECT com_name FROM sys_company sc LEFT JOIN sys_department sd ON sc.id=sd.com_id WHERE sd.com_id =#{comId} GROUP BY com_name" )
-    List<SysCompany> getTreeTwo(@Param("comId") String comId);
+    List<SysCompany> getCompanyNameBycomId(@Param("comId") String comId);
 
-    @Update("UPDATE  sys_department SET dept_name=#{deptName} WHERE id=#{id}")
-    int update(String id,String deptName);
+    /**
+     * @Author savior
+     * @Description 根据id修改名字
+     * @Date: 2020/9/27
+     */
+    @Update("UPDATE sys_department SET dept_name=#{deptName}, parent_id=#{parentId} WHERE id=#{id}")
+    int update(SysDepartment sysDepartment);
 
 }

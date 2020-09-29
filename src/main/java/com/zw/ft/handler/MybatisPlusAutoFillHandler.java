@@ -20,6 +20,7 @@ public class MybatisPlusAutoFillHandler implements MetaObjectHandler {
         this.strictInsertFill(metaObject, "createdTime", LocalDateTime.class, LocalDateTime.now());
         this.strictUpdateFill(metaObject, "updatedTime", LocalDateTime.class, LocalDateTime.now());
         this.strictInsertFill(metaObject, "revision", Integer.class, 1);
+        //this.strictInsertFill(metaObject, "status", Integer.class, 0);
         this.strictInsertFill(metaObject, "updatedBy", Long.class, 1L);
         this.strictInsertFill(metaObject, "createdBy", Long.class, 1L);
     }

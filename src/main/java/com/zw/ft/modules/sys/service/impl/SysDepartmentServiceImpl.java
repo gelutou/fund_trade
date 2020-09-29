@@ -40,7 +40,7 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
         QueryWrapper<SysDepartment> departmentQueryWrapper = new QueryWrapper<>();
         departmentQueryWrapper.eq("com_id",comId);
         List<SysDepartment> sysDepartments = sysDepartmentMapper.selectList(departmentQueryWrapper);
-        List<SysCompany> treeTwo = sysDepartmentMapper.getTreeTwo((String) comId);
+        List<SysCompany> treeTwo = sysDepartmentMapper.getCompanyNameBycomId(comId.toString());
         JSONArray result = new JSONArray();
         for (SysDepartment dept : sysDepartments) {
             long parentId1 = dept.getParentId();
@@ -100,6 +100,9 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
     */
     @Override
     public Integer DeptAddto(SysDepartment sysDepartment) {
+        sysDepartment.setParentId(sysDepartment.getParentId());
+        sysDepartment.setComId(sysDepartment.getComId());
+        sysDepartment.setDeptName(sysDepartment.getDeptName());
         int insert = sysDepartmentMapper.insert(sysDepartment);
         return insert;
     }
@@ -122,11 +125,11 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
      * @return
      */
     @Override
-    public int UpdaDept(String id, String deptName) {
+    public int UpdaDept(SysDepartment sysDepartment) {
         //SysDepartment sysDepartment1 = new SysDepartment();
-        SysDepartment DeptId = sysDepartmentMapper.selectById(id);
-        System.out.println(DeptId);
-        int update = sysDepartmentMapper.update(id, deptName);
+        SysDepartment DeptId = sysDepartmentMapper.selectById(sysDepartment.getId());
+        int update = sysDepartmentMapper.update(sysDepartment);
+        System.out.println(update);
         return update;
     }
 
