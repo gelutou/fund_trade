@@ -14,7 +14,10 @@ import com.zw.ft.modules.sys.service.SysUserService;
 import com.zw.ft.modules.sys.service.SysUserTokenService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.Sha256Hash;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -87,12 +90,10 @@ public class LoginController extends BaseController {
      * @Author: Oliver
      * @Date: 2020/9/19 22:17
      */
-    /*@PostMapping("/logout")
+    @PostMapping("/logout")
     public R logout(){
-        Subject subject = SecurityUtils.getSubject();
-        subject.logout();
-        return R.ok();
-    }*/
+        return R.ok("444");
+    }
     /*@PostMapping("/get_weather")
     public R getWeather(){
 
