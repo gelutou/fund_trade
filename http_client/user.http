@@ -1,6 +1,6 @@
 POST http://localhost:8088/ft/sys/logout
 Content-Type: application/json
-token:0f60b1265128fba72ef1def463b1dab8
+token:46f0ecfed2d02980459502cbb26f5b2d
 
 ###
 POST http://localhost:8088/ft/sys/login/admin/1
