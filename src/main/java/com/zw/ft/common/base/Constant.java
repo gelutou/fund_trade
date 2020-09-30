@@ -25,4 +25,6 @@ public class Constant {
      *@description: 一天
      */
     public static final long AN_DAY = 43200;
+
+
 }
