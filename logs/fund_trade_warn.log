@@ -6,3 +6,5 @@
 2020-09-30 11:11:18.518 [restartedMain] WARN  o.s.b.d.autoconfigure.OptionalLiveReloadServer - Unable to start LiveReload server
 2020-09-30 11:12:37.573 [restartedMain] WARN  c.b.mybatisplus.core.injector.AbstractMethod - [com.zw.ft.modules.sys.repository.SysDepartmentMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
 2020-09-30 11:12:38.402 [restartedMain] WARN  o.s.b.d.autoconfigure.OptionalLiveReloadServer - Unable to start LiveReload server
+2020-09-30 11:19:20.147 [restartedMain] WARN  c.b.mybatisplus.core.injector.AbstractMethod - [com.zw.ft.modules.sys.repository.SysDepartmentMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2020-09-30 11:19:21.145 [restartedMain] WARN  o.s.b.d.autoconfigure.OptionalLiveReloadServer - Unable to start LiveReload server
