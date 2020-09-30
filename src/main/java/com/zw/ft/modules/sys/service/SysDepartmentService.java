@@ -32,16 +32,19 @@ public interface SysDepartmentService extends IService<SysDepartment> {
        * @Date: 2020/9/24
        * @return
        */
-      public Integer DeptAddto(SysDepartment sysDepartment);
+       Integer deptAddto(SysDepartment sysDepartment);
 
       /**
        * @Author savior
        * @Description 根据id逻辑删除部门
        * @Date: 2020/9/24
        */
-      public int DeleteDept(String id);
+       int deleteDept(String id);
 
-     // public int UpdaDept(String id, @Param("deptName") String deptName);
-
-      public int UpdaDept(SysDepartment sysDepartment);
+/**
+ * @Author savior
+ * @Description 根据id修改部门
+ * @Date: 2020/9/29
+ */
+       int updaDept(SysDepartment sysDepartment);
 }

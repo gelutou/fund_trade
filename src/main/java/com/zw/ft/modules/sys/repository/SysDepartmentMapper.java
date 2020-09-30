@@ -23,7 +23,7 @@ public interface SysDepartmentMapper extends BaseMapper<SysDepartment> {
 
     /**
      * @Author savior
-     * @Description
+     * @Description 多变联查,根据公司id查询出公司名字
      * @Date: 2020/9/23
      */
     @Select("SELECT com_name FROM sys_company sc LEFT JOIN sys_department sd ON sc.id=sd.com_id WHERE sd.com_id =#{comId} GROUP BY com_name" )

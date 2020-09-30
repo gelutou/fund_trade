@@ -1,8 +1,6 @@
 package com.zw.ft.modules.sys.controller;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.common.utils.R;
-import com.zw.ft.modules.sys.entity.SysBank;
 import com.zw.ft.modules.sys.service.SysBankService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,18 +32,7 @@ public class SysBankController {
  */
     @PostMapping("/banckall")
     public R Banckall(@RequestBody Map<String,Object> params){
-        String current = params.get("current") == null?"":params.get("current").toString();
-        String size = params.get("size") == null?"":params.get("size").toString();
-        Page<SysBank> page = new Page<>();
-        if (!"".equals(current)){
-            page.setCurrent(Long.parseLong(current));
-        }
-        if (!"".equals(size)){
-            page.setSize(Long.parseLong(size));
-        }
-        page = sysBankService.getBank(page);
-       return R.page(page);
-
+       return R.page(sysBankService.getBank(params));
     }
 
 }

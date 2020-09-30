@@ -14,14 +14,10 @@ import com.zw.ft.modules.sys.service.SysUserService;
 import com.zw.ft.modules.sys.service.SysUserTokenService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.Sha256Hash;
-
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-
-import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -59,7 +55,9 @@ public class LoginController extends BaseController {
         if(one == null){
             return R.error("无此用户");
             //判断密码是否相等
-        }else if (new Sha256Hash(password, username).toHex().equals(one.getPassword())){
+        }else if (new Sha256Hash(password, username).toHex(
+
+        ).equals(one.getPassword())){
             //判断token是否过期
             String token = redisService.get(username);
             String newToken;

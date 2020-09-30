@@ -1,5 +1,6 @@
 package com.zw.ft.modules.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.zw.ft.common.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,7 +20,7 @@ public class SysBank extends BaseEntity {
     private Integer comId ;
 
     /** 客商ID */
-    private Integer customerId ;
+    //private Integer customerId ;
 
     /** 开户行名称 */
     private String bankName ;
@@ -45,4 +46,7 @@ public class SysBank extends BaseEntity {
     /** 备注 */
     private String remark;
 
+    /** 公司名称 */
+    @TableField(exist = false)
+    private String comName;
 }

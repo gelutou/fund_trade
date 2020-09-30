@@ -36,16 +36,15 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
  */
     @Override
     public JSONArray getMenu(Map<String,Object> params) {
-        Object comId = params.get("comId").toString();
+        String comId = params.get("comId").toString();
         QueryWrapper<SysDepartment> departmentQueryWrapper = new QueryWrapper<>();
         departmentQueryWrapper.eq("com_id",comId);
         List<SysDepartment> sysDepartments = sysDepartmentMapper.selectList(departmentQueryWrapper);
-        List<SysCompany> treeTwo = sysDepartmentMapper.getCompanyNameBycomId(comId.toString());
+        List<SysCompany> treeTwo = sysDepartmentMapper.getCompanyNameBycomId(comId);
         JSONArray result = new JSONArray();
         for (SysDepartment dept : sysDepartments) {
             long parentId1 = dept.getParentId();
             long id = dept.getId();
-            String name = dept.getDeptName();
             //如果是一级部门，添加第一层
             if (parentId1 == -1) {
                 JSONObject firstObj = new JSONObject(2);
@@ -89,9 +88,8 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
         }
         return trees;
     }
-        /*public String SeleTept(){
 
-        }*/
+
    /**
     * @Author savior
     * @Description 添加部门信息
@@ -99,12 +97,11 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
     * @return
     */
     @Override
-    public Integer DeptAddto(SysDepartment sysDepartment) {
+    public Integer deptAddto(SysDepartment sysDepartment) {
         sysDepartment.setParentId(sysDepartment.getParentId());
         sysDepartment.setComId(sysDepartment.getComId());
         sysDepartment.setDeptName(sysDepartment.getDeptName());
-        int insert = sysDepartmentMapper.insert(sysDepartment);
-        return insert;
+        return sysDepartmentMapper.insert(sysDepartment);
     }
 
     /**
@@ -113,9 +110,8 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
      * @Date: 2020/9/24
      */
     @Override
-    public int DeleteDept(String id) {
-            int byId = sysDepartmentMapper.deleteById(id);
-            return byId;
+    public int deleteDept(String id) {
+        return sysDepartmentMapper.deleteById(id);
     }
 
     /**
@@ -125,12 +121,8 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
      * @return
      */
     @Override
-    public int UpdaDept(SysDepartment sysDepartment) {
-        //SysDepartment sysDepartment1 = new SysDepartment();
-        SysDepartment DeptId = sysDepartmentMapper.selectById(sysDepartment.getId());
-        int update = sysDepartmentMapper.update(sysDepartment);
-        System.out.println(update);
-        return update;
+    public int updaDept(SysDepartment sysDepartment) {
+        return sysDepartmentMapper.update(sysDepartment);
     }
 
 }

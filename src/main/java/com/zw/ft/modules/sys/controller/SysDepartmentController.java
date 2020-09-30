@@ -31,9 +31,13 @@ public class SysDepartmentController {
      * @Date: 2020/9/24
      */
     @PostMapping("/getDeptTree")
-    public R loadManagerLeftTreeJson(@RequestBody Map<String,Object> params){
+    public R loadManagerLeftTreeJson(@RequestBody Map<String,Object> params) {
         JSONArray as = sysDepartmentService.getMenu(params);
-        return R.data(as);
+        if (as != null) {
+            return R.data(as);
+        } else {
+            return R.error("获取部门失败");
+        }
     }
 
 /**
@@ -42,9 +46,14 @@ public class SysDepartmentController {
  * @Date: 2020/9/27
  */
     @PostMapping("/addDept")
-    public R DeparTementAddto(@RequestBody SysDepartment sysDepartment){
-        Integer integer = sysDepartmentService.DeptAddto(sysDepartment);
-        return R.ok("成功");
+    public R deparTementAddto(@RequestBody SysDepartment sysDepartment){
+
+        if (sysDepartment != null && sysDepartment.getParentId() < 2){
+           sysDepartmentService.deptAddto(sysDepartment);
+            return R.ok("添加成功");
+        }else {
+            return R.error("不能添加三级目录");
+        }
     }
 
     /**
@@ -53,9 +62,14 @@ public class SysDepartmentController {
      * @Date: 2020/9/25
      */
     @PostMapping("/delete/{id}")
-    public R DeleteDept(@PathVariable("id")String id) {
-         sysDepartmentService.DeleteDept(id);
-        return R.ok("删除成功");
+    public R deleteDept(@PathVariable("id")String id) {
+        int i = sysDepartmentService.deleteDept(id);
+        if (i != 0){
+            return R.ok("删除成功");
+        }else {
+            return R.error("删除失败");
+        }
+
     }
 
     /**
@@ -65,11 +79,13 @@ public class SysDepartmentController {
      */
     @ResponseBody
     @PostMapping("/update")
-    public R UpdaDept(@RequestBody  SysDepartment sysDepartment ){
-        /*String id = jsonObject.get("id").toString();
-        String name = jsonObject.get("deptName").toString();*/
-        int i = sysDepartmentService.UpdaDept(sysDepartment);
-        return R.ok("成功");
+    public R updaDept(@RequestBody  SysDepartment sysDepartment ){
+        if(sysDepartment.getId()!=0){
+            sysDepartmentService.updaDept(sysDepartment);
+            return R.ok("修改成功");
+        }else {
+            return R.error("修改失败");
+        }
     }
 
 }
