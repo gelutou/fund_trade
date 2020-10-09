@@ -1,7 +1,10 @@
 package com.zw.ft.modules.sys.controller;
 
+import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zw.ft.common.base.BaseController;
+import com.zw.ft.common.base.Constant;
 import com.zw.ft.common.utils.QueryUtil;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysCompany;
@@ -20,7 +23,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/ft/sys-company")
-public class SysCompanyController {
+public class SysCompanyController extends BaseController {
 
     @Resource
     SysCompanyService sysCompanyService;
@@ -45,14 +48,14 @@ public class SysCompanyController {
      * @Author: Oliver
      * @Date: 2020/9/21 10:53
      */
-    @PostMapping(value = "/add_update_com/{addUpdate}")
-    public R addCom(@RequestBody SysCompany sysCompany,@PathVariable("addUpdate") String addUpdate){
-        sysCompany.setCreatedBy(1L);
-        sysCompany.setUpdatedBy(1L);
+    @PostMapping(value = "/add_update_com")
+    public R addCom(@RequestBody(required = false) Map<String,Object> params){
+        String addUpdate = params.get("addUpdate").toString();
+        SysCompany sysCompany = Convert.convert(SysCompany.class, params);
         boolean result;
-        if("add".equals(addUpdate)){
+        if(Constant.DatabaseOperation.ADD.getValue().equals(addUpdate)){
             result = sysCompanyService.save(sysCompany);
-        }else if("update".equals(addUpdate)){
+        }else if(Constant.DatabaseOperation.UPDATE.getValue().equals(addUpdate)){
             result = sysCompanyService.updateById(sysCompany);
         }else {
             return R.error("未传入addUpdate参数");
@@ -71,7 +74,7 @@ public class SysCompanyController {
      * @Date: 2020/9/21 10:53
      */
     @PostMapping(value = "/get_by_wrapper")
-    public R getByWrapper(@RequestBody Map<String,Object> params){
+    public R getByWrapper(@RequestBody(required = false) Map<String,Object> params){
 
         Page<SysCompany> page = new QueryUtil<SysCompany>(params).getPage();
         QueryWrapper<SysCompany> queryWrapper = new QueryWrapper<>();

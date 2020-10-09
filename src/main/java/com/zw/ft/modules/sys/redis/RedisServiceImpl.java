@@ -1,10 +1,12 @@
 package com.zw.ft.modules.sys.redis;
 
+import cn.hutool.core.date.LocalDateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -38,5 +40,10 @@ public class RedisServiceImpl implements RedisService{
     @Override
     public Long increment(String key, long delta) {
         return stringRedisTemplate.opsForValue().increment(key,delta);
+    }
+
+    @Override
+    public Long getExpire(String key) {
+        return stringRedisTemplate.getExpire("redisKey");
     }
 }
