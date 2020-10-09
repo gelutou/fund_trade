@@ -118,7 +118,6 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
      * @Author savior
      * @Description 根据id修改部门
      * @Date: 2020/9/25
-     * @return
      */
     @Override
     public int updaDept(SysDepartment sysDepartment) {

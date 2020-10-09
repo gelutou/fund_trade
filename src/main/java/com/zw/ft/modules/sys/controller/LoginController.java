@@ -77,17 +77,15 @@ public class LoginController extends BaseController {
                 userToken.setUserId(one.getId());
                 userToken.setToken(newToken);
                 sysUserTokenService.save(userToken);
-            }else {
+            }else if(token == null){
                 SysUserToken updateToke = new SysUserToken();
                 updateToke.setId(userToken.getId());
                 updateToke.setUserId(userToken.getUserId());
                 updateToke.setToken(newToken);
                 sysUserTokenService.updateById(updateToke);
             }
-
             OAuth2Token oAuth2Token = new OAuth2Token(token);
             SecurityUtils.getSubject().login(oAuth2Token);
-            Object principal = SecurityUtils.getSubject().getPrincipal();
             return R.ok(token);
         }else {
             return R.error("密码错误");

@@ -3,6 +3,7 @@ package com.zw.ft.modules.sys.service;
 import com.alibaba.fastjson.JSONArray;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zw.ft.modules.sys.entity.SysDepartment;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -30,9 +31,9 @@ public interface SysDepartmentService extends IService<SysDepartment> {
        * @Author savior
        * @Description 添加部门信息
        * @Date: 2020/9/24
-       * @return
        */
        Integer deptAddto(SysDepartment sysDepartment);
+
 
       /**
        * @Author savior
@@ -47,4 +48,6 @@ public interface SysDepartmentService extends IService<SysDepartment> {
  * @Date: 2020/9/29
  */
        int updaDept(SysDepartment sysDepartment);
+
+
 }
