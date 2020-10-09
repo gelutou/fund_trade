@@ -41,7 +41,7 @@ public class SysCompany extends BaseEntity {
     /**
      *@description: 所属省份
      */
-    private String province;
+        private String province;
 
     /**
      *@description: 所属城市
@@ -59,7 +59,7 @@ public class SysCompany extends BaseEntity {
     private String address;
 
     /**
-     *@description: 父部门
+     *@description: 父公司
      */
     private Integer parentId;
 
