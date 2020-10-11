@@ -19,7 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <shiro-version>1.6.0</shiro-version>
-        <druid-version>1.1.23</druid-version>
+        <druid-version>1.2.1</druid-version>
         <mybatis-plus-version>3.4.0</mybatis-plus-version>
         <thymeleaf-extras-shiro-version>2.0.0</thymeleaf-extras-shiro-version>
         <fastjson-version>1.2.73</fastjson-version>
@@ -87,11 +87,11 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
-        <dependency>
+        <!--<dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>${druid-version}</version>
-        </dependency>
+        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
         <dependency>
