@@ -1,17 +1,16 @@
 package com.zw.ft.sys;
 
-import cn.hutool.core.util.RandomUtil;
-import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.zw.ft.common.base.Constant;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysPermission;
 import com.zw.ft.modules.sys.entity.SysUser;
 import com.zw.ft.modules.sys.entity.SysUserToken;
+import com.zw.ft.modules.trade.entity.SysUserTrade;
 import com.zw.ft.modules.sys.repository.SysPermissionMapper;
 import com.zw.ft.modules.sys.repository.SysRoleMapper;
 import com.zw.ft.modules.sys.repository.SysUserMapper;
+import com.zw.ft.modules.trade.repository.SysUserTradeMapper;
 import com.zw.ft.modules.sys.service.SysUserService;
 import com.zw.ft.modules.sys.service.SysUserTokenService;
 import org.junit.jupiter.api.Test;
@@ -28,12 +27,14 @@ import java.util.List;
  * @Version 1.0
  **/
 @SpringBootTest
-public class SysUserTest {
+public class SysUserTradeTest {
 
     @Resource
     SysUserService sysUserService;
     @Resource
     SysUserMapper sysUserMapper;
+    @Resource
+    SysUserTradeMapper sysUserTradeMapper;
     @Resource
     SysRoleMapper sysRoleMapper;
     @Resource
@@ -127,5 +128,10 @@ public class SysUserTest {
         tokenQueryWrapper.eq("user_id",1L);
         SysUserToken userToken = sysUserTokenService.getOne(tokenQueryWrapper);
         System.out.println("userToken = " + userToken);
+    }
+    @Test
+    void getUserTradeByMapper(){
+        List<SysUserTrade> sysUserTrades = sysUserTradeMapper.selectList(null);
+        System.out.println("sysUsers = " + sysUserTrades);
     }
 }

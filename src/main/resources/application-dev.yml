@@ -4,18 +4,23 @@ spring:
         suffix: .html
     datasource:
         dynamic:
-            primary: master #设置默认的数据源或者数据源组,默认值即为master
+            primary: fundTrade #设置默认的数据源或者数据源组,默认值即为master
             strict: false #设置严格模式,默认false不启动. 启动后在未匹配到指定数据源时候会抛出异常,不启动则使用默认数据源.
             datasource:
-                master:
+                fundTrade:
                     url: jdbc:mysql://81.68.92.240:3306/fund_trade?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=UTC
                     username: root
                     password: 314159
                     driver-class-name: com.mysql.cj.jdbc.Driver # 3.2.0开始支持SPI可省略此配置
-                slave_1:
-                    url: jdbc:mysql://47.94.21.246:3306/projectmu?characterEncoding=UTF-8&useUnicode=true&useSSL=false
+                trade:
+                    url: jdbc:mysql://192.168.3.222:3306/product?rewriteBatchedStatements=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
                     username: root
-                    password: 600100
+                    password: '!111qqq666'
+                    driver-class-name: com.mysql.cj.jdbc.Driver
+                fund:
+                    url: jdbc:mysql://192.168.3.222:3306/bankroll?rewriteBatchedStatements=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+                    username: root
+                    password: '!111qqq666'
                     driver-class-name: com.mysql.cj.jdbc.Driver
 mybatis-plus:
     mapper-locations: classpath:mapper/**/*.xml

@@ -46,7 +46,7 @@ public class RegisterController {
      * @Date: 2020/9/19 23:23
      */
     @PostMapping("/signup")
-    public R signup(@RequestBody Map<String,Object> params) throws Exception {
+    public R signup(@RequestBody Map<String,Object> params) {
         DefaultTransactionDefinition def = new DefaultTransactionDefinition();
         def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
         TransactionStatus status = platformTransactionManager.getTransaction(def);

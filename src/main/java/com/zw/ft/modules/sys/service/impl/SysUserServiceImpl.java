@@ -20,7 +20,6 @@ import java.util.List;
  * @Version 1.0
  **/
 @Service("sysUserService")
-@DS("slave_1")
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
 
     @Resource
