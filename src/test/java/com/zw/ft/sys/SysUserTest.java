@@ -91,8 +91,8 @@ public class SysUserTest {
         QueryWrapper<SysUser> entityQueryWrapper = new QueryWrapper<>();
         entityQueryWrapper.eq("username","admin");
         SysUser one = sysUserService.getOne(entityQueryWrapper);
-
-        String token = SecureUtil.md5(RandomUtil.randomString(16));
+        System.out.println("one = " + one);
+        /*String token = SecureUtil.md5(RandomUtil.randomString(16));
         //将token存进数据库
         QueryWrapper<SysUserToken> tokenQueryWrapper = new QueryWrapper<>();
         tokenQueryWrapper.eq("user_id",one.getId());
@@ -108,7 +108,7 @@ public class SysUserTest {
             userToken1.setUserId(userToken.getUserId());
             userToken1.setToken(token);
             sysUserTokenService.updateById(userToken1);
-        }
+        }*/
     }
 
     @Test

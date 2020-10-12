@@ -1,5 +1,6 @@
 package com.zw.ft.modules.sys.service.impl;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -19,6 +20,7 @@ import java.util.List;
  * @Version 1.0
  **/
 @Service("sysUserService")
+@DS("slave_1")
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
 
     @Resource
