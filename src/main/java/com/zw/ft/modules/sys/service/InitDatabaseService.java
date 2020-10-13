@@ -1,4 +1,4 @@
-package com.zw.ft.initdb;
+package com.zw.ft.modules.sys.service;
 
 import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
@@ -11,12 +11,10 @@ import com.zw.ft.modules.sys.repository.SysUserMapper;
 import com.zw.ft.modules.trade.entity.SysUserTrade;
 import com.zw.ft.modules.trade.repository.SysUserTradeMapper;
 import org.apache.shiro.crypto.hash.Sha256Hash;
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -26,8 +24,8 @@ import java.util.List;
  * @Date 2020/10/12 14:04
  * @Version 1.0
  **/
-@SpringBootTest
-public class SysInit {
+@Service
+public class InitDatabaseService {
 
     @Resource
     SysUserMapper sysUserMapper;
@@ -38,8 +36,7 @@ public class SysInit {
     @Resource
     SysUserExpansionMapper sysUserExpansionMapper;
 
-    @Test
-    void initSysUser(){
+    public void initSysUser(){
         /*
          *  两张人员表中存在账号重复，相同账号有不同人员使用情况，此方法只去除了账号重复，不同人员使用情况需要手动解决
          *  select b.*
