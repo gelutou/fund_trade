@@ -26,5 +26,35 @@ public class Constant {
      */
     public static final long AN_DAY = 43200;
 
+<<<<<<< HEAD
 
+=======
+    /*
+     * 功能描述: <br>
+     * 〈操作数据库枚举〉
+     * @Author: Oliver
+     * @Date: 2020/10/9 9:59
+     */
+
+    public enum DatabaseOperation{
+        /**
+         *@description: 添加
+         */
+        ADD("add"),
+        /**
+         *@description: 更新
+         */
+        UPDATE("update");
+
+        private final String value;
+
+        DatabaseOperation(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+    }
+>>>>>>> 5765c4edaf354ee54b0b087c3565447beb7b413c
 }

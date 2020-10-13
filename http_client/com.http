@@ -1,3 +1,10 @@
+POST http://localhost:8088/ft/sys-company/add_update_com
+Content-Type: application/json
+
+{"id":1,"addUpdate":"update","comCode": "1","comName": "测试添加公司","shortComName": "测试","contactUser": "1","province": "河北",
+  "city": "石家庄","district": "藁城","address": "世纪街","parentId": "1","mobile": "111"}
+
+###
 POST http://localhost:8088/ft/sys-company/get_fuzzy/admin/sh
 Content-Type: application/json
 
