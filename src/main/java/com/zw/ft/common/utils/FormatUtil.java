@@ -2,6 +2,11 @@ package com.zw.ft.common.utils;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.zw.ft.common.base.BaseEntity;
+
+import java.util.Map;
 
 /**
  * @ClassName FormatUtil
@@ -27,5 +32,27 @@ public class FormatUtil {
         return StrUtil.format(content.toLowerCase()
                 .replace("$today",today)
                 .replace("$datetime",todayDateTime),params);
+    }
+
+
+    /*
+     * 功能描述: <br>
+     * 〈判断接口参数需不需要加入sql条件〉
+     * @Return: false 不设置条件 true 设置条件""查所有
+     * @Author: Oliver
+     * @Date: 2020/10/13 15:15
+     */
+
+    public static String isSelectKey(String key, Map<String,Object> params){
+        Object o = params.get(key);
+        if(o == null){
+            return "false";
+        }else if ("".equals(o.toString()) || "null".equals(o.toString())){
+            return "false";
+        }else if(" ".equals(o.toString())){
+            return "";
+        }else {
+            return "true";
+        }
     }
 }
