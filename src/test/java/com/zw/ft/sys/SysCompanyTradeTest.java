@@ -17,7 +17,7 @@ import java.util.TimeZone;
  * @Version 1.0
  **/
 @SpringBootTest
-public class SysCompanyTest {
+public class SysCompanyTradeTest {
 
     @Resource
     SysCompanyMapper sysCompanyMapper;

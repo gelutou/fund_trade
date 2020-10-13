@@ -33,4 +33,7 @@ public interface SysCompanyMapper extends BaseMapper<SysCompany> {
             " WHERE suc.user_id = (SELECT ID FROM sys_user WHERE username = #{username})" +
             " AND (sc.com_name LIKE CONCAT('%',#{shortname},'%') OR sc.com_code LIKE CONCAT('%',#{shortname},'%'))")
     List<SysCompany> getFuzzy(@Param("username") String username, @Param("shortname") String shortName);
+
+    @Select("SELECT * FROM sys_company")
+    List<SysCompany> getAllComs();
 }

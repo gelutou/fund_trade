@@ -1,5 +1,6 @@
 package com.zw.ft.modules.sys.repository;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -14,6 +15,7 @@ import java.util.List;
  *@date  2020/9/10
  */
 @Mapper
+@DS("fundTrade")
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
     /**
@@ -56,4 +58,8 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
             Page<SysUser> page
             , @Param("comId") long comId
             , @Param("ew") QueryWrapper<SysUser> userEntityQueryWrapper);
+
+    @Select("SELECT * FROM sys_user")
+    List<SysUser> getAllUsers();
+
 }
