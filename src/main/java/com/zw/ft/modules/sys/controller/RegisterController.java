@@ -1,6 +1,6 @@
 package com.zw.ft.modules.sys.controller;
 
-import com.zw.ft.common.utils.Map2ObjUtils;
+import cn.hutool.core.convert.Convert;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysUser;
 import com.zw.ft.modules.sys.entity.SysUserExpansion;
@@ -46,16 +46,15 @@ public class RegisterController {
      * @Date: 2020/9/19 23:23
      */
     @PostMapping("/signup")
-    public R signup(@RequestBody Map<String,Object> params) throws Exception {
+    public R signup(@RequestBody Map<String,Object> params) {
         DefaultTransactionDefinition def = new DefaultTransactionDefinition();
         def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
         TransactionStatus status = platformTransactionManager.getTransaction(def);
-        SysUser sysUser = (SysUser) Map2ObjUtils.mapToObject(params, SysUser.class);
-
+        SysUser sysUser = Convert.convert(SysUser.class, params);
         String username = sysUser.getUsername();
         String password = sysUser.getPassword();
         sysUser.setPassword(new Sha256Hash(password, username).toHex());
-        SysUserExpansion sysUserExpansion = (SysUserExpansion) Map2ObjUtils.mapToObject(params, SysUserExpansion.class);
+        SysUserExpansion sysUserExpansion = Convert.convert(SysUserExpansion.class, params);
 
         try {
             sysUserService.save(sysUser);

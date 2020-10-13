@@ -1,17 +1,16 @@
 package com.zw.ft.sys;
 
-import cn.hutool.core.util.RandomUtil;
-import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.zw.ft.common.base.Constant;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysPermission;
 import com.zw.ft.modules.sys.entity.SysUser;
 import com.zw.ft.modules.sys.entity.SysUserToken;
+import com.zw.ft.modules.trade.entity.SysUserTrade;
 import com.zw.ft.modules.sys.repository.SysPermissionMapper;
 import com.zw.ft.modules.sys.repository.SysRoleMapper;
 import com.zw.ft.modules.sys.repository.SysUserMapper;
+import com.zw.ft.modules.trade.repository.SysUserTradeMapper;
 import com.zw.ft.modules.sys.service.SysUserService;
 import com.zw.ft.modules.sys.service.SysUserTokenService;
 import org.junit.jupiter.api.Test;
@@ -28,12 +27,14 @@ import java.util.List;
  * @Version 1.0
  **/
 @SpringBootTest
-public class SysUserTest {
+public class SysUserTradeTest {
 
     @Resource
     SysUserService sysUserService;
     @Resource
     SysUserMapper sysUserMapper;
+    @Resource
+    SysUserTradeMapper sysUserTradeMapper;
     @Resource
     SysRoleMapper sysRoleMapper;
     @Resource
@@ -91,8 +92,8 @@ public class SysUserTest {
         QueryWrapper<SysUser> entityQueryWrapper = new QueryWrapper<>();
         entityQueryWrapper.eq("username","admin");
         SysUser one = sysUserService.getOne(entityQueryWrapper);
-
-        String token = SecureUtil.md5(RandomUtil.randomString(16));
+        System.out.println("one = " + one);
+        /*String token = SecureUtil.md5(RandomUtil.randomString(16));
         //将token存进数据库
         QueryWrapper<SysUserToken> tokenQueryWrapper = new QueryWrapper<>();
         tokenQueryWrapper.eq("user_id",one.getId());
@@ -108,7 +109,7 @@ public class SysUserTest {
             userToken1.setUserId(userToken.getUserId());
             userToken1.setToken(token);
             sysUserTokenService.updateById(userToken1);
-        }
+        }*/
     }
 
     @Test
@@ -127,5 +128,10 @@ public class SysUserTest {
         tokenQueryWrapper.eq("user_id",1L);
         SysUserToken userToken = sysUserTokenService.getOne(tokenQueryWrapper);
         System.out.println("userToken = " + userToken);
+    }
+    @Test
+    void getUserTradeByMapper(){
+        List<SysUserTrade> sysUserTrades = sysUserTradeMapper.selectList(null);
+        System.out.println("sysUsers = " + sysUserTrades);
     }
 }
