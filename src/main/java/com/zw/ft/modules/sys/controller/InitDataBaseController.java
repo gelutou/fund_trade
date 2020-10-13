@@ -1,8 +1,8 @@
 package com.zw.ft.modules.sys.controller;
 
 import com.zw.ft.common.utils.R;
-import com.zw.ft.modules.sys.service.InitDatabaseService;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.zw.ft.modules.sys.service.database.InitDatabaseService;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -19,7 +19,7 @@ public class InitDataBaseController {
 
     @Resource
     InitDatabaseService init;
-    @RequestMapping(value = "/ft/init_database")
+    @PostMapping(value = "/ft/init_database")
     public R init() {
         try {
             init.initSysUser();

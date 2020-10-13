@@ -2,13 +2,19 @@ package com.zw.ft.initdb;
 
 import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.zw.ft.modules.fund.entity.TCompany;
 import com.zw.ft.modules.fund.entity.TUser;
+import com.zw.ft.modules.fund.repository.TCompanyMapper;
 import com.zw.ft.modules.fund.repository.TUserMapper;
+import com.zw.ft.modules.sys.entity.SysCompany;
 import com.zw.ft.modules.sys.entity.SysUser;
 import com.zw.ft.modules.sys.entity.SysUserExpansion;
+import com.zw.ft.modules.sys.repository.SysCompanyMapper;
 import com.zw.ft.modules.sys.repository.SysUserExpansionMapper;
 import com.zw.ft.modules.sys.repository.SysUserMapper;
+import com.zw.ft.modules.trade.entity.SysCompanyTrade;
 import com.zw.ft.modules.trade.entity.SysUserTrade;
+import com.zw.ft.modules.trade.repository.SysCompanyTradeMapper;
 import com.zw.ft.modules.trade.repository.SysUserTradeMapper;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.junit.jupiter.api.Test;
@@ -38,6 +44,250 @@ public class InitDatabaseServiceTest {
     @Resource
     SysUserExpansionMapper sysUserExpansionMapper;
 
+    @Resource
+    SysCompanyMapper sysCompanyMapper;
+    @Resource
+    SysCompanyTradeMapper sysCompanyTradeMapper;
+    @Resource
+    TCompanyMapper tCompanyMapper;
+
+    @Test
+    void initSysCompany(){
+        List<SysCompany> allComs = sysCompanyMapper.getAllComs();
+        List<SysCompanyTrade> allComsTrade = sysCompanyTradeMapper.getAllComs();
+        List<TCompany> allComsFund = tCompanyMapper.getAllComs();
+
+        UpdateWrapper<SysUserExpansion> expansionUpdateWrapper = new UpdateWrapper<>();
+
+        int insertTime = 0;
+        int updateTime = 0;
+
+        int insertTimeExp = 0;
+        int updateTimeExp = 0;
+
+        for(SysCompany com : allComs){
+            boolean insert = true;
+            SysCompany company = null;
+            for(SysCompanyTrade companyTrade : allComsTrade){
+                if(com.getComCode().equals(companyTrade.getCompCode())){
+                    insert = false;
+                    break;
+                }
+            }
+        }
+
+        for(SysUserTrade trade : sysUserTrades){
+            boolean insert = true;
+            boolean insertFund = true;
+            SysUser sysUser = null;
+            for(SysUser user : sysUsers){
+                if(user.getUsername().equals(trade.getUserCode())){
+                    sysUser = user;
+                    insert = false;
+                    break;
+                }
+            }
+            SysUserExpansion sysUserExpansion = new SysUserExpansion();
+            if(insert){
+                sysUser = new SysUser();
+                sysUser.setUsername(trade.getUserCode());
+                System.out.println("添加账号 = " + sysUser.getUsername());
+                insertTime++;
+                sysUser.setGender(trade.getSex().equals("1") ?0:1);
+                sysUser.setPassword(new Sha256Hash("1", sysUser.getUsername()).toHex());
+                sysUser.setRealname(trade.getUserName());
+                sysUser.setCreatedBy(1L);
+                sysUser.setCreatedTime(Convert.convert(LocalDateTime.class,trade.getMakeTime()));
+                sysUser.setDeleted(trade.getFlagDelete());
+                sysUser.setRevision(1);
+                sysUser.setUpdatedBy(1L);
+                sysUser.setUpdatedTime(trade.getModifyTime()==null?Convert.convert(LocalDateTime.class,trade.getMakeTime()):Convert.convert(LocalDateTime.class,trade.getModifyTime()));
+                sysUserMapper.insert(sysUser);
+
+                long userId = sysUser.getId();
+                boolean insertExp = true;
+                for(SysUserExpansion userExpansion : allUserExpansions){
+                    if(userExpansion.getUserId() == userId){
+                        insertExp = false;
+                        break;
+                    }
+                }
+                sysUserExpansion.setUserId(sysUser.getId());
+                //此值乱码，需要手动添加
+                //sysUserExpansion.setProvince(trade.getNameProvince());
+                sysUserExpansion.setEmail(trade.getUserEmail());
+                sysUserExpansion.setAddress(trade.getUserAddress());
+                sysUserExpansion.setBirthday(trade.getBirthday());
+                sysUserExpansion.setMobile(trade.getUserMobile());
+                sysUserExpansion.setQq(trade.getQq());
+                sysUserExpansion.setWechat(trade.getWeixin());
+                if(insertExp){
+                    //更新扩展
+                    sysUserExpansionMapper.insert(sysUserExpansion);
+                    insertTimeExp++;
+
+                }else {
+                    expansionUpdateWrapper.eq("user_id",sysUser.getId());
+                    sysUserExpansionMapper.update(sysUserExpansion,expansionUpdateWrapper);
+                    updateTimeExp++;
+                }
+            }else {
+                UpdateWrapper<SysUser> userUpdateWrapper = new UpdateWrapper<>();
+                userUpdateWrapper.eq("username",trade.getUserCode());
+                System.out.println("更新账号 = " + trade.getUserCode());
+                updateTime++;
+                sysUser.setGender(trade.getSex().equals("1") ?0:1);
+                sysUser.setPassword(new Sha256Hash("1", sysUser.getUsername()).toHex());
+                sysUser.setRealname(trade.getUserName());
+                sysUser.setCreatedBy(1L);
+                sysUser.setCreatedTime(Convert.convert(LocalDateTime.class,trade.getMakeTime()));
+                sysUser.setDeleted(trade.getFlagDelete());
+                sysUser.setRevision(1);
+                sysUser.setUpdatedBy(1L);
+                sysUser.setUpdatedTime(trade.getModifyTime()==null?Convert.convert(LocalDateTime.class,trade.getMakeTime()):Convert.convert(LocalDateTime.class,trade.getModifyTime()));
+                sysUserMapper.update(sysUser,userUpdateWrapper);
+
+                long userId = sysUser.getId();
+                boolean insertExp = true;
+                for(SysUserExpansion userExpansion : allUserExpansions){
+                    if(userExpansion.getUserId() == userId){
+                        insertExp = false;
+                        break;
+                    }
+                }
+                sysUserExpansion.setUserId(sysUser.getId());
+                //此值乱码，需要手动添加
+                //sysUserExpansion.setProvince(trade.getNameProvince());
+                sysUserExpansion.setEmail(trade.getUserEmail());
+                sysUserExpansion.setAddress(trade.getUserAddress());
+                sysUserExpansion.setBirthday(trade.getBirthday());
+                sysUserExpansion.setMobile(trade.getUserMobile());
+                sysUserExpansion.setQq(trade.getQq());
+                sysUserExpansion.setWechat(trade.getWeixin());
+                if(insertExp){
+                    //更新扩展
+                    sysUserExpansionMapper.insert(sysUserExpansion);
+                    insertTimeExp++;
+
+                }else {
+                    expansionUpdateWrapper.eq("user_id",sysUser.getId());
+                    sysUserExpansionMapper.update(sysUserExpansion,expansionUpdateWrapper);
+                    updateTimeExp++;
+                }
+
+            }
+        }
+
+        List<SysUser> sysUsersForFund = sysUserMapper.getAllUsers();
+
+        for(TUser fund : tUsers){
+            boolean insert = true;
+            SysUser sysUser = null;
+            for(SysUser user : sysUsersForFund){
+                if(user.getUsername().equals(fund.getUserCode())){
+                    sysUser = user;
+                    insert = false;
+                    break;
+                }
+            }
+            SysUserExpansion sysUserExpansion = new SysUserExpansion();
+            if(insert){
+                sysUser = new SysUser();
+                sysUser.setUsername(fund.getUserCode());
+                System.out.println("添加账号 = " + sysUser.getUsername());
+                insertTime++;
+                sysUser.setGender(fund.getSex()==1 ?0:1);
+                sysUser.setPassword(new Sha256Hash("1", sysUser.getUsername()).toHex());
+                sysUser.setRealname(fund.getUserName());
+                sysUser.setCreatedBy(1L);
+                sysUser.setCreatedTime(Convert.convert(LocalDateTime.class,fund.getMakeTime()));
+                sysUser.setDeleted(fund.getFlagDelete());
+                sysUser.setRevision(1);
+                sysUser.setUpdatedBy(1L);
+                sysUser.setUpdatedTime(fund.getModifyTime()==null?Convert.convert(LocalDateTime.class,fund.getMakeTime()):Convert.convert(LocalDateTime.class,fund.getModifyTime()));
+                sysUserMapper.insert(sysUser);
+
+                long userId = sysUser.getId();
+                boolean insertExp = true;
+                for(SysUserExpansion userExpansion : allUserExpansions){
+                    if(userExpansion.getUserId() == userId){
+                        insertExp = false;
+                        break;
+                    }
+                }
+                sysUserExpansion.setUserId(sysUser.getId());
+                //此值乱码，需要手动添加
+                //sysUserExpansion.setProvince(trade.getNameProvince());
+                sysUserExpansion.setEmail(fund.getUserEmail());
+                sysUserExpansion.setAddress(fund.getUserAddress());
+                sysUserExpansion.setBirthday(fund.getBirthday());
+                sysUserExpansion.setMobile(fund.getUserMobile());
+                sysUserExpansion.setQq(fund.getQq());
+                sysUserExpansion.setWechat(fund.getWeixin());
+                if(insertExp){
+                    //更新扩展
+                    sysUserExpansionMapper.insert(sysUserExpansion);
+                    insertTimeExp++;
+
+                }else {
+                    expansionUpdateWrapper.eq("user_id",sysUser.getId());
+                    sysUserExpansionMapper.update(sysUserExpansion,expansionUpdateWrapper);
+                    updateTimeExp++;
+                }
+            }else {
+                UpdateWrapper<SysUser> userUpdateWrapper = new UpdateWrapper<>();
+                userUpdateWrapper.eq("username",fund.getUserCode());
+                System.out.println("更新账号 = " + fund.getUserCode());
+                updateTime++;
+                sysUser.setGender(fund.getSex() == 1 ?0:1);
+                sysUser.setPassword(new Sha256Hash("1", sysUser.getUsername()).toHex());
+                sysUser.setRealname(fund.getUserName());
+                sysUser.setCreatedBy(1L);
+                sysUser.setCreatedTime(Convert.convert(LocalDateTime.class,fund.getMakeTime()));
+                sysUser.setDeleted(fund.getFlagDelete());
+                sysUser.setRevision(1);
+                sysUser.setUpdatedBy(1L);
+                sysUser.setUpdatedTime(fund.getModifyTime()==null?Convert.convert(LocalDateTime.class,fund.getMakeTime()):Convert.convert(LocalDateTime.class,fund.getModifyTime()));
+                sysUserMapper.update(sysUser,userUpdateWrapper);
+
+                long userId = sysUser.getId();
+                boolean insertExp = true;
+                for(SysUserExpansion userExpansion : allUserExpansions){
+                    if(userExpansion.getUserId() == userId){
+                        insertExp = false;
+                        break;
+                    }
+                }
+                sysUserExpansion.setUserId(sysUser.getId());
+                //此值乱码，需要手动添加
+                //sysUserExpansion.setProvince(trade.getNameProvince());
+                sysUserExpansion.setEmail(fund.getUserEmail());
+                sysUserExpansion.setAddress(fund.getUserAddress());
+                sysUserExpansion.setBirthday(fund.getBirthday());
+                sysUserExpansion.setMobile(fund.getUserMobile());
+                sysUserExpansion.setQq(fund.getQq());
+                sysUserExpansion.setWechat(fund.getWeixin());
+                if(insertExp){
+                    //更新扩展
+                    sysUserExpansionMapper.insert(sysUserExpansion);
+                    insertTimeExp++;
+
+                }else {
+                    expansionUpdateWrapper.eq("user_id",sysUser.getId());
+                    sysUserExpansionMapper.update(sysUserExpansion,expansionUpdateWrapper);
+                    updateTimeExp++;
+                }
+
+            }
+        }
+
+
+        System.out.println("用户表：一共增加了"+insertTime+"条数据,更新了条"+updateTime+"数据");
+        System.out.println("用户扩展表：一共增加了"+insertTimeExp+"条数据,更新了条"+updateTimeExp+"数据");
+        long end = System.currentTimeMillis();
+        System.out.println("初始化sys_user用时 ： " + (end - start) +"毫秒");
+    }
+    }
     @Test
     void initSysUser(){
         /*
