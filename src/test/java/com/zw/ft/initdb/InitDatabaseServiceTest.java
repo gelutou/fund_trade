@@ -51,242 +51,131 @@ public class InitDatabaseServiceTest {
     @Resource
     TCompanyMapper tCompanyMapper;
 
+    /*select b.*
+                from (select user_code
+                        from sys_user
+                        group by user_code
+                        having count(*) >= 2) as a
+                        left join sys_user b
+                        on a.user_code = b.user_code
+                        order by user_code;
+                        */
+
     @Test
     void initSysCompany(){
+        long start = System.currentTimeMillis();
         List<SysCompany> allComs = sysCompanyMapper.getAllComs();
         List<SysCompanyTrade> allComsTrade = sysCompanyTradeMapper.getAllComs();
         List<TCompany> allComsFund = tCompanyMapper.getAllComs();
 
-        UpdateWrapper<SysUserExpansion> expansionUpdateWrapper = new UpdateWrapper<>();
-
         int insertTime = 0;
         int updateTime = 0;
 
-        int insertTimeExp = 0;
-        int updateTimeExp = 0;
-
-        for(SysCompany com : allComs){
+        for(SysCompanyTrade companyTrade : allComsTrade){
             boolean insert = true;
-            SysCompany company = null;
-            for(SysCompanyTrade companyTrade : allComsTrade){
+            for(SysCompany com : allComs){
                 if(com.getComCode().equals(companyTrade.getCompCode())){
                     insert = false;
                     break;
                 }
             }
+            SysCompany sysCompany = new SysCompany();
+            if(insert){
+                sysCompany.setComCode(companyTrade.getCompCode());
+                System.out.println("添加公司代码 = " + companyTrade.getCompCode());
+                sysCompany.setUpdatedBy(1L);
+                sysCompany.setCreatedBy(1L);
+                sysCompany.setAddress(companyTrade.getCompAddress());
+                sysCompany.setCity(companyTrade.getCompCity());
+                sysCompany.setComName(companyTrade.getCompName());
+                sysCompany.setContactUser(companyTrade.getContactName());
+                sysCompany.setMobile(companyTrade.getContactPhone());
+                sysCompany.setProvince(companyTrade.getCompProvince());
+                sysCompany.setDistrict(companyTrade.getCompDistrict());
+                sysCompany.setShortComName(companyTrade.getShortCompName());
+                sysCompany.setCreatedTime(Convert.convert(LocalDateTime.class,companyTrade.getMakeTime()));
+                sysCompany.setUpdatedTime(Convert.convert(LocalDateTime.class,companyTrade.getModifyTime()));
+                sysCompany.setDeleted(companyTrade.getFlagDelete());
+                sysCompany.setRevision(1);
+                sysCompanyMapper.insert(sysCompany);
+                insertTime++;
+            }else {
+                UpdateWrapper<SysCompany> companyUpdateWrapper = new UpdateWrapper<>();
+                companyUpdateWrapper.eq("com_code",companyTrade.getCompCode());
+                System.out.println("更新公司代码 = " + companyTrade.getCompCode());
+                sysCompany.setUpdatedBy(1L);
+                sysCompany.setCreatedBy(1L);
+                sysCompany.setAddress(companyTrade.getCompAddress());
+                sysCompany.setCity(companyTrade.getCompCity());
+                sysCompany.setComName(companyTrade.getCompName());
+                sysCompany.setContactUser(companyTrade.getContactName());
+                sysCompany.setMobile(companyTrade.getContactPhone());
+                sysCompany.setProvince(companyTrade.getCompProvince());
+                sysCompany.setDistrict(companyTrade.getCompDistrict());
+                sysCompany.setShortComName(companyTrade.getShortCompName());
+                sysCompany.setCreatedTime(Convert.convert(LocalDateTime.class,companyTrade.getMakeTime()));
+                sysCompany.setUpdatedTime(Convert.convert(LocalDateTime.class,companyTrade.getModifyTime()));
+                sysCompany.setDeleted(companyTrade.getFlagDelete());
+                sysCompany.setRevision(1);
+                sysCompanyMapper.update(sysCompany,companyUpdateWrapper);
+                updateTime++;
+            }
         }
-
-        for(SysUserTrade trade : sysUserTrades){
+        List<SysCompany> allComsTwo = sysCompanyMapper.getAllComs();
+        for(TCompany companyTrade : allComsFund){
             boolean insert = true;
-            boolean insertFund = true;
-            SysUser sysUser = null;
-            for(SysUser user : sysUsers){
-                if(user.getUsername().equals(trade.getUserCode())){
-                    sysUser = user;
+            for(SysCompany com : allComsTwo){
+                if(com.getComCode().equals(companyTrade.getCompCode())){
                     insert = false;
                     break;
                 }
             }
-            SysUserExpansion sysUserExpansion = new SysUserExpansion();
+            SysCompany sysCompany = new SysCompany();
             if(insert){
-                sysUser = new SysUser();
-                sysUser.setUsername(trade.getUserCode());
-                System.out.println("添加账号 = " + sysUser.getUsername());
+                sysCompany.setComCode(companyTrade.getCompCode());
+                System.out.println("添加公司代码 = " + companyTrade.getCompCode());
+                sysCompany.setUpdatedBy(1L);
+                sysCompany.setCreatedBy(1L);
+                sysCompany.setAddress(companyTrade.getCompAddress());
+                sysCompany.setCity(companyTrade.getCompCity());
+                sysCompany.setComName(companyTrade.getCompName());
+                sysCompany.setContactUser(companyTrade.getContactName());
+                sysCompany.setMobile(companyTrade.getContactPhone());
+                sysCompany.setProvince(companyTrade.getCompProvince());
+                sysCompany.setDistrict(companyTrade.getCompDistrict());
+                sysCompany.setShortComName(companyTrade.getShortCompName());
+                sysCompany.setCreatedTime(Convert.convert(LocalDateTime.class,companyTrade.getMakeTime()));
+                sysCompany.setUpdatedTime(Convert.convert(LocalDateTime.class,companyTrade.getModifyTime()));
+                sysCompany.setDeleted(companyTrade.getFlagDelete());
+                sysCompany.setRevision(1);
+                sysCompanyMapper.insert(sysCompany);
                 insertTime++;
-                sysUser.setGender(trade.getSex().equals("1") ?0:1);
-                sysUser.setPassword(new Sha256Hash("1", sysUser.getUsername()).toHex());
-                sysUser.setRealname(trade.getUserName());
-                sysUser.setCreatedBy(1L);
-                sysUser.setCreatedTime(Convert.convert(LocalDateTime.class,trade.getMakeTime()));
-                sysUser.setDeleted(trade.getFlagDelete());
-                sysUser.setRevision(1);
-                sysUser.setUpdatedBy(1L);
-                sysUser.setUpdatedTime(trade.getModifyTime()==null?Convert.convert(LocalDateTime.class,trade.getMakeTime()):Convert.convert(LocalDateTime.class,trade.getModifyTime()));
-                sysUserMapper.insert(sysUser);
-
-                long userId = sysUser.getId();
-                boolean insertExp = true;
-                for(SysUserExpansion userExpansion : allUserExpansions){
-                    if(userExpansion.getUserId() == userId){
-                        insertExp = false;
-                        break;
-                    }
-                }
-                sysUserExpansion.setUserId(sysUser.getId());
-                //此值乱码，需要手动添加
-                //sysUserExpansion.setProvince(trade.getNameProvince());
-                sysUserExpansion.setEmail(trade.getUserEmail());
-                sysUserExpansion.setAddress(trade.getUserAddress());
-                sysUserExpansion.setBirthday(trade.getBirthday());
-                sysUserExpansion.setMobile(trade.getUserMobile());
-                sysUserExpansion.setQq(trade.getQq());
-                sysUserExpansion.setWechat(trade.getWeixin());
-                if(insertExp){
-                    //更新扩展
-                    sysUserExpansionMapper.insert(sysUserExpansion);
-                    insertTimeExp++;
-
-                }else {
-                    expansionUpdateWrapper.eq("user_id",sysUser.getId());
-                    sysUserExpansionMapper.update(sysUserExpansion,expansionUpdateWrapper);
-                    updateTimeExp++;
-                }
             }else {
-                UpdateWrapper<SysUser> userUpdateWrapper = new UpdateWrapper<>();
-                userUpdateWrapper.eq("username",trade.getUserCode());
-                System.out.println("更新账号 = " + trade.getUserCode());
+                UpdateWrapper<SysCompany> companyUpdateWrapper = new UpdateWrapper<>();
+                companyUpdateWrapper.eq("com_code",companyTrade.getCompCode());
+                System.out.println("添加公司代码 = " + companyTrade.getCompCode());
+                sysCompany.setUpdatedBy(1L);
+                sysCompany.setCreatedBy(1L);
+                sysCompany.setAddress(companyTrade.getCompAddress());
+                sysCompany.setCity(companyTrade.getCompCity());
+                sysCompany.setComName(companyTrade.getCompName());
+                sysCompany.setContactUser(companyTrade.getContactName());
+                sysCompany.setMobile(companyTrade.getContactPhone());
+                sysCompany.setProvince(companyTrade.getCompProvince());
+                sysCompany.setDistrict(companyTrade.getCompDistrict());
+                sysCompany.setShortComName(companyTrade.getShortCompName());
+                sysCompany.setCreatedTime(Convert.convert(LocalDateTime.class,companyTrade.getMakeTime()));
+                sysCompany.setUpdatedTime(Convert.convert(LocalDateTime.class,companyTrade.getModifyTime()));
+                sysCompany.setDeleted(companyTrade.getFlagDelete());
+                sysCompany.setRevision(1);
+                sysCompanyMapper.update(sysCompany,companyUpdateWrapper);
                 updateTime++;
-                sysUser.setGender(trade.getSex().equals("1") ?0:1);
-                sysUser.setPassword(new Sha256Hash("1", sysUser.getUsername()).toHex());
-                sysUser.setRealname(trade.getUserName());
-                sysUser.setCreatedBy(1L);
-                sysUser.setCreatedTime(Convert.convert(LocalDateTime.class,trade.getMakeTime()));
-                sysUser.setDeleted(trade.getFlagDelete());
-                sysUser.setRevision(1);
-                sysUser.setUpdatedBy(1L);
-                sysUser.setUpdatedTime(trade.getModifyTime()==null?Convert.convert(LocalDateTime.class,trade.getMakeTime()):Convert.convert(LocalDateTime.class,trade.getModifyTime()));
-                sysUserMapper.update(sysUser,userUpdateWrapper);
-
-                long userId = sysUser.getId();
-                boolean insertExp = true;
-                for(SysUserExpansion userExpansion : allUserExpansions){
-                    if(userExpansion.getUserId() == userId){
-                        insertExp = false;
-                        break;
-                    }
-                }
-                sysUserExpansion.setUserId(sysUser.getId());
-                //此值乱码，需要手动添加
-                //sysUserExpansion.setProvince(trade.getNameProvince());
-                sysUserExpansion.setEmail(trade.getUserEmail());
-                sysUserExpansion.setAddress(trade.getUserAddress());
-                sysUserExpansion.setBirthday(trade.getBirthday());
-                sysUserExpansion.setMobile(trade.getUserMobile());
-                sysUserExpansion.setQq(trade.getQq());
-                sysUserExpansion.setWechat(trade.getWeixin());
-                if(insertExp){
-                    //更新扩展
-                    sysUserExpansionMapper.insert(sysUserExpansion);
-                    insertTimeExp++;
-
-                }else {
-                    expansionUpdateWrapper.eq("user_id",sysUser.getId());
-                    sysUserExpansionMapper.update(sysUserExpansion,expansionUpdateWrapper);
-                    updateTimeExp++;
-                }
-
             }
         }
-
-        List<SysUser> sysUsersForFund = sysUserMapper.getAllUsers();
-
-        for(TUser fund : tUsers){
-            boolean insert = true;
-            SysUser sysUser = null;
-            for(SysUser user : sysUsersForFund){
-                if(user.getUsername().equals(fund.getUserCode())){
-                    sysUser = user;
-                    insert = false;
-                    break;
-                }
-            }
-            SysUserExpansion sysUserExpansion = new SysUserExpansion();
-            if(insert){
-                sysUser = new SysUser();
-                sysUser.setUsername(fund.getUserCode());
-                System.out.println("添加账号 = " + sysUser.getUsername());
-                insertTime++;
-                sysUser.setGender(fund.getSex()==1 ?0:1);
-                sysUser.setPassword(new Sha256Hash("1", sysUser.getUsername()).toHex());
-                sysUser.setRealname(fund.getUserName());
-                sysUser.setCreatedBy(1L);
-                sysUser.setCreatedTime(Convert.convert(LocalDateTime.class,fund.getMakeTime()));
-                sysUser.setDeleted(fund.getFlagDelete());
-                sysUser.setRevision(1);
-                sysUser.setUpdatedBy(1L);
-                sysUser.setUpdatedTime(fund.getModifyTime()==null?Convert.convert(LocalDateTime.class,fund.getMakeTime()):Convert.convert(LocalDateTime.class,fund.getModifyTime()));
-                sysUserMapper.insert(sysUser);
-
-                long userId = sysUser.getId();
-                boolean insertExp = true;
-                for(SysUserExpansion userExpansion : allUserExpansions){
-                    if(userExpansion.getUserId() == userId){
-                        insertExp = false;
-                        break;
-                    }
-                }
-                sysUserExpansion.setUserId(sysUser.getId());
-                //此值乱码，需要手动添加
-                //sysUserExpansion.setProvince(trade.getNameProvince());
-                sysUserExpansion.setEmail(fund.getUserEmail());
-                sysUserExpansion.setAddress(fund.getUserAddress());
-                sysUserExpansion.setBirthday(fund.getBirthday());
-                sysUserExpansion.setMobile(fund.getUserMobile());
-                sysUserExpansion.setQq(fund.getQq());
-                sysUserExpansion.setWechat(fund.getWeixin());
-                if(insertExp){
-                    //更新扩展
-                    sysUserExpansionMapper.insert(sysUserExpansion);
-                    insertTimeExp++;
-
-                }else {
-                    expansionUpdateWrapper.eq("user_id",sysUser.getId());
-                    sysUserExpansionMapper.update(sysUserExpansion,expansionUpdateWrapper);
-                    updateTimeExp++;
-                }
-            }else {
-                UpdateWrapper<SysUser> userUpdateWrapper = new UpdateWrapper<>();
-                userUpdateWrapper.eq("username",fund.getUserCode());
-                System.out.println("更新账号 = " + fund.getUserCode());
-                updateTime++;
-                sysUser.setGender(fund.getSex() == 1 ?0:1);
-                sysUser.setPassword(new Sha256Hash("1", sysUser.getUsername()).toHex());
-                sysUser.setRealname(fund.getUserName());
-                sysUser.setCreatedBy(1L);
-                sysUser.setCreatedTime(Convert.convert(LocalDateTime.class,fund.getMakeTime()));
-                sysUser.setDeleted(fund.getFlagDelete());
-                sysUser.setRevision(1);
-                sysUser.setUpdatedBy(1L);
-                sysUser.setUpdatedTime(fund.getModifyTime()==null?Convert.convert(LocalDateTime.class,fund.getMakeTime()):Convert.convert(LocalDateTime.class,fund.getModifyTime()));
-                sysUserMapper.update(sysUser,userUpdateWrapper);
-
-                long userId = sysUser.getId();
-                boolean insertExp = true;
-                for(SysUserExpansion userExpansion : allUserExpansions){
-                    if(userExpansion.getUserId() == userId){
-                        insertExp = false;
-                        break;
-                    }
-                }
-                sysUserExpansion.setUserId(sysUser.getId());
-                //此值乱码，需要手动添加
-                //sysUserExpansion.setProvince(trade.getNameProvince());
-                sysUserExpansion.setEmail(fund.getUserEmail());
-                sysUserExpansion.setAddress(fund.getUserAddress());
-                sysUserExpansion.setBirthday(fund.getBirthday());
-                sysUserExpansion.setMobile(fund.getUserMobile());
-                sysUserExpansion.setQq(fund.getQq());
-                sysUserExpansion.setWechat(fund.getWeixin());
-                if(insertExp){
-                    //更新扩展
-                    sysUserExpansionMapper.insert(sysUserExpansion);
-                    insertTimeExp++;
-
-                }else {
-                    expansionUpdateWrapper.eq("user_id",sysUser.getId());
-                    sysUserExpansionMapper.update(sysUserExpansion,expansionUpdateWrapper);
-                    updateTimeExp++;
-                }
-
-            }
-        }
-
 
         System.out.println("用户表：一共增加了"+insertTime+"条数据,更新了条"+updateTime+"数据");
-        System.out.println("用户扩展表：一共增加了"+insertTimeExp+"条数据,更新了条"+updateTimeExp+"数据");
         long end = System.currentTimeMillis();
-        System.out.println("初始化sys_user用时 ： " + (end - start) +"毫秒");
-    }
+        System.out.println("初始化sys_company用时 ： " + (end - start) +"毫秒");
     }
     @Test
     void initSysUser(){

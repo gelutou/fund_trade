@@ -18,6 +18,6 @@ import java.util.List;
 @DS("fund")
 public interface TCompanyMapper extends BaseMapper<TCompany> {
 
-    @Select("SELECT * FROM t_company")
+    @Select("SELECT * FROM t_company GROUP BY comp_code")
     List<TCompany> getAllComs();
 }
