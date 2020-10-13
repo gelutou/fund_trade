@@ -1,9 +1,11 @@
 package com.zw.ft.modules.sys.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zw.ft.modules.sys.entity.SysCompany;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -33,5 +35,5 @@ public interface SysCompanyService extends IService<SysCompany> {
      * @Author: Oliver
      * @Date: 2020/9/23 16:00
      */
-    /*List<SysCompany> getCompanyByWrapper(QueryWrapper<SysCompany> sysCompanyQueryWrapper);*/
+    Page<SysCompany> getComPage(Map<String,Object> params);
 }
