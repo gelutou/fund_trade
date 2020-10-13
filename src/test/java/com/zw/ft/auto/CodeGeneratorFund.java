@@ -21,7 +21,7 @@ public class CodeGeneratorFund {
 
     public static void main(String[] args) {
         //设置要映射的表名
-        String setInclude = "sys_user";
+        String setInclude = "t_company";
 
         AutoGenerator autoGenerator = new AutoGenerator();
         GlobalConfig globalConfig = new GlobalConfig();

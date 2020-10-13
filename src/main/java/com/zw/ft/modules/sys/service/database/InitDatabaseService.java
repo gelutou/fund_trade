@@ -1,4 +1,4 @@
-package com.zw.ft.modules.sys.service;
+package com.zw.ft.modules.sys.service.database;
 
 import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;

@@ -1,4 +1,4 @@
-POST http://localhost:8088/init_database
+POST http://localhost:8088/ft/init_database
 Content-Type: application/json
 
 {}
