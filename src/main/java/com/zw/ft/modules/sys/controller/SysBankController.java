@@ -32,7 +32,7 @@ public class SysBankController {
  */
     @PostMapping("/banckall")
     public R Banckall(@RequestBody Map<String,Object> params){
-       return R.page(sysBankService.getBank(params));
+        return R.page(sysBankService.getBank(params));
     }
 
 }

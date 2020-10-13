@@ -46,13 +46,13 @@ public class SysDepartmentController {
  * @Date: 2020/9/27
  */
     @PostMapping("/addDept")
-    public R deparTementAddto(@RequestBody SysDepartment sysDepartment){
+    public R deparTementAddto(@RequestBody SysDepartment sysDepartment,ModelConfigurationController modelConfigurationController){
 
         if (sysDepartment != null && sysDepartment.getParentId() < 2){
            sysDepartmentService.deptAddto(sysDepartment);
             return R.ok("添加成功");
         }else {
-            return R.error("不能添加三级目录");
+            return modelConfigurationController.promptInformation("dept_tips_menucannotcreate");
         }
     }
 

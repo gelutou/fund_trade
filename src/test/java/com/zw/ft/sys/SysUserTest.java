@@ -110,4 +110,22 @@ public class SysUserTest {
             sysUserTokenService.updateById(userToken1);
         }
     }
+
+    @Test
+    void updateUserToken(){
+        SysUserToken updateToke = new SysUserToken();
+        updateToke.setId(1L);
+        updateToke.setUserId(1L);
+        updateToke.setToken("116296cba7e81d83accffaeeab3febcd");
+        sysUserTokenService.updateById(updateToke);
+    }
+
+    @Test
+    void getOneUserToken(){
+        //将token存进数据库
+        QueryWrapper<SysUserToken> tokenQueryWrapper = new QueryWrapper<>();
+        tokenQueryWrapper.eq("user_id",1L);
+        SysUserToken userToken = sysUserTokenService.getOne(tokenQueryWrapper);
+        System.out.println("userToken = " + userToken);
+    }
 }
