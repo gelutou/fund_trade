@@ -1,439 +1,63 @@
 {
   "modules": [
     {
-      "name": "system",
-      "chnname": "系统",
+      "name": "系统-人员",
+      "chnname": "",
       "entities": [
         {
-          "title": "sys_user",
+          "title": "sys_user_department",
           "fields": [
             {
               "name": "ID",
               "type": "Integer",
               "remark": "",
               "chnname": "主键ID",
+              "autoIncrement": true,
               "pk": true,
-              "notNull": true,
-              "autoIncrement": true
-            },
-            {
-              "name": "username",
-              "type": "DefaultString",
-              "remark": "",
-              "chnname": "用户名",
               "notNull": true
             },
             {
-              "name": "password",
-              "type": "ShortString",
+              "name": "REVISION",
+              "type": "Integer",
               "remark": "",
-              "chnname": "密码",
+              "chnname": "乐观锁",
               "notNull": true
             },
             {
-              "name": "realname",
-              "type": "DefaultString",
+              "name": "CREATED_BY",
+              "type": "IdOrKey",
               "remark": "",
-              "chnname": "姓名"
+              "chnname": "创建人",
+              "notNull": true
             },
             {
-              "name": "gender",
+              "name": "CREATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            },
+            {
+              "name": "UPDATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "更新人",
+              "notNull": true
+            },
+            {
+              "name": "UPDATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新时间",
+              "notNull": true
+            },
+            {
+              "name": "DELETED",
               "type": "YesNo",
-              "remark": "",
-              "chnname": "性别",
+              "remark": "0正常1删除",
+              "chnname": "逻辑删除",
               "defaultValue": "0",
               "notNull": true
-            },
-            {
-              "name": "STATUS",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "状态（逻辑删除）",
-              "defaultValue": "0",
-              "notNull": true
-            },
-            {
-              "name": "REVISION",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "乐观锁",
-              "defaultValue": "1",
-              "notNull": true
-            },
-            {
-              "name": "CREATED_BY",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "创建人",
-              "notNull": true
-            },
-            {
-              "name": "CREATED_TIME",
-              "type": "DateTime",
-              "remark": "",
-              "chnname": "创建时间",
-              "notNull": true
-            },
-            {
-              "name": "UPDATED_BY",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "更新人",
-              "notNull": true
-            },
-            {
-              "name": "UPDATED_TIME",
-              "type": "DateTime",
-              "remark": "",
-              "chnname": "更新时间",
-              "notNull": true
-            }
-          ],
-          "indexs": [],
-          "headers": [
-            {
-              "fieldName": "chnname",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "name",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "type",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "dataType",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "remark",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "pk",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "notNull",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "autoIncrement",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "defaultValue",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "relationNoShow",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "uiHint",
-              "relationNoShow": true
-            }
-          ],
-          "chnname": "系统用户基本信息表",
-          "remark": "系统用户基本信息表"
-        },
-        {
-          "title": "sys_user_expansion",
-          "fields": [
-            {
-              "name": "ID",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "主键ID",
-              "pk": true,
-              "notNull": true,
-              "autoIncrement": true
-            },
-            {
-              "name": "user_id",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "用户主键ID",
-              "notNull": true
-            },
-            {
-              "name": "mobile",
-              "type": "DefaultString",
-              "remark": "",
-              "chnname": "电话"
-            },
-            {
-              "name": "office_phone",
-              "type": "DefaultString",
-              "remark": "",
-              "chnname": "办公电话号码"
-            },
-            {
-              "name": "email",
-              "type": "DefaultString",
-              "remark": "",
-              "chnname": "邮箱地址"
-            },
-            {
-              "name": "birthday",
-              "type": "Date",
-              "remark": "",
-              "chnname": "生日"
-            },
-            {
-              "name": "province",
-              "type": "DefaultString",
-              "remark": "",
-              "chnname": "所属省"
-            },
-            {
-              "name": "city",
-              "type": "DefaultString",
-              "remark": "",
-              "chnname": "所属城市"
-            },
-            {
-              "name": "address",
-              "type": "DefaultString",
-              "remark": "",
-              "chnname": "地址"
-            },
-            {
-              "name": "wechat",
-              "type": "DefaultString",
-              "remark": "",
-              "chnname": "微信号"
-            },
-            {
-              "name": "qq",
-              "type": "DefaultString",
-              "remark": "",
-              "chnname": "qq号"
-            },
-            {
-              "name": "STATUS",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "状态（逻辑删除）",
-              "notNull": true
-            },
-            {
-              "name": "REVISION",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "乐观锁",
-              "notNull": true
-            },
-            {
-              "name": "CREATED_BY",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "创建人",
-              "notNull": true
-            },
-            {
-              "name": "CREATED_TIME",
-              "type": "DateTime",
-              "remark": "",
-              "chnname": "创建时间",
-              "notNull": true
-            },
-            {
-              "name": "UPDATED_BY",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "更新人",
-              "notNull": true
-            },
-            {
-              "name": "UPDATED_TIME",
-              "type": "DateTime",
-              "remark": "",
-              "chnname": "更新时间",
-              "notNull": true
-            }
-          ],
-          "indexs": [],
-          "headers": [
-            {
-              "fieldName": "chnname",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "name",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "type",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "dataType",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "remark",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "pk",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "notNull",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "autoIncrement",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "defaultValue",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "relationNoShow",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "uiHint",
-              "relationNoShow": true
-            }
-          ],
-          "chnname": "系统用户扩展信息表",
-          "remark": "系统用户扩展信息表"
-        },
-        {
-          "title": "sys_role",
-          "fields": [
-            {
-              "name": "ID",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "主键ID",
-              "pk": true,
-              "notNull": true,
-              "autoIncrement": true
-            },
-            {
-              "name": "role_code",
-              "type": "DefaultString",
-              "remark": "",
-              "chnname": "角色编号",
-              "notNull": true
-            },
-            {
-              "name": "role_name",
-              "type": "DefaultString",
-              "remark": "",
-              "chnname": "角色名",
-              "notNull": true
-            },
-            {
-              "name": "STATUS",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "状态（逻辑删除）",
-              "notNull": true
-            },
-            {
-              "name": "REVISION",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "乐观锁",
-              "notNull": true
-            },
-            {
-              "name": "CREATED_BY",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "创建人",
-              "notNull": true
-            },
-            {
-              "name": "CREATED_TIME",
-              "type": "DateTime",
-              "remark": "",
-              "chnname": "创建时间",
-              "notNull": true
-            },
-            {
-              "name": "UPDATED_BY",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "更新人",
-              "notNull": true
-            },
-            {
-              "name": "UPDATED_TIME",
-              "type": "DateTime",
-              "remark": "",
-              "chnname": "更新时间",
-              "notNull": true
-            }
-          ],
-          "indexs": [],
-          "headers": [
-            {
-              "fieldName": "chnname",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "name",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "type",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "dataType",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "remark",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "pk",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "notNull",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "autoIncrement",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "defaultValue",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "relationNoShow",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "uiHint",
-              "relationNoShow": true
-            }
-          ],
-          "chnname": "系统角色表"
-        },
-        {
-          "title": "sys_user_role",
-          "fields": [
-            {
-              "name": "ID",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "主键ID",
-              "pk": true,
-              "notNull": true,
-              "autoIncrement": true
             },
             {
               "name": "user_id",
@@ -443,52 +67,10 @@
               "notNull": true
             },
             {
-              "name": "role_id",
+              "name": "dept_id",
               "type": "Integer",
               "remark": "",
-              "chnname": "角色ID",
-              "notNull": true
-            },
-            {
-              "name": "STATUS",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "状态（逻辑删除）",
-              "notNull": true
-            },
-            {
-              "name": "REVISION",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "乐观锁",
-              "notNull": true
-            },
-            {
-              "name": "CREATED_BY",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "创建人",
-              "notNull": true
-            },
-            {
-              "name": "CREATED_TIME",
-              "type": "DateTime",
-              "remark": "",
-              "chnname": "创建时间",
-              "notNull": true
-            },
-            {
-              "name": "UPDATED_BY",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "更新人",
-              "notNull": true
-            },
-            {
-              "name": "UPDATED_TIME",
-              "type": "DateTime",
-              "remark": "",
-              "chnname": "更新时间",
+              "chnname": "部门ID",
               "notNull": true
             }
           ],
@@ -539,265 +121,11 @@
               "relationNoShow": true
             }
           ],
-          "chnname": "用户角色关系表",
-          "remark": "用户角色关系表"
-        },
-        {
-          "title": "sys_permission",
-          "fields": [
-            {
-              "name": "ID",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "主键ID",
-              "pk": true,
-              "notNull": true,
-              "autoIncrement": true
-            },
-            {
-              "name": "STATUS",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "状态（逻辑删除）",
-              "notNull": true
-            },
-            {
-              "name": "REVISION",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "乐观锁",
-              "notNull": true
-            },
-            {
-              "name": "CREATED_BY",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "创建人",
-              "notNull": true
-            },
-            {
-              "name": "CREATED_TIME",
-              "type": "DateTime",
-              "remark": "",
-              "chnname": "创建时间",
-              "notNull": true
-            },
-            {
-              "name": "UPDATED_BY",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "更新人",
-              "notNull": true
-            },
-            {
-              "name": "UPDATED_TIME",
-              "type": "DateTime",
-              "remark": "",
-              "chnname": "更新时间",
-              "notNull": true
-            }
-          ],
-          "indexs": [],
-          "headers": [
-            {
-              "fieldName": "chnname",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "name",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "type",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "dataType",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "remark",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "pk",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "notNull",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "autoIncrement",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "defaultValue",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "relationNoShow",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "uiHint",
-              "relationNoShow": true
-            }
-          ],
-          "chnname": "系统权限表",
-          "remark": "系统权限表"
-        },
-        {
-          "title": "sys_department",
-          "fields": [
-            {
-              "name": "ID",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "主键ID",
-              "pk": true,
-              "notNull": true,
-              "autoIncrement": true
-            },
-            {
-              "name": "com_id",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "所属公司",
-              "pk": true,
-              "notNull": true
-            },
-            {
-              "name": "parent_id",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "父级ID"
-            },
-            {
-              "name": "dept_name",
-              "type": "DefaultString",
-              "remark": "",
-              "chnname": "部门名称",
-              "notNull": true
-            },
-            {
-              "name": "leader",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "部门负责人"
-            },
-            {
-              "name": "STATUS",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "状态（逻辑删除）",
-              "notNull": true
-            },
-            {
-              "name": "REVISION",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "乐观锁",
-              "notNull": true
-            },
-            {
-              "name": "CREATED_BY",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "创建人",
-              "notNull": true
-            },
-            {
-              "name": "CREATED_TIME",
-              "type": "DateTime",
-              "remark": "",
-              "chnname": "创建时间",
-              "notNull": true
-            },
-            {
-              "name": "UPDATED_BY",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "更新人",
-              "notNull": true
-            },
-            {
-              "name": "UPDATED_TIME",
-              "type": "DateTime",
-              "remark": "",
-              "chnname": "更新时间",
-              "notNull": true
-            }
-          ],
-          "indexs": [],
-          "headers": [
-            {
-              "fieldName": "chnname",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "name",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "type",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "dataType",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "remark",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "pk",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "notNull",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "autoIncrement",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "defaultValue",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "relationNoShow",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "uiHint",
-              "relationNoShow": true
-            }
-          ],
-          "chnname": "系统部门表"
+          "chnname": "用户部门关系表"
         }
       ],
       "graphCanvas": {
-        "nodes": [
-          {
-            "shape": "table",
-            "title": "sys_user",
-            "moduleName": false,
-            "x": 170,
-            "y": 180,
-            "id": "ad684824"
-          },
-          {
-            "shape": "table",
-            "title": "sys_user_expansion",
-            "moduleName": false,
-            "x": 540,
-            "y": 200,
-            "id": "add8e894"
-          }
-        ],
+        "nodes": [],
         "edges": []
       },
       "associations": []
@@ -1281,22 +609,9 @@
         "type": "Integer",
         "remark": "",
         "chnname": "主键ID",
+        "autoIncrement": true,
         "pk": true,
-        "notNull": true,
-        "autoIncrement": true
-      },
-      {
-        "name": "STATUS",
-        "type": "Integer",
-        "remark": "",
-        "chnname": "状态",
         "notNull": true
-      },
-      {
-        "name": "DELETED",
-        "type": "YesNo",
-        "remark": "0正常1删除",
-        "chnname": "逻辑删除"
       },
       {
         "name": "REVISION",
@@ -1307,7 +622,7 @@
       },
       {
         "name": "CREATED_BY",
-        "type": "Integer",
+        "type": "IdOrKey",
         "remark": "",
         "chnname": "创建人",
         "notNull": true
@@ -1321,7 +636,7 @@
       },
       {
         "name": "UPDATED_BY",
-        "type": "Integer",
+        "type": "IdOrKey",
         "remark": "",
         "chnname": "更新人",
         "notNull": true
@@ -1331,6 +646,14 @@
         "type": "DateTime",
         "remark": "",
         "chnname": "更新时间",
+        "notNull": true
+      },
+      {
+        "name": "DELETED",
+        "type": "YesNo",
+        "remark": "0正常1删除",
+        "chnname": "逻辑删除",
+        "defaultValue": "0",
         "notNull": true
       }
     ],

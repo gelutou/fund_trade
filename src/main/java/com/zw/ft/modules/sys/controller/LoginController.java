@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zw.ft.common.base.BaseController;
 import com.zw.ft.common.base.Constant;
 import com.zw.ft.common.utils.R;
-import com.zw.ft.common.utils.ShiroUtils;
 import com.zw.ft.modules.sys.entity.SysUser;
 import com.zw.ft.modules.sys.entity.SysUserToken;
 import com.zw.ft.modules.sys.oauth2.OAuth2Token;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import javax.annotation.Resource;
 
 /**
