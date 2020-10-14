@@ -37,4 +37,7 @@ public interface SysDepartmentMapper extends BaseMapper<SysDepartment> {
     @Update("UPDATE sys_department SET dept_name=#{deptName}, parent_id=#{parentId} WHERE id=#{id}")
     int update(SysDepartment sysDepartment);
 
+    @Select("SELECT * FROM sys_department" )
+    List<SysDepartment> getAllDepts();
+
 }

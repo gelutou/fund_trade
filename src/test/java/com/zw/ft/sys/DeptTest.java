@@ -104,4 +104,5 @@ public class DeptTest {
         int insert = sysDepartmentMapper.insert(sysDepartment);
         System.out.println("insert = " + insert);
     }
+
 }

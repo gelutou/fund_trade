@@ -63,7 +63,6 @@ public class BaseEntity implements Serializable {
     /**
      *@description: 逻辑删除
      */
-    @TableLogic
     private Integer deleted;
 
     @Override
