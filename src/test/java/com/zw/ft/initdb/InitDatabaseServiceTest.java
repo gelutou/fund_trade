@@ -421,7 +421,6 @@ public class InitDatabaseServiceTest {
             }
         }
 
-
         System.out.println("用户表：一共增加了"+insertTime+"条数据,更新了条"+updateTime+"数据");
         System.out.println("用户扩展表：一共增加了"+insertTimeExp+"条数据,更新了条"+updateTimeExp+"数据");
         long end = System.currentTimeMillis();

@@ -8,6 +8,7 @@ import com.zw.ft.modules.sys.service.SysBankService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 /**
  * <p>
@@ -24,7 +25,16 @@ public class SysBankMapperImpl extends ServiceImpl<SysBankMapper, SysBank> imple
     SysBankMapper sysBankMapper;
 
     @Override
-    public Page<SysBank> getBank(Page<SysBank> page) {
+    public Page<SysBank> getBank(Map<String,Object> params) {
+        String current = params.get("current") == null?"":params.get("current").toString();
+        String size = params.get("size") == null?"":params.get("size").toString();
+        Page<SysBank> page = new Page<>();
+        if (!"".equals(current)){
+            page.setCurrent(Long.parseLong(current));
+        }
+        if (!"".equals(size)){
+            page.setSize(Long.parseLong(size));
+        }
         return sysBankMapper.querySysBankPageByComId(page);
     }
 

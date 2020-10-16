@@ -36,4 +36,12 @@ public interface SysCompanyMapper extends BaseMapper<SysCompany> {
 
     @Select("SELECT * FROM sys_company")
     List<SysCompany> getAllComs();
+
+    /**
+     * @Author savior
+     * @Description 根据公司id查询出公司名字
+     * @Date: 2020/9/23
+     */
+    @Select("SELECT com_name FROM sys_company sc LEFT JOIN sys_department sd ON sd.com_id = sc.id  WHERE sd.com_id = #{comId}" )
+    List<SysCompany> getCompanyNameBesomId(@Param("comId") String comId);
 }

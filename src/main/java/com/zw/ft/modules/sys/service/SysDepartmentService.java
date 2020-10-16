@@ -1,7 +1,7 @@
 package com.zw.ft.modules.sys.service;
 
-import com.alibaba.fastjson.JSONArray;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.modules.sys.entity.SysDepartment;
 
 import java.util.List;
@@ -21,8 +21,9 @@ public interface SysDepartmentService extends IService<SysDepartment> {
        * @Author savior
        * @Description 根据树节点主节点公司ID查询部门所有信息
        * @Date: 2020/9/24
+       * @return
        */
-      JSONArray getMenu( Map<String,Object> params);
+      List<? extends BaseEntity> getMenu(Map<String,Object> params);
 
       List<SysDepartment> getTree(List<SysDepartment> allDepts, long fatherId);
 
@@ -30,16 +31,23 @@ public interface SysDepartmentService extends IService<SysDepartment> {
        * @Author savior
        * @Description 添加部门信息
        * @Date: 2020/9/24
-       * @return
        */
-      Integer DeptAddto(SysDepartment sysDepartment);
+       Integer deptAddto(SysDepartment sysDepartment);
+
 
       /**
        * @Author savior
        * @Description 根据id逻辑删除部门
        * @Date: 2020/9/24
        */
-      int DeleteDept(String id);
+       int deleteDept(String id);
 
-      public int UpdaDept(SysDepartment sysDepartment);
+/**
+ * @Author savior
+ * @Description 根据id修改部门
+ * @Date: 2020/9/29
+ */
+       int updaDept(SysDepartment sysDepartment);
+
+
 }

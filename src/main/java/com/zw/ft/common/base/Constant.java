@@ -24,7 +24,7 @@ public class Constant {
     public static final long AN_HOUR = 3600;
 
     /**
-     *@description: 一天
+     *@descrip
      */
     public static final long AN_DAY = 43200;
 

@@ -55,7 +55,9 @@ public class LoginController extends BaseController {
         if(one == null){
             return R.error("无此用户");
             //判断密码是否相等
-        }else if (new Sha256Hash(password, username).toHex().equals(one.getPassword())){
+        }else if (new Sha256Hash(password, username).toHex(
+
+        ).equals(one.getPassword())){
             //判断token是否过期
             String token = redisService.get(username);
             String newToken;

@@ -1,3 +1,9 @@
+POST http://localhost:8088/ft/sys-department/addDept
+Content-Type: application/json
+
+{"comId": "1","deptname": "11111","parentId": "2"}
+
+###
 POST http://localhost:8088/ft/sys/testId
 Content-Type: application/json
 
@@ -6,7 +12,11 @@ Content-Type: application/json
 ###
 POST http://localhost:8088/ft/sys/logout
 Content-Type: application/json
+<<<<<<< HEAD
+token:5531b55s465851f730f3f4983cebe998d
+=======
 token:46f0ecfed2d02980459502cbb26f5b2d
+
 
 ###
 POST http://localhost:8088/ft/sys/login/admin/1

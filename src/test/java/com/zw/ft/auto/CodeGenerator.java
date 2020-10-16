@@ -86,7 +86,6 @@ public class CodeGenerator {
         tableField.add(gmtCreate);
         tableField.add(gmtModified);
         strategy.setTableFillList(tableField);
-
         //乐观锁
         strategy.setVersionFieldName("version");
         //restful 格式
@@ -95,6 +94,5 @@ public class CodeGenerator {
         strategy.setControllerMappingHyphenStyle(true);
         autoGenerator.setStrategy(strategy);
         autoGenerator.execute();
-
     }
 }
