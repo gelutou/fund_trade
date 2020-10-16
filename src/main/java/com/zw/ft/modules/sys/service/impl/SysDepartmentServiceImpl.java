@@ -1,11 +1,9 @@
 package com.zw.ft.modules.sys.service.impl;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zw.ft.modules.sys.entity.SysCompany;
+import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.modules.sys.entity.SysDepartment;
+import com.zw.ft.modules.sys.repository.SysCompanyMapper;
 import com.zw.ft.modules.sys.repository.SysDepartmentMapper;
 import com.zw.ft.modules.sys.service.SysDepartmentService;
 import org.springframework.stereotype.Service;
@@ -29,18 +27,33 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
     @Resource
     SysDepartmentMapper sysDepartmentMapper;
 
+    @Resource
+    SysCompanyMapper sysCompanyMapper;
+
 /**
  * @Author savior
  * @Description 根据树节点主节点公司ID,获取部门档案树信息 转换为json格式
  * @Date: 2020/9/24
+ * @return
  */
-    @Override
+@Override
+    public List<? extends BaseEntity> getMenu(Map<String,Object> params) {
+        String comId = params.get("comId").toString();
+        String parentId = params.get("parentId").toString();
+        String deptLevel = params.get("deptLevel").toString();
+        if("".equals(parentId)  && "".equals(deptLevel)){
+                return sysDepartmentMapper.getSysdept(parentId,deptLevel);
+        }else {
+            return sysCompanyMapper.getCompanyNameBesomId(comId);
+        }
+    }
+    /*@Override
     public JSONArray getMenu(Map<String,Object> params) {
         String comId = params.get("comId").toString();
         QueryWrapper<SysDepartment> departmentQueryWrapper = new QueryWrapper<>();
         departmentQueryWrapper.eq("com_id",comId);
         List<SysDepartment> sysDepartments = sysDepartmentMapper.selectList(departmentQueryWrapper);
-        List<SysCompany> treeTwo = sysDepartmentMapper.getCompanyNameBycomId(comId);
+        List<SysCompany> treeTwo = sysDepartmentMapper.getCompanyNameBesomId(comId);
         JSONArray result = new JSONArray();
         for (SysDepartment dept : sysDepartments) {
             long parentId1 = dept.getParentId();
@@ -73,10 +86,9 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
                 firstObj.put("children", childArray);
                 result.add(firstObj);
             }
-            System.out.println("result = " + result);
         }
         return result;
-    }
+    }*/
 
     @Override
     public List<SysDepartment> getTree(List<SysDepartment> allDepts, long fatherId){

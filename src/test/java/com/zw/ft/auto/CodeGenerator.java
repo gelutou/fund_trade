@@ -94,6 +94,5 @@ public class CodeGenerator {
         strategy.setControllerMappingHyphenStyle(true);
         autoGenerator.setStrategy(strategy);
         autoGenerator.execute();
-
     }
 }

@@ -1,13 +1,14 @@
 package com.zw.ft.modules.sys.controller;
 
 
-import com.alibaba.fastjson.JSONArray;
+import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysDepartment;
 import com.zw.ft.modules.sys.service.SysDepartmentService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,9 +33,9 @@ public class SysDepartmentController {
      */
     @PostMapping("/getDeptTree")
     public R loadManagerLeftTreeJson(@RequestBody Map<String,Object> params) {
-        JSONArray as = sysDepartmentService.getMenu(params);
-        if (as != null) {
-            return R.data(as);
+        List<? extends BaseEntity> menu = sysDepartmentService.getMenu(params);
+        if (menu != null) {
+            return R.data(menu);
         } else {
             return R.error("获取部门失败");
         }
@@ -46,13 +47,14 @@ public class SysDepartmentController {
  * @Date: 2020/9/27
  */
     @PostMapping("/addDept")
-    public R deparTementAddto(@RequestBody SysDepartment sysDepartment,ModelConfigurationController modelConfigurationController){
+    public R deparTementAddto(@RequestBody SysDepartment sysDepartment){
 
-        if (sysDepartment != null && sysDepartment.getParentId() < 2){
+        if (sysDepartment != null){
            sysDepartmentService.deptAddto(sysDepartment);
             return R.ok("添加成功");
+
         }else {
-            return modelConfigurationController.promptInformation("dept_tips_menucannotcreate");
+            return R.error("");
         }
     }
 
