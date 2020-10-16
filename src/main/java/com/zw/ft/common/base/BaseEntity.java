@@ -91,9 +91,6 @@ public class BaseEntity implements Serializable {
         int result = 1;
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((revision == null) ? 0 : revision.hashCode());
-
-      //  result = prime * result + ((status == null) ? 0 : status.hashCode());
-
         result = prime * result + ((createdBy == null) ? 0 : createdBy.hashCode());
         result = prime * result + ((createdTime == null) ? 0 : createdTime.hashCode());
         result = prime * result + ((updatedBy == null) ? 0 : updatedBy.hashCode());
@@ -117,14 +114,6 @@ public class BaseEntity implements Serializable {
     public void setRevision(Integer revision) {
         this.revision = revision;
     }
-
-   /* public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }*/
 
     public Long getCreatedBy() {
         return createdBy;
@@ -171,7 +160,6 @@ public class BaseEntity implements Serializable {
         return "BaseEntity{" +
                 "id=" + id +
                 ", revision=" + revision +
-               // ", status=" + status +
                 ", createdBy=" + createdBy +
                 ", createdTime=" + createdTime +
                 ", updatedBy=" + updatedBy +

@@ -18,7 +18,7 @@ import java.util.List;
 @DS("trade")
 public interface SysCompanyTradeMapper extends BaseMapper<SysCompanyTrade> {
 
-    @Select("SELECT * FROM sys_company")
+    @Select("SELECT * FROM sys_company GROUP BY comp_code")
     List<SysCompanyTrade> getAllComs();
 
 }

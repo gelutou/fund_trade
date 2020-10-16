@@ -23,6 +23,7 @@ public class InitDataBaseController {
     public R init() {
         try {
             init.initSysUser();
+            init.initSysCompany();
             return R.ok();
         }catch (Exception e){
             return R.error(e.getMessage());

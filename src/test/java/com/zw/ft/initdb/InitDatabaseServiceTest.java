@@ -2,14 +2,17 @@ package com.zw.ft.initdb;
 
 import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.zw.ft.modules.fund.entity.TCompany;
 import com.zw.ft.modules.fund.entity.TUser;
 import com.zw.ft.modules.fund.repository.TCompanyMapper;
 import com.zw.ft.modules.fund.repository.TUserMapper;
+import com.zw.ft.modules.sys.entity.SysCompany;
 import com.zw.ft.modules.sys.entity.SysUser;
 import com.zw.ft.modules.sys.entity.SysUserExpansion;
 import com.zw.ft.modules.sys.repository.SysCompanyMapper;
 import com.zw.ft.modules.sys.repository.SysUserExpansionMapper;
 import com.zw.ft.modules.sys.repository.SysUserMapper;
+import com.zw.ft.modules.trade.entity.SysCompanyTrade;
 import com.zw.ft.modules.trade.entity.SysUserTrade;
 import com.zw.ft.modules.trade.repository.SysCompanyTradeMapper;
 import com.zw.ft.modules.trade.repository.SysUserTradeMapper;
@@ -47,6 +50,132 @@ public class InitDatabaseServiceTest {
     @Resource
     TCompanyMapper tCompanyMapper;
 
+    /*select b.*
+                from (select user_code
+                        from sys_user
+                        group by user_code
+                        having count(*) >= 2) as a
+                        left join sys_user b
+                        on a.user_code = b.user_code
+                        order by user_code;
+                        */
+
+    @Test
+    void initSysCompany(){
+        long start = System.currentTimeMillis();
+        List<SysCompany> allComs = sysCompanyMapper.getAllComs();
+        List<SysCompanyTrade> allComsTrade = sysCompanyTradeMapper.getAllComs();
+        List<TCompany> allComsFund = tCompanyMapper.getAllComs();
+
+        int insertTime = 0;
+        int updateTime = 0;
+
+        for(SysCompanyTrade companyTrade : allComsTrade){
+            boolean insert = true;
+            for(SysCompany com : allComs){
+                if(com.getComCode().equals(companyTrade.getCompCode())){
+                    insert = false;
+                    break;
+                }
+            }
+            SysCompany sysCompany = new SysCompany();
+            if(insert){
+                sysCompany.setComCode(companyTrade.getCompCode());
+                System.out.println("添加公司代码 = " + companyTrade.getCompCode());
+                sysCompany.setUpdatedBy(1L);
+                sysCompany.setCreatedBy(1L);
+                sysCompany.setAddress(companyTrade.getCompAddress());
+                sysCompany.setCity(companyTrade.getCompCity());
+                sysCompany.setComName(companyTrade.getCompName());
+                sysCompany.setContactUser(companyTrade.getContactName());
+                sysCompany.setMobile(companyTrade.getContactPhone());
+                sysCompany.setProvince(companyTrade.getCompProvince());
+                sysCompany.setDistrict(companyTrade.getCompDistrict());
+                sysCompany.setShortComName(companyTrade.getShortCompName());
+                sysCompany.setCreatedTime(Convert.convert(LocalDateTime.class,companyTrade.getMakeTime()));
+                sysCompany.setUpdatedTime(Convert.convert(LocalDateTime.class,companyTrade.getModifyTime()));
+                sysCompany.setDeleted(companyTrade.getFlagDelete());
+                sysCompany.setRevision(1);
+                sysCompanyMapper.insert(sysCompany);
+                insertTime++;
+            }else {
+                UpdateWrapper<SysCompany> companyUpdateWrapper = new UpdateWrapper<>();
+                companyUpdateWrapper.eq("com_code",companyTrade.getCompCode());
+                System.out.println("更新公司代码 = " + companyTrade.getCompCode());
+                sysCompany.setUpdatedBy(1L);
+                sysCompany.setCreatedBy(1L);
+                sysCompany.setAddress(companyTrade.getCompAddress());
+                sysCompany.setCity(companyTrade.getCompCity());
+                sysCompany.setComName(companyTrade.getCompName());
+                sysCompany.setContactUser(companyTrade.getContactName());
+                sysCompany.setMobile(companyTrade.getContactPhone());
+                sysCompany.setProvince(companyTrade.getCompProvince());
+                sysCompany.setDistrict(companyTrade.getCompDistrict());
+                sysCompany.setShortComName(companyTrade.getShortCompName());
+                sysCompany.setCreatedTime(Convert.convert(LocalDateTime.class,companyTrade.getMakeTime()));
+                sysCompany.setUpdatedTime(Convert.convert(LocalDateTime.class,companyTrade.getModifyTime()));
+                sysCompany.setDeleted(companyTrade.getFlagDelete());
+                sysCompany.setRevision(1);
+                sysCompanyMapper.update(sysCompany,companyUpdateWrapper);
+                updateTime++;
+            }
+        }
+        List<SysCompany> allComsTwo = sysCompanyMapper.getAllComs();
+        for(TCompany companyTrade : allComsFund){
+            boolean insert = true;
+            for(SysCompany com : allComsTwo){
+                if(com.getComCode().equals(companyTrade.getCompCode())){
+                    insert = false;
+                    break;
+                }
+            }
+            SysCompany sysCompany = new SysCompany();
+            if(insert){
+                sysCompany.setComCode(companyTrade.getCompCode());
+                System.out.println("添加公司代码 = " + companyTrade.getCompCode());
+                sysCompany.setUpdatedBy(1L);
+                sysCompany.setCreatedBy(1L);
+                sysCompany.setAddress(companyTrade.getCompAddress());
+                sysCompany.setCity(companyTrade.getCompCity());
+                sysCompany.setComName(companyTrade.getCompName());
+                sysCompany.setContactUser(companyTrade.getContactName());
+                sysCompany.setMobile(companyTrade.getContactPhone());
+                sysCompany.setProvince(companyTrade.getCompProvince());
+                sysCompany.setDistrict(companyTrade.getCompDistrict());
+                sysCompany.setShortComName(companyTrade.getShortCompName());
+                sysCompany.setCreatedTime(Convert.convert(LocalDateTime.class,companyTrade.getMakeTime()));
+                sysCompany.setUpdatedTime(Convert.convert(LocalDateTime.class,companyTrade.getModifyTime()));
+                sysCompany.setDeleted(companyTrade.getFlagDelete());
+                sysCompany.setRevision(1);
+                sysCompanyMapper.insert(sysCompany);
+                insertTime++;
+            }else {
+                UpdateWrapper<SysCompany> companyUpdateWrapper = new UpdateWrapper<>();
+                companyUpdateWrapper.eq("com_code",companyTrade.getCompCode());
+                System.out.println("添加公司代码 = " + companyTrade.getCompCode());
+                sysCompany.setUpdatedBy(1L);
+                sysCompany.setCreatedBy(1L);
+                sysCompany.setAddress(companyTrade.getCompAddress());
+                sysCompany.setCity(companyTrade.getCompCity());
+                sysCompany.setComName(companyTrade.getCompName());
+                sysCompany.setContactUser(companyTrade.getContactName());
+                sysCompany.setMobile(companyTrade.getContactPhone());
+                sysCompany.setProvince(companyTrade.getCompProvince());
+                sysCompany.setDistrict(companyTrade.getCompDistrict());
+                sysCompany.setShortComName(companyTrade.getShortCompName());
+                sysCompany.setCreatedTime(Convert.convert(LocalDateTime.class,companyTrade.getMakeTime()));
+                sysCompany.setUpdatedTime(Convert.convert(LocalDateTime.class,companyTrade.getModifyTime()));
+                sysCompany.setDeleted(companyTrade.getFlagDelete());
+                sysCompany.setRevision(1);
+                sysCompanyMapper.update(sysCompany,companyUpdateWrapper);
+                updateTime++;
+            }
+        }
+
+        System.out.println("用户表：一共增加了"+insertTime+"条数据,更新了条"+updateTime+"数据");
+        long end = System.currentTimeMillis();
+        System.out.println("初始化sys_company用时 ： " + (end - start) +"毫秒");
+    }
     @Test
     void initSysUser(){
         /*

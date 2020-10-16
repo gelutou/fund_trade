@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.common.base.BaseController;
 import com.zw.ft.common.base.Constant;
+import com.zw.ft.common.utils.FormatUtil;
 import com.zw.ft.common.utils.QueryUtil;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysCompany;
@@ -75,35 +76,7 @@ public class SysCompanyController extends BaseController {
      */
     @PostMapping(value = "/get_by_wrapper")
     public R getByWrapper(@RequestBody(required = false) Map<String,Object> params){
-
-        Page<SysCompany> page = new QueryUtil<SysCompany>(params).getPage();
-        QueryWrapper<SysCompany> queryWrapper = new QueryWrapper<>();
-        if(params.get("name") != null){
-            queryWrapper.like("com_name",params.get("name"));
-        }
-
-        if(params.get("shortName") != null){
-            queryWrapper.like("short_com_name",params.get("shortName"));
-        }
-
-        if(params.get("code") != null){
-            queryWrapper.like("com_code",params.get("code"));
-        }
-
-        if(params.get("startDateTime") != null){
-            queryWrapper.ge("created_time",params.get("startDateTime"));
-        }
-
-        if(params.get("endDateTime") != null){
-            queryWrapper.le("created_time",params.get("endDateTime"));
-        }
-
-        if(params.get("mobile") != null){
-            queryWrapper.like("mobile",params.get("mobile"));
-        }
-        queryWrapper.orderByAsc("updated_time");
-
-        return R.page(sysCompanyService.page(page, queryWrapper));
+        return R.page(sysCompanyService.getComPage(params));
     }
 }
 

@@ -36,7 +36,7 @@ public class SysCompany extends BaseEntity {
     /**
      *@description: 联系人
      */
-    private Integer contactUser;
+    private String contactUser;
 
     /**
      *@description: 所属省份
