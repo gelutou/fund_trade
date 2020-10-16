@@ -1,8 +1,6 @@
 package com.zw.ft.sys;
 
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.zw.ft.modules.sys.entity.SysDepartment;
-import com.zw.ft.modules.sys.repository.SysDepartmentMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
