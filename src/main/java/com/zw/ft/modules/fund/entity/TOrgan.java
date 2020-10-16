@@ -1,5 +1,7 @@
 package com.zw.ft.modules.fund.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.util.Date;
 import java.io.Serializable;
 
@@ -11,6 +13,7 @@ import java.io.Serializable;
  * @author Oliver
  * @since 2020-10-14
  */
+@TableName("t_organ")
 public class TOrgan implements Serializable {
 
     private static final long serialVersionUID = 1L;

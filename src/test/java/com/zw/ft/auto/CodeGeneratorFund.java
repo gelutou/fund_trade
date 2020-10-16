@@ -21,7 +21,7 @@ public class CodeGeneratorFund {
 
     public static void main(String[] args) {
         //设置要映射的表名
-        String setInclude = "t_organ";
+        String setInclude = "t_customer";
 
         AutoGenerator autoGenerator = new AutoGenerator();
         GlobalConfig globalConfig = new GlobalConfig();
@@ -70,7 +70,7 @@ public class CodeGeneratorFund {
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         //strategy.setSuperEntityClass(BaseEntity.class);
-        //strategy.setEntityLombokModel(true);
+        strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
         //逻辑删除
         //strategy.setLogicDeleteFieldName("deleted");

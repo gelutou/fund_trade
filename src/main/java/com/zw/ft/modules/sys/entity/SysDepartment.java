@@ -1,11 +1,10 @@
 package com.zw.ft.modules.sys.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.zw.ft.common.base.BaseEntity;
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.util.List;
 
 /**
  * <p>
@@ -13,41 +12,53 @@ import java.util.List;
  * </p>
  *
  * @author Oliver
- * @since 2020-09-20
+ * @since 2020-10-16
  */
 @EqualsAndHashCode(callSuper = true)
+@TableName(value = "sys_department")
 @Data
 public class SysDepartment extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     *@description: 公司ID
+     * 所属公司
      */
     private long comId;
+
     /**
-     *@description: 上级ID
+     * 父级ID
      */
     private long parentId;
 
     /**
-     *@description: 部门名称
+     * 部门名称
      */
+    @TableField("dept_name")
     private String deptName;
 
     /**
-     *@description: 领导
+     * 表示此部门是几级部门 1 = 一级部门
      */
-    private Integer leader;
+    private Integer deptLevel;
 
     /**
-     *@description: 下级部门
+     * 状态
      */
-    @TableField(exist = false)
-    private List<SysDepartment> childs;
+    @TableField("STATUS")
+    private Integer status;
+
+    /**
+     * 部门负责人
+     */
+    private String leader;
+
+    /**
+     * 旧的部门PKID，只用于合并数据，系统上线后删除
+     */
+    private String oldPkidWilldel;
 
     @TableField(exist = false)
     private SysCompany comName;
 
-    private Integer status;
 }

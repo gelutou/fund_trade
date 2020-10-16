@@ -1,5 +1,6 @@
 package com.zw.ft.modules.trade.repository;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.zw.ft.modules.trade.entity.SysOrgan;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
@@ -15,6 +16,7 @@ import java.util.List;
  * @author Oliver
  * @since 2020-10-14
  */
+@DS("trade")
 public interface SysOrganMapper extends BaseMapper<SysOrgan> {
 
     /*

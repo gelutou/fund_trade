@@ -25,7 +25,7 @@ public class CodeGenerator {
 
     public static void main(String[] args) {
         //设置要映射的表名
-        String setInclude = "model_configuration";
+        String setInclude = "sys_department";
 
         AutoGenerator autoGenerator = new AutoGenerator();
         GlobalConfig globalConfig = new GlobalConfig();
