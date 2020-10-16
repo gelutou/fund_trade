@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zw.ft.modules.sys.entity.SysBank;
 
+import java.util.Map;
+
 /**
  * <p>
  * 银行信息表 服务类
@@ -14,5 +16,5 @@ import com.zw.ft.modules.sys.entity.SysBank;
  */
 public interface SysBankService extends IService<SysBank> {
 
-    public Page<SysBank> getBank(Page<SysBank> page);
+     Page<SysBank> getBank(Map<String,Object> params);
 }
