@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zw.ft.common.base.BaseController;
 import com.zw.ft.common.base.Constant;
 import com.zw.ft.common.utils.R;
-import com.zw.ft.common.utils.ShiroUtils;
 import com.zw.ft.modules.sys.entity.SysUser;
 import com.zw.ft.modules.sys.entity.SysUserToken;
 import com.zw.ft.modules.sys.oauth2.OAuth2Token;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import javax.annotation.Resource;
 
 /**
@@ -55,7 +55,9 @@ public class LoginController extends BaseController {
         if(one == null){
             return R.error("无此用户");
             //判断密码是否相等
-        }else if (new Sha256Hash(password, username).toHex().equals(one.getPassword())){
+        }else if (new Sha256Hash(password, username).toHex(
+
+        ).equals(one.getPassword())){
             //判断token是否过期
             String token = redisService.get(username);
             String newToken;

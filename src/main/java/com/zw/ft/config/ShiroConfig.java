@@ -40,12 +40,7 @@ public class ShiroConfig {
 
         filterMap.put("/ft/sys/login/**", "anon");
         //filterMap.put("/**", "oauth2");
-
-
-        /*filterMap.put("/ft/sys/login/**", "anon");
-        filterMap.put("/**", "oauth2");*/
         //filterMap.put("/**", "anon");
-
 
         shiroFilter.setFilterChainDefinitionMap(filterMap);
 

@@ -1,9 +1,196 @@
-2020-10-13 08:56:09.657 [main] WARN  c.b.mybatisplus.core.injector.AbstractMethod - [com.zw.ft.modules.sys.repository.SysDepartmentMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
-2020-10-13 08:56:11.695 [main] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysUserTrade".
-2020-10-13 08:58:46.436 [main] WARN  c.b.mybatisplus.core.injector.AbstractMethod - [com.zw.ft.modules.sys.repository.SysDepartmentMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
-2020-10-13 08:58:48.551 [main] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysUserTrade".
-2020-10-13 09:07:41.066 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'initDataBase': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.zw.ft.modules.initdatabase.SysInit' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
-2020-10-13 09:12:45.078 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'initDataBaseController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.zw.ft.modules.sys.service.InitDatabaseService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
-2020-10-13 09:14:06.851 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'initDataBaseController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.zw.ft.modules.sys.service.InitDatabaseService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
-2020-10-13 09:17:32.391 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysUserTrade".
-2020-10-13 09:17:32.655 [restartedMain] WARN  c.b.mybatisplus.core.injector.AbstractMethod - [com.zw.ft.modules.sys.repository.SysDepartmentMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2020-10-14 15:34:18.940 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysUserTrade".
+2020-10-14 15:34:19.061 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysCompanyTrade".
+2020-10-14 15:34:19.366 [restartedMain] WARN  c.b.mybatisplus.core.injector.AbstractMethod - [com.zw.ft.modules.sys.repository.SysDepartmentMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2020-10-14 15:35:56.607 [http-nio-8088-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException]
+2020-10-14 15:38:21.239 [http-nio-8088-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException]
+2020-10-14 15:40:17.470 [http-nio-8088-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException]
+2020-10-14 15:41:06.666 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysUserTrade".
+2020-10-14 15:41:06.787 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysCompanyTrade".
+2020-10-14 15:41:07.134 [restartedMain] WARN  c.b.mybatisplus.core.injector.AbstractMethod - [com.zw.ft.modules.sys.repository.SysDepartmentMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2020-10-14 15:41:19.387 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysUserTrade".
+2020-10-14 15:41:19.488 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysCompanyTrade".
+2020-10-14 15:41:19.756 [restartedMain] WARN  c.b.mybatisplus.core.injector.AbstractMethod - [com.zw.ft.modules.sys.repository.SysDepartmentMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2020-10-14 15:43:23.456 [http-nio-8088-exec-4] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException]
+2020-10-14 15:44:32.372 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysUserTrade".
+2020-10-14 15:44:32.463 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysCompanyTrade".
+2020-10-14 15:44:32.723 [restartedMain] WARN  c.b.mybatisplus.core.injector.AbstractMethod - [com.zw.ft.modules.sys.repository.SysDepartmentMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2020-10-14 15:45:28.486 [http-nio-8088-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException]
+2020-10-14 15:45:52.743 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysUserTrade".
+2020-10-14 15:45:52.865 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysCompanyTrade".
+2020-10-14 15:45:53.118 [restartedMain] WARN  c.b.mybatisplus.core.injector.AbstractMethod - [com.zw.ft.modules.sys.repository.SysDepartmentMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2020-10-14 15:47:55.386 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysUserTrade".
+2020-10-14 15:47:55.542 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysCompanyTrade".
+2020-10-14 15:47:55.885 [restartedMain] WARN  c.b.mybatisplus.core.injector.AbstractMethod - [com.zw.ft.modules.sys.repository.SysDepartmentMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2020-10-14 15:49:05.356 [http-nio-8088-exec-4] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException]
+2020-10-14 15:49:31.869 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysUserTrade".
+2020-10-14 15:49:31.979 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysCompanyTrade".
+2020-10-14 15:49:32.282 [restartedMain] WARN  c.b.mybatisplus.core.injector.AbstractMethod - [com.zw.ft.modules.sys.repository.SysDepartmentMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2020-10-14 15:53:27.986 [http-nio-8088-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'fund_trade.sys_user_company' doesn't exist
+### The error may exist in com/zw/ft/modules/sys/repository/SysCompanyMapper.java (best guess)
+### The error may involve com.zw.ft.modules.sys.repository.SysCompanyMapper.getFuzzy-Inline
+### The error occurred while setting parameters
+### SQL: SELECT * FROM sys_company sc LEFT JOIN sys_user_company suc ON sc.ID = suc.com_id WHERE suc.user_id = (SELECT ID FROM sys_user WHERE username = ?) AND (sc.com_name LIKE CONCAT('%',?,'%') OR sc.com_code LIKE CONCAT('%',?,'%'))
+### Cause: java.sql.SQLSyntaxErrorException: Table 'fund_trade.sys_user_company' doesn't exist
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Table 'fund_trade.sys_user_company' doesn't exist]
+2020-10-14 15:54:11.930 [http-nio-8088-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLException: Field 'dept_name' doesn't have a default value
+### The error may exist in com/zw/ft/modules/sys/repository/SysDepartmentMapper.java (best guess)
+### The error may involve com.zw.ft.modules.sys.repository.SysDepartmentMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO sys_department  ( com_id, parent_id,    revision, created_by, created_time, updated_by, updated_time )  VALUES  ( ?, ?,    ?, ?, ?, ?, ? )
+### Cause: java.sql.SQLException: Field 'dept_name' doesn't have a default value
+; Field 'dept_name' doesn't have a default value; nested exception is java.sql.SQLException: Field 'dept_name' doesn't have a default value]
+2020-10-14 16:18:43.324 [http-nio-8088-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase - fundTrade - Failed to validate connection com.p6spy.engine.wrapper.ConnectionWrapper@5dd71f7c (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2020-10-14 16:18:43.326 [http-nio-8088-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase - fundTrade - Failed to validate connection com.p6spy.engine.wrapper.ConnectionWrapper@7772052c (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2020-10-14 16:18:43.326 [http-nio-8088-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase - fundTrade - Failed to validate connection com.p6spy.engine.wrapper.ConnectionWrapper@12bbd841 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2020-10-14 16:18:43.327 [http-nio-8088-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase - fundTrade - Failed to validate connection com.p6spy.engine.wrapper.ConnectionWrapper@30974d05 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2020-10-14 16:18:43.327 [http-nio-8088-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase - fundTrade - Failed to validate connection com.p6spy.engine.wrapper.ConnectionWrapper@56556c9 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2020-10-14 16:18:43.328 [http-nio-8088-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase - fundTrade - Failed to validate connection com.p6spy.engine.wrapper.ConnectionWrapper@62d9682c (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2020-10-14 16:18:43.328 [http-nio-8088-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase - fundTrade - Failed to validate connection com.p6spy.engine.wrapper.ConnectionWrapper@2eecdde6 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2020-10-14 16:18:43.329 [http-nio-8088-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase - fundTrade - Failed to validate connection com.p6spy.engine.wrapper.ConnectionWrapper@2499525b (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2020-10-14 16:18:43.329 [http-nio-8088-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase - fundTrade - Failed to validate connection com.p6spy.engine.wrapper.ConnectionWrapper@b659b1f (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2020-10-14 16:18:43.330 [http-nio-8088-exec-4] WARN  com.zaxxer.hikari.pool.PoolBase - fundTrade - Failed to validate connection com.p6spy.engine.wrapper.ConnectionWrapper@22d40a57 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2020-10-14 16:19:50.141 [http-nio-8088-exec-5] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException]
+2020-10-14 16:19:50.143 [fund housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - fund - Thread starvation or clock leap detected (housekeeper delta=1m18s932ms409µs400ns).
+2020-10-14 16:19:50.143 [trade housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - trade - Thread starvation or clock leap detected (housekeeper delta=1m19s40ms612µs900ns).
+2020-10-14 16:19:50.143 [fundTrade housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - fundTrade - Thread starvation or clock leap detected (housekeeper delta=1m19s432ms950µs600ns).
+2020-10-14 16:22:39.278 [http-nio-8088-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'fund_trade.sys_user_company' doesn't exist
+### The error may exist in com/zw/ft/modules/sys/repository/SysCompanyMapper.java (best guess)
+### The error may involve com.zw.ft.modules.sys.repository.SysCompanyMapper.getFuzzy-Inline
+### The error occurred while setting parameters
+### SQL: SELECT * FROM sys_company sc LEFT JOIN sys_user_company suc ON sc.ID = suc.com_id WHERE suc.user_id = (SELECT ID FROM sys_user WHERE username = ?) AND (sc.com_name LIKE CONCAT('%',?,'%') OR sc.com_code LIKE CONCAT('%',?,'%'))
+### Cause: java.sql.SQLSyntaxErrorException: Table 'fund_trade.sys_user_company' doesn't exist
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Table 'fund_trade.sys_user_company' doesn't exist]
+2020-10-14 16:22:49.424 [http-nio-8088-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'fund_trade.sys_user_company' doesn't exist
+### The error may exist in com/zw/ft/modules/sys/repository/SysCompanyMapper.java (best guess)
+### The error may involve com.zw.ft.modules.sys.repository.SysCompanyMapper.getFuzzy-Inline
+### The error occurred while setting parameters
+### SQL: SELECT * FROM sys_company sc LEFT JOIN sys_user_company suc ON sc.ID = suc.com_id WHERE suc.user_id = (SELECT ID FROM sys_user WHERE username = ?) AND (sc.com_name LIKE CONCAT('%',?,'%') OR sc.com_code LIKE CONCAT('%',?,'%'))
+### Cause: java.sql.SQLSyntaxErrorException: Table 'fund_trade.sys_user_company' doesn't exist
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Table 'fund_trade.sys_user_company' doesn't exist]
+2020-10-14 16:43:45.789 [http-nio-8088-exec-5] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLException: Field 'old_pkid_willdel' doesn't have a default value
+### The error may exist in com/zw/ft/modules/sys/repository/SysCompanyMapper.java (best guess)
+### The error may involve com.zw.ft.modules.sys.repository.SysCompanyMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO sys_company  ( com_code, com_name, short_com_name, contact_user,      mobile, revision, created_by, created_time, updated_by, updated_time )  VALUES  ( ?, ?, ?, ?,      ?, ?, ?, ?, ?, ? )
+### Cause: java.sql.SQLException: Field 'old_pkid_willdel' doesn't have a default value
+; Field 'old_pkid_willdel' doesn't have a default value; nested exception is java.sql.SQLException: Field 'old_pkid_willdel' doesn't have a default value]
+2020-10-14 16:44:51.521 [http-nio-8088-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'MP_OPTLOCK_VERSION_ORIGINAL' not found. Available parameters are [param1, et]]
+2020-10-14 16:48:24.838 [http-nio-8088-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase - fundTrade - Failed to validate connection com.p6spy.engine.wrapper.ConnectionWrapper@5fc6688d (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2020-10-14 16:48:24.843 [http-nio-8088-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase - fundTrade - Failed to validate connection com.p6spy.engine.wrapper.ConnectionWrapper@14b99745 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2020-10-14 16:48:24.846 [http-nio-8088-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase - fundTrade - Failed to validate connection com.p6spy.engine.wrapper.ConnectionWrapper@445dd327 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2020-10-14 16:48:24.848 [http-nio-8088-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase - fundTrade - Failed to validate connection com.p6spy.engine.wrapper.ConnectionWrapper@3f50c695 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2020-10-14 16:48:24.851 [http-nio-8088-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase - fundTrade - Failed to validate connection com.p6spy.engine.wrapper.ConnectionWrapper@7f115ab7 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2020-10-14 16:48:24.854 [http-nio-8088-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase - fundTrade - Failed to validate connection com.p6spy.engine.wrapper.ConnectionWrapper@27cae9af (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2020-10-14 16:48:24.874 [http-nio-8088-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLException: Field 'com_code' doesn't have a default value
+### The error may exist in com/zw/ft/modules/sys/repository/SysCompanyMapper.java (best guess)
+### The error may involve com.zw.ft.modules.sys.repository.SysCompanyMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO sys_company  ( revision, created_by, created_time, updated_by, updated_time )  VALUES  ( ?, ?, ?, ?, ? )
+### Cause: java.sql.SQLException: Field 'com_code' doesn't have a default value
+; Field 'com_code' doesn't have a default value; nested exception is java.sql.SQLException: Field 'com_code' doesn't have a default value]
+2020-10-14 16:48:48.021 [http-nio-8088-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLException: Field 'com_code' doesn't have a default value
+### The error may exist in com/zw/ft/modules/sys/repository/SysCompanyMapper.java (best guess)
+### The error may involve com.zw.ft.modules.sys.repository.SysCompanyMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO sys_company  ( revision, created_by, created_time, updated_by, updated_time )  VALUES  ( ?, ?, ?, ?, ? )
+### Cause: java.sql.SQLException: Field 'com_code' doesn't have a default value
+; Field 'com_code' doesn't have a default value; nested exception is java.sql.SQLException: Field 'com_code' doesn't have a default value]
+2020-10-14 16:49:15.059 [http-nio-8088-exec-4] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLException: Field 'com_code' doesn't have a default value
+### The error may exist in com/zw/ft/modules/sys/repository/SysCompanyMapper.java (best guess)
+### The error may involve com.zw.ft.modules.sys.repository.SysCompanyMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO sys_company  ( revision, created_by, created_time, updated_by, updated_time )  VALUES  ( ?, ?, ?, ?, ? )
+### Cause: java.sql.SQLException: Field 'com_code' doesn't have a default value
+; Field 'com_code' doesn't have a default value; nested exception is java.sql.SQLException: Field 'com_code' doesn't have a default value]
+2020-10-14 16:49:23.003 [http-nio-8088-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLException: Field 'com_code' doesn't have a default value
+### The error may exist in com/zw/ft/modules/sys/repository/SysCompanyMapper.java (best guess)
+### The error may involve com.zw.ft.modules.sys.repository.SysCompanyMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO sys_company  ( revision, created_by, created_time, updated_by, updated_time )  VALUES  ( ?, ?, ?, ?, ? )
+### Cause: java.sql.SQLException: Field 'com_code' doesn't have a default value
+; Field 'com_code' doesn't have a default value; nested exception is java.sql.SQLException: Field 'com_code' doesn't have a default value]
+2020-10-14 16:50:06.146 [http-nio-8088-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLException: Field 'com_name' doesn't have a default value
+### The error may exist in com/zw/ft/modules/sys/repository/SysCompanyMapper.java (best guess)
+### The error may involve com.zw.ft.modules.sys.repository.SysCompanyMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO sys_company  ( com_code,          revision, created_by, created_time, updated_by, updated_time )  VALUES  ( ?,          ?, ?, ?, ?, ? )
+### Cause: java.sql.SQLException: Field 'com_name' doesn't have a default value
+; Field 'com_name' doesn't have a default value; nested exception is java.sql.SQLException: Field 'com_name' doesn't have a default value]
+2020-10-14 16:50:25.912 [http-nio-8088-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLException: Field 'com_code' doesn't have a default value
+### The error may exist in com/zw/ft/modules/sys/repository/SysCompanyMapper.java (best guess)
+### The error may involve com.zw.ft.modules.sys.repository.SysCompanyMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO sys_company  ( revision, created_by, created_time, updated_by, updated_time )  VALUES  ( ?, ?, ?, ?, ? )
+### Cause: java.sql.SQLException: Field 'com_code' doesn't have a default value
+; Field 'com_code' doesn't have a default value; nested exception is java.sql.SQLException: Field 'com_code' doesn't have a default value]
+2020-10-14 16:51:33.734 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysUserTrade".
+2020-10-14 16:51:33.867 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysCompanyTrade".
+2020-10-14 16:51:34.145 [restartedMain] WARN  c.b.mybatisplus.core.injector.AbstractMethod - [com.zw.ft.modules.sys.repository.SysDepartmentMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2020-10-14 16:52:00.720 [http-nio-8088-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLException: Field 'com_code' doesn't have a default value
+### The error may exist in com/zw/ft/modules/sys/repository/SysCompanyMapper.java (best guess)
+### The error may involve com.zw.ft.modules.sys.repository.SysCompanyMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO sys_company  ( revision, created_by, created_time, updated_by, updated_time )  VALUES  ( ?, ?, ?, ?, ? )
+### Cause: java.sql.SQLException: Field 'com_code' doesn't have a default value
+; Field 'com_code' doesn't have a default value; nested exception is java.sql.SQLException: Field 'com_code' doesn't have a default value]
+2020-10-14 16:52:59.444 [http-nio-8088-exec-5] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLException: Field 'com_code' doesn't have a default value
+### The error may exist in com/zw/ft/modules/sys/repository/SysCompanyMapper.java (best guess)
+### The error may involve com.zw.ft.modules.sys.repository.SysCompanyMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO sys_company  ( revision, created_by, created_time, updated_by, updated_time )  VALUES  ( ?, ?, ?, ?, ? )
+### Cause: java.sql.SQLException: Field 'com_code' doesn't have a default value
+; Field 'com_code' doesn't have a default value; nested exception is java.sql.SQLException: Field 'com_code' doesn't have a default value]
+2020-10-14 16:53:59.151 [http-nio-8088-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLException: Field 'com_code' doesn't have a default value
+### The error may exist in com/zw/ft/modules/sys/repository/SysCompanyMapper.java (best guess)
+### The error may involve com.zw.ft.modules.sys.repository.SysCompanyMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO sys_company  ( revision, created_by, created_time, updated_by, updated_time )  VALUES  ( ?, ?, ?, ?, ? )
+### Cause: java.sql.SQLException: Field 'com_code' doesn't have a default value
+; Field 'com_code' doesn't have a default value; nested exception is java.sql.SQLException: Field 'com_code' doesn't have a default value]
+2020-10-14 16:54:21.729 [http-nio-8088-exec-4] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLException: Field 'com_name' doesn't have a default value
+### The error may exist in com/zw/ft/modules/sys/repository/SysCompanyMapper.java (best guess)
+### The error may involve com.zw.ft.modules.sys.repository.SysCompanyMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO sys_company  ( com_code,          revision, created_by, created_time, updated_by, updated_time )  VALUES  ( ?,          ?, ?, ?, ?, ? )
+### Cause: java.sql.SQLException: Field 'com_name' doesn't have a default value
+; Field 'com_name' doesn't have a default value; nested exception is java.sql.SQLException: Field 'com_name' doesn't have a default value]
+2020-10-14 16:54:32.140 [http-nio-8088-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLException: Field 'old_pkid_willdel' doesn't have a default value
+### The error may exist in com/zw/ft/modules/sys/repository/SysCompanyMapper.java (best guess)
+### The error may involve com.zw.ft.modules.sys.repository.SysCompanyMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO sys_company  ( com_code, com_name, short_com_name, contact_user,      mobile, revision, created_by, created_time, updated_by, updated_time )  VALUES  ( ?, ?, ?, ?,      ?, ?, ?, ?, ?, ? )
+### Cause: java.sql.SQLException: Field 'old_pkid_willdel' doesn't have a default value
+; Field 'old_pkid_willdel' doesn't have a default value; nested exception is java.sql.SQLException: Field 'old_pkid_willdel' doesn't have a default value]
+2020-10-14 16:56:17.186 [http-nio-8088-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'MP_OPTLOCK_VERSION_ORIGINAL' not found. Available parameters are [param1, et]]
+2020-10-14 16:56:56.589 [http-nio-8088-exec-4] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'MP_OPTLOCK_VERSION_ORIGINAL' not found. Available parameters are [param1, et]]
+2020-10-16 11:09:36.533 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysUserTrade".
+2020-10-16 11:09:36.655 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysCompanyTrade".
+2020-10-16 11:09:36.684 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.BdmCustomer".
+2020-10-16 11:09:36.775 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysOrgan".
+2020-10-16 11:09:37.042 [restartedMain] WARN  c.b.mybatisplus.core.injector.AbstractMethod - [com.zw.ft.modules.sys.repository.SysDepartmentMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2020-10-16 11:10:36.707 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysUserTrade".
+2020-10-16 11:10:36.828 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysCompanyTrade".
+2020-10-16 11:10:36.855 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.BdmCustomer".
+2020-10-16 11:10:36.934 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysOrgan".
+2020-10-16 11:10:37.190 [restartedMain] WARN  c.b.mybatisplus.core.injector.AbstractMethod - [com.zw.ft.modules.sys.repository.SysDepartmentMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]
+2020-10-16 11:17:28.850 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysUserTrade".
+2020-10-16 11:17:28.955 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysCompanyTrade".
+2020-10-16 11:17:28.979 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.BdmCustomer".
+2020-10-16 11:17:29.053 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysOrgan".
+2020-10-16 11:17:29.325 [restartedMain] WARN  c.b.mybatisplus.core.injector.AbstractMethod - [com.zw.ft.modules.sys.repository.SysDepartmentMapper.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update]

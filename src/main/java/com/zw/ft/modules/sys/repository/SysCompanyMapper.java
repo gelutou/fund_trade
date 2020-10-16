@@ -35,4 +35,12 @@ public interface SysCompanyMapper extends BaseMapper<SysCompany> {
             " WHERE suc.user_id = (SELECT ID FROM sys_user WHERE username = #{username})" +
             " AND (sc.com_name LIKE CONCAT('%',#{shortname},'%') OR sc.com_code LIKE CONCAT('%',#{shortname},'%'))")
     List<SysCompany> getFuzzy(@Param("username") String username, @Param("shortname") String shortName);
+
+    /**
+     * @Author savior
+     * @Description 根据公司id查询出公司名字
+     * @Date: 2020/9/23
+     */
+    @Select("SELECT com_name FROM sys_company sc LEFT JOIN sys_department sd ON sd.com_id = sc.id  WHERE sd.com_id = #{comId}" )
+    List<SysCompany> getCompanyNameBesomId(@Param("comId") String comId);
 }

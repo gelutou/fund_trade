@@ -38,7 +38,7 @@ public class SysDepartment extends BaseEntity {
     private String deptName;
 
     /**
-     * 表示此部门是几级部门 1 = 一级部门
+     * @description: 表示此部门是几级部门 1 = 一级部门
      */
     private Integer deptLevel;
 
