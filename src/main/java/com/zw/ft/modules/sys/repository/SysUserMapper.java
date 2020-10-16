@@ -58,8 +58,4 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
             Page<SysUser> page
             , @Param("comId") long comId
             , @Param("ew") QueryWrapper<SysUser> userEntityQueryWrapper);
-
-    @Select("SELECT * FROM sys_user")
-    List<SysUser> getAllUsers();
-
 }

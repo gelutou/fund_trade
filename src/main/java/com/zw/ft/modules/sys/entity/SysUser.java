@@ -47,6 +47,11 @@ public class SysUser extends BaseEntity {
     private Integer gender;
 
     /**
+     *@description: 数据来源 0资金 1商贸
+     */
+    private Integer fundOrTrade;
+
+    /**
      *@description: 角色集合
      */
     @TableField(exist = false)

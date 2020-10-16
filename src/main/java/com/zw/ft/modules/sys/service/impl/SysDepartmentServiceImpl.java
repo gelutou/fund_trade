@@ -3,13 +3,12 @@ package com.zw.ft.modules.sys.service.impl;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zw.ft.modules.sys.entity.SysCompany;
 import com.zw.ft.modules.sys.entity.SysDepartment;
 import com.zw.ft.modules.sys.repository.SysDepartmentMapper;
 import com.zw.ft.modules.sys.service.SysDepartmentService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,7 +20,7 @@ import java.util.Map;
  * </p>
  *
  * @author Oliver
- * @since 2020-09-20
+ * @since 2020-10-16
  */
 @Service
 public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, SysDepartment> implements SysDepartmentService {
@@ -29,12 +28,17 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
     @Resource
     SysDepartmentMapper sysDepartmentMapper;
 
-/**
- * @Author savior
- * @Description 根据树节点主节点公司ID,获取部门档案树信息 转换为json格式
- * @Date: 2020/9/24
- */
     @Override
+    public JSONArray getMenu(Map<String, Object> params) {
+        return null;
+    }
+
+    /**
+     * @Author savior
+     * @Description 根据树节点主节点公司ID,获取部门档案树信息 转换为json格式
+     * @Date: 2020/9/24
+     */
+   /* @Override
     public JSONArray getMenu(Map<String,Object> params) {
         Object comId = params.get("comId").toString();
         QueryWrapper<SysDepartment> departmentQueryWrapper = new QueryWrapper<>();
@@ -50,7 +54,7 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
             if (parentId1 == -1) {
                 JSONObject firstObj = new JSONObject(2);
                 for (SysCompany sysCompany:treeTwo){
-                firstObj.put("label", sysCompany.getComName());
+                    firstObj.put("label", sysCompany.getComName());
                 }
                 firstObj.put("id", id);
                 //查询所有下级
@@ -77,7 +81,9 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
             System.out.println("result = " + result);
         }
         return result;
-    }
+    }*/
+
+
 
     @Override
     public List<SysDepartment> getTree(List<SysDepartment> allDepts, long fatherId){
@@ -89,15 +95,11 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
         }
         return trees;
     }
-        /*public String SeleTept(){
-
-        }*/
-   /**
-    * @Author savior
-    * @Description 添加部门信息
-    * @Date: 2020/9/24
-    * @return
-    */
+    /**
+     * @Author savior
+     * @Description 添加部门信息
+     * @Date: 2020/9/24
+     */
     @Override
     public Integer DeptAddto(SysDepartment sysDepartment) {
         sysDepartment.setParentId(sysDepartment.getParentId());
@@ -114,8 +116,8 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
      */
     @Override
     public int DeleteDept(String id) {
-            int byId = sysDepartmentMapper.deleteById(id);
-            return byId;
+        int byId = sysDepartmentMapper.deleteById(id);
+        return byId;
     }
 
     /**
@@ -126,16 +128,12 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
      */
     @Override
     public int UpdaDept(SysDepartment sysDepartment) {
-        //SysDepartment sysDepartment1 = new SysDepartment();
+       /* //SysDepartment sysDepartment1 = new SysDepartment();
         SysDepartment DeptId = sysDepartmentMapper.selectById(sysDepartment.getId());
         int update = sysDepartmentMapper.update(sysDepartment);
         System.out.println(update);
-        return update;
+        return update;*/
+        return 0;
     }
 
 }
-
-
-
-
-
