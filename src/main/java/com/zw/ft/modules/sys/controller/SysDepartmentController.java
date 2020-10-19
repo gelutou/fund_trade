@@ -6,12 +6,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysDepartment;
 import com.zw.ft.modules.sys.service.SysDepartmentService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
+
 
 /**
  * <p>
@@ -34,6 +34,16 @@ public class SysDepartmentController {
      * @Author: Oliver
      * @Date: 2020/10/16 11:08
      */
+    @PostMapping("/getDeptTree")
+    public R loadManagerLeftTreeJson(@RequestBody Map<String,Object> params) {
+        List<SysDepartment> menu = sysDepartmentService.getMenu(params);
+        if (menu != null) {
+            return R.data(menu);
+        } else {
+            return R.error("获取部门失败");
+        }
+    }
+
 
     @RequestMapping(value = "/query/{comId}")
     public R query(@PathVariable("comId") long comId){

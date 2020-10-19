@@ -1,6 +1,9 @@
 package com.zw.ft.modules.sys.controller;
 
+import cn.hutool.core.convert.Convert;
+import com.zw.ft.common.base.Constant;
 import com.zw.ft.common.utils.R;
+import com.zw.ft.modules.sys.entity.SysBank;
 import com.zw.ft.modules.sys.service.SysBankService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,4 +38,44 @@ public class SysBankController {
         return R.page(sysBankService.getBank(params));
     }
 
+
+    /**
+     * @Author savior
+     * @Description 跟据Id逻辑删除银行信息
+     * @Date: 2020/10/16
+     */
+    @PostMapping("/daleBankId")
+    public R bankDeleteId (@RequestBody SysBank sysBank){
+        boolean b = sysBankService.removeById(sysBank.getId());
+        if(b){
+            return R.ok("删除成功");
+        }
+        return R.error("删除失败");
+    }
+
+
+    /**
+     * 功能描述: <br>
+     * @Author savior
+     * @Description 新增更新银行
+     * @Date: 2020/10/16
+     */
+    @PostMapping("/add_update_bank")
+    public R addBank(@RequestBody(required = false) Map<String,Object> params){
+        String addUpdate = params.get("addUpdate").toString();
+        SysBank bank = Convert.convert(SysBank.class, params);
+        boolean bo;
+        if(Constant.DatabaseOperation.ADD.getValue().equals(addUpdate)){
+            bo =sysBankService.save(bank);
+        }else if(Constant.DatabaseOperation.UPDATE.getValue().equals(addUpdate)){
+            bo=sysBankService.updateById(bank);
+        }else {
+            return R.error("没有传入addUpdate参数");
+        }
+        if (bo){
+            return R.ok("新增更新成功");
+        }else {
+            return R.error("新增更新失败");
+        }
+    }
 }
