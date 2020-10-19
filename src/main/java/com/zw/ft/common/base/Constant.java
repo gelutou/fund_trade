@@ -11,6 +11,7 @@ public class Constant {
 
     /** 超级管理员ID */
     public static final int SUPER_ADMIN = 1;
+    public static final String ADMIN = "admin";
     public static final String TRUE = "true";
     public static final String FALSE = "false";
 
