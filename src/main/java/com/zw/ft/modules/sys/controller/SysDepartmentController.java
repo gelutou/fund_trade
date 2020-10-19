@@ -1,7 +1,6 @@
 package com.zw.ft.modules.sys.controller;
 
 
-import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysDepartment;
 import com.zw.ft.modules.sys.service.SysDepartmentService;
@@ -33,7 +32,7 @@ public class SysDepartmentController {
      */
     @PostMapping("/getDeptTree")
     public R loadManagerLeftTreeJson(@RequestBody Map<String,Object> params) {
-        List<? extends BaseEntity> menu = sysDepartmentService.getMenu(params);
+        List<SysDepartment> menu = sysDepartmentService.getMenu(params);
         if (menu != null) {
             return R.data(menu);
         } else {

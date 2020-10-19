@@ -1,9 +1,7 @@
 package com.zw.ft.modules.sys.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.modules.sys.entity.SysDepartment;
-import com.zw.ft.modules.sys.repository.SysCompanyMapper;
 import com.zw.ft.modules.sys.repository.SysDepartmentMapper;
 import com.zw.ft.modules.sys.service.SysDepartmentService;
 import org.springframework.stereotype.Service;
@@ -27,9 +25,6 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
     @Resource
     SysDepartmentMapper sysDepartmentMapper;
 
-    @Resource
-    SysCompanyMapper sysCompanyMapper;
-
 /**
  * @Author savior
  * @Description 根据树节点主节点公司ID,获取部门档案树信息 转换为json格式
@@ -37,15 +32,12 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
  * @return
  */
 @Override
-    public List<? extends BaseEntity> getMenu(Map<String,Object> params) {
-        String comId = params.get("comId").toString();
-        String parentId = params.get("parentId").toString();
-        String deptLevel = params.get("deptLevel").toString();
-        if("".equals(parentId)  && "".equals(deptLevel)){
-                return sysDepartmentMapper.getSysdept(parentId,deptLevel);
-        }else {
-            return sysCompanyMapper.getCompanyNameBesomId(comId);
-        }
+    public List<SysDepartment> getMenu(Map<String,Object> params) {
+    String comId = params.get("comId").toString();
+    if(!"".equals(comId)){
+        return sysDepartmentMapper.getCompanyNameBesomId(comId);
+    }
+        return null;
     }
     /*@Override
     public JSONArray getMenu(Map<String,Object> params) {

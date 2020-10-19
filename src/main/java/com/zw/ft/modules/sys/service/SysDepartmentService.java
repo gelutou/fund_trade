@@ -1,7 +1,6 @@
 package com.zw.ft.modules.sys.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.modules.sys.entity.SysDepartment;
 
 import java.util.List;
@@ -23,7 +22,7 @@ public interface SysDepartmentService extends IService<SysDepartment> {
        * @Date: 2020/9/24
        * @return
        */
-      List<? extends BaseEntity> getMenu(Map<String,Object> params);
+      List<SysDepartment> getMenu(Map<String,Object> params);
 
       List<SysDepartment> getTree(List<SysDepartment> allDepts, long fatherId);
 
