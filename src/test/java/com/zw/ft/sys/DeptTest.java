@@ -15,19 +15,4 @@ import javax.annotation.Resource;
  **/
 @SpringBootTest
 public class DeptTest {
-
-    @Resource
-    SysDepartmentMapper departmentMapper;
-
-    @Test
-    void deptTest(){
-        SysDepartment department = new SysDepartment();
-        department.setDeptName("测试修改部门22");
-        department.setId(1L);
-        UpdateWrapper<SysDepartment> departmentUpdateWrapper = new UpdateWrapper<>();
-        departmentUpdateWrapper.eq("old_pkid_willdel","000001");
-        /*sysDepartmentUpdateWrapper.eq("old_pkid_willdel","000001");
-        departmentMapper.update(department,sysDepartmentUpdateWrapper);*/
-        int update = departmentMapper.update(department, departmentUpdateWrapper);
-    }
 }
