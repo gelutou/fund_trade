@@ -1,5 +1,6 @@
 package com.zw.ft.modules.trade.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.zw.ft.common.base.BaseEntity;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -13,6 +14,7 @@ import lombok.Data;
  * @author Oliver
  * @since 2020-10-13
  */
+@TableName(value = "sys_company")
 @Data
 public class SysCompanyTrade {
 

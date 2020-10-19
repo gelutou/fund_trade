@@ -67,4 +67,20 @@ public class SysCompany extends BaseEntity {
      *@description: 公司联系电话
      */
     private String mobile;
+
+    /**
+     *@description: 公司类型 1内部 2 外部 3 仓储 4集团
+     */
+    private Integer status;
+
+    /**
+     *@description: 数据来源 0资金 1商贸
+     */
+    private Integer fundOrTrade;
+
+    private String taxNumber;
+    /**
+     *@description: 旧公司ID，上线后删除
+     */
+    private String oldPkidWilldel;
 }

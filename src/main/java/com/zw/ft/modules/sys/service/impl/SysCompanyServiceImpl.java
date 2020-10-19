@@ -13,6 +13,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -91,5 +93,18 @@ public class SysCompanyServiceImpl extends ServiceImpl<SysCompanyMapper, SysComp
         }
         queryWrapper.orderByAsc("updated_time");
         return sysCompanyMapper.selectPage(page,queryWrapper);
+    }
+
+    @Override
+    public R delComs(String delIds) {
+        List<String> lists = new LinkedList<>();
+        if(delIds.contains(",")){
+            String[] split = delIds.split(",");
+            Collections.addAll(lists, split);
+        }else {
+            lists.add(delIds);
+        }
+        sysCompanyMapper.deleteBatchIds(lists);
+        return R.ok();
     }
 }

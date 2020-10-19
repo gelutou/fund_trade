@@ -25,7 +25,7 @@ public class CodeGeneratorTrade {
 
     public static void main(String[] args) {
         //设置要映射的表名
-        String setInclude = "sys_company";
+        String setInclude = "bdm_customer";
 
         AutoGenerator autoGenerator = new AutoGenerator();
         GlobalConfig globalConfig = new GlobalConfig();
@@ -73,8 +73,8 @@ public class CodeGeneratorTrade {
         //下划线转驼峰
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        strategy.setSuperEntityClass(BaseEntity.class);
-        //strategy.setEntityLombokModel(true);
+        //strategy.setSuperEntityClass(BaseEntity.class);
+        strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
         //逻辑删除
         //strategy.setLogicDeleteFieldName("deleted");

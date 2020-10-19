@@ -1,5 +1,6 @@
 package com.zw.ft.modules.sys.service;
 
+import com.alibaba.fastjson.JSONArray;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zw.ft.modules.sys.entity.SysDepartment;
 
@@ -12,7 +13,7 @@ import java.util.Map;
  * </p>
  *
  * @author Oliver
- * @since 2020-09-20
+ * @since 2020-10-16
  */
 public interface SysDepartmentService extends IService<SysDepartment> {
 
@@ -25,28 +26,6 @@ public interface SysDepartmentService extends IService<SysDepartment> {
       List<SysDepartment> getMenu(Map<String,Object> params);
 
       List<SysDepartment> getTree(List<SysDepartment> allDepts, long fatherId);
-
-      /**
-       * @Author savior
-       * @Description 添加部门信息
-       * @Date: 2020/9/24
-       */
-       Integer deptAddto(SysDepartment sysDepartment);
-
-
-      /**
-       * @Author savior
-       * @Description 根据id逻辑删除部门
-       * @Date: 2020/9/24
-       */
-       int deleteDept(String id);
-
-/**
- * @Author savior
- * @Description 根据id修改部门
- * @Date: 2020/9/29
- */
-       int updaDept(SysDepartment sysDepartment);
 
 
 }

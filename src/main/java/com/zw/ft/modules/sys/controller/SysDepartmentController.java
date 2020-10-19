@@ -1,6 +1,8 @@
 package com.zw.ft.modules.sys.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysDepartment;
 import com.zw.ft.modules.sys.service.SysDepartmentService;
@@ -10,25 +12,27 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * <p>
  * 系统部门表 前端控制器
  * </p>
  *
  * @author Oliver
- * @since 2020-09-20
+ * @since 2020-10-16
  */
 @RestController
 @RequestMapping("/ft/sys-department")
 public class SysDepartmentController {
-
     @Resource
     SysDepartmentService sysDepartmentService;
 
-    /**
-     * @Author savior
-     * @Description 根据树节点主节点公司ID,获取部门档案树信息
-     * @Date: 2020/9/24
+    /*
+     * 功能描述: <br>
+     * 〈查询父部门〉
+     * @Param: 公司ID
+     * @Author: Oliver
+     * @Date: 2020/10/16 11:08
      */
     @PostMapping("/getDeptTree")
     public R loadManagerLeftTreeJson(@RequestBody Map<String,Object> params) {
@@ -40,58 +44,72 @@ public class SysDepartmentController {
         }
     }
 
-/**
- * @Author savior
- * @Description 添加部门信息
- * @Date: 2020/9/27
- */
-    @PostMapping("/addDept")
-    public R deparTementAddto(@RequestBody SysDepartment sysDepartment){
 
-        if (sysDepartment != null){
-           sysDepartmentService.deptAddto(sysDepartment);
-            return R.ok("添加成功");
-
-        }else {
-            return R.error("");
-        }
+    @RequestMapping(value = "/query/{comId}")
+    public R query(@PathVariable("comId") long comId){
+        QueryWrapper<SysDepartment> sysDepartmentQueryWrapper = new QueryWrapper<>();
+        sysDepartmentQueryWrapper.eq("com_id",comId);
+        Page<SysDepartment> page = new Page<>();
+        //查询所有
+        page.setSize(9999L);
+        return R.page(sysDepartmentService.page(new Page<>(),sysDepartmentQueryWrapper));
     }
 
-    /**
-     * @Author savior
-     * @Description 根据id逻辑删除部门
-     * @Date: 2020/9/25
+    /*
+     * 功能描述: <br>
+     * 〈删除部门〉
+     * @Param: deptId 部门ID
+     * @Author: Oliver
+     * @Date: 2020/10/16 11:23
      */
-    @PostMapping("/delete/{id}")
-    public R deleteDept(@PathVariable("id")String id) {
-        int i = sysDepartmentService.deleteDept(id);
-        if (i != 0){
+
+    @RequestMapping(value = "/delete/{id}")
+    public R del(@PathVariable("id") long deptId){
+        boolean b = sysDepartmentService.removeById(deptId);
+        if(b){
             return R.ok("删除成功");
         }else {
             return R.error("删除失败");
         }
-
     }
 
-    /**
-     * @Author savior
-     * @Description 根据id修改部门信息
-     * @Date: 2020/9/27
+    /*
+     * 功能描述: <br>
+     * 〈修改部门〉
+     * @Param:
+     * @Return:
+     * @Author: Oliver
+     * @Date: 2020/10/16 11:32
      */
-    @ResponseBody
-    @PostMapping("/update")
-    public R updaDept(@RequestBody  SysDepartment sysDepartment ){
-        if(sysDepartment.getId()!=0){
-            sysDepartmentService.updaDept(sysDepartment);
+
+    @RequestMapping(value = "/update")
+    public R update(@RequestBody(required = false) SysDepartment sysDepartment){
+
+        boolean b = sysDepartmentService.updateById(sysDepartment);
+        if(b){
             return R.ok("修改成功");
         }else {
             return R.error("修改失败");
         }
     }
 
+    /*
+     * 功能描述: <br>
+     * 〈增加部门〉
+     * @Param:
+     * @Return:
+     * @Author: Oliver
+     * @Date: 2020/10/16 11:33
+     */
+
+    @RequestMapping(value = "/add")
+    public R add(@RequestBody(required = false) SysDepartment sysDepartment){
+        boolean save = sysDepartmentService.save(sysDepartment);
+        if(save){
+            return R.ok("添加成功");
+        }else {
+            return R.error("添加失败");
+        }
+    }
 }
-
-
-
-
 

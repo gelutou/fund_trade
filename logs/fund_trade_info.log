@@ -1313,3 +1313,28 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2020-10-19 14:24:33.622 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
 2020-10-19 14:24:33.653 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
 2020-10-19 14:24:33.716 [restartedMain] INFO  com.zw.ft.FundTradeApplication - Started FundTradeApplication in 5.834 seconds (JVM running for 6.675)
+2020-10-19 14:54:40.560 [http-nio-8088-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-10-19 14:54:40.560 [http-nio-8088-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-10-19 14:54:40.576 [http-nio-8088-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 16 ms
+2020-10-19 14:59:06.334 [Thread-15] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-10-19 14:59:06.584 [Thread-15] INFO  c.b.dynamic.datasource.DynamicRoutingDataSource - dynamic-datasource start closing ....
+2020-10-19 14:59:06.584 [Thread-15] INFO  com.zaxxer.hikari.HikariDataSource - fundTrade - Shutdown initiated...
+2020-10-19 14:59:06.600 [Thread-15] INFO  com.zaxxer.hikari.HikariDataSource - fundTrade - Shutdown completed.
+2020-10-19 14:59:06.600 [Thread-15] INFO  com.zaxxer.hikari.HikariDataSource - trade - Shutdown initiated...
+2020-10-19 14:59:06.647 [Thread-15] INFO  com.zaxxer.hikari.HikariDataSource - trade - Shutdown completed.
+2020-10-19 14:59:06.647 [Thread-15] INFO  com.zaxxer.hikari.HikariDataSource - fund - Shutdown initiated...
+2020-10-19 14:59:06.662 [Thread-15] INFO  com.zaxxer.hikari.HikariDataSource - fund - Shutdown completed.
+2020-10-19 14:59:06.662 [Thread-15] INFO  c.b.dynamic.datasource.DynamicRoutingDataSource - dynamic-datasource all closed success,bye
+2020-10-19 14:59:13.637 [restartedMain] INFO  com.zw.ft.FundTradeApplication - Starting FundTradeApplication on DESKTOP-J7CFVSG with PID 3940 (D:\development\fund_trade\target\classes started by Administrator in D:\development\fund_trade)
+2020-10-19 14:59:13.637 [restartedMain] INFO  com.zw.ft.FundTradeApplication - The following profiles are active: dev
+2020-10-19 14:59:13.794 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-10-19 14:59:13.794 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-10-19 14:59:13.794 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 0ms. Found 0 Redis repository interfaces.
+2020-10-19 14:59:13.825 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration$$EnhancerBySpringCGLIB$$3996548e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-19 14:59:13.825 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration$$EnhancerBySpringCGLIB$$3c299333] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-19 14:59:13.840 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'eventBus' of type [org.apache.shiro.event.support.DefaultEventBus] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-19 14:59:13.840 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.apache.shiro.spring.config.web.autoconfigure.ShiroWebAutoConfiguration' of type [org.apache.shiro.spring.config.web.autoconfigure.ShiroWebAutoConfiguration$$EnhancerBySpringCGLIB$$5e32b4f8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-19 14:59:13.840 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.apache.shiro.spring.boot.autoconfigure.ShiroAutoConfiguration' of type [org.apache.shiro.spring.boot.autoconfigure.ShiroAutoConfiguration$$EnhancerBySpringCGLIB$$ff95f65e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-19 14:59:13.856 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.

@@ -17,7 +17,7 @@ import java.util.Map;
  * </p>
  *
  * @author Oliver
- * @since 2020-09-20
+ * @since 2020-10-16
  */
 @Service
 public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, SysDepartment> implements SysDepartmentService {
@@ -39,7 +39,18 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
     }
         return null;
     }
-    /*@Override
+
+    @Override
+    public List<SysDepartment> getTree(List<SysDepartment> allDepts, long fatherId){
+        List<SysDepartment> trees = new LinkedList<>();
+        for(SysDepartment sysDepartment : allDepts){
+            if(sysDepartment.getParentId() == fatherId){
+                trees.add(sysDepartment);
+            }
+        }
+        return trees;
+    }
+     /*@Override
     public JSONArray getMenu(Map<String,Object> params) {
         String comId = params.get("comId").toString();
         QueryWrapper<SysDepartment> departmentQueryWrapper = new QueryWrapper<>();
@@ -82,55 +93,4 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
         return result;
     }*/
 
-    @Override
-    public List<SysDepartment> getTree(List<SysDepartment> allDepts, long fatherId){
-        List<SysDepartment> trees = new LinkedList<>();
-        for(SysDepartment sysDepartment : allDepts){
-            if(sysDepartment.getParentId() == fatherId){
-                trees.add(sysDepartment);
-            }
-        }
-        return trees;
-    }
-
-
-   /**
-    * @Author savior
-    * @Description 添加部门信息
-    * @Date: 2020/9/24
-    * @return
-    */
-    @Override
-    public Integer deptAddto(SysDepartment sysDepartment) {
-        sysDepartment.setParentId(sysDepartment.getParentId());
-        sysDepartment.setComId(sysDepartment.getComId());
-        sysDepartment.setDeptName(sysDepartment.getDeptName());
-        return sysDepartmentMapper.insert(sysDepartment);
-    }
-
-    /**
-     * @Author savior
-     * @Description 根据id逻辑删除部门
-     * @Date: 2020/9/24
-     */
-    @Override
-    public int deleteDept(String id) {
-        return sysDepartmentMapper.deleteById(id);
-    }
-
-    /**
-     * @Author savior
-     * @Description 根据id修改部门
-     * @Date: 2020/9/25
-     */
-    @Override
-    public int updaDept(SysDepartment sysDepartment) {
-        return sysDepartmentMapper.update(sysDepartment);
-    }
-
 }
-
-
-
-
-

@@ -1,5 +1,6 @@
 package com.zw.ft.modules.sys.repository;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.zw.ft.modules.sys.entity.SysCompany;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
@@ -17,6 +18,7 @@ import java.util.List;
  * @since 2020-09-21
  */
 @Mapper
+@DS("fundTrade")
 public interface SysCompanyMapper extends BaseMapper<SysCompany> {
 
     /**
@@ -34,8 +36,8 @@ public interface SysCompanyMapper extends BaseMapper<SysCompany> {
             " AND (sc.com_name LIKE CONCAT('%',#{shortname},'%') OR sc.com_code LIKE CONCAT('%',#{shortname},'%'))")
     List<SysCompany> getFuzzy(@Param("username") String username, @Param("shortname") String shortName);
 
+
     @Select("SELECT * FROM sys_company")
     List<SysCompany> getAllComs();
-
 
 }

@@ -78,5 +78,10 @@ public class SysCompanyController extends BaseController {
     public R getByWrapper(@RequestBody(required = false) Map<String,Object> params){
         return R.page(sysCompanyService.getComPage(params));
     }
+
+    @PostMapping(value = "/del_coms/{ids}")
+    public R delComs(@PathVariable("ids") String ids){
+        return sysCompanyService.delComs(ids);
+    }
 }
 
