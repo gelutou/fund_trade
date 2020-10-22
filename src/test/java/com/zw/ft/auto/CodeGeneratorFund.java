@@ -8,7 +8,6 @@ import com.baomidou.mybatisplus.generator.config.PackageConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-import com.zw.ft.common.base.BaseEntity;
 
 /**
  * @ClassName CodeGenerator
@@ -21,7 +20,7 @@ public class CodeGeneratorFund {
 
     public static void main(String[] args) {
         //设置要映射的表名
-        String setInclude = "t_customer";
+        String setInclude = "t_bank";
 
         AutoGenerator autoGenerator = new AutoGenerator();
         GlobalConfig globalConfig = new GlobalConfig();
@@ -30,7 +29,8 @@ public class CodeGeneratorFund {
         //输出目录
         globalConfig.setOutputDir(currentPath+"/src/main/java");
         //作者
-        globalConfig.setAuthor("Oliver");
+       // globalConfig.setAuthor("Oliver");
+        globalConfig.setAuthor("Savior");
         //是否打开资源管理器
         globalConfig.setOpen(false);
         //是否覆盖之前代码

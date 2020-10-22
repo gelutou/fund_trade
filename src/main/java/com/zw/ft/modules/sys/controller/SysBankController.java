@@ -33,7 +33,7 @@ public class SysBankController {
  * @Description  分页查询银行基本信息
  * @Date: 2020/9/28
  */
-    @PostMapping("/banckall")
+    @PostMapping("/bankall")
     public R Banckall(@RequestBody Map<String,Object> params){
         return R.page(sysBankService.getBank(params));
     }

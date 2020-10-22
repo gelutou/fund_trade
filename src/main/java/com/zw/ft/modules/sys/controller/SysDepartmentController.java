@@ -54,7 +54,6 @@ public class SysDepartmentController {
         page.setSize(9999L);
         return R.page(sysDepartmentService.page(new Page<>(),sysDepartmentQueryWrapper));
     }
-
     /*
      * 功能描述: <br>
      * 〈删除部门〉
