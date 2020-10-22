@@ -2,6 +2,7 @@ package com.zw.ft.modules.sys.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysDepartment;
@@ -49,10 +50,7 @@ public class SysDepartmentController {
     public R query(@PathVariable("comId") long comId){
         QueryWrapper<SysDepartment> sysDepartmentQueryWrapper = new QueryWrapper<>();
         sysDepartmentQueryWrapper.eq("com_id",comId);
-        Page<SysDepartment> page = new Page<>();
-        //查询所有
-        page.setSize(9999L);
-        return R.page(sysDepartmentService.page(new Page<>(),sysDepartmentQueryWrapper));
+        return R.data(sysDepartmentService.list(sysDepartmentQueryWrapper));
     }
     /*
      * 功能描述: <br>
@@ -83,9 +81,11 @@ public class SysDepartmentController {
 
     @RequestMapping(value = "/update")
     public R update(@RequestBody(required = false) SysDepartment sysDepartment){
+        UpdateWrapper<SysDepartment> departmentUpdateWrapper = new UpdateWrapper<>();
+        departmentUpdateWrapper.eq("id",sysDepartment.getId());
+        boolean update = sysDepartmentService.update(sysDepartment, departmentUpdateWrapper);
 
-        boolean b = sysDepartmentService.updateById(sysDepartment);
-        if(b){
+        if(update){
             return R.ok("修改成功");
         }else {
             return R.error("修改失败");
