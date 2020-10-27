@@ -35,7 +35,7 @@ public class SysBank extends BaseEntity {
     private String accountStyle;
 
     /** 账户性质 */
-    private String accountType;
+        private String accountType;
 
     /** 账户余额 */
     private Double accountBalance ;
@@ -49,4 +49,9 @@ public class SysBank extends BaseEntity {
     /** 公司名称 */
     @TableField(exist = false)
     private String comName;
+
+    /** 用户名称 */
+    @TableField(exist = false)
+    private String username;
+
 }

@@ -24,6 +24,7 @@ public class InitDataBaseController {
         try {
             init.initSysUser();
             init.initSysCompany();
+            init.initSysBank();
             return R.ok();
         }catch (Exception e){
             return R.error(e.getMessage());

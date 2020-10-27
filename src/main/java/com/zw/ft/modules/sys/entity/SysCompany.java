@@ -79,6 +79,7 @@ public class SysCompany extends BaseEntity {
     private Integer fundOrTrade;
 
     private String taxNumber;
+
     /**
      *@description: 旧公司ID，上线后删除
      */

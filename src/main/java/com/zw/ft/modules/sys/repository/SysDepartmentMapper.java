@@ -4,14 +4,10 @@ import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zw.ft.modules.sys.entity.SysDepartment;
 import org.apache.ibatis.annotations.Mapper;
-<<<<<<< HEAD
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
-=======
->>>>>>> Oliver
 
 /**
  * <p>
@@ -25,7 +21,6 @@ import java.util.List;
 @Mapper
 public interface SysDepartmentMapper extends BaseMapper<SysDepartment> {
 
-<<<<<<< HEAD
 
     /**
      * @Author savior
@@ -36,6 +31,4 @@ public interface SysDepartmentMapper extends BaseMapper<SysDepartment> {
     List<SysDepartment> getCompanyNameBesomId(@Param("comId") String comId);
 
 
-=======
->>>>>>> Oliver
 }

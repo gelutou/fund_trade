@@ -1,18 +1,15 @@
 package com.zw.ft.modules.sys.controller;
 
 import cn.hutool.core.convert.Convert;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.common.base.BaseController;
-import com.zw.ft.common.base.Constant;
-import com.zw.ft.common.utils.FormatUtil;
-import com.zw.ft.common.utils.QueryUtil;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysCompany;
 import com.zw.ft.modules.sys.service.SysCompanyService;
 import org.springframework.web.bind.annotation.*;
+
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -95,6 +92,21 @@ public class SysCompanyController extends BaseController {
     @PostMapping(value = "/del_coms/{ids}")
     public R delComs(@PathVariable("ids") String ids){
         return sysCompanyService.delComs(ids);
+    }
+
+    /**
+     * 功能描述: <br>
+     * @Author savior
+     * @Description 银行搜索框显示所有公司
+     * @Date: 2020/10/26
+     */
+    @PostMapping(value = "/get_com")
+    public  R getAllCom( SysCompany sysCompany){
+        List<SysCompany> com = sysCompanyService.getAllCom(sysCompany);
+        if (com!=null){
+            return R.data(com);
+        }
+        return R.error("失败");
     }
 }
 
