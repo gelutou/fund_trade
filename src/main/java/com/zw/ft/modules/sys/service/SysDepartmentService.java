@@ -1,6 +1,5 @@
 package com.zw.ft.modules.sys.service;
 
-import com.alibaba.fastjson.JSONArray;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zw.ft.modules.sys.entity.SysDepartment;
 

@@ -19,8 +19,7 @@ import lombok.EqualsAndHashCode;
 @Data
 public class SysDepartment extends BaseEntity {
 
-    private static final long serialVersionUID = 1L;
-
+    private static final long serialVersionUID = -888106179543546494L;
     /**
      * 所属公司
      */
@@ -34,7 +33,6 @@ public class SysDepartment extends BaseEntity {
     /**
      * 部门名称
      */
-    @TableField("dept_name")
     private String deptName;
 
     /**
@@ -45,7 +43,6 @@ public class SysDepartment extends BaseEntity {
     /**
      * 状态
      */
-    @TableField("STATUS")
     private Integer status;
 
     /**

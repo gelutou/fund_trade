@@ -1,17 +1,15 @@
 package com.zw.ft.modules.sys.controller;
 
 import cn.hutool.core.convert.Convert;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.zw.ft.common.base.BaseController;
-import com.zw.ft.common.base.Constant;
-import com.zw.ft.common.utils.FormatUtil;
-import com.zw.ft.common.utils.QueryUtil;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysCompany;
 import com.zw.ft.modules.sys.service.SysCompanyService;
 import org.springframework.web.bind.annotation.*;
+
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -49,19 +47,31 @@ public class SysCompanyController extends BaseController {
      * @Author: Oliver
      * @Date: 2020/9/21 10:53
      */
-    @PostMapping(value = "/add_update_com")
+    @PostMapping(value = "/add")
     public R addCom(@RequestBody(required = false) Map<String,Object> params){
-        String addUpdate = params.get("addUpdate").toString();
         SysCompany sysCompany = Convert.convert(SysCompany.class, params);
-        boolean result;
-        if(Constant.DatabaseOperation.ADD.getValue().equals(addUpdate)){
-            result = sysCompanyService.save(sysCompany);
-        }else if(Constant.DatabaseOperation.UPDATE.getValue().equals(addUpdate)){
-            result = sysCompanyService.updateById(sysCompany);
+        boolean save = sysCompanyService.save(sysCompany);
+        if(save){
+            return R.ok();
         }else {
-            return R.error("未传入addUpdate参数");
+            return R.error();
         }
-        if(result){
+    }
+
+    /*
+     * 功能描述: <br>
+     * 〈更新公司〉
+     * @Author: Oliver
+     * @Date: 2020/10/21 15:12
+     */
+
+    @PostMapping(value = "/update")
+    public R updateCom(@RequestBody(required = false) Map<String,Object> params){
+        SysCompany sysCompany = Convert.convert(SysCompany.class, params);
+        UpdateWrapper<SysCompany> sysCompanyUpdateWrapper = new UpdateWrapper<>();
+        sysCompanyUpdateWrapper.eq("id",sysCompany.getId());
+        boolean update = sysCompanyService.update(sysCompany, sysCompanyUpdateWrapper);
+        if(update){
             return R.ok();
         }else {
             return R.error();
@@ -82,6 +92,21 @@ public class SysCompanyController extends BaseController {
     @PostMapping(value = "/del_coms/{ids}")
     public R delComs(@PathVariable("ids") String ids){
         return sysCompanyService.delComs(ids);
+    }
+
+    /**
+     * 功能描述: <br>
+     * @Author savior
+     * @Description 银行搜索框显示所有公司
+     * @Date: 2020/10/26
+     */
+    @PostMapping(value = "/get_com")
+    public  R getAllCom( SysCompany sysCompany){
+        List<SysCompany> com = sysCompanyService.getAllCom(sysCompany);
+        if (com!=null){
+            return R.data(com);
+        }
+        return R.error("失败");
     }
 }
 
