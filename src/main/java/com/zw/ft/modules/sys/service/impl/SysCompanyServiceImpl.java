@@ -43,10 +43,12 @@ public class SysCompanyServiceImpl extends ServiceImpl<SysCompanyMapper, SysComp
     @Override
     public List<SysCompany> getFuzzy(String username, String shortName) {
         //如果是管理员，能登陆任何公司
-        if(Constant.ADMIN.equals(username)){
-            return sysCompanyMapper.selectList(null);
-        }
-        return null;
+        /*if(Constant.ADMIN.equals(username)){
+            return sysCompanyMapper.selectList(new QueryWrapper<>());
+        }*/
+        QueryWrapper<SysCompany> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like("com_code",shortName);
+        return sysCompanyMapper.selectList(queryWrapper);
     }
 
     @Override
