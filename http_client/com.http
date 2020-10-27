@@ -1,4 +1,4 @@
-POST http://localhost:8088/ft/sys-company/get_fuzzy/admin/hnmr
+POST http://localhost:8088/ft/sys-company/get_fuzzy/admin/xfy
 Content-Type: application/json
 
 ###

@@ -25,13 +25,13 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
     @Resource
     SysDepartmentMapper sysDepartmentMapper;
 
-/**
- * @Author savior
- * @Description 根据树节点主节点公司ID,获取部门档案树信息 转换为json格式
- * @Date: 2020/9/24
- * @return
- */
-@Override
+    /**
+     * @Author savior
+     * @Description 根据树节点主节点公司ID,获取部门档案树信息 转换为json格式
+     * @Date: 2020/9/24
+     * @return
+     */
+    @Override
     public List<SysDepartment> getMenu(Map<String,Object> params) {
     String comId = params.get("comId").toString();
     if(!"".equals(comId)){
@@ -50,47 +50,6 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
         }
         return trees;
     }
-     /*@Override
-    public JSONArray getMenu(Map<String,Object> params) {
-        String comId = params.get("comId").toString();
-        QueryWrapper<SysDepartment> departmentQueryWrapper = new QueryWrapper<>();
-        departmentQueryWrapper.eq("com_id",comId);
-        List<SysDepartment> sysDepartments = sysDepartmentMapper.selectList(departmentQueryWrapper);
-        List<SysCompany> treeTwo = sysDepartmentMapper.getCompanyNameBesomId(comId);
-        JSONArray result = new JSONArray();
-        for (SysDepartment dept : sysDepartments) {
-            long parentId1 = dept.getParentId();
-            long id = dept.getId();
-            //如果是一级部门，添加第一层
-            if (parentId1 == -1) {
-                JSONObject firstObj = new JSONObject(2);
-                for (SysCompany sysCompany:treeTwo){
-                firstObj.put("label", sysCompany.getComName());
-                }
-                firstObj.put("id", id);
-                //查询所有下级
-                List<SysDepartment> trees = getTree(sysDepartments, id);
-                JSONArray childArray = new JSONArray();
-                for (SysDepartment sd : trees) {
-                    JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("label", sd.getDeptName());
-                    jsonObject.put("id", sd.getId());
-                    List<SysDepartment> childTrees = getTree(sysDepartments, sd.getId());
-                    JSONArray grandArray = new JSONArray();
-                    for (SysDepartment child : childTrees) {
-                        JSONObject childObject = new JSONObject();
-                        childObject.put("label", child.getDeptName());
-                        childObject.put("id", child.getId());
-                        grandArray.add(childObject);
-                    }
-                    jsonObject.put("children", grandArray);
-                    childArray.add(jsonObject);
-                }
-                firstObj.put("children", childArray);
-                result.add(firstObj);
-            }
-        }
-        return result;
-    }*/
+
 
 }

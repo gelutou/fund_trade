@@ -6,7 +6,10 @@ import com.zw.ft.modules.sys.entity.SysDepartment;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6321b3a7b295bacd1641c19baf3b7841db480378
 import java.util.List;
 
 /**
@@ -30,5 +33,8 @@ public interface SysDepartmentMapper extends BaseMapper<SysDepartment> {
     @Select("SELECT sd.*,sc.com_name FROM sys_department sd LEFT JOIN sys_company sc ON sc.id = sd.com_id WHERE sd.com_id = #{comId} AND DELETED=0" )
     List<SysDepartment> getCompanyNameBesomId(@Param("comId") String comId);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6321b3a7b295bacd1641c19baf3b7841db480378
 }
