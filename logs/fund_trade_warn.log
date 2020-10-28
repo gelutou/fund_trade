@@ -54,3 +54,8 @@
 2020-10-28 16:03:51.145 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.BdmCustomer".
 2020-10-28 16:03:51.222 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysOrgan".
 2020-10-28 16:03:51.288 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.BdmBank".
+2020-10-28 16:06:35.139 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysUserTrade".
+2020-10-28 16:06:35.262 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysCompanyTrade".
+2020-10-28 16:06:35.288 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.BdmCustomer".
+2020-10-28 16:06:35.371 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysOrgan".
+2020-10-28 16:06:35.452 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.BdmBank".
