@@ -44,7 +44,7 @@ public class SysBankServiceImpl extends ServiceImpl<SysBankMapper, SysBank> impl
 
             if(Constant.TRUE.equals(comName)){
                 queryWrapper.like("com_name",params.get("comName"));
-            }else if("".equals(bankName)){
+            }else if("".equals(comName)){
                 queryWrapper.like("com_name","");
             }
 
@@ -69,7 +69,6 @@ public class SysBankServiceImpl extends ServiceImpl<SysBankMapper, SysBank> impl
         }else if("".equals(accountType)){
             queryWrapper.like("ACCOUNT_TYPE","");
         }
-        queryWrapper.orderByAsc("updated_time");
         return sysBankMapper.querySysBankPageByComId(page,queryWrapper);
     }
 
