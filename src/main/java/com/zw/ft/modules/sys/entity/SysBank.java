@@ -19,8 +19,8 @@ public class SysBank extends BaseEntity {
     /** 公司id */
     private Integer comId ;
 
-    /** 客商ID */
-    //private Integer customerId ;
+     //客商ID
+    /* private Integer customerId ;*/
 
     /** 开户行名称 */
     private String bankName ;
@@ -53,5 +53,18 @@ public class SysBank extends BaseEntity {
     /** 用户名称 */
     @TableField(exist = false)
     private String username;
+
+    /**
+     *@description: 数据来源 0资金 1商贸
+     */
+    private Integer fundOrTrade;
+
+
+    private String taxNumber;
+
+    /**
+     *@description: 旧公司ID，上线后删除
+     */
+    private String oldPkidWilldel;
 
 }

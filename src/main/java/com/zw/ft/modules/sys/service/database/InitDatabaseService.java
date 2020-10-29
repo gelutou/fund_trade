@@ -85,11 +85,15 @@ public class InitDatabaseService {
         for (BdmBank bankTrade : bdmBanks){
             boolean insert= true;
             for (SysBank bank : sysBanks) {
-                if (bank.getAccountBalance().equals(bankTrade.getPkId())) {
+                if (bank.getOldPkidWilldel().equals(bankTrade.getPkId())) {
                     insert = false;
                     break;
                 }
             }
+            SysBank bank = new SysBank();
+            //查询customer里没有的字段
+            QueryWrapper<SysBank> bankQueryWrapper = new QueryWrapper<>();
+
         }
     }
 

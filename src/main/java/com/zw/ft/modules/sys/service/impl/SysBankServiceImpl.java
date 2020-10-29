@@ -41,10 +41,13 @@ public class SysBankServiceImpl extends ServiceImpl<SysBankMapper, SysBank> impl
         }
         //模糊搜索公司名称
         String comName = FormatUtil.isSelectKey("comName", params);
-
-            if(Constant.TRUE.equals(comName)){
+        if(Constant.TRUE.equals(comName)){
                 queryWrapper.like("com_name",params.get("comName"));
+<<<<<<< HEAD
             }else if("".equals(comName)){
+=======
+        }else if("".equals(comName)){
+>>>>>>> savior
                 queryWrapper.like("com_name","");
             }
 

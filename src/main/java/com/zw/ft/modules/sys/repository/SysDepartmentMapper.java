@@ -6,7 +6,10 @@ import com.zw.ft.modules.sys.entity.SysDepartment;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+<<<<<<< HEAD
 
+=======
+>>>>>>> savior
 import java.util.List;
 
 /**
