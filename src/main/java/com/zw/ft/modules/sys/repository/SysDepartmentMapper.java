@@ -29,4 +29,5 @@ public interface SysDepartmentMapper extends BaseMapper<SysDepartment> {
     @Select("SELECT sd.*,sc.com_name FROM sys_department sd LEFT JOIN sys_company sc ON sc.id = sd.com_id WHERE sd.com_id = #{comId} AND DELETED=0" )
     List<SysDepartment> getCompanyNameBesomId(@Param("comId") String comId);
 
+
 }

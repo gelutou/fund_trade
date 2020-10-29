@@ -25,4 +25,6 @@ public interface SysDepartmentService extends IService<SysDepartment> {
       List<SysDepartment> getMenu(Map<String,Object> params);
 
       List<SysDepartment> getTree(List<SysDepartment> allDepts, long fatherId);
+
+
 }

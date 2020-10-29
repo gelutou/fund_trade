@@ -3,26 +3,24 @@ package com.zw.ft.modules.sys.service.database;
 import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.zw.ft.modules.fund.entity.TBank;
 import com.zw.ft.modules.fund.entity.TCompany;
 import com.zw.ft.modules.fund.entity.TCustomer;
 import com.zw.ft.modules.fund.entity.TUser;
-import com.zw.ft.modules.fund.repository.TCompanyMapper;
-import com.zw.ft.modules.fund.repository.TCustomerMapper;
-import com.zw.ft.modules.fund.repository.TOrganMapper;
-import com.zw.ft.modules.fund.repository.TUserMapper;
+import com.zw.ft.modules.fund.repository.*;
+import com.zw.ft.modules.sys.entity.SysBank;
 import com.zw.ft.modules.sys.entity.SysCompany;
 import com.zw.ft.modules.sys.entity.SysUser;
 import com.zw.ft.modules.sys.entity.SysUserExpansion;
+import com.zw.ft.modules.sys.repository.SysBankMapper;
 import com.zw.ft.modules.sys.repository.SysCompanyMapper;
 import com.zw.ft.modules.sys.repository.SysUserExpansionMapper;
 import com.zw.ft.modules.sys.repository.SysUserMapper;
+import com.zw.ft.modules.trade.entity.BdmBank;
 import com.zw.ft.modules.trade.entity.BdmCustomer;
 import com.zw.ft.modules.trade.entity.SysCompanyTrade;
 import com.zw.ft.modules.trade.entity.SysUserTrade;
-import com.zw.ft.modules.trade.repository.BdmCustomerMapper;
-import com.zw.ft.modules.trade.repository.SysCompanyTradeMapper;
-import com.zw.ft.modules.trade.repository.SysOrganMapper;
-import com.zw.ft.modules.trade.repository.SysUserTradeMapper;
+import com.zw.ft.modules.trade.repository.*;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.stereotype.Service;
 
@@ -66,6 +64,38 @@ public class InitDatabaseService {
     SysOrganMapper organTradeMapper;
     @Resource
     TOrganMapper tOrganMapper;
+
+    @Resource
+    SysBankMapper sysBankMapper;
+    @Resource
+    BdmBankMapper bankMapper;
+    @Resource
+    TBankMapper tBankMapper;
+
+
+    public void initSysBank(){
+        long start= System.currentTimeMillis();
+        List<SysBank> sysBanks = sysBankMapper.selectList(null);
+        //查询商贸表银行的所有信息
+        List<BdmBank> bdmBanks = bankMapper.selectList(null);
+        //查询资金表银行的所有信息
+        List<TBank> tBanks = tBankMapper.selectList(null);
+        int insertTime = 0;
+        int updateTime = 0;
+        for (BdmBank bankTrade : bdmBanks){
+            boolean insert= true;
+            for (SysBank bank : sysBanks) {
+                if (bank.getOldPkidWilldel().equals(bankTrade.getPkId())) {
+                    insert = false;
+                    break;
+                }
+            }
+            SysBank bank = new SysBank();
+            //查询customer里没有的字段
+            QueryWrapper<SysBank> bankQueryWrapper = new QueryWrapper<>();
+
+        }
+    }
 
     public void initSysCompany(){
         long start = System.currentTimeMillis();

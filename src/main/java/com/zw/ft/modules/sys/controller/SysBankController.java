@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,7 +34,7 @@ public class SysBankController {
  * @Description  分页查询银行基本信息
  * @Date: 2020/9/28
  */
-    @PostMapping("/banckall")
+    @PostMapping("/bankall")
     public R Banckall(@RequestBody Map<String,Object> params){
         return R.page(sysBankService.getBank(params));
     }
@@ -41,13 +42,13 @@ public class SysBankController {
 
     /**
      * @Author savior
-     * @Description 跟据Id逻辑删除银行信息
+     * @Description 跟据Id逻辑批量删除银行信息
      * @Date: 2020/10/16
      */
     @PostMapping("/daleBankId")
-    public R bankDeleteId (@RequestBody SysBank sysBank){
-        boolean b = sysBankService.removeById(sysBank.getId());
-        if(b){
+    public R bankDeleteId (@RequestBody List<SysBank> idlest){
+        if(idlest!=null && idlest.size()!=0){
+            sysBankService.removeByIds(idlest);
             return R.ok("删除成功");
         }
         return R.error("删除失败");

@@ -37,7 +37,4 @@ public interface SysCompanyMapper extends BaseMapper<SysCompany> {
     List<SysCompany> getFuzzy(@Param("username") String username, @Param("shortname") String shortName);
 
 
-    @Select("SELECT * FROM sys_company")
-    List<SysCompany> getAllComs();
-
 }

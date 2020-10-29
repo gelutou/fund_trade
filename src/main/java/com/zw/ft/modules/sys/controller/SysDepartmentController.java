@@ -52,7 +52,6 @@ public class SysDepartmentController {
         sysDepartmentQueryWrapper.eq("com_id",comId);
         return R.data(sysDepartmentService.list(sysDepartmentQueryWrapper));
     }
-
     /*
      * 功能描述: <br>
      * 〈删除部门〉

@@ -113,4 +113,11 @@ public class SysCompanyServiceImpl extends ServiceImpl<SysCompanyMapper, SysComp
         sysCompanyMapper.deleteBatchIds(lists);
         return R.ok();
     }
+
+    @Override
+    public List<SysCompany> getAllCom(SysCompany sysCompany) {
+        return sysCompanyMapper.selectList(null);
+    }
+
+
 }

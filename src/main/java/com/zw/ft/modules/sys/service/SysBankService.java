@@ -16,5 +16,6 @@ import java.util.Map;
  */
 public interface SysBankService extends IService<SysBank> {
 
+
      Page<SysBank> getBank(Map<String,Object> params);
 }
