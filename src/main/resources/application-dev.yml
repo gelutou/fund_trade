@@ -12,16 +12,6 @@ spring:
                     username: root
                     password: 314159
                     driver-class-name: com.p6spy.engine.spy.P6SpyDriver # 3.2.0开始支持SPI可省略此配置
-                trade:
-                    url: jdbc:mysql://192.168.3.222:3306/product?rewriteBatchedStatements=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
-                    username: root
-                    password: '!111qqq666'
-                    driver-class-name: com.mysql.cj.jdbc.Driver
-                fund:
-                    url: jdbc:mysql://192.168.3.222:3306/bankroll?rewriteBatchedStatements=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
-                    username: root
-                    password: '!111qqq666'
-                    driver-class-name: com.mysql.cj.jdbc.Driver
 mybatis-plus:
     mapper-locations: classpath:mapper/**/*.xml
     #实体扫描，多个package用逗号或者分号分隔
