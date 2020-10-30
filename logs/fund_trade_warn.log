@@ -194,3 +194,7 @@
 2020-10-29 10:36:17.879 [main] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysOrgan".
 2020-10-29 10:36:18.007 [main] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.BdmBank".
 2020-10-30 10:48:17.501 [main] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.BdmBank".
+2020-10-30 11:06:55.831 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.BdmBank".
+2020-10-30 11:11:43.316 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.zw.ft.FundTradeApplication]; nested exception is java.io.FileNotFoundException: class path resource [org/springframework/data/redis/listener/KeyExpirationEventMessageListener.class] cannot be opened because it does not exist
+2020-10-30 11:13:03.134 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.BdmBank".
+2020-10-30 11:18:57.027 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.BdmBank".
