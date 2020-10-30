@@ -377,6 +377,182 @@
         "edges": []
       },
       "associations": []
+    },
+    {
+      "name": "系统-需求发布",
+      "chnname": "系统-需求发布",
+      "entities": [
+        {
+          "title": "sys_needs",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "主键ID",
+              "autoIncrement": true,
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "title",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "标题",
+              "notNull": true
+            },
+            {
+              "name": "content",
+              "type": "LongText",
+              "remark": "",
+              "chnname": "内容",
+              "notNull": true
+            },
+            {
+              "name": "dept_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "所属部门",
+              "notNull": true
+            },
+            {
+              "name": "expected_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "期望日期",
+              "notNull": false
+            },
+            {
+              "name": "handler",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "处理人",
+              "notNull": false
+            },
+            {
+              "name": "actual_completion_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "实际完成日期"
+            },
+            {
+              "name": "confirmer",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "确认人"
+            },
+            {
+              "name": "confirm_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "确认日期"
+            },
+            {
+              "name": "status",
+              "type": "Integer",
+              "remark": "0未解决1已解决2完成",
+              "chnname": "状态",
+              "notNull": true
+            },
+            {
+              "name": "REVISION",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "乐观锁",
+              "notNull": true
+            },
+            {
+              "name": "CREATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "创建人",
+              "notNull": true
+            },
+            {
+              "name": "CREATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            },
+            {
+              "name": "UPDATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "更新人",
+              "notNull": true
+            },
+            {
+              "name": "UPDATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新时间",
+              "notNull": true
+            },
+            {
+              "name": "DELETED",
+              "type": "Integer",
+              "remark": "0正常1删除",
+              "chnname": "逻辑删除",
+              "defaultValue": "0",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "系统需求表"
+        }
+      ],
+      "graphCanvas": {
+        "nodes": [],
+        "edges": []
+      },
+      "associations": []
     }
   ],
   "dataTypeDomains": {
