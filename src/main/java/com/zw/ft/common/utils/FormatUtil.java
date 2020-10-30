@@ -5,6 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.zw.ft.common.base.BaseEntity;
+import com.zw.ft.common.base.Constant;
 
 import java.util.Map;
 
@@ -16,6 +17,29 @@ import java.util.Map;
  * @Version 1.0
  **/
 public class FormatUtil {
+
+    /*
+     * 功能描述: <br>
+     * 〈给查询Wrapper添加通用条件〉
+     * @Author: Oliver
+     * @Date: 2020/10/30 15:40
+     */
+
+    public static void queryWrapperCommon(QueryWrapper<? extends BaseEntity> queryWrapper,Map<String,Object> params){
+        String startDateTime = isSelectKey("startDateTime", params);
+        if(Constant.TRUE.equals(startDateTime)){
+            queryWrapper.ge("created_time",params.get("startDateTime"));
+        }else if("".equals(startDateTime)){
+            queryWrapper.ge("created_time","");
+        }
+
+        String endDateTime = isSelectKey("endDateTime", params);
+        if(Constant.TRUE.equals(endDateTime)){
+            queryWrapper.le("created_time",params.get("endDateTime"));
+        }else if("".equals(endDateTime)){
+            queryWrapper.le("created_time","");
+        }
+    }
 
     /**
      *@description: 用于正文标识替换
@@ -33,7 +57,6 @@ public class FormatUtil {
                 .replace("$today",today)
                 .replace("$datetime",todayDateTime),params);
     }
-
 
     /*
      * 功能描述: <br>

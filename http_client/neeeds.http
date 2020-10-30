@@ -1,0 +1,19 @@
+POST http://localhost:8088/ft/sys-needs/add
+Content-Type: application/json
+token:2bcae5362038795570e2a06889f40f4f
+
+{"title":"我是测试添加系统需求标题","content": "我是测试添加系统需求内容","deptId": "3","": ""}
+
+###
+POST http://81.68.92.240:8088/ft/sys-needs/queryPage
+Content-Type: application/json
+token:2bcae5362038795570e2a06889f40f4f
+
+{"createdBy": "1","pageSize": 1}
+### 81.68.92.240
+POST http://localhost:8088/ft/sys/login/admin/1
+Content-Type: application/json
+
+
+
+###
