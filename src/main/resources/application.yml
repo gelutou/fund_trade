@@ -13,7 +13,7 @@ server :
 
 spring :
   redis:
-    host: localhost
+    host: 81.68.92.240
     port: 6379
     timeout: 10000
     jedis:

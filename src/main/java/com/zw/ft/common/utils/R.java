@@ -47,6 +47,11 @@ public class R extends HashMap<String, Object> {
 		r.put("data", list);
 		return r;
 	}
+	public static R data(BaseEntity entity) {
+		R r = new R();
+		r.put("data", entity);
+		return r;
+	}
 	public static R data(JSONArray jsonArray) {
 		R r = new R();
 		r.put("data", jsonArray);

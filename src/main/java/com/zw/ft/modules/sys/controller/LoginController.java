@@ -59,9 +59,7 @@ public class LoginController extends BaseController {
         if(one == null){
             return R.error("无此用户");
             //判断密码是否相等
-        }else if (new Sha256Hash(password, username).toHex(
-
-        ).equals(one.getPassword())){
+        }else if (new Sha256Hash(password, username).toHex().equals(one.getPassword())){
             //判断token是否过期
             String token = redisService.get(username);
             String newToken;
@@ -82,6 +80,12 @@ public class LoginController extends BaseController {
                 userToken.setToken(newToken);
                 sysUserTokenService.save(userToken);
             }else if(token == null){
+                SysUserToken updateToke = new SysUserToken();
+                updateToke.setId(userToken.getId());
+                updateToke.setUserId(userToken.getUserId());
+                updateToke.setToken(newToken);
+                sysUserTokenService.updateById(updateToke);
+            }else if(!userToken.getToken().equals(newToken)){
                 SysUserToken updateToke = new SysUserToken();
                 updateToke.setId(userToken.getId());
                 updateToke.setUserId(userToken.getUserId());

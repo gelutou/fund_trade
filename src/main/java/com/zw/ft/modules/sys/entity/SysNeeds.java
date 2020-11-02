@@ -97,4 +97,10 @@ public class SysNeeds extends BaseEntity {
      */
     @TableField(exist = false)
     private SysUser confirmerUser;
+
+    /**
+     * 回复
+     */
+    @TableField(exist = false)
+    private SysReply sysReply;
 }
