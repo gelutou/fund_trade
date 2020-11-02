@@ -5,13 +5,9 @@ import com.zw.ft.common.base.Constant;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysBank;
 import com.zw.ft.modules.sys.service.SysBankService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,15 +41,10 @@ public class SysBankController {
      * @Description 跟据Id逻辑批量删除银行信息
      * @Date: 2020/10/16
      */
-    @PostMapping("/daleBankId")
-    public R bankDeleteId (@RequestBody List<SysBank> idlest){
-        if(idlest!=null && idlest.size()!=0){
-            sysBankService.removeByIds(idlest);
-            return R.ok("删除成功");
-        }
-        return R.error("删除失败");
+    @PostMapping("/deleteByIds/{ids}")
+    public R bankDeleteId (@PathVariable("ids") String ids){
+            return sysBankService.delBank(ids);
     }
-
 
     /**
      * 功能描述: <br>

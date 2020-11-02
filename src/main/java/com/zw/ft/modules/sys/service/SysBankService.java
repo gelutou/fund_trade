@@ -2,6 +2,7 @@ package com.zw.ft.modules.sys.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysBank;
 
 import java.util.Map;
@@ -18,4 +19,6 @@ public interface SysBankService extends IService<SysBank> {
 
 
      Page<SysBank> getBank(Map<String,Object> params);
+
+     R delBank(String delIds);
 }
