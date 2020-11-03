@@ -2,11 +2,8 @@ package com.zw.ft.modules.sys.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.zw.ft.common.base.BaseEntity;
-
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.Date;
-import com.baomidou.mybatisplus.annotation.Version;
+import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -36,7 +33,7 @@ public class SysNeeds extends BaseEntity {
     /**
      * 所属部门
      */
-    private Integer deptId;
+    private long deptId;
 
     /**
      * 期望日期
@@ -102,5 +99,5 @@ public class SysNeeds extends BaseEntity {
      * 回复
      */
     @TableField(exist = false)
-    private SysReply sysReply;
+    private List<SysReply> sysReply;
 }

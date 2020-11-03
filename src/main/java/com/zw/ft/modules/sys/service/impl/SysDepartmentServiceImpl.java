@@ -51,5 +51,8 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
         return trees;
     }
 
-
+    @Override
+    public SysDepartment getDeptByUserId(long userId) {
+        return sysDepartmentMapper.getDeptByUserId(userId);
+    }
 }

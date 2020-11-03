@@ -62,6 +62,6 @@ public interface SysNeedsMapper extends BaseMapper<SysNeeds> {
      * @Date: 2020/10/30 15:33
      */
 
-    @Select("SELECT *,sd.des statusDes FROM sys_needs sy LEFT JOIN (SELECT * FROM sys_dictionary WHERE p_id = 12)  sd ON sy.status = sd.value ${ew.customSqlSegment}")
+    @Select("SELECT *,sd.des statusDes FROM sys_needs sy LEFT JOIN (SELECT * FROM sys_dictionary WHERE p_id = (SELECT ID FROM sys_dictionary WHERE des = '系统需求状态')) sd ON sy.status = sd.value ${ew.customSqlSegment}")
     Page<SysNeeds> queryNeedsPage(IPage<SysNeeds> page, @Param("ew") Wrapper<SysNeeds> queryWrapper);
 }

@@ -26,5 +26,15 @@ public interface SysDepartmentService extends IService<SysDepartment> {
 
       List<SysDepartment> getTree(List<SysDepartment> allDepts, long fatherId);
 
+      /*
+       * 功能描述: <br>
+       * 〈查询人员对应的部门〉
+       * @Param: userId
+       * @Author: Oliver
+       * @Date: 2020/11/3 14:31
+       */
+
+      SysDepartment getDeptByUserId(long userId);
+
 
 }

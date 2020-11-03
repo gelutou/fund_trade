@@ -31,35 +31,7 @@ public class SysReplyServiceImpl extends ServiceImpl<SysReplyMapper, SysReply> i
 
         //查询父级回复
         QueryWrapper<SysReply> replyQueryWrapper = new QueryWrapper<>();
-        replyQueryWrapper.eq("need_id",needId).isNull("parent_id");
-        List<SysReply> replies = sysReplyMapper.selectList(replyQueryWrapper);
-        for(SysReply reply : replies){
-            putChildrenReply(reply);
-        }
-        return replies;
-    }
-
-    /*
-     * 功能描述: <br>
-     * 〈设置系统需求子集〉
-     * @Param:
-     * @Return:
-     * @Author: Oliver
-     * @Date: 2020/11/2 11:28
-     */
-
-    public void putChildrenReply(SysReply reply){
-
-        //查询出其所有子集
-        Long id = reply.getId();
-        QueryWrapper<SysReply> replyQueryWrapper = new QueryWrapper<>();
-        replyQueryWrapper.eq("parent_id",id);
-        List<SysReply> replies = sysReplyMapper.selectList(replyQueryWrapper);
-        if(replies.size() > 0){
-            reply.setChildren(replies);
-            for(SysReply replyEntity : replies){
-                putChildrenReply(replyEntity);
-            }
-        }
+        replyQueryWrapper.orderByAsc("created_time");
+        return sysReplyMapper.getReply(needId,replyQueryWrapper);
     }
 }

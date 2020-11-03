@@ -1,6 +1,6 @@
-POST http://81.68.92.240:8088/ft/sys-needs/reply/queryOne/1
+POST http://localhost:8088/ft/sys-needs/reply/queryOne/1
 Content-Type: application/json
-token:9e5f10109421ac53c66215b9b61669f2
+token:6e4133bb3eecf01f0ce45dad6be64700
 
 {}
 
@@ -33,23 +33,23 @@ token:ce3154b37d691919685abc1f717d1402
 ###
 POST http://localhost:8088/ft/sys-needs/update
 Content-Type: application/json
-token:ce3154b37d691919685abc1f717d1402
+token:6e4133bb3eecf01f0ce45dad6be64700
 
-{"id":4,"title":"我是测试修改系统需求标题","handler": "1"}
-
-###
-POST http://81.68.92.240:8088/ft/sys-needs/add
-Content-Type: application/json
-token:9e5f10109421ac53c66215b9b61669f2
-
-{"title":"我是测试添加系统需求标题02","content": "我是测试添加系统需求内容","deptId": "3","": ""}
+{"id":4,"title":"我是测试修改系统需求标题00","handler": "1"}
 
 ###
-POST http://81.68.92.240:8088/ft/sys-needs/queryPage
+POST http://localhost:8088/ft/sys-needs/add
 Content-Type: application/json
-token:2bcae5362038795570e2a06889f40f4f
+token:6e4133bb3eecf01f0ce45dad6be64700
 
-{"createdBy": "1","pageSize": 1}
+{"title":"我是测试添加系统需求标题02","content": "我是测试添加系统需求内容"}
+
+###
+POST http://localhost:8088/ft/sys-needs/queryPage
+Content-Type: application/json
+token:6e4133bb3eecf01f0ce45dad6be64700
+
+{"endDateTime": "2020-11-03"}
 ### 81.68.92.240
 POST http://81.68.92.240:8088/ft/sys/login/admin/1
 Content-Type: application/json

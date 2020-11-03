@@ -28,13 +28,7 @@ public class SysReply extends BaseEntity {
     /**
      * 系统需求ID
      */
-    @NotEmpty(message = "系统需求ID（needId）不能为空")
     private Integer needId;
-
-    /**
-     * 回复父级ID
-     */
-    private Integer parentId;
 
     /**
      * 回复内容
@@ -42,9 +36,9 @@ public class SysReply extends BaseEntity {
     private String content;
 
     /**
-     *@description: 子回复集合
+     *@description: 创建人
      */
     @TableField(exist = false)
-    private List<SysReply> children;
+    private SysUser creator;
 
 }

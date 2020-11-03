@@ -8,10 +8,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.common.utils.QueryUtil;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.common.utils.ShiroUtils;
-import com.zw.ft.modules.sys.entity.SysCompany;
-import com.zw.ft.modules.sys.entity.SysNeeds;
-import com.zw.ft.modules.sys.entity.SysReply;
-import com.zw.ft.modules.sys.entity.SysUser;
+import com.zw.ft.modules.sys.entity.*;
+import com.zw.ft.modules.sys.service.RelUserDepartmentService;
+import com.zw.ft.modules.sys.service.SysDepartmentService;
 import com.zw.ft.modules.sys.service.SysNeedsService;
 import com.zw.ft.modules.sys.service.SysReplyService;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +34,8 @@ public class SysNeedsController {
     SysNeedsService sysNeedsService;
     @Resource
     SysReplyService sysReplyService;
+    @Resource
+    SysDepartmentService sysDepartmentService;
 
     /*
      * 功能描述: <br>
@@ -59,6 +60,10 @@ public class SysNeedsController {
 
     @RequestMapping("/add")
     public R add(@RequestBody(required = false) SysNeeds sysNeeds){
+        //获取当前登录人的部门ID
+        Long userId = ShiroUtils.getUserId();
+        SysDepartment deptByUserId = sysDepartmentService.getDeptByUserId(userId);
+        sysNeeds.setDeptId(deptByUserId.getId());
         sysNeedsService.save(sysNeeds);
         return R.ok();
     }
@@ -72,7 +77,9 @@ public class SysNeedsController {
 
     @RequestMapping("/update")
     public R update(@RequestBody(required = false) SysNeeds sysNeeds){
-        sysNeedsService.updateById(sysNeeds);
+        UpdateWrapper<SysNeeds> needsUpdateWrapper = new UpdateWrapper<>();
+        needsUpdateWrapper.eq("id",sysNeeds.getId());
+        sysNeedsService.update(sysNeeds, needsUpdateWrapper);
         return R.ok();
     }
 
