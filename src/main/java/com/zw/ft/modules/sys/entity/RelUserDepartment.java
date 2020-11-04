@@ -1,0 +1,32 @@
+package com.zw.ft.modules.sys.entity;
+
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.zw.ft.common.base.BaseEntity;
+import com.baomidou.mybatisplus.annotation.Version;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+/**
+ * <p>
+ * 人员部门关系表 
+ * </p>
+ *
+ * @author Oliver
+ * @since 2020-11-03
+ */
+@EqualsAndHashCode(callSuper = true)
+@TableName(value = "rel_user_department")
+@Data
+public class RelUserDepartment extends BaseEntity {
+
+    private static final long serialVersionUID = 7100356565731267027L;
+    /**
+     * 人员 人员ID
+     */
+    private Integer userId;
+
+    /**
+     * 部门 部门ID
+     */
+    private Integer deptId;
+}

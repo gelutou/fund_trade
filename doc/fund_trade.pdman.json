@@ -546,6 +546,132 @@
             }
           ],
           "chnname": "系统需求表"
+        },
+        {
+          "title": "sys_reply",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "主键ID",
+              "autoIncrement": true,
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "need_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "系统需求ID",
+              "notNull": true
+            },
+            {
+              "name": "parent_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "回复父级ID",
+              "notNull": false
+            },
+            {
+              "name": "content",
+              "type": "LongText",
+              "remark": "",
+              "chnname": "回复内容",
+              "notNull": true
+            },
+            {
+              "name": "REVISION",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "乐观锁",
+              "notNull": true
+            },
+            {
+              "name": "CREATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "创建人",
+              "notNull": true
+            },
+            {
+              "name": "CREATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            },
+            {
+              "name": "UPDATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "更新人",
+              "notNull": true
+            },
+            {
+              "name": "UPDATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新时间",
+              "notNull": true
+            },
+            {
+              "name": "DELETED",
+              "type": "Integer",
+              "remark": "0正常1删除",
+              "chnname": "逻辑删除",
+              "defaultValue": "0",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "系统需求回复表"
         }
       ],
       "graphCanvas": {
@@ -1035,13 +1161,6 @@
         "chnname": "主键ID",
         "autoIncrement": true,
         "pk": true,
-        "notNull": true
-      },
-      {
-        "name": "REVISION",
-        "type": "Integer",
-        "remark": "",
-        "chnname": "乐观锁",
         "notNull": true
       },
       {

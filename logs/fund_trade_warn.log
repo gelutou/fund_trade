@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2020-10-30 09:01:25.562 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysUserTrade".
 2020-10-30 09:01:25.704 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.SysCompanyTrade".
 2020-10-30 09:01:25.732 [restartedMain] WARN  c.b.mybatisplus.core.metadata.TableInfoHelper - Can not find table primary key in Class: "com.zw.ft.modules.trade.entity.BdmCustomer".
@@ -302,6 +303,25 @@ org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的�
 	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)
 	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
 	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+=======
+2020-11-04 09:17:18.190 [http-nio-8088-exec-1] WARN  org.apache.shiro.authc.AbstractAuthenticator - Authentication failed for token submission [OAuth2Token(token=718757492ce15d47bffce20e8080ca5a)].  Possible unexpected error? (Typical or expected login exceptions should extend from AuthenticationException).
+java.lang.NullPointerException: null
+	at com.zw.ft.modules.sys.oauth2.OAuth2Realm.doGetAuthenticationInfo(OAuth2Realm.java:63)
+	at org.apache.shiro.realm.AuthenticatingRealm.getAuthenticationInfo(AuthenticatingRealm.java:571)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doSingleRealmAuthentication(ModularRealmAuthenticator.java:180)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doAuthenticate(ModularRealmAuthenticator.java:273)
+	at org.apache.shiro.authc.AbstractAuthenticator.authenticate(AbstractAuthenticator.java:198)
+	at org.apache.shiro.mgt.AuthenticatingSecurityManager.authenticate(AuthenticatingSecurityManager.java:106)
+	at org.apache.shiro.mgt.DefaultSecurityManager.login(DefaultSecurityManager.java:275)
+	at org.apache.shiro.subject.support.DelegatingSubject.login(DelegatingSubject.java:260)
+	at org.apache.shiro.web.filter.authc.AuthenticatingFilter.executeLogin(AuthenticatingFilter.java:53)
+	at com.zw.ft.modules.sys.oauth2.OAuth2Filter.onAccessDenied(OAuth2Filter.java:52)
+	at org.apache.shiro.web.filter.AccessControlFilter.onAccessDenied(AccessControlFilter.java:133)
+	at org.apache.shiro.web.filter.AccessControlFilter.onPreHandle(AccessControlFilter.java:162)
+	at org.apache.shiro.web.filter.PathMatchingFilter.isFilterChainContinued(PathMatchingFilter.java:214)
+	at org.apache.shiro.web.filter.PathMatchingFilter.preHandle(PathMatchingFilter.java:189)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:131)
+>>>>>>> e5046566fe44398b4ee26748049f152554444b26
 	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
 	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
 	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
@@ -330,8 +350,12 @@ org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的�
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
 	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+<<<<<<< HEAD
 	at org.apache.catalina.core.StandardContextValve.__invoke(StandardContextValve.java:96)
 	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:41002)
+=======
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+>>>>>>> e5046566fe44398b4ee26748049f152554444b26
 	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
 	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
 	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
@@ -346,6 +370,7 @@ org.apache.catalina.connector.ClientAbortException: java.io.IOException: 你的�
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
 	at sun.nio.ch.SocketDispatcher.write0(Native Method)
 	at sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:51)
@@ -523,3 +548,7 @@ Caused by: java.io.IOException: 你的主机中的软件中止了一个已建立
 2020-10-30 15:04:38.050 [http-nio-8088-exec-3] WARN  com.zaxxer.hikari.pool.PoolBase - fundTrade - Failed to validate connection com.p6spy.engine.wrapper.ConnectionWrapper@727c7545 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
 2020-10-30 15:04:38.054 [http-nio-8088-exec-2] WARN  com.zaxxer.hikari.pool.PoolBase - fundTrade - Failed to validate connection com.p6spy.engine.wrapper.ConnectionWrapper@3dc6902c (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
 2020-10-30 15:04:38.055 [http-nio-8088-exec-3] WARN  com.zaxxer.hikari.pool.PoolBase - fundTrade - Failed to validate connection com.p6spy.engine.wrapper.ConnectionWrapper@4ff4e17c (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+=======
+2020-11-04 09:17:29.607 [http-nio-8088-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `java.time.LocalDateTime` from String "2020-11-14": Failed to deserialize java.time.LocalDateTime: (java.time.format.DateTimeParseException) Text '2020-11-14' could not be parsed at index 10; nested exception is com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot deserialize value of type `java.time.LocalDateTime` from String "2020-11-14": Failed to deserialize java.time.LocalDateTime: (java.time.format.DateTimeParseException) Text '2020-11-14' could not be parsed at index 10
+ at [Source: (PushbackInputStream); line: 1, column: 117] (through reference chain: com.zw.ft.modules.sys.entity.SysNeeds["expectedTime"])]
+>>>>>>> e5046566fe44398b4ee26748049f152554444b26

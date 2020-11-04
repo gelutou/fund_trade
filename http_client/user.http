@@ -1,3 +1,9 @@
+POST http://localhost:8088/api/item
+Content-Type: application/json
+
+{}
+
+###
 POST http://localhost:8088/ft/sys-company/get_by_wrapper
 Content-Type: application/json
 
@@ -18,10 +24,7 @@ Content-Type: application/json
 ###
 POST http://localhost:8088/ft/sys/logout
 Content-Type: application/json
-<<<<<<< HEAD
 token:5531b55s465851f730f3f4983cebe998d
-=======
-token:46f0ecfed2d02980459502cbb26f5b2d
 
 
 ###

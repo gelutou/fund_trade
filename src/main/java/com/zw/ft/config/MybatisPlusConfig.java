@@ -21,14 +21,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableAspectJAutoProxy(exposeProxy = true)
 public class MybatisPlusConfig {
 
-    /**
-     *@description: 乐观锁插件
-     */
-    @Bean
-    public OptimisticLockerInnerInterceptor optimisticLockerInterceptor() {
-        return new OptimisticLockerInnerInterceptor();
-    }
-
     @Bean
     public PaginationInterceptor  paginationInterceptor() {
         return new PaginationInterceptor ();

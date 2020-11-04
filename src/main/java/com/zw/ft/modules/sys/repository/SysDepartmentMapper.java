@@ -29,5 +29,14 @@ public interface SysDepartmentMapper extends BaseMapper<SysDepartment> {
     @Select("SELECT sd.*,sc.com_name FROM sys_department sd LEFT JOIN sys_company sc ON sc.id = sd.com_id WHERE sd.com_id = #{comId} AND DELETED=0" )
     List<SysDepartment> getCompanyNameBesomId(@Param("comId") String comId);
 
+    /*
+     * 功能描述: <br>
+     * 〈查询人员的部门〉
+     * @Author: Oliver
+     * @Date: 2020/11/3 14:34
+     */
+
+    @Select("SELECT * FROM sys_department sd,rel_user_department rud WHERE sd.id = rud.dept_id AND rud.user_id = #{userId}")
+    SysDepartment getDeptByUserId(@Param("userId") long userId);
 
 }

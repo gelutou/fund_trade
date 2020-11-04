@@ -1,8 +1,11 @@
 package com.zw.ft.modules.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.zw.ft.common.base.BaseEntity;
-import java.util.Date;
-import com.baomidou.mybatisplus.annotation.Version;
+import java.time.LocalDateTime;
+import java.util.List;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * <p>
@@ -12,10 +15,11 @@ import com.baomidou.mybatisplus.annotation.Version;
  * @author Oliver
  * @since 2020-10-29
  */
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class SysNeeds extends BaseEntity {
 
-    private static final long serialVersionUID = 1L;
-
+    private static final long serialVersionUID = -6708994052557758569L;
     /**
      * 标题
      */
@@ -29,12 +33,12 @@ public class SysNeeds extends BaseEntity {
     /**
      * 所属部门
      */
-    private Integer deptId;
+    private long deptId;
 
     /**
      * 期望日期
      */
-    private Date expectedTime;
+    private String expectedTime;
 
     /**
      * 处理人
@@ -44,7 +48,7 @@ public class SysNeeds extends BaseEntity {
     /**
      * 实际完成日期
      */
-    private Date actualCompletionTime;
+    private String actualCompletionTime;
 
     /**
      * 确认人
@@ -54,98 +58,46 @@ public class SysNeeds extends BaseEntity {
     /**
      * 确认日期
      */
-    private Date confirmTime;
+    private String confirmTime;
 
     /**
-     * 状态 0未解决1已解决2完成
+     * 状态 0未解决1已解决2已确认
      */
     private Integer status;
 
+    /**
+     * 状态(中文) 0未解决1已解决2已确认
+     */
+    @TableField(exist = false)
+    private String statusDes;
 
-    public String getTitle() {
-        return title;
-    }
+    /**
+     * 提出人
+     */
+    @TableField(exist = false)
+    private SysUser proposer;
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    /**
+     * 所属部门信息
+     */
+    @TableField(exist = false)
+    private SysDepartment dept;
 
-    public String getContent() {
-        return content;
-    }
+    /**
+     * 处理人
+     */
+    @TableField(exist = false)
+    private SysUser handleUser;
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+    /**
+     * 确认人
+     */
+    @TableField(exist = false)
+    private SysUser confirmerUser;
 
-    public Integer getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
-    }
-
-    public Date getExpectedTime() {
-        return expectedTime;
-    }
-
-    public void setExpectedTime(Date expectedTime) {
-        this.expectedTime = expectedTime;
-    }
-
-    public Integer getHandler() {
-        return handler;
-    }
-
-    public void setHandler(Integer handler) {
-        this.handler = handler;
-    }
-
-    public Date getActualCompletionTime() {
-        return actualCompletionTime;
-    }
-
-    public void setActualCompletionTime(Date actualCompletionTime) {
-        this.actualCompletionTime = actualCompletionTime;
-    }
-
-    public Integer getConfirmer() {
-        return confirmer;
-    }
-
-    public void setConfirmer(Integer confirmer) {
-        this.confirmer = confirmer;
-    }
-
-    public Date getConfirmTime() {
-        return confirmTime;
-    }
-
-    public void setConfirmTime(Date confirmTime) {
-        this.confirmTime = confirmTime;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return "SysNeeds{" +
-        "title=" + title +
-        ", content=" + content +
-        ", deptId=" + deptId +
-        ", expectedTime=" + expectedTime +
-        ", handler=" + handler +
-        ", actualCompletionTime=" + actualCompletionTime +
-        ", confirmer=" + confirmer +
-        ", confirmTime=" + confirmTime +
-        ", status=" + status +
-        "}";
-    }
+    /**
+     * 回复
+     */
+    @TableField(exist = false)
+    private List<SysReply> sysReply;
 }
