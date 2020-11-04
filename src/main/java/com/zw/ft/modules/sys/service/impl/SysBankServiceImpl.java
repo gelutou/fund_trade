@@ -36,11 +36,19 @@ public class SysBankServiceImpl extends ServiceImpl<SysBankMapper, SysBank> impl
         Page<SysBank> page = new QueryUtil<SysBank>(params).getPage();
         QueryWrapper<SysBank> queryWrapper = new QueryWrapper<>();
         //模糊搜索开户行全称
+<<<<<<< HEAD
         String bankName = FormatUtil.isSelectKey("bankName", params);
         if(Constant.TRUE.equals(bankName)){
             queryWrapper.like("su.BANK_NAME",params.get("bankName"));
         }else if("".equals(bankName)){
             queryWrapper.like("su.BANK_NAME","");
+=======
+        String bankFullName = FormatUtil.isSelectKey("bankFullName", params);
+        if(Constant.TRUE.equals(bankFullName)){
+            queryWrapper.like("bank_full_name",params.get("bankFullName"));
+        }else if("".equals(bankFullName)){
+            queryWrapper.like("bank_full_name","");
+>>>>>>> savior
         }
 
 
@@ -60,11 +68,18 @@ public class SysBankServiceImpl extends ServiceImpl<SysBankMapper, SysBank> impl
         //模糊搜索公司名称
         String comName =FormatUtil.isSelectKey("comName",params);
         if(Constant.TRUE.equals(comName)){
+<<<<<<< HEAD
                 queryWrapper.like("scy.com_name",params.get("comName").toString().replace("[","").replace("]",""));
         }else if("".equals(comName)){
                 queryWrapper.like("scy.com_name","");
         }
 
+=======
+                queryWrapper.like("com_name",params.get("comName"));
+        }else if("".equals(comName)){
+                queryWrapper.like("com_name","");
+        }
+>>>>>>> savior
 
         //模糊搜索银行账号
         String bankAccount = FormatUtil.isSelectKey("bankAccount", params);

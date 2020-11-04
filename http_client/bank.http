@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 POST http://localhost:8088/ft/sys-bank/deleteByIds
 Content-Type: application/json
 
@@ -7,5 +8,11 @@ POST http://localhost:8088/ft/sys-bank/bankall
 Content-Type: application/json
 
 {"comName": "[上海鑫抚源国际贸易有限公司]"}
+=======
+POST http://localhost:8088/ft/sys-bank/bankall
+Content-Type: application/json
+
+{}
+>>>>>>> savior
 
 ###
