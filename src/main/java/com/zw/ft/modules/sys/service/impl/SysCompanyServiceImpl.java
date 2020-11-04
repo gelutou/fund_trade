@@ -116,6 +116,7 @@ public class SysCompanyServiceImpl extends ServiceImpl<SysCompanyMapper, SysComp
 
     @Override
     public List<SysCompany> getAllCom(SysCompany sysCompany) {
+        //QueryWrapper<SysCompany> queryWrapper = new QueryWrapper<>();
         return sysCompanyMapper.selectList(null);
     }
 

@@ -1,0 +1,6 @@
+POST http://localhost:8088/ft/sys-bank/bankall
+Content-Type: application/json
+
+{}
+
+###
