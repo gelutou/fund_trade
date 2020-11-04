@@ -36,88 +36,72 @@ public class SysBankServiceImpl extends ServiceImpl<SysBankMapper, SysBank> impl
         Page<SysBank> page = new QueryUtil<SysBank>(params).getPage();
         QueryWrapper<SysBank> queryWrapper = new QueryWrapper<>();
         //模糊搜索开户行全称
-<<<<<<< HEAD
-        String bankName = FormatUtil.isSelectKey("bankName", params);
-        if(Constant.TRUE.equals(bankName)){
-            queryWrapper.like("su.BANK_NAME",params.get("bankName"));
-        }else if("".equals(bankName)){
-            queryWrapper.like("su.BANK_NAME","");
-=======
-        String bankFullName = FormatUtil.isSelectKey("bankFullName", params);
-        if(Constant.TRUE.equals(bankFullName)){
-            queryWrapper.like("bank_full_name",params.get("bankFullName"));
-        }else if("".equals(bankFullName)){
-            queryWrapper.like("bank_full_name","");
->>>>>>> savior
-        }
-
-
-
-        //模糊搜索公司id
-        String comId =FormatUtil.isSelectKey("comId",params);
-        String string = JSON.toJSONString(params);
-        string = string.replace("[","").replace("]","");
-        String[] convert1 = Convert.convert(String[].class, string);
-        if(Constant.TRUE.equals(comId)){
-            if (params.toString().contains(",")) {
-                //convert1.replace("[","").replace("]",""));
-                queryWrapper.in("su.com_id", convert1);
+            String bankFullName = FormatUtil.isSelectKey("bankFullName", params);
+            if (Constant.TRUE.equals(bankFullName)) {
+                queryWrapper.like("bank_full_name", params.get("bankFullName"));
+            } else if ("".equals(bankFullName)) {
+                queryWrapper.like("bank_full_name", "");
             }
+
+
+            //模糊搜索公司id
+            String comId = FormatUtil.isSelectKey("comId", params);
+            String string = JSON.toJSONString(params);
+            string = string.replace("[", "").replace("]", "");
+            String[] convert1 = Convert.convert(String[].class, string);
+            if (Constant.TRUE.equals(comId)) {
+                if (params.toString().contains(",")) {
+                    //convert1.replace("[","").replace("]",""));
+                    queryWrapper.in("su.com_id", convert1);
+                }
+            }
+
+            //模糊搜索公司名称
+            String comName = FormatUtil.isSelectKey("comName", params);
+            if (Constant.TRUE.equals(comName)) {
+                queryWrapper.like("scy.com_name", params.get("comName").toString().replace("[", "").replace("]", ""));
+            } else if ("".equals(comName)) {
+                queryWrapper.like("scy.com_name", "");
+            }
+
+            //模糊搜索银行账号
+            String bankAccount = FormatUtil.isSelectKey("bankAccount", params);
+            if (Constant.TRUE.equals(bankAccount)) {
+                queryWrapper.like("su.BANK_ACCOUNT", params.get("bankAccount"));
+            } else if ("".equals(bankAccount)) {
+                queryWrapper.like("su.BANK_ACCOUNT", "");
+            }
+            //模糊搜索账号类别
+            String accountStyle = FormatUtil.isSelectKey("accountStyle", params);
+            if (Constant.TRUE.equals(accountStyle)) {
+                queryWrapper.like("su.ACCOUNT_STYLE", params.get("accountStyle"));
+            } else if ("".equals(accountStyle)) {
+                queryWrapper.like("su.ACCOUNT_STYLE", "");
+            }
+            //模糊搜索账号性质
+            String accountType = FormatUtil.isSelectKey("accountType", params);
+            if (Constant.TRUE.equals(accountType)) {
+                queryWrapper.like("su.ACCOUNT_TYPE", params.get("accountType"));
+            } else if ("".equals(accountType)) {
+                queryWrapper.like("su.ACCOUNT_TYPE", "");
+            }
+            queryWrapper.eq("su.deleted", 0);
+            queryWrapper.orderByAsc("su.updated_time");
+            return sysBankMapper.querySysBankPageByComId(page, queryWrapper);
         }
 
-        //模糊搜索公司名称
-        String comName =FormatUtil.isSelectKey("comName",params);
-        if(Constant.TRUE.equals(comName)){
-<<<<<<< HEAD
-                queryWrapper.like("scy.com_name",params.get("comName").toString().replace("[","").replace("]",""));
-        }else if("".equals(comName)){
-                queryWrapper.like("scy.com_name","");
-        }
 
-=======
-                queryWrapper.like("com_name",params.get("comName"));
-        }else if("".equals(comName)){
-                queryWrapper.like("com_name","");
-        }
->>>>>>> savior
 
-        //模糊搜索银行账号
-        String bankAccount = FormatUtil.isSelectKey("bankAccount", params);
-        if(Constant.TRUE.equals(bankAccount)){
-            queryWrapper.like("su.BANK_ACCOUNT",params.get("bankAccount"));
-        }else if("".equals(bankAccount)){
-            queryWrapper.like("su.BANK_ACCOUNT","");
+        @Override
+        public R delBank(String delIds) {
+            List<String> lists = new LinkedList<>();
+            if (delIds.contains(",")) {
+                String[] split = delIds.split(",");
+                Collections.addAll(lists, split);
+            } else {
+                lists.add(delIds);
+            }
+            sysBankMapper.deleteBatchIds(lists);
+            return R.ok();
         }
-        //模糊搜索账号类别
-        String accountStyle = FormatUtil.isSelectKey("accountStyle", params);
-        if(Constant.TRUE.equals(accountStyle)){
-            queryWrapper.like("su.ACCOUNT_STYLE",params.get("accountStyle"));
-        }else if("".equals(accountStyle)){
-            queryWrapper.like("su.ACCOUNT_STYLE","");
-        }
-        //模糊搜索账号性质
-        String accountType = FormatUtil.isSelectKey("accountType", params);
-        if(Constant.TRUE.equals(accountType)){
-            queryWrapper.like("su.ACCOUNT_TYPE",params.get("accountType"));
-        }else if("".equals(accountType)){
-            queryWrapper.like("su.ACCOUNT_TYPE","");
-        }
-        queryWrapper.eq("su.deleted",0);
-        queryWrapper.orderByAsc("su.updated_time");
-        return sysBankMapper.querySysBankPageByComId(page,queryWrapper);
-    }
-
-    @Override
-    public R delBank(String delIds) {
-        List<String> lists = new LinkedList<>();
-        if(delIds.contains(",")){
-            String[] split = delIds.split(",");
-            Collections.addAll(lists, split);
-        }else {
-            lists.add(delIds);
-        }
-        sysBankMapper.deleteBatchIds(lists);
-        return R.ok();
-    }
-
 }
