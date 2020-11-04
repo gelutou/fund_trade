@@ -1,5 +1,7 @@
 package com.zw.ft.handler;
 
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.date.LocalDateTimeUtil;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.zw.ft.common.utils.ShiroUtils;
 import org.apache.ibatis.reflection.MetaObject;
@@ -24,8 +26,8 @@ public class MybatisPlusAutoFillHandler implements MetaObjectHandler {
         }catch (Exception e){
             userId = 1L;
         }
-        this.strictInsertFill(metaObject, "createdTime", LocalDateTime.class, LocalDateTime.now());
-        this.strictUpdateFill(metaObject, "updatedTime", LocalDateTime.class, LocalDateTime.now());
+        this.strictInsertFill(metaObject, "createdTime", String.class, DateUtil.now());
+        this.strictUpdateFill(metaObject, "updatedTime", String.class, DateUtil.now());
         this.strictInsertFill(metaObject, "revision", Integer.class, 1);
         this.strictInsertFill(metaObject, "updatedBy", Long.class, userId);
         this.strictInsertFill(metaObject, "createdBy", Long.class, userId);
@@ -39,7 +41,7 @@ public class MybatisPlusAutoFillHandler implements MetaObjectHandler {
         }catch (Exception e){
             userId = 1L;
         }
-        this.strictUpdateFill(metaObject, "updatedTime", LocalDateTime.class, LocalDateTime.now());
+        this.strictUpdateFill(metaObject, "updatedTime", String.class, DateUtil.now());
         this.strictUpdateFill(metaObject, "updatedBy",  Long.class, userId);
     }
 }

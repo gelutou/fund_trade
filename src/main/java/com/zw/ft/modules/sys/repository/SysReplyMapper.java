@@ -37,7 +37,7 @@ public interface SysReplyMapper extends BaseMapper<SysReply> {
                             fetchType= FetchType.EAGER)
             )
     })
-    @Select("SELECT * FROM sys_reply where need_id = #{needId} ${ew.customSqlSegment}")
-    List<SysReply> getReply(@Param("needId") long meedId, @Param("ew")QueryWrapper<SysReply> wrapper);
+    @Select("SELECT * FROM sys_reply ${ew.customSqlSegment}")
+    List<SysReply> getReply(@Param("ew")QueryWrapper<SysReply> wrapper);
 
 }

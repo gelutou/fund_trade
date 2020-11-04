@@ -1,53 +1,53 @@
 POST http://localhost:8088/ft/sys-needs/reply/queryOne/1
 Content-Type: application/json
-token:6e4133bb3eecf01f0ce45dad6be64700
+token:718757492ce15d47bffce20e8080ca5a
 
 {}
 
 ###
-POST http://81.68.92.240:8088/ft/sys-needs/reply/delete/1,2
+POST http://localhost:8088/ft/sys-needs/reply/delete/14,15
 Content-Type: application/json
-token:9e5f10109421ac53c66215b9b61669f2
+token:718757492ce15d47bffce20e8080ca5a
 
 {}
 
 ###
-POST http://81.68.92.240:8088/ft/sys-needs/reply/update
+POST http://localhost:8088/ft/sys-needs/reply/update
 Content-Type: application/json
-token:9e5f10109421ac53c66215b9b61669f2
+token:718757492ce15d47bffce20e8080ca5a
 
 {"id":"1","parentId": "","content": "我是测试修改系统需求回复"}
 
 ###
-POST http://81.68.92.240:8088/ft/sys-needs/reply/add
+POST http://localhost:8088/ft/sys-needs/reply/add
 Content-Type: application/json
-token:9e5f10109421ac53c66215b9b61669f2
+token:718757492ce15d47bffce20e8080ca5a
 
-{"needId": "1","parentId": "3","content": "我是测试二级菜单02"}
+{"needId": "1","content": "我是测试二级菜单02"}
 
 ###
-POST http://localhost:8088/ft/sys-needs/delete/3,4
+POST http://localhost:8088/ft/sys-needs/delete/1,2,3
 Content-Type: application/json
-token:ce3154b37d691919685abc1f717d1402
+token:718757492ce15d47bffce20e8080ca5a
 
 ###
 POST http://localhost:8088/ft/sys-needs/update
 Content-Type: application/json
-token:6e4133bb3eecf01f0ce45dad6be64700
+token:718757492ce15d47bffce20e8080ca5a
 
 {"id":4,"title":"我是测试修改系统需求标题00","handler": "1"}
 
 ###
 POST http://localhost:8088/ft/sys-needs/add
 Content-Type: application/json
-token:6e4133bb3eecf01f0ce45dad6be64700
+token:f26a954be0c281e24d51294f4ea0a0c6
 
-{"title":"我是测试添加系统需求标题02","content": "我是测试添加系统需求内容"}
+{"title":"我是测试添加系统需求标题02","content": "我是测试添加系统需求内容","expectedTime": "2020-11-14"}
 
 ###
 POST http://localhost:8088/ft/sys-needs/queryPage
 Content-Type: application/json
-token:6e4133bb3eecf01f0ce45dad6be64700
+token:718757492ce15d47bffce20e8080ca5a
 
 {"endDateTime": "2020-11-03"}
 ### 81.68.92.240

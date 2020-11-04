@@ -16,6 +16,7 @@ import com.zw.ft.modules.sys.service.SysReplyService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -103,7 +104,21 @@ public class SysNeedsController {
         }
         UpdateWrapper<SysNeeds> needsUpdateWrapper = new UpdateWrapper<>();
         needsUpdateWrapper.in("id",ids);
-        sysNeedsService.remove(needsUpdateWrapper);
+        StringBuilder stringBuilder = new StringBuilder();
+        //判断需求，只有未处理的可以删除
+        List<SysNeeds> list = sysNeedsService.list(needsUpdateWrapper);
+        for(int i=0;i<list.size();i++){
+            SysNeeds needs = list.get(i);
+            Integer status = needs.getStatus();
+            if(status != 0){
+                stringBuilder.append(needs.getTitle()).append(",");
+            }else {
+                sysNeedsService.removeById(needs.getId());
+            }
+        }
+        if(!"".equals(stringBuilder.toString())){
+            return R.ok(stringBuilder.append("状态不是未处理,不能删除").toString());
+        }
         return R.ok();
     }
 

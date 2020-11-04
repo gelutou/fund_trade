@@ -38,7 +38,7 @@ public class SysNeeds extends BaseEntity {
     /**
      * 期望日期
      */
-    private LocalDateTime expectedTime;
+    private String expectedTime;
 
     /**
      * 处理人
@@ -48,7 +48,7 @@ public class SysNeeds extends BaseEntity {
     /**
      * 实际完成日期
      */
-    private LocalDateTime actualCompletionTime;
+    private String actualCompletionTime;
 
     /**
      * 确认人
@@ -58,7 +58,7 @@ public class SysNeeds extends BaseEntity {
     /**
      * 确认日期
      */
-    private LocalDateTime confirmTime;
+    private String confirmTime;
 
     /**
      * 状态 0未解决1已解决2已确认

@@ -1164,13 +1164,6 @@
         "notNull": true
       },
       {
-        "name": "REVISION",
-        "type": "Integer",
-        "remark": "",
-        "chnname": "乐观锁",
-        "notNull": true
-      },
-      {
         "name": "CREATED_BY",
         "type": "IdOrKey",
         "remark": "",

@@ -1,6 +1,7 @@
 package com.zw.ft.common.base;
 
 import com.baomidou.mybatisplus.annotation.*;
+import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
  * @Date 2020/9/9 16:38
  * @Version 1.0
  **/
+@Data
 public class BaseEntity implements Serializable {
     private static final long serialVersionUID = -8496506980578081121L;
 
@@ -22,14 +24,6 @@ public class BaseEntity implements Serializable {
     @TableId
     @NotEmpty(message = "主键不能为空")
     private Long id;
-
-    /**
-     *@description: 乐观锁
-     */
-    @Version
-    @NotEmpty(message = "版本不能为空")
-    @TableField(fill = FieldFill.INSERT)
-    private Integer revision;
 
     /**
      *@description: 创建人ID
@@ -45,7 +39,7 @@ public class BaseEntity implements Serializable {
 
     @TableField(fill = FieldFill.INSERT)
     @NotEmpty(message = "创建时间不能为空")
-    private LocalDateTime createdTime;
+    private String createdTime;
 
     /**
      *@description: 修改人ID
@@ -58,7 +52,7 @@ public class BaseEntity implements Serializable {
      *@description: 修改时间
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updatedTime;
+    private String updatedTime;
 
     /**
      *@description: 逻辑删除
@@ -76,7 +70,6 @@ public class BaseEntity implements Serializable {
         }
         BaseEntity that = (BaseEntity) o;
         return id.equals(that.id) &&
-                revision.equals(that.revision) &&
                // status.equals(that.status) &&
                 createdBy.equals(that.createdBy) &&
                 createdTime.equals(that.createdTime) &&
@@ -90,7 +83,6 @@ public class BaseEntity implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + ((revision == null) ? 0 : revision.hashCode());
         result = prime * result + ((createdBy == null) ? 0 : createdBy.hashCode());
         result = prime * result + ((createdTime == null) ? 0 : createdTime.hashCode());
         result = prime * result + ((updatedBy == null) ? 0 : updatedBy.hashCode());
@@ -99,72 +91,4 @@ public class BaseEntity implements Serializable {
         return result;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getRevision() {
-        return revision;
-    }
-
-    public void setRevision(Integer revision) {
-        this.revision = revision;
-    }
-
-    public Long getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(Long createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public LocalDateTime getCreatedTime() {
-        return createdTime;
-    }
-
-    public void setCreatedTime(LocalDateTime createdTime) {
-        this.createdTime = createdTime;
-    }
-
-    public Long getUpdatedBy() {
-        return updatedBy;
-    }
-
-    public void setUpdatedBy(Long updatedBy) {
-        this.updatedBy = updatedBy;
-    }
-
-    public LocalDateTime getUpdatedTime() {
-        return updatedTime;
-    }
-
-    public void setUpdatedTime(LocalDateTime updatedTime) {
-        this.updatedTime = updatedTime;
-    }
-
-    public Integer getDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(Integer deleted) {
-        this.deleted = deleted;
-    }
-
-    @Override
-    public String toString() {
-        return "BaseEntity{" +
-                "id=" + id +
-                ", revision=" + revision +
-                ", createdBy=" + createdBy +
-                ", createdTime=" + createdTime +
-                ", updatedBy=" + updatedBy +
-                ", updatedTime=" + updatedTime +
-                ", deleted=" + deleted +
-                '}';
-    }
 }
