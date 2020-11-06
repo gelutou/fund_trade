@@ -1,18 +1,19 @@
-<<<<<<< HEAD
+POST http://localhost:8088/ft/sys-bank/addBank
+Content-Type: application/json
+
+{"comId": "1","bankFullName":"test","shortName":"tt","bankAccount":"11111111","accountStyle":"D","accountType":"zzz","accountBalance": "10000"}
+
+###
 POST http://localhost:8088/ft/sys-bank/deleteByIds
 Content-Type: application/json
 
 {"ids": "[1,2]"}
 ###
-POST http://localhost:8088/ft/sys-bank/bankall
-Content-Type: application/json
 
-{"comName": "[上海鑫抚源国际贸易有限公司]"}
-=======
+###
 POST http://localhost:8088/ft/sys-bank/bankall
 Content-Type: application/json
 
 {}
->>>>>>> savior
 
 ###

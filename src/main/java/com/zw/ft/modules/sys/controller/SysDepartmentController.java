@@ -3,7 +3,6 @@ package com.zw.ft.modules.sys.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysDepartment;
 import com.zw.ft.modules.sys.service.SysDepartmentService;
@@ -103,6 +102,7 @@ public class SysDepartmentController {
 
     @RequestMapping(value = "/add")
     public R add(@RequestBody(required = false) SysDepartment sysDepartment){
+
         boolean save = sysDepartmentService.save(sysDepartment);
         if(save){
             return R.ok("添加成功");

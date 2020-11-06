@@ -1,7 +1,7 @@
 package com.zw.ft.modules.sys.controller;
 
 import cn.hutool.core.convert.Convert;
-import com.zw.ft.common.base.Constant;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysBank;
 import com.zw.ft.modules.sys.service.SysBankService;
@@ -49,25 +49,35 @@ public class SysBankController {
     /**
      * 功能描述: <br>
      * @Author savior
-     * @Description 新增更新银行
+     * @Description 修改银行
      * @Date: 2020/10/16
      */
-    @PostMapping("/add_update_bank")
-    public R addBank(@RequestBody(required = false) Map<String,Object> params){
-        String addUpdate = params.get("addUpdate").toString();
-        SysBank bank = Convert.convert(SysBank.class, params);
-        boolean bo;
-        if(Constant.DatabaseOperation.ADD.getValue().equals(addUpdate)){
-            bo =sysBankService.save(bank);
-        }else if(Constant.DatabaseOperation.UPDATE.getValue().equals(addUpdate)){
-            bo=sysBankService.updateById(bank);
+    @PostMapping("/updateBank")
+    public R updateBank(@RequestBody(required = false) SysBank sysBank){
+        UpdateWrapper<SysBank> bankUpdateWrapper = new UpdateWrapper<>();
+        bankUpdateWrapper.eq("id",sysBank.getId());
+        boolean update = sysBankService.update(sysBank, bankUpdateWrapper);
+        if (update){
+            return R.ok("更新成功");
         }else {
-            return R.error("没有传入addUpdate参数");
+            return R.error("更新失败");
         }
-        if (bo){
-            return R.ok("新增更新成功");
+    }
+
+    /**
+     * 功能描述: <br>
+     * @Author savior
+     * @Description 添加银行
+     * @Date: 2020/10/16
+     */
+    @PostMapping("/addBank")
+    public R addBank(@RequestBody(required = false) Map<String,Object> params){
+        SysBank sysBank = Convert.convert(SysBank.class, params);
+        boolean save = sysBankService.save(sysBank);
+        if (save){
+            return R.ok("添加成功");
         }else {
-            return R.error("新增更新失败");
+            return R.error("添加失败");
         }
     }
 }
