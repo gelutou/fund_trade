@@ -45,13 +45,13 @@ token:f26a954be0c281e24d51294f4ea0a0c6
 {"title":"我是测试添加系统需求标题02","content": "我是测试添加系统需求内容","expectedTime": "2020-11-14"}
 
 ###
-POST http://localhost:8088/ft/sys-needs/queryPage
+POST http://81.68.92.240:8088/ft/sys-needs/queryPage
 Content-Type: application/json
-token:718757492ce15d47bffce20e8080ca5a
+token:d125cb1ba817ff64708f132bc2b93b21
 
 {"endDateTime": "2020-11-03"}
 ### 81.68.92.240
-POST http://81.68.92.240:8088/ft/sys/login/admin/1
+POST http://192.168.3.222:8090/ft/sys/login/admin/1
 Content-Type: application/json
 
 ###
