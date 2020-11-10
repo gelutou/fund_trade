@@ -8,9 +8,9 @@ spring:
             strict: false #设置严格模式,默认false不启动. 启动后在未匹配到指定数据源时候会抛出异常,不启动则使用默认数据源.
             datasource:
                 fundTrade:
-                    url: jdbc:p6spy:mysql://81.68.92.240:3306/fund_trade?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=UTC
+                    url: jdbc:p6spy:mysql://192.168.3.222:3306/fund_trade?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=UTC
                     username: root
-                    password: 314159
+                    password: '!111qqq666'
                     driver-class-name: com.p6spy.engine.spy.P6SpyDriver # 3.2.0开始支持SPI可省略此配置
 mybatis-plus:
     mapper-locations: classpath:mapper/**/*.xml
