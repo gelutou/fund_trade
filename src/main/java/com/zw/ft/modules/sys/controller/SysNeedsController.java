@@ -2,9 +2,13 @@ package com.zw.ft.modules.sys.controller;
 
 
 import cn.hutool.core.convert.Convert;
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zw.ft.common.base.Constant;
 import com.zw.ft.common.utils.QueryUtil;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.common.utils.ShiroUtils;
@@ -29,7 +33,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/ft/sys-needs")
-public class SysNeedsController {
+public class SysNeedsController extends AbstractController{
 
     @Resource
     SysNeedsService sysNeedsService;
@@ -78,6 +82,20 @@ public class SysNeedsController {
 
     @RequestMapping("/update")
     public R update(@RequestBody(required = false) SysNeeds sysNeeds){
+
+        if(!ObjectUtil.isEmpty(sysNeeds.getStatus())){
+            Integer status = sysNeeds.getStatus();
+            SysUser user = getUser();
+            if(status.equals(Constant.NeedStatus.resolved.getValue())){
+                //修改处理人和处理时间
+                sysNeeds.setHandler(user.getId());
+                sysNeeds.setHandlerTime(DateUtil.now());
+            }else if(status.equals(Constant.NeedStatus.confirmed.getValue())){
+                //修改确认人和确认时间
+                sysNeeds.setConfirmer(user.getId());
+                sysNeeds.setConfirmTime(DateUtil.now());
+            }
+        }
         UpdateWrapper<SysNeeds> needsUpdateWrapper = new UpdateWrapper<>();
         needsUpdateWrapper.eq("id",sysNeeds.getId());
         sysNeedsService.update(sysNeeds, needsUpdateWrapper);
