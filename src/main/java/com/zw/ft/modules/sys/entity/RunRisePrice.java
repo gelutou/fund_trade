@@ -26,4 +26,6 @@ public class RunRisePrice extends BaseEntity {
 
     /** 备注 */
     private String remark ;
+
+
 }
