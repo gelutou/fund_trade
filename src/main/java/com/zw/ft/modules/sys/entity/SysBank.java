@@ -187,6 +187,6 @@ public class SysBank extends BaseEntity {
     private String bussynessContact;
 
     /** 银行编码 */
-    private String bankCode;
+        private String bankCode;
 
 }
