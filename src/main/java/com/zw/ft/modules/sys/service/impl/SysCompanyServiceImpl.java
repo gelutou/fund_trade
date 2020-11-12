@@ -2,6 +2,7 @@ package com.zw.ft.modules.sys.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zw.ft.common.base.Constant;
 import com.zw.ft.common.utils.FormatUtil;
 import com.zw.ft.common.utils.QueryUtil;
@@ -9,7 +10,6 @@ import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysCompany;
 import com.zw.ft.modules.sys.repository.SysCompanyMapper;
 import com.zw.ft.modules.sys.service.SysCompanyService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -120,5 +120,34 @@ public class SysCompanyServiceImpl extends ServiceImpl<SysCompanyMapper, SysComp
         return sysCompanyMapper.selectList(null);
     }
 
+    /**
+     * @Author savior
+     * @Description  各个公司加价档案列表
+     * @Date: 2020/11/11
+     */
+    @Override
+    public Page<SysCompany> getBank(Map<String, Object> params) {
+        Page<SysCompany> page = new QueryUtil<SysCompany>(params).getPage();
+        QueryWrapper<SysCompany> queryWrapper = new QueryWrapper<>();
+        //模糊搜索公司名称
+        String comName = FormatUtil.isSelectKey("comName", params);
+        if (Constant.TRUE.equals(comName)) {
+            queryWrapper.like("scy.com_name", params.get("comName").toString().replace("[", "").replace("]", ""));
+        } else if ("".equals(comName)) {
+            queryWrapper.like("scy.com_name", "");
+        }
+        //模糊搜索城市
+        String city = FormatUtil.isSelectKey("city", params);
+        if (Constant.TRUE.equals(city)) {
+            queryWrapper.like("scy.city", params.get("city").toString().replace("[", "").replace("]", ""));
+        } else if ("".equals(city)) {
+            queryWrapper.like("scy.city", "");
+        }
+
+        queryWrapper.eq("scy.deleted", 0);
+        queryWrapper.eq("scy.STATUS", 0);
+        queryWrapper.orderByAsc("pi.updated_time");
+        return sysCompanyMapper.queryRunRisePrice(page,queryWrapper);
+    }
 
 }

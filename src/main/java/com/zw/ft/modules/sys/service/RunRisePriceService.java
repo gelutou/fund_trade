@@ -1,10 +1,7 @@
 package com.zw.ft.modules.sys.service;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zw.ft.modules.sys.entity.RunRisePrice;
-
-import java.util.Map;
 
 /**
  * <p>
@@ -16,5 +13,4 @@ import java.util.Map;
  */
 public interface RunRisePriceService extends IService<RunRisePrice> {
 
-    Page<RunRisePrice> getBank(Map<String,Object> params);
 }

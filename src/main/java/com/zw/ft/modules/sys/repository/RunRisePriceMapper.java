@@ -16,4 +16,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface RunRisePriceMapper extends BaseMapper<RunRisePrice> {
 
 
+
 }
