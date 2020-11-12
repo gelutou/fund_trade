@@ -2,7 +2,6 @@ package com.zw.ft.modules.sys.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.zw.ft.common.base.BaseEntity;
-import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -33,27 +32,22 @@ public class SysNeeds extends BaseEntity {
     /**
      * 所属部门
      */
-    private long deptId;
-
-    /**
-     * 期望日期
-     */
-    private String expectedTime;
+    private Long deptId;
 
     /**
      * 处理人
      */
-    private Integer handler;
+    private Long handler;
 
     /**
-     * 实际完成日期
+     * 处理时间
      */
-    private String actualCompletionTime;
+    private String handlerTime;
 
     /**
      * 确认人
      */
-    private Integer confirmer;
+    private Long confirmer;
 
     /**
      * 确认日期

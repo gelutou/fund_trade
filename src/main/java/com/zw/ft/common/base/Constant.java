@@ -57,4 +57,35 @@ public class Constant {
         }
     }
 
+    /*
+     * 功能描述: <br>
+     * 〈系统需求状态〉
+     * @Author: Oliver
+     */
+
+    public enum NeedStatus{
+        /**
+         *@description: 未解决
+         */
+        unresolved(0),
+        /**
+         *@description: 已解决
+         */
+        resolved(1),
+        /**
+         *@description: 已确认
+         */
+        confirmed(2);
+
+        private final Integer value;
+
+        NeedStatus(Integer value) {
+            this.value = value;
+        }
+
+        public Integer getValue() {
+            return value;
+        }
+    }
+
 }
