@@ -1,3 +1,10 @@
+POST http://localhost:8090/ft/run-rise-price/RunRisePricekall
+Content-Type: application/json
+token:f705f1d87848699c44d8292718a626d5
+
+{}
+
+###
 ### POST http://localhost:8088/ft/sys-company/get_fuzzy/admin/xfy
 POST http://81.68.92.240:8088/ft/sys-company/get_fuzzy/admin/xfy
 Content-Type: application/json

@@ -32,5 +32,8 @@ public class RunRisePriceController {
     @PostMapping("/RunRisePricekall")
     public R RunRisePricekall(@RequestBody Map<String,Object> params){
         return R.page(sysCompanyService.getBank(params));
+
+
+
     }
 }

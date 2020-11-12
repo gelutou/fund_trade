@@ -43,9 +43,10 @@ public interface SysCompanyMapper extends BaseMapper<SysCompany> {
      * @Description  各个公司加价档案列表
      * @Date: 2020/11/11
      */
-    @Select("SELECT scy.id,scy.com_name,scy.city,dice.des,pi.fixed,pi.rise_price FROM sys_company AS scy " +
-            "LEFT JOIN run_rise_price pi  ON scy.id=pi.com_id " +
-            "LEFT JOIN sys_dictionary dice ON pi.fixed=dice.value AND dice.name='fixed'" +
+    @Select("select scy.id,scy.com_name,scy.city,dice.des,pi.fixed,pi.rise_price from sys_company scy " +
+            "LEFT JOIN run_rise_price pi ON scy.id=pi.com_id " +
+            "LEFT JOIN (SELECT * FROM sys_dictionary " +
+            "WHERE p_id = (SELECT ID FROM sys_dictionary WHERE des = '加价类别')) dice ON pi.fixed = dice.value " +
             "${ew.customSqlSegment}")
     Page<SysCompany> queryRunRisePrice(Page<SysCompany> page, @Param("ew") QueryWrapper<SysCompany> queryWrapper);
 }
