@@ -1,0 +1,7 @@
+POST http://localhost:8090/ft/run-rise-price/updateRunRisePrice
+Content-Type: application/json
+token:68c5004bbd191ddae8eb7659d58d8274
+
+{"comId":"4dd1c4cd58b544628ad15971a30bd8ab","risePrice": "40"}
+
+###
