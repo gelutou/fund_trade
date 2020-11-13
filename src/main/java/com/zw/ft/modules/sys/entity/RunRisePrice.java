@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
 public class RunRisePrice extends BaseEntity {
 
     /** 公司ID */
-    private Integer comId ;
+    private String comId ;
 
     /** 调整价格 */
     private Double risePrice ;
