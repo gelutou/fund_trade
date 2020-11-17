@@ -1,5 +1,7 @@
 package com.zw.ft.modules.sys.service.impl;
 
+import cn.hutool.core.convert.Convert;
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -136,6 +138,18 @@ public class SysCompanyServiceImpl extends ServiceImpl<SysCompanyMapper, SysComp
         } else if ("".equals(comName)) {
             queryWrapper.like("scy.com_name", "");
         }
+
+        //模糊搜索公司id
+        String id = FormatUtil.isSelectKey("id", params);
+        String string = JSON.toJSONString(params);
+        string = string.replace("[", "").replace("]", "");
+        String[] convert1 = Convert.convert(String[].class, string);
+        if (Constant.TRUE.equals(id)) {
+            if (params.toString().contains(",")) {
+                queryWrapper.in("scy.id", convert1);
+            }
+        }
+
         //模糊搜索城市
         String city = FormatUtil.isSelectKey("city", params);
         if (Constant.TRUE.equals(city)) {
@@ -146,8 +160,9 @@ public class SysCompanyServiceImpl extends ServiceImpl<SysCompanyMapper, SysComp
 
         queryWrapper.eq("scy.deleted", 0);
         queryWrapper.eq("scy.STATUS", 0);
-        queryWrapper.orderByAsc("pi.updated_time");
+        queryWrapper.orderByDesc("pi.rise_price","pi.updated_time");
         return sysCompanyMapper.queryRunRisePrice(page,queryWrapper);
+
     }
 
 }
