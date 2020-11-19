@@ -1,5 +1,6 @@
 package com.zw.ft.modules.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.zw.ft.common.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,6 +16,7 @@ import lombok.EqualsAndHashCode;
 @Data
 public class RunRisePrice extends BaseEntity {
 
+    private static final long serialVersionUID = 2920956765006675366L;
     /** 公司ID */
     private String comId ;
 
@@ -27,5 +29,16 @@ public class RunRisePrice extends BaseEntity {
     /** 备注 */
     private String remark ;
 
+    /** 公司名称 */
+    @TableField(exist = false)
+    private String comName;
+
+    /** 所属城市 */
+    @TableField(exist = false)
+    private String city ;
+
+    /** 描述 */
+    @TableField(exist = false)
+    private String des ;
 
 }

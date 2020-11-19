@@ -1,7 +1,5 @@
 package com.zw.ft.modules.sys.service.impl;
 
-import cn.hutool.core.convert.Convert;
-import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -122,47 +120,5 @@ public class SysCompanyServiceImpl extends ServiceImpl<SysCompanyMapper, SysComp
         return sysCompanyMapper.selectList(null);
     }
 
-    /**
-     * @Author savior
-     * @Description  各个公司加价档案列表
-     * @Date: 2020/11/11
-     */
-    @Override
-    public Page<SysCompany> getBank(Map<String, Object> params) {
-        Page<SysCompany> page = new QueryUtil<SysCompany>(params).getPage();
-        QueryWrapper<SysCompany> queryWrapper = new QueryWrapper<>();
-        //模糊搜索公司名称
-        String comName = FormatUtil.isSelectKey("comName", params);
-        if (Constant.TRUE.equals(comName)) {
-            queryWrapper.like("scy.com_name", params.get("comName").toString().replace("[", "").replace("]", ""));
-        } else if ("".equals(comName)) {
-            queryWrapper.like("scy.com_name", "");
-        }
-
-        //模糊搜索公司id
-        String id = FormatUtil.isSelectKey("id", params);
-        String string = JSON.toJSONString(params);
-        string = string.replace("[", "").replace("]", "");
-        String[] convert1 = Convert.convert(String[].class, string);
-        if (Constant.TRUE.equals(id)) {
-            if (params.toString().contains(",")) {
-                queryWrapper.in("scy.id", convert1);
-            }
-        }
-
-        //模糊搜索城市
-        String city = FormatUtil.isSelectKey("city", params);
-        if (Constant.TRUE.equals(city)) {
-            queryWrapper.like("scy.city", params.get("city").toString().replace("[", "").replace("]", ""));
-        } else if ("".equals(city)) {
-            queryWrapper.like("scy.city", "");
-        }
-
-        queryWrapper.eq("scy.deleted", 0);
-        queryWrapper.eq("scy.STATUS", 0);
-        queryWrapper.orderByDesc("pi.rise_price","pi.updated_time");
-        return sysCompanyMapper.queryRunRisePrice(page,queryWrapper);
-
-    }
 
 }

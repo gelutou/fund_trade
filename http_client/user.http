@@ -30,7 +30,7 @@ Content-Type: application/json
 ###
 POST http://localhost:8090/ft/sys/logout
 Content-Type: application/json
-token:f705f1d87848699c44d8292718a626d5
+token:3ea639567f339845dd7dedcc3de5098f
 
 
 ###
