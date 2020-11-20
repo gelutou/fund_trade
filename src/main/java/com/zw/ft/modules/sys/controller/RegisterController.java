@@ -1,6 +1,8 @@
 package com.zw.ft.modules.sys.controller;
 
 import cn.hutool.core.convert.Convert;
+import cn.hutool.crypto.digest.DigestAlgorithm;
+import cn.hutool.crypto.digest.Digester;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysUser;
 import com.zw.ft.modules.sys.entity.SysUserExpansion;
@@ -48,12 +50,12 @@ public class RegisterController {
     @PostMapping("/signup")
     public R signup(@RequestBody Map<String,Object> params) {
         DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+        Digester digester = new Digester(DigestAlgorithm.SHA256);
         def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
         TransactionStatus status = platformTransactionManager.getTransaction(def);
         SysUser sysUser = Convert.convert(SysUser.class, params);
-        String username = sysUser.getUsername();
         String password = sysUser.getPassword();
-        sysUser.setPassword(new Sha256Hash(password, username).toHex());
+        sysUser.setPassword(digester.digestHex(password));
         SysUserExpansion sysUserExpansion = Convert.convert(SysUserExpansion.class, params);
 
         try {
