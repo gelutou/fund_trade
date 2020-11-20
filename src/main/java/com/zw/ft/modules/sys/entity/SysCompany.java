@@ -1,5 +1,6 @@
 package com.zw.ft.modules.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.zw.ft.common.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -84,4 +85,17 @@ public class SysCompany extends BaseEntity {
      *@description: 旧公司ID，上线后删除
      */
     private String oldPkidWilldel;
+
+    /** 调整价格 */
+    @TableField(exist = false)
+    private Double risePrice ;
+
+    /** 1：固定加价0：暂无固定加价-1：承担亏损 */
+    @TableField(exist = false)
+    private String fixed ;
+
+    /** 描述 */
+    @TableField(exist = false)
+    private String des ;
+
 }

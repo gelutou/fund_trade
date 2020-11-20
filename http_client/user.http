@@ -1,3 +1,9 @@
+POST http://localhost:8090/ft/sys/login/admin/1
+Content-Type: application/json
+
+{}
+
+###
 POST http://localhost:8088/api/item
 Content-Type: application/json
 
@@ -22,13 +28,13 @@ Content-Type: application/json
 {}
 
 ###
-POST http://localhost:8088/ft/sys/logout
+POST http://localhost:8090/ft/sys/logout
 Content-Type: application/json
-token:5531b55s465851f730f3f4983cebe998d
+token:f705f1d87848699c44d8292718a626d5
 
 
 ###
-POST http://localhost:8088/ft/sys/login/admin/1
+POST http://localhost:8090/ft/sys/login/admin/1
 Content-Type: application/json
 
 {}

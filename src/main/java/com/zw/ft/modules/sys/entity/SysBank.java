@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 public class SysBank extends BaseEntity {
 
     /** 公司id */
-    private Integer comId ;
+    private String comId ;
 
      //客商ID
     /* private Integer customerId ;*/
@@ -187,6 +187,6 @@ public class SysBank extends BaseEntity {
     private String bussynessContact;
 
     /** 银行编码 */
-    private String bankCode;
+        private String bankCode;
 
 }
