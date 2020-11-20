@@ -1,7 +1,15 @@
-POST http://localhost:8088/ft/sys-bank/addBank
+POST http://localhost:8090/ft/sys-bank/updateBank
 Content-Type: application/json
+token:6847c7e1ec7ecb16445e3887501b5e12
 
-{"comId": "1","bankFullName":"test","shortName":"tt","bankAccount":"11111111","accountStyle":"D","accountType":"zzz","accountBalance": "10000"}
+{"comId" : "5"}
+
+###
+POST http://localhost:8090/ft/sys-bank/addBank
+Content-Type: application/json
+token:6847c7e1ec7ecb16445e3887501b5e12
+
+{"comId": 3,"bankFullName":"test","shortName":"tt","bankAccount":"11111111","accountStyle":"D","accountType":"zzz","accountBalance": "10000"}
 
 ###
 POST http://localhost:8088/ft/sys-bank/deleteByIds

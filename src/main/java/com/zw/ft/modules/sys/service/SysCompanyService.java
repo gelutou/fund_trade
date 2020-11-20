@@ -41,4 +41,14 @@ public interface SysCompanyService extends IService<SysCompany> {
     R delComs(String delIds);
 
     List<SysCompany> getAllCom(SysCompany sysCompany);
+
+    /**
+     * 功能描述: <br>
+     * 查询各个公司加价档案信息
+     * @Param: [params 查询条件]
+     * @Return: com.zw.ft.common.utils.R
+     * @Author: Savior
+     * @Date: 2020/11/11
+     */
+    Page<SysCompany> getBank(Map<String,Object> params);
 }

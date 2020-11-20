@@ -2,6 +2,8 @@ package com.zw.ft.modules.sys.controller;
 
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.crypto.SecureUtil;
+import cn.hutool.crypto.digest.DigestAlgorithm;
+import cn.hutool.crypto.digest.Digester;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zw.ft.common.base.BaseController;
 import com.zw.ft.common.base.Constant;
@@ -56,10 +58,13 @@ public class LoginController extends BaseController {
         QueryWrapper<SysUser> entityQueryWrapper = new QueryWrapper<>();
         entityQueryWrapper.eq("username",username);
         SysUser one = sysUserService.getOne(entityQueryWrapper);
+
+        Digester digester = new Digester(DigestAlgorithm.SHA256);
+
         if(one == null){
             return R.error("无此用户");
             //判断密码是否相等
-        }else if (new Sha256Hash(password, username).toHex().equals(one.getPassword())){
+        }else if (digester.digestHex(password).equals(one.getPassword())){
             //判断token是否过期
             String token = redisService.get(username);
             String newToken;
