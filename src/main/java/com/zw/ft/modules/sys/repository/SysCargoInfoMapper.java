@@ -28,6 +28,7 @@ public interface SysCargoInfoMapper extends BaseMapper<SysCargoInfo> {
             "WHERE p_id = (SELECT ID FROM sys_dictionary WHERE name = 'CARGO_UNIT' AND value IS NULL)) dice1 ON sci.cargo_unit=dice1.value " +
             "LEFT JOIN (SELECT * FROM sys_dictionary " +
             "WHERE p_id = (SELECT ID FROM sys_dictionary WHERE name = 'CARGO_INVENTORY' AND value IS NULL)) dice2 ON sci.flag_cargo_inventory=dice2.value " +
-            "LEFT JOIN sys_cargo_category scc ON sci.category_pkid=scc.ID")
+            "LEFT JOIN sys_cargo_category scc ON sci.category_pkid=scc.ID " +
+            "${ew.customSqlSegment}")
     Page<SysCargoInfo> queryCargoInfo(Page<SysCargoInfo> page, @Param("ew") QueryWrapper<SysCargoInfo> queryWrapper);
 }

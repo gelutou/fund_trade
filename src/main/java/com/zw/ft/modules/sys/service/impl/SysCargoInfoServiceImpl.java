@@ -35,55 +35,57 @@ public class SysCargoInfoServiceImpl extends ServiceImpl<SysCargoInfoMapper, Sys
      */
     @Override
     public Page<SysCargoInfo> getCargoInfo(Map<String, Object> params) {
+        String keyWord = params.get("keyWord").toString();
         Page<SysCargoInfo> page = new QueryUtil<SysCargoInfo>(params).getPage();
         QueryWrapper<SysCargoInfo> queryWrapper = new QueryWrapper<>();
 
         //模糊搜索货品编号
-        String cargoCode = FormatUtil.isSelectKey("cargoCode", params);
+        String cargoCode = FormatUtil.isSelectKey("keyWord", params);
         if (Constant.TRUE.equals(cargoCode)) {
-            queryWrapper.like("sci.cargo_code", params.get("cargoCode").toString().replace("[", "").replace("]", ""));
+            queryWrapper.like("sci.cargo_code", params.get("keyWord").toString().replace("[", "").replace("]", ""));
         } else if ("".equals(cargoCode)) {
             queryWrapper.like("sci.cargo_code", "");
         }
+        //SELECT * FROM TABLE WHERE KE01 LIKE() OR KEY02 LIKE OR (key03 like () AND key04 like())
 
         //模糊搜索货品名称
-        String cargoName = FormatUtil.isSelectKey("cargoName", params);
+        String cargoName = FormatUtil.isSelectKey("keyWord", params);
         if (Constant.TRUE.equals(cargoName)) {
-            queryWrapper.like("sci.cargo_name", params.get("cargoName").toString().replace("[", "").replace("]", ""));
+            queryWrapper.or().like("sci.cargo_name", params.get("keyWord").toString().replace("[", "").replace("]", ""));
         } else if ("".equals(cargoName)) {
-            queryWrapper.like("sci.cargo_name", "");
+            queryWrapper.or().like("sci.cargo_name", "");
         }
 
         //模糊搜索货品品牌
-        String brand = FormatUtil.isSelectKey("brand", params);
+        String brand = FormatUtil.isSelectKey("keyWord", params);
         if (Constant.TRUE.equals(brand)) {
-            queryWrapper.like("sci.brand", params.get("brand").toString().replace("[", "").replace("]", ""));
+            queryWrapper.or().like("sci.brand", params.get("keyWord").toString().replace("[", "").replace("]", ""));
         } else if ("".equals(brand)) {
-            queryWrapper.like("sci.brand", "");
+            queryWrapper.or().like("sci.brand", "");
         }
 
         //模糊搜索货品规格
-        String specification = FormatUtil.isSelectKey("specification", params);
+        String specification = FormatUtil.isSelectKey("keyWord", params);
         if (Constant.TRUE.equals(specification)) {
-            queryWrapper.like("sci.specification", params.get("specification").toString().replace("[", "").replace("]", ""));
+            queryWrapper.or().like("sci.specification", params.get("keyWord").toString().replace("[", "").replace("]", ""));
         } else if ("".equals(specification)) {
-            queryWrapper.like("sci.specification", "");
+            queryWrapper.or().like("sci.specification", "");
         }
 
         //模糊搜索货品型号
-        String cargoModel = FormatUtil.isSelectKey("cargoModel", params);
+        String cargoModel = FormatUtil.isSelectKey("keyWord", params);
         if (Constant.TRUE.equals(cargoModel)) {
-            queryWrapper.like("sci.cargo_model", params.get("cargoModel").toString().replace("[", "").replace("]", ""));
+            queryWrapper.or().like("sci.cargo_model", params.get("keyWord").toString().replace("[", "").replace("]", ""));
         } else if ("".equals(cargoModel)) {
-            queryWrapper.like("sci.cargo_model", "");
+            queryWrapper.or().like("sci.cargo_model", "");
         }
 
         //模糊搜索货品类型
-        String categoryName = FormatUtil.isSelectKey("categoryName", params);
+        String categoryName = FormatUtil.isSelectKey("keyWord", params);
         if (Constant.TRUE.equals(categoryName)) {
-            queryWrapper.like("scc.category_name", params.get("categoryName").toString().replace("[", "").replace("]", ""));
+            queryWrapper.or().like("scc.category_name", params.get("keyWord").toString().replace("[", "").replace("]", ""));
         } else if ("".equals(categoryName)) {
-            queryWrapper.like("scc.category_name", "");
+            queryWrapper.or().like("scc.category_name", "");
         }
 
         queryWrapper.eq("sci.deleted", 0);

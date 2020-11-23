@@ -1,7 +1,7 @@
 POST http://localhost:8090/ft/sys-cargo-info/getSysCargoInfo
 Content-Type: application/json
-token:3ea639567f339845dd7dedcc3de5098f
+token:2d8934f7a0e3dc1975367f4505e020c5
 
-{}
+{"keyWord": "铝锭"}
 
 ###
