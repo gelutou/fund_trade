@@ -2,6 +2,8 @@ package com.zw.ft.modules.sys.controller;
 
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.crypto.SecureUtil;
+import cn.hutool.crypto.digest.DigestAlgorithm;
+import cn.hutool.crypto.digest.Digester;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zw.ft.common.base.BaseController;
 import com.zw.ft.common.base.Constant;
@@ -15,7 +17,6 @@ import com.zw.ft.modules.sys.service.SysUserTokenService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,10 +57,13 @@ public class LoginController extends BaseController {
         QueryWrapper<SysUser> entityQueryWrapper = new QueryWrapper<>();
         entityQueryWrapper.eq("username",username);
         SysUser one = sysUserService.getOne(entityQueryWrapper);
+
+        Digester digester = new Digester(DigestAlgorithm.SHA256);
+
         if(one == null){
             return R.error("无此用户");
             //判断密码是否相等
-        }else if (new Sha256Hash(password, username).toHex().equals(one.getPassword())){
+        }else if (digester.digestHex(password).equals(one.getPassword())){
             //判断token是否过期
             String token = redisService.get(username);
             String newToken;

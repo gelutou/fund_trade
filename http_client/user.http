@@ -32,6 +32,12 @@ POST http://localhost:8090/ft/sys/logout
 Content-Type: application/json
 token:3ea639567f339845dd7dedcc3de5098f
 
+###
+POST http://localhost:8090/ft/sys-company/get_fuzzy/admin/sh
+Content-Type: application/json
+token:88a260b86cf99278bd99b11b5cf319b1
+
+{}
 
 ###
 POST http://localhost:8090/ft/sys/login/admin/1
