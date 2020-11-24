@@ -1,6 +1,27 @@
+POST http://localhost:8090/ft/sys-cargo-info/delCargoInfo/1,2
+Content-Type: application/json
+token:5f15eba46fec91b301d38ca4e36933f9
+
+
+{}
+
+###
+POST http://localhost:8090/ft/sys-cargo-info/addCargoInfo
+Content-Type: application/json
+token:0a80db9324ae58d2e9a2e6952bfe69ba
+
+{"cargoCode": "LD67","cargoName": "扁锭","categoryPkid": "4","cargoUnit": "2"}
+
+###
+POST http://localhost:8090/ft/sys-cargo-info/updaCargoInfo
+Content-Type: application/json
+token:0a80db9324ae58d2e9a2e6952bfe69ba
+
+{"id": "6","aluminumPlant": "东方希望","specification": "178*5.8","brand": "希望"}
+###
 POST http://localhost:8090/ft/sys-cargo-info/getSysCargoInfo
 Content-Type: application/json
-token:2d8934f7a0e3dc1975367f4505e020c5
+token:0a80db9324ae58d2e9a2e6952bfe69ba
 
 {"keyWord": "铝锭"}
 

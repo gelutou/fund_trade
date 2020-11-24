@@ -6,12 +6,16 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zw.ft.common.base.Constant;
 import com.zw.ft.common.utils.FormatUtil;
 import com.zw.ft.common.utils.QueryUtil;
+import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysCargoInfo;
 import com.zw.ft.modules.sys.repository.SysCargoInfoMapper;
 import com.zw.ft.modules.sys.service.SysCargoInfoService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -92,5 +96,23 @@ public class SysCargoInfoServiceImpl extends ServiceImpl<SysCargoInfoMapper, Sys
         queryWrapper.eq("sci.STATUS", 0);
         queryWrapper.orderByDesc("sci.updated_time");
         return sysCargoInfoMapper.queryCargoInfo(page,queryWrapper);
+    }
+
+    /**
+     * @Author savior
+     * @Description 根据id逻辑批量删除
+     * @Date: 2020/11/24
+     */
+    @Override
+    public R delCargo(String delIds) {
+        List<String> lists = new LinkedList<>();
+        if (delIds.contains(",")) {
+            String[] split = delIds.split(",");
+            Collections.addAll(lists, split);
+        } else {
+            lists.add(delIds);
+        }
+        sysCargoInfoMapper.deleteBatchIds(lists);
+        return R.ok();
     }
 }

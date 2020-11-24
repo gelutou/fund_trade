@@ -43,7 +43,6 @@ public class SysBankServiceImpl extends ServiceImpl<SysBankMapper, SysBank> impl
                 queryWrapper.like("bank_full_name", "");
             }
 
-
             //模糊搜索公司id
             String comId = FormatUtil.isSelectKey("comId", params);
             String string = JSON.toJSONString(params);
@@ -91,7 +90,11 @@ public class SysBankServiceImpl extends ServiceImpl<SysBankMapper, SysBank> impl
         }
 
 
-
+        /**
+         * @Author savior
+         * @Description 逻辑删除
+         * @Date: 2020/11/23
+         */
         @Override
         public R delBank(String delIds) {
             List<String> lists = new LinkedList<>();

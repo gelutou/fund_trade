@@ -20,14 +20,13 @@ public class SysCargoInfo extends BaseEntity {
 
     private static final long serialVersionUID = -8442917109871940228L;
 
-    /** 所属公司 */
-    private long comId ;
+
     /** 货品编号 */
     private String cargoCode ;
     /** 货品名称 */
     private String cargoName ;
     /** 货品分类ID */
-    private long categoryPkid ;
+    private String categoryPkid ;
     /** 铝厂 */
     private String aluminumPlant ;
     /** 品牌 */
@@ -45,7 +44,12 @@ public class SysCargoInfo extends BaseEntity {
     /** 状态 */
     private Integer status ;
 
+    /** 所属公司 */
+    private String comId ;
+
     private Integer flagSort ;
+
+
 
     /** 描述 */
     @TableField(exist = false)

@@ -26,6 +26,7 @@ public class SysBankController {
     SysBankService sysBankService;
 
 /**
+ * 功能描述: <br>
  * @Author savior
  * @Description  分页查询银行基本信息
  * @Date: 2020/9/28
@@ -37,6 +38,7 @@ public class SysBankController {
 
 
     /**
+     * 功能描述: <br>
      * @Author savior
      * @Description 跟据Id逻辑批量删除银行信息
      * @Date: 2020/10/16
@@ -80,4 +82,5 @@ public class SysBankController {
             return R.error("添加失败");
         }
     }
+
 }
