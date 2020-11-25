@@ -34,6 +34,7 @@ public class SysDepartmentController {
      * @Author: Oliver
      * @Date: 2020/10/16 11:08
      */
+
     @PostMapping("/getDeptTree")
     public R loadManagerLeftTreeJson(@RequestBody Map<String,Object> params) {
         List<SysDepartment> menu = sysDepartmentService.getMenu(params);

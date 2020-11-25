@@ -26,7 +26,7 @@ public interface SysCompanyService extends IService<SysCompany> {
      * @Author: Oliver
      * @Date: 2020/9/21 10:53
      */
-    List<SysCompany> getFuzzy(String username,String shortName);
+    List<SysCompany> getFuzzy(Map<String,Object> params);
 
     /**
      * 功能描述: <br>

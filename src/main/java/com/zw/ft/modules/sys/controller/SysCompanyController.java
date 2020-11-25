@@ -35,9 +35,9 @@ public class SysCompanyController extends BaseController {
      * @Author: Oliver
      * @Date: 2020/9/21 10:53
      */
-    @PostMapping(value = "get_fuzzy/{username}/{shortname}")
-    public R getFuzzy(@PathVariable("username") String username, @PathVariable("shortname")String shortName){
-        return R.data(sysCompanyService.getFuzzy(username,shortName));
+    @PostMapping(value = "get_fuzzy")
+    public R getFuzzy(@RequestBody(required = false) Map<String,Object> params){
+        return R.data(sysCompanyService.getFuzzy(params));
     }
 
     /**

@@ -19,7 +19,7 @@ public class SysUserToken extends BaseEntity {
     /**
      * 用户
      */
-    private long userId;
+    private Long userId;
 
     /**
      * token

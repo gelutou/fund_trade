@@ -28,7 +28,7 @@ public class SysUserController {
      *@author:  Oliver
      *@date  2020/9/21
      */
-    @PostMapping(value = "/com_users_page")
+    /*@PostMapping(value = "/com_users_page")
     public R queryUsersPageByComAndWrapper(@RequestBody Map<String,Object> params){
         QueryWrapper<SysUser> userEntityQueryWrapper = new QueryWrapper<>();
         long comId = Long.parseLong(params.get("comId").toString());
@@ -56,5 +56,19 @@ public class SysUserController {
         }
         usersPage = sysUserService.queryUsersPageByComAndWrapper(usersPage, comId, userEntityQueryWrapper);
         return R.page(usersPage);
+    }*/
+
+    /*
+     * 功能描述: <br>
+     * 〈获取部门下人员〉
+     * @Param: [deptId 部门ID]
+     * @Return: com.zw.ft.common.utils.R
+     * @Author: Oliver
+     * @Date: 2020/11/24 10:50
+     */
+
+    @PostMapping(value = "/user_in_dept")
+    public R getUserInDepartmentPage(@RequestBody Map<String,Object> params){
+        return R.page(sysUserService.getUserInDepartmentPage(params));
     }
 }

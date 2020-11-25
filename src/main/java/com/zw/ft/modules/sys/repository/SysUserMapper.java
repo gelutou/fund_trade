@@ -3,7 +3,9 @@ package com.zw.ft.modules.sys.repository;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zw.ft.modules.sys.entity.SysCompany;
 import com.zw.ft.modules.sys.entity.SysUser;
 import org.apache.ibatis.annotations.*;
 
@@ -15,8 +17,19 @@ import java.util.List;
  *@date  2020/9/10
  */
 @Mapper
-@DS("fundTrade")
 public interface SysUserMapper extends BaseMapper<SysUser> {
+
+    /*
+     * 功能描述: <br>
+     * 〈查询部门下人员〉
+     * @Param:
+     * @Return:
+     * @Author: Oliver
+     * @Date: 2020/11/24 11:19
+     */
+
+    @Select("SELECT id, username,realname, gender, status FROM sys_user WHERE ID IN (SELECT user_id FROM rel_user_department WHERE dept_id = #{deptId}) AND ${ew.SqlSegment}")
+    List<SysUser> getUserInDepartment(IPage<SysUser> page,@Param("deptId") long deptId, @Param("ew") QueryWrapper<SysUser> queryWrapper);
 
     /**
      *@description: 查询用户的主要信息，包含角色等

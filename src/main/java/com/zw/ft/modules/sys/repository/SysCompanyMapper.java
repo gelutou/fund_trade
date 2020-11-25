@@ -31,12 +31,14 @@ public interface SysCompanyMapper extends BaseMapper<SysCompany> {
      * @Author: Oliver
      * @Date: 2020/9/21 10:53
      */
-    @Select("SELECT *" +
-            " FROM sys_company sc" +
-            " LEFT JOIN sys_user_company suc ON sc.ID = suc.com_id" +
-            " WHERE suc.user_id = (SELECT ID FROM sys_user WHERE username = #{username})" +
-            " AND (sc.com_name LIKE CONCAT('%',#{shortname},'%') OR sc.com_code LIKE CONCAT('%',#{shortname},'%'))")
-    List<SysCompany> getFuzzy(@Param("username") String username, @Param("shortname") String shortName);
+    @Select(" SELECT *" +
+            " FROM sys_company" +
+            " WHERE ID IN (SELECT com_id" +
+            " FROM sys_department" +
+            " WHERE ID IN (SELECT dept_id" +
+            " FROM rel_user_department" +
+            " WHERE user_id = (SELECT ID FROM sys_user WHERE username = #{username}))) AND ${ew.SqlSegment}")
+    List<SysCompany> getFuzzy(@Param("username") String username,@Param("ew") QueryWrapper<SysCompany> queryWrapper);
 
     /**
      * @Author savior

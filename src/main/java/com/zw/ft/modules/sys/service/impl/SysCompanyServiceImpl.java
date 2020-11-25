@@ -8,7 +8,9 @@ import com.zw.ft.common.utils.FormatUtil;
 import com.zw.ft.common.utils.QueryUtil;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysCompany;
+import com.zw.ft.modules.sys.entity.SysUser;
 import com.zw.ft.modules.sys.repository.SysCompanyMapper;
+import com.zw.ft.modules.sys.repository.SysUserMapper;
 import com.zw.ft.modules.sys.service.SysCompanyService;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,8 @@ public class SysCompanyServiceImpl extends ServiceImpl<SysCompanyMapper, SysComp
 
     @Resource
     SysCompanyMapper sysCompanyMapper;
+    @Resource
+    SysUserMapper userMapper;
 
     /**
      * 功能描述: <br>
@@ -41,14 +45,21 @@ public class SysCompanyServiceImpl extends ServiceImpl<SysCompanyMapper, SysComp
      * @Date: 2020/9/21 10:53
      */
     @Override
-    public List<SysCompany> getFuzzy(String username, String shortName) {
+    public List<SysCompany> getFuzzy(Map<String,Object> params) {
         //如果是管理员，能登陆任何公司
-        /*if(Constant.ADMIN.equals(username)){
-            return sysCompanyMapper.selectList(new QueryWrapper<>());
-        }*/
-        QueryWrapper<SysCompany> queryWrapper = new QueryWrapper<>();
-        queryWrapper.like("com_code",shortName);
-        return sysCompanyMapper.selectList(queryWrapper);
+        String username = params.get("username").toString();
+
+        QueryWrapper<SysCompany> companyQueryWrapper = new QueryWrapper<>();
+        companyQueryWrapper.eq("deleted","0");
+        String shortname = FormatUtil.isSelectKey("shortname", params);
+        if(Constant.TRUE.equals(shortname)){
+            companyQueryWrapper.like("com_code",params.get("shortname")).or().like("com_name",params.get("shortname"));
+        }
+        if(Constant.ADMIN.equals(username)){
+            return sysCompanyMapper.selectList(companyQueryWrapper);
+        }
+
+        return sysCompanyMapper.getFuzzy(username,companyQueryWrapper);
     }
 
     @Override
