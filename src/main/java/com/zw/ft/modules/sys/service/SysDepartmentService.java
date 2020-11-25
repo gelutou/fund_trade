@@ -35,6 +35,4 @@ public interface SysDepartmentService extends IService<SysDepartment> {
        */
 
       SysDepartment getDeptByUserId(long userId);
-
-
 }

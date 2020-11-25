@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.modules.sys.entity.SysCompany;
 import com.zw.ft.modules.sys.entity.SysUser;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.mapping.FetchType;
 
 import java.util.List;
 
@@ -28,8 +29,18 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
      * @Date: 2020/11/24 11:19
      */
 
-    @Select("SELECT id, username,realname, gender, status FROM sys_user WHERE ID IN (SELECT user_id FROM rel_user_department WHERE dept_id = #{deptId}) AND ${ew.SqlSegment}")
-    List<SysUser> getUserInDepartment(IPage<SysUser> page,@Param("deptId") long deptId, @Param("ew") QueryWrapper<SysUser> queryWrapper);
+    @Select(" SELECT id, username, realname, gender" +
+            " FROM sys_user" +
+            " WHERE ID IN (SELECT user_id FROM rel_user_department WHERE dept_id = #{deptId})" +
+            " AND username <> 'admin' AND ${ew.SqlSegment}")
+    @Results({
+            @Result(column = "id",property = "id"),
+            @Result(column="id",property="exception",
+                    one=@One(
+                            select="com.zw.ft.modules.sys.repository.SysUserExpansionMapper.queryUserExpansionByUserId",
+                            fetchType= FetchType.EAGER))
+    })
+    List<SysUser> getUserInDepartment(Page<SysUser> page,@Param("deptId") long deptId, @Param("ew") QueryWrapper<SysUser> queryWrapper);
 
     /**
      *@description: 查询用户的主要信息，包含角色等

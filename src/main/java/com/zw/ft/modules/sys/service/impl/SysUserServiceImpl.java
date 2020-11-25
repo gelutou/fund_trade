@@ -4,6 +4,8 @@ import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zw.ft.common.base.Constant;
+import com.zw.ft.common.utils.FormatUtil;
 import com.zw.ft.common.utils.QueryUtil;
 import com.zw.ft.modules.sys.entity.SysCompany;
 import com.zw.ft.modules.sys.entity.SysUser;
@@ -31,8 +33,25 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         long deptId = Long.parseLong(params.get("deptId").toString());
         QueryWrapper<SysUser> userQueryWrapper = new QueryWrapper<>();
         userQueryWrapper.eq("deleted","0");
-        sysUserMapper.getUserInDepartment(page,deptId,userQueryWrapper);
-        return page;
+
+        //账号模糊查询
+        String username = FormatUtil.isSelectKey("username", params);
+        if(Constant.TRUE.equals(username)){
+            userQueryWrapper.like("username",params.get("username").toString());
+        }
+
+        //姓名模糊查询
+        String realname = FormatUtil.isSelectKey("realname", params);
+        if(Constant.TRUE.equals(realname)){
+            userQueryWrapper.like("realname",params.get("realname").toString());
+        }
+
+        //姓名查询
+        String status = FormatUtil.isSelectKey("status", params);
+        if(Constant.TRUE.equals(status)){
+            userQueryWrapper.eq("status",params.get("status").toString());
+        }
+        return page.setRecords(sysUserMapper.getUserInDepartment(page, deptId, userQueryWrapper));
     }
 
     @Resource
