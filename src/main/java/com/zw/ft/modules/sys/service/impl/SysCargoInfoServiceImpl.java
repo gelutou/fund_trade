@@ -39,7 +39,6 @@ public class SysCargoInfoServiceImpl extends ServiceImpl<SysCargoInfoMapper, Sys
      */
     @Override
     public Page<SysCargoInfo> getCargoInfo(Map<String, Object> params) {
-        String keyWord = params.get("keyWord").toString();
         Page<SysCargoInfo> page = new QueryUtil<SysCargoInfo>(params).getPage();
         QueryWrapper<SysCargoInfo> queryWrapper = new QueryWrapper<>();
 

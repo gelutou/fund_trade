@@ -79,4 +79,15 @@ public class SysCargoInfoController {
     public R delCargoInfo(@PathVariable("ids") String ids){
         return sysCargoInfoService.delCargo(ids);
     }
+
+
+    /**
+     * @Author savior
+     * @Description 查询货品表一些下拉框信息
+     * @Date: 2020/11/25
+     */
+    @PostMapping("/getCargoList")
+    public R getCargsoList(){
+        return R.data(sysCargoInfoService.list());
+    }
 }

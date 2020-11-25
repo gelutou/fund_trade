@@ -9,7 +9,6 @@ import com.zw.ft.modules.sys.service.SysCompanyService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -101,12 +100,8 @@ public class SysCompanyController extends BaseController {
      * @Date: 2020/10/26
      */
     @PostMapping(value = "/get_com")
-    public  R getAllCom( SysCompany sysCompany){
-        List<SysCompany> com = sysCompanyService.getAllCom(sysCompany);
-        if (com!=null){
-            return R.data(com);
-        }
-        return R.error("失败");
+    public  R getAllCom(){
+        return R.data(sysCompanyService.list());
     }
 }
 

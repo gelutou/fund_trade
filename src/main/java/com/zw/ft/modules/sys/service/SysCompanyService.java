@@ -40,7 +40,5 @@ public interface SysCompanyService extends IService<SysCompany> {
 
     R delComs(String delIds);
 
-    List<SysCompany> getAllCom(SysCompany sysCompany);
-
 
 }
