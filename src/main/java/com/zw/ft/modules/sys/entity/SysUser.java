@@ -58,8 +58,9 @@ public class SysUser extends BaseEntity {
     private List<SysRole> roles;
 
     /**
-     *@description: token
+     *@description: 用户详细信息
      */
-    /*@TableField(exist = false)
-    private String token;*/
+    @TableField(exist = false)
+    private SysUserExpansion exception;
+
 }
