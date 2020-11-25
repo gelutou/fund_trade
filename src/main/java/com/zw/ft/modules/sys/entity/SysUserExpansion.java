@@ -27,7 +27,7 @@ public class SysUserExpansion extends BaseEntity {
      *@description: 人员ID
      */
     @NotEmpty
-    private long userId;
+    private Long userId;
     /**
      *@description: 手机
      */

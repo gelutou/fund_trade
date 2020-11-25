@@ -23,12 +23,12 @@ public class SysDepartment extends BaseEntity {
     /**
      * 所属公司
      */
-    private long comId;
+    private Long comId;
 
     /**
      * 父级ID
      */
-    private long parentId;
+    private Long parentId;
 
     /**
      * 部门名称

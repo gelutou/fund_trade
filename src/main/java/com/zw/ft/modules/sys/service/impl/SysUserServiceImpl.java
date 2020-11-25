@@ -4,6 +4,8 @@ import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zw.ft.common.utils.QueryUtil;
+import com.zw.ft.modules.sys.entity.SysCompany;
 import com.zw.ft.modules.sys.entity.SysUser;
 import com.zw.ft.modules.sys.repository.SysUserMapper;
 import com.zw.ft.modules.sys.service.SysUserService;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName SysUserServiceImpl
@@ -21,6 +24,16 @@ import java.util.List;
  **/
 @Service("sysUserService")
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
+
+    @Override
+    public Page<SysUser> getUserInDepartmentPage(Map<String,Object> params) {
+        Page<SysUser> page = new QueryUtil<SysUser>(params).getPage();
+        long deptId = Long.parseLong(params.get("deptId").toString());
+        QueryWrapper<SysUser> userQueryWrapper = new QueryWrapper<>();
+        userQueryWrapper.eq("deleted","0");
+        sysUserMapper.getUserInDepartment(page,deptId,userQueryWrapper);
+        return page;
+    }
 
     @Resource
     SysUserMapper sysUserMapper;
