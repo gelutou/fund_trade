@@ -18,6 +18,7 @@ import javax.annotation.Resource;
 public class RedisKeyExpirationListener extends KeyExpirationEventMessageListener {
     @Resource
     RedisService redisService;
+
     public RedisKeyExpirationListener(RedisMessageListenerContainer listenerContainer) {
         super(listenerContainer);
     }

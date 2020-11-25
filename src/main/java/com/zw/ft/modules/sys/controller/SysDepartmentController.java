@@ -36,7 +36,7 @@ public class SysDepartmentController {
      */
 
     @PostMapping("/getDeptTree")
-    public R loadManagerLeftTreeJson(@RequestBody Map<String,Object> params) {
+    public R loadManagerLeftTreeJson(@RequestBody Map<String, Object> params) {
         List<SysDepartment> menu = sysDepartmentService.getMenu(params);
         if (menu != null) {
             return R.data(menu);
@@ -47,9 +47,9 @@ public class SysDepartmentController {
 
 
     @RequestMapping(value = "/query/{comId}")
-    public R query(@PathVariable("comId") long comId){
+    public R query(@PathVariable("comId") long comId) {
         QueryWrapper<SysDepartment> sysDepartmentQueryWrapper = new QueryWrapper<>();
-        sysDepartmentQueryWrapper.eq("com_id",comId);
+        sysDepartmentQueryWrapper.eq("com_id", comId);
         return R.data(sysDepartmentService.list(sysDepartmentQueryWrapper));
     }
     /*
@@ -61,11 +61,11 @@ public class SysDepartmentController {
      */
 
     @RequestMapping(value = "/delete/{id}")
-    public R del(@PathVariable("id") long deptId){
+    public R del(@PathVariable("id") long deptId) {
         boolean b = sysDepartmentService.removeById(deptId);
-        if(b){
+        if (b) {
             return R.ok("删除成功");
-        }else {
+        } else {
             return R.error("删除失败");
         }
     }
@@ -80,14 +80,14 @@ public class SysDepartmentController {
      */
 
     @RequestMapping(value = "/update")
-    public R update(@RequestBody(required = false) SysDepartment sysDepartment){
+    public R update(@RequestBody(required = false) SysDepartment sysDepartment) {
         UpdateWrapper<SysDepartment> departmentUpdateWrapper = new UpdateWrapper<>();
-        departmentUpdateWrapper.eq("id",sysDepartment.getId());
+        departmentUpdateWrapper.eq("id", sysDepartment.getId());
         boolean update = sysDepartmentService.update(sysDepartment, departmentUpdateWrapper);
 
-        if(update){
+        if (update) {
             return R.ok("修改成功");
-        }else {
+        } else {
             return R.error("修改失败");
         }
     }
@@ -102,12 +102,12 @@ public class SysDepartmentController {
      */
 
     @RequestMapping(value = "/add")
-    public R add(@RequestBody(required = false) SysDepartment sysDepartment){
+    public R add(@RequestBody(required = false) SysDepartment sysDepartment) {
 
         boolean save = sysDepartmentService.save(sysDepartment);
-        if(save){
+        if (save) {
             return R.ok("添加成功");
-        }else {
+        } else {
             return R.error("添加失败");
         }
     }

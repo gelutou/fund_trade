@@ -2,13 +2,15 @@ package com.zw.ft.modules.sys.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.zw.ft.common.base.BaseEntity;
+
 import java.util.List;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
  * <p>
- *  系统需求表
+ * 系统需求表
  * </p>
  *
  * @author Oliver

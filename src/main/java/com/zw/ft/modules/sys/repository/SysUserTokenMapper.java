@@ -8,7 +8,7 @@ import org.apache.ibatis.mapping.FetchType;
 
 /**
  * <p>
- *  系统用户token表 Mapper 接口
+ * 系统用户token表 Mapper 接口
  * </p>
  *
  * @author Oliver
@@ -18,18 +18,18 @@ import org.apache.ibatis.mapping.FetchType;
 public interface SysUserTokenMapper extends BaseMapper<SysUserToken> {
 
     /**
-     *@description: 查询token 带 user 信息
-     *@author:  Oliver
-     *@date  2020/9/27
+     * @description: 查询token 带 user 信息
+     * @author: Oliver
+     * @date 2020/9/27
      */
 
     @Select("SELECT * FROM sys_user_token WHERE ${ew.sqlSegment}")
     @Results({
-            @Result(column = "id",property = "id"),
-            @Result(column="user_id",property="user",
-                    one=@One(
-                            select="com.zw.ft.modules.sys.repository.SysUserMapper.selectById",
-                            fetchType= FetchType.EAGER))
+            @Result(column = "id", property = "id"),
+            @Result(column = "user_id", property = "user",
+                    one = @One(
+                            select = "com.zw.ft.modules.sys.repository.SysUserMapper.selectById",
+                            fetchType = FetchType.EAGER))
     })
-    SysUserToken getTokenUserByToken(@Param("ew")QueryWrapper<SysUserToken> tokenQueryWrapper);
+    SysUserToken getTokenUserByToken(@Param("ew") QueryWrapper<SysUserToken> tokenQueryWrapper);
 }

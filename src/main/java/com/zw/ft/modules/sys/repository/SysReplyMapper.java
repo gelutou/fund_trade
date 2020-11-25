@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * <p>
- *  系统需求回复表  Mapper 接口
+ * 系统需求回复表  Mapper 接口
  * </p>
  *
  * @author Oliver
@@ -28,16 +28,16 @@ public interface SysReplyMapper extends BaseMapper<SysReply> {
      * @Date: 2020/11/3 14:50
      */
     @Results({
-            @Result(column = "id",property = "id"),
-            @Result(column = "CREATED_BY",property = "createdBy"),
+            @Result(column = "id", property = "id"),
+            @Result(column = "CREATED_BY", property = "createdBy"),
             //提出人
-            @Result(column="CREATED_BY",property="creator",
-                    one=@One(
-                            select="com.zw.ft.modules.sys.repository.SysUserMapper.selectById",
-                            fetchType= FetchType.EAGER)
+            @Result(column = "CREATED_BY", property = "creator",
+                    one = @One(
+                            select = "com.zw.ft.modules.sys.repository.SysUserMapper.selectById",
+                            fetchType = FetchType.EAGER)
             )
     })
     @Select("SELECT * FROM sys_reply ${ew.customSqlSegment}")
-    List<SysReply> getReply(@Param("ew")QueryWrapper<SysReply> wrapper);
+    List<SysReply> getReply(@Param("ew") QueryWrapper<SysReply> wrapper);
 
 }

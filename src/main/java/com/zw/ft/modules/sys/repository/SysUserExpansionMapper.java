@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- *@description: 人员扩展信息
- *@author:  Oliver
- *@date  2020/9/10
+ * @description: 人员扩展信息
+ * @author: Oliver
+ * @date 2020/9/10
  */
 @Repository
 public interface SysUserExpansionMapper extends BaseMapper<SysUserExpansion> {

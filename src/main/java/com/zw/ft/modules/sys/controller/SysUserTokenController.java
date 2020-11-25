@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- *  系统用户token表 前端控制器
+ * 系统用户token表 前端控制器
  * </p>
  *
  * @author Oliver

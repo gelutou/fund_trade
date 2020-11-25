@@ -21,17 +21,16 @@ import java.util.Map;
 public class RunRisePriceController {
 
 
-
     @Resource
     RunRisePriceService runRisePriceService;
 
     /**
      * @Author savior
-     * @Description  分页查询加价档案基本信息
+     * @Description 分页查询加价档案基本信息
      * @Date: 2020/11/13
      */
     @PostMapping("/RunRisePricekall")
-    public R RunRisePricekall(@RequestBody Map<String,Object> params){
+    public R RunRisePricekall(@RequestBody Map<String, Object> params) {
         return R.page(runRisePriceService.getRun(params));
     }
 
@@ -41,8 +40,8 @@ public class RunRisePriceController {
      * @Date: 2020/11/13
      */
     @PostMapping("/updateRunRisePrice")
-    public R updateRunRisePrice(@RequestBody RunRisePrice runRisePrice){
-       return R.data(runRisePriceService.getRunRise(runRisePrice));
+    public R updateRunRisePrice(@RequestBody RunRisePrice runRisePrice) {
+        return R.data(runRisePriceService.getRunRise(runRisePrice));
     }
 
 }

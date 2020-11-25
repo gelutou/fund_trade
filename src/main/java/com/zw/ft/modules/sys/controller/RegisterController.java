@@ -39,16 +39,18 @@ public class RegisterController {
 
     @Resource(name = "transactionManager")
     private PlatformTransactionManager platformTransactionManager;
+
     /**
      * 功能描述: <br>
      * 〈用户注册，管理员添加用户〉
+     *
      * @Param: [username, password]
      * @Return: com.zw.ft.common.utils.R
      * @Author: Oliver
      * @Date: 2020/9/19 23:23
      */
     @PostMapping("/signup")
-    public R signup(@RequestBody Map<String,Object> params) {
+    public R signup(@RequestBody Map<String, Object> params) {
         DefaultTransactionDefinition def = new DefaultTransactionDefinition();
         Digester digester = new Digester(DigestAlgorithm.SHA256);
         def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
@@ -60,17 +62,17 @@ public class RegisterController {
 
         try {
             sysUserService.save(sysUser);
-            if(sysUser.getId() == null){
+            if (sysUser.getId() == null) {
                 platformTransactionManager.rollback(status);
                 return R.error("注册失败");
             }
             sysUserExpansion.setUserId(sysUser.getId());
             sysUserExpansionService.save(sysUserExpansion);
-            if(sysUserExpansion.getId() == null){
+            if (sysUserExpansion.getId() == null) {
                 platformTransactionManager.rollback(status);
                 return R.error("注册失败");
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             platformTransactionManager.rollback(status);
             return R.error("参数异常");
         }

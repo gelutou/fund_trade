@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Select;
  * <p>
  * 加价档案表 Mapper 接口
  * </p>
-
+ *
  * @author Savior
  * @since 2020-11-11
  */
@@ -22,7 +22,7 @@ public interface RunRisePriceMapper extends BaseMapper<RunRisePrice> {
 
     /**
      * @Author savior
-     * @Description  各个公司加价档案列表
+     * @Description 各个公司加价档案列表
      * @Date: 2020/11/11
      */
     @Select("select scy.id,scy.com_name,scy.city,dice.des,pi.fixed,pi.rise_price from sys_company scy " +

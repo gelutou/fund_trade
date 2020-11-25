@@ -20,7 +20,7 @@ public interface SysCargoInfoMapper extends BaseMapper<SysCargoInfo> {
 
     /**
      * @Author savior
-     * @Description  分页查询货品信息
+     * @Description 分页查询货品信息
      * @Date: 2020/11/19
      */
     @Select("SELECT sci.*,dice.des as cargo_unit,scc.category_name FROM sys_cargo_info sci " +

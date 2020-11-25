@@ -16,23 +16,22 @@ import java.util.Map;
  */
 public interface SysDepartmentService extends IService<SysDepartment> {
 
-      /**
-       * @Author savior
-       * @Description 根据树节点主节点公司ID查询部门所有信息
-       * @Date: 2020/9/24
-       * @return
-       */
-      List<SysDepartment> getMenu(Map<String,Object> params);
+    /**
+     * @Author savior
+     * @Description 根据树节点主节点公司ID查询部门所有信息
+     * @Date: 2020/9/24
+     */
+    List<SysDepartment> getMenu(Map<String, Object> params);
 
-      List<SysDepartment> getTree(List<SysDepartment> allDepts, long fatherId);
+    List<SysDepartment> getTree(List<SysDepartment> allDepts, long fatherId);
 
-      /*
-       * 功能描述: <br>
-       * 〈查询人员对应的部门〉
-       * @Param: userId
-       * @Author: Oliver
-       * @Date: 2020/11/3 14:31
-       */
+    /*
+     * 功能描述: <br>
+     * 〈查询人员对应的部门〉
+     * @Param: userId
+     * @Author: Oliver
+     * @Date: 2020/11/3 14:31
+     */
 
-      SysDepartment getDeptByUserId(long userId);
+    SysDepartment getDeptByUserId(long userId);
 }

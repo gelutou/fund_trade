@@ -25,37 +25,37 @@ public class FormatUtil {
      * @Date: 2020/10/30 15:40
      */
 
-    public static void queryWrapperCommon(QueryWrapper<? extends BaseEntity> queryWrapper,Map<String,Object> params){
+    public static void queryWrapperCommon(QueryWrapper<? extends BaseEntity> queryWrapper, Map<String, Object> params) {
         String startDateTime = isSelectKey("startDateTime", params);
-        if(Constant.TRUE.equals(startDateTime)){
-            queryWrapper.ge("created_time",params.get("startDateTime"));
-        }else if("".equals(startDateTime)){
-            queryWrapper.ge("created_time","");
+        if (Constant.TRUE.equals(startDateTime)) {
+            queryWrapper.ge("created_time", params.get("startDateTime"));
+        } else if ("".equals(startDateTime)) {
+            queryWrapper.ge("created_time", "");
         }
 
         String endDateTime = isSelectKey("endDateTime", params);
-        if(Constant.TRUE.equals(endDateTime)){
-            queryWrapper.le("created_time",params.get("endDateTime"));
-        }else if("".equals(endDateTime)){
-            queryWrapper.le("created_time","");
+        if (Constant.TRUE.equals(endDateTime)) {
+            queryWrapper.le("created_time", params.get("endDateTime"));
+        } else if ("".equals(endDateTime)) {
+            queryWrapper.le("created_time", "");
         }
     }
 
     /**
-     *@description: 用于正文标识替换
-     *@param:  content 正文
-     *@author:  Oliver
-     *@date  2020/9/4
+     * @description: 用于正文标识替换
+     * @param: content 正文
+     * @author: Oliver
+     * @date 2020/9/4
      */
-    public static String contentReplace(String content,Object... params){
+    public static String contentReplace(String content, Object... params) {
 
         //当前日期字符串，格式：yyyy-MM-dd
         String today = DateUtil.today();
         //当前时间字符串，格式：yyyy-MM-dd HH:mm:ss
         String todayDateTime = DateUtil.now();
         return StrUtil.format(content.toLowerCase()
-                .replace("$today",today)
-                .replace("$datetime",todayDateTime),params);
+                .replace("$today", today)
+                .replace("$datetime", todayDateTime), params);
     }
 
     /*
@@ -66,15 +66,15 @@ public class FormatUtil {
      * @Date: 2020/10/13 15:15
      */
 
-    public static String isSelectKey(String key, Map<String,Object> params){
+    public static String isSelectKey(String key, Map<String, Object> params) {
         Object o = params.get(key);
-        if(o == null){
+        if (o == null) {
             return "false";
-        }else if ("".equals(o.toString()) || "null".equals(o.toString())){
+        } else if ("".equals(o.toString()) || "null".equals(o.toString())) {
             return "false";
-        }else if(" ".equals(o.toString())){
+        } else if (" ".equals(o.toString())) {
             return "";
-        }else {
+        } else {
             return "true";
         }
     }

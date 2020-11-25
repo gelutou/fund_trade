@@ -25,60 +25,64 @@ public class SysBankController {
     @Resource
     SysBankService sysBankService;
 
-/**
- * 功能描述: <br>
- * @Author savior
- * @Description  分页查询银行基本信息
- * @Date: 2020/9/28
- */
+    /**
+     * 功能描述: <br>
+     *
+     * @Author savior
+     * @Description 分页查询银行基本信息
+     * @Date: 2020/9/28
+     */
     @PostMapping("/bankall")
-    public R Banckall(@RequestBody Map<String,Object> params){
+    public R Banckall(@RequestBody Map<String, Object> params) {
         return R.page(sysBankService.getBank(params));
     }
 
 
     /**
      * 功能描述: <br>
+     *
      * @Author savior
      * @Description 跟据Id逻辑批量删除银行信息
      * @Date: 2020/10/16
      */
     @PostMapping("/deleteByIds/{ids}")
-    public R bankDeleteId (@PathVariable("ids") String ids){
-            return sysBankService.delBank(ids);
+    public R bankDeleteId(@PathVariable("ids") String ids) {
+        return sysBankService.delBank(ids);
     }
 
     /**
      * 功能描述: <br>
+     *
      * @Author savior
      * @Description 修改银行
      * @Date: 2020/10/16
      */
     @PostMapping("/updateBank")
-    public R updateBank(@RequestBody(required = false) SysBank sysBank){
+    public R updateBank(@RequestBody(required = false) SysBank sysBank) {
         UpdateWrapper<SysBank> bankUpdateWrapper = new UpdateWrapper<>();
-        bankUpdateWrapper.eq("id",sysBank.getId());
+        bankUpdateWrapper.eq("id", sysBank.getId());
         boolean update = sysBankService.update(sysBank, bankUpdateWrapper);
-        if (update){
+        if (update) {
             return R.ok("更新成功");
-        }else {
+        } else {
             return R.error("更新失败");
         }
     }
 
     /**
      * 功能描述: <br>
+     *
      * @Author savior
      * @Description 添加银行
      * @Date: 2020/10/16
      */
     @PostMapping("/addBank")
-    public R addBank(@RequestBody(required = false) Map<String,Object> params){
+    public R addBank(@RequestBody(required = false) Map<String, Object> params) {
         SysBank sysBank = Convert.convert(SysBank.class, params);
         boolean save = sysBankService.save(sysBank);
-        if (save){
+        if (save) {
             return R.ok("添加成功");
-        }else {
+        } else {
             return R.error("添加失败");
         }
     }

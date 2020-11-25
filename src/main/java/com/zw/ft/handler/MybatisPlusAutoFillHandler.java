@@ -20,8 +20,8 @@ public class MybatisPlusAutoFillHandler implements MetaObjectHandler {
     public void insertFill(MetaObject metaObject) {
         long userId;
         try {
-            userId = ShiroUtils.getUserId() == null ? 1L:ShiroUtils.getUserId();
-        }catch (Exception e){
+            userId = ShiroUtils.getUserId() == null ? 1L : ShiroUtils.getUserId();
+        } catch (Exception e) {
             userId = 1L;
         }
         this.strictInsertFill(metaObject, "createdTime", String.class, DateUtil.now());
@@ -35,11 +35,11 @@ public class MybatisPlusAutoFillHandler implements MetaObjectHandler {
     public void updateFill(MetaObject metaObject) {
         long userId;
         try {
-            userId = ShiroUtils.getUserId() == null ? 1L:ShiroUtils.getUserId();
-        }catch (Exception e){
+            userId = ShiroUtils.getUserId() == null ? 1L : ShiroUtils.getUserId();
+        } catch (Exception e) {
             userId = 1L;
         }
         this.strictUpdateFill(metaObject, "updatedTime", String.class, DateUtil.now());
-        this.strictUpdateFill(metaObject, "updatedBy",  Long.class, userId);
+        this.strictUpdateFill(metaObject, "updatedBy", Long.class, userId);
     }
 }

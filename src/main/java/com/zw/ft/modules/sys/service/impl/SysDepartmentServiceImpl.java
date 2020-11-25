@@ -27,24 +27,23 @@ public class SysDepartmentServiceImpl extends ServiceImpl<SysDepartmentMapper, S
 
     /**
      * @Author savior
-     * @Description 根据树节点主节点公司ID,获取部门档案树信息 转换为json格式
+     * @Description 根据树节点主节点公司ID, 获取部门档案树信息 转换为json格式
      * @Date: 2020/9/24
-     * @return
      */
     @Override
-    public List<SysDepartment> getMenu(Map<String,Object> params) {
-    String comId = params.get("comId").toString();
-    if(!"".equals(comId)){
-        return sysDepartmentMapper.getCompanyNameBesomId(comId);
-    }
+    public List<SysDepartment> getMenu(Map<String, Object> params) {
+        String comId = params.get("comId").toString();
+        if (!"".equals(comId)) {
+            return sysDepartmentMapper.getCompanyNameBesomId(comId);
+        }
         return null;
     }
 
     @Override
-    public List<SysDepartment> getTree(List<SysDepartment> allDepts, long fatherId){
+    public List<SysDepartment> getTree(List<SysDepartment> allDepts, long fatherId) {
         List<SysDepartment> trees = new LinkedList<>();
-        for(SysDepartment sysDepartment : allDepts){
-            if(sysDepartment.getParentId() == fatherId){
+        for (SysDepartment sysDepartment : allDepts) {
+            if (sysDepartment.getParentId() == fatherId) {
                 trees.add(sysDepartment);
             }
         }

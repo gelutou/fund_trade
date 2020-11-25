@@ -9,9 +9,9 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 /**
- *@description: 权限信息
- *@author:  Oliver
- *@date  2020/9/10
+ * @description: 权限信息
+ * @author: Oliver
+ * @date 2020/9/10
  */
 @Mapper
 public interface SysPermissionMapper extends BaseMapper<SysPermission> {
@@ -19,6 +19,7 @@ public interface SysPermissionMapper extends BaseMapper<SysPermission> {
     /**
      * 功能描述: <br>
      * 〈查询根目录〉
+     *
      * @Param: [userId] 用户ID
      * @Return: java.util.List<com.zw.ft.modules.sys.entity.SysPermissionEntity>
      * @Author: Oliver

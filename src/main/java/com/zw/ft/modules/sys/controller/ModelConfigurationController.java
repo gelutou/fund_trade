@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author Oliver
@@ -29,14 +29,14 @@ public class ModelConfigurationController {
     ModelConfigurationService modelConfigurationService;
 
     @PostMapping(value = "/promptInformation/{identification}")
-    public R promptInformation(@PathVariable("identification") String identification){
+    public R promptInformation(@PathVariable("identification") String identification) {
         QueryWrapper<ModelConfiguration> modelConfigurationQueryWrapper = new QueryWrapper<>();
-        modelConfigurationQueryWrapper.eq("identification",identification);
+        modelConfigurationQueryWrapper.eq("identification", identification);
         String content = modelConfigurationService.getOne(modelConfigurationQueryWrapper).getContent();
-        if("".equals(content) || content == null || "null".equals(content)){
+        if ("".equals(content) || content == null || "null".equals(content)) {
             return R.error();
-        }else {
-            return  R.ok(content);
+        } else {
+            return R.ok(content);
         }
     }
 }

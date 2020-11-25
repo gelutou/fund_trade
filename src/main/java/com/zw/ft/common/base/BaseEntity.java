@@ -19,14 +19,14 @@ public class BaseEntity implements Serializable {
     private static final long serialVersionUID = -8496506980578081121L;
 
     /**
-     *@description: 主键ID
+     * @description: 主键ID
      */
     @TableId
     @NotEmpty(message = "主键不能为空")
     private Long id;
 
     /**
-     *@description: 创建人ID
+     * @description: 创建人ID
      */
 
     @NotEmpty(message = "创建者不能为空")
@@ -34,7 +34,7 @@ public class BaseEntity implements Serializable {
     private Long createdBy;
 
     /**
-     *@description: 创建时间
+     * @description: 创建时间
      */
 
     @TableField(fill = FieldFill.INSERT)
@@ -42,20 +42,20 @@ public class BaseEntity implements Serializable {
     private String createdTime;
 
     /**
-     *@description: 修改人ID
+     * @description: 修改人ID
      */
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Long updatedBy;
 
     /**
-     *@description: 修改时间
+     * @description: 修改时间
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private String updatedTime;
 
     /**
-     *@description: 逻辑删除
+     * @description: 逻辑删除
      */
     @TableLogic
     private Integer deleted;
@@ -70,7 +70,7 @@ public class BaseEntity implements Serializable {
         }
         BaseEntity that = (BaseEntity) o;
         return id.equals(that.id) &&
-               // status.equals(that.status) &&
+                // status.equals(that.status) &&
                 createdBy.equals(that.createdBy) &&
                 createdTime.equals(that.createdTime) &&
                 updatedBy.equals(that.updatedBy) &&

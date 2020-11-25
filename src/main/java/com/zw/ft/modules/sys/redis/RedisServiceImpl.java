@@ -17,14 +17,14 @@ import java.util.concurrent.TimeUnit;
  * @Version 1.0
  **/
 @Service("redisService")
-public class RedisServiceImpl implements RedisService{
+public class RedisServiceImpl implements RedisService {
 
     @Resource
     private StringRedisTemplate stringRedisTemplate;
 
     @Override
-    public void set(String key, String value,long expire) {
-        stringRedisTemplate.opsForValue().set(key,value,expire,TimeUnit.SECONDS);
+    public void set(String key, String value, long expire) {
+        stringRedisTemplate.opsForValue().set(key, value, expire, TimeUnit.SECONDS);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class RedisServiceImpl implements RedisService{
 
     @Override
     public Long increment(String key, long delta) {
-        return stringRedisTemplate.opsForValue().increment(key,delta);
+        return stringRedisTemplate.opsForValue().increment(key, delta);
     }
 
     @Override

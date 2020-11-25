@@ -59,9 +59,9 @@ public class ModelConfiguration extends BaseEntity {
     @Override
     public String toString() {
         return "ModelConfiguration{" +
-        "identification=" + identification +
-        ", content=" + content +
-        ", des=" + des +
-        "}";
+                "identification=" + identification +
+                ", content=" + content +
+                ", des=" + des +
+                "}";
     }
 }

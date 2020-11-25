@@ -10,12 +10,13 @@ import com.zw.ft.modules.sys.repository.SysNeedsMapper;
 import com.zw.ft.modules.sys.service.SysNeedsService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 import java.util.Map;
 
 /**
  * <p>
- *  系统需求表 服务实现类
+ * 系统需求表 服务实现类
  * </p>
  *
  * @author Oliver
@@ -35,52 +36,52 @@ public class SysNeedsServiceImpl extends ServiceImpl<SysNeedsMapper, SysNeeds> i
 
         //搜索条件 标题
         String title = FormatUtil.isSelectKey("title", params);
-        if(Constant.TRUE.equals(title)){
-            queryWrapper.like("sy.title",params.get("title"));
+        if (Constant.TRUE.equals(title)) {
+            queryWrapper.like("sy.title", params.get("title"));
         }
 
         //搜索条件 部门
         String deptId = FormatUtil.isSelectKey("deptId", params);
-        if(Constant.TRUE.equals(deptId)){
-            queryWrapper.eq("sy.dept_id",params.get("deptId"));
-        }else if ("".equals(deptId)){
-            queryWrapper.eq("sy.dept_id","");
+        if (Constant.TRUE.equals(deptId)) {
+            queryWrapper.eq("sy.dept_id", params.get("deptId"));
+        } else if ("".equals(deptId)) {
+            queryWrapper.eq("sy.dept_id", "");
         }
 
         //搜索条件 部门
         String handler = FormatUtil.isSelectKey("handler", params);
-        if(Constant.TRUE.equals(handler)){
-            queryWrapper.eq("sy.handler",params.get("handler"));
-        }else if ("".equals(handler)){
-            queryWrapper.eq("sy.handler","");
+        if (Constant.TRUE.equals(handler)) {
+            queryWrapper.eq("sy.handler", params.get("handler"));
+        } else if ("".equals(handler)) {
+            queryWrapper.eq("sy.handler", "");
         }
 
         //搜索条件 状态
         String status = FormatUtil.isSelectKey("status", params);
-        if(Constant.TRUE.equals(status)){
-            queryWrapper.eq("sy.status",params.get("status"));
-        }else if ("".equals(status)){
-            queryWrapper.eq("sy.status","");
+        if (Constant.TRUE.equals(status)) {
+            queryWrapper.eq("sy.status", params.get("status"));
+        } else if ("".equals(status)) {
+            queryWrapper.eq("sy.status", "");
         }
 
         String startDateTime = FormatUtil.isSelectKey("startDateTime", params);
-        if(Constant.TRUE.equals(startDateTime)){
-            queryWrapper.ge("sy.created_time",params.get("startDateTime"));
-        }else if("".equals(startDateTime)){
-            queryWrapper.ge("sy.created_time","");
+        if (Constant.TRUE.equals(startDateTime)) {
+            queryWrapper.ge("sy.created_time", params.get("startDateTime"));
+        } else if ("".equals(startDateTime)) {
+            queryWrapper.ge("sy.created_time", "");
         }
 
         String endDateTime = FormatUtil.isSelectKey("endDateTime", params);
-        if(Constant.TRUE.equals(endDateTime)){
-            queryWrapper.le("sy.created_time",params.get("endDateTime"));
-        }else if("".equals(endDateTime)){
-            queryWrapper.le("sy.created_time","");
+        if (Constant.TRUE.equals(endDateTime)) {
+            queryWrapper.le("sy.created_time", params.get("endDateTime"));
+        } else if ("".equals(endDateTime)) {
+            queryWrapper.le("sy.created_time", "");
         }
 
-        queryWrapper.eq("sy.DELETED","0");
+        queryWrapper.eq("sy.DELETED", "0");
         //排序
         queryWrapper.orderByDesc("sy.created_time");
         queryWrapper.orderByAsc("sy.status");
-        return sysNeedsMapper.queryNeedsPage(page,queryWrapper);
+        return sysNeedsMapper.queryNeedsPage(page, queryWrapper);
     }
 }

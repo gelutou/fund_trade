@@ -12,23 +12,23 @@ import org.apache.shiro.SecurityUtils;
 
 public abstract class AbstractController {
 
-	protected SysUser getUser() {
-		return (SysUser) SecurityUtils.getSubject().getPrincipal();
-	}
+    protected SysUser getUser() {
+        return (SysUser) SecurityUtils.getSubject().getPrincipal();
+    }
 
-	protected String getUserName() {
-		SysUser sysUer = getUser();
-		if(sysUer==null){
-			return "系统管理员";
-		}
-		return sysUer.getUsername();
-	}
+    protected String getUserName() {
+        SysUser sysUer = getUser();
+        if (sysUer == null) {
+            return "系统管理员";
+        }
+        return sysUer.getUsername();
+    }
 
-	protected Long getUserId() {
-		SysUser sysUer = getUser();
-		if(sysUer==null){
-			return -1L;
-		}
-		return sysUer.getId();
-	}
+    protected Long getUserId() {
+        SysUser sysUer = getUser();
+        if (sysUer == null) {
+            return -1L;
+        }
+        return sysUer.getId();
+    }
 }

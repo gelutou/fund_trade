@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * <p>
- *  系统需求回复表 
+ * 系统需求回复表
  * </p>
  *
  * @author Oliver
@@ -36,7 +36,7 @@ public class SysReply extends BaseEntity {
     private String content;
 
     /**
-     *@description: 创建人
+     * @description: 创建人
      */
     @TableField(exist = false)
     private SysUser creator;

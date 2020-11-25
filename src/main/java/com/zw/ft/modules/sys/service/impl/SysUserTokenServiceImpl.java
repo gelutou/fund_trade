@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 
 /**
  * <p>
- *  系统用户token表 服务实现类
+ * 系统用户token表 服务实现类
  * </p>
  *
  * @author Oliver
@@ -22,6 +22,7 @@ public class SysUserTokenServiceImpl extends ServiceImpl<SysUserTokenMapper, Sys
 
     @Resource
     SysUserTokenMapper sysUserTokenMapper;
+
     @Override
     public SysUserToken getTokenUserByToken(QueryWrapper<SysUserToken> tokenQueryWrapper) {
         return sysUserTokenMapper.getTokenUserByToken(tokenQueryWrapper);

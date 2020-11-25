@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * <p>
- *  系统需求表 Mapper 接口
+ * 系统需求表 Mapper 接口
  * </p>
  *
  * @author Oliver
@@ -22,34 +22,34 @@ import java.util.List;
 public interface SysNeedsMapper extends BaseMapper<SysNeeds> {
 
     @Results({
-            @Result(column = "id",property = "id"),
-            @Result(column = "CREATED_BY",property = "createdBy"),
-            @Result(column = "dept_id",property = "deptId"),
-            @Result(column = "handler",property = "handler"),
-            @Result(column = "confirmer",property = "confirmer"),
+            @Result(column = "id", property = "id"),
+            @Result(column = "CREATED_BY", property = "createdBy"),
+            @Result(column = "dept_id", property = "deptId"),
+            @Result(column = "handler", property = "handler"),
+            @Result(column = "confirmer", property = "confirmer"),
             //提出人
-            @Result(column="CREATED_BY",property="proposer",
-                    one=@One(
-                            select="com.zw.ft.modules.sys.repository.SysUserMapper.selectById",
-                            fetchType= FetchType.EAGER)
+            @Result(column = "CREATED_BY", property = "proposer",
+                    one = @One(
+                            select = "com.zw.ft.modules.sys.repository.SysUserMapper.selectById",
+                            fetchType = FetchType.EAGER)
             ),
             //所属部门
-            @Result(column="dept_id",property="dept",
-                    one=@One(
-                            select="com.zw.ft.modules.sys.repository.SysDepartmentMapper.selectById",
-                            fetchType= FetchType.EAGER)
+            @Result(column = "dept_id", property = "dept",
+                    one = @One(
+                            select = "com.zw.ft.modules.sys.repository.SysDepartmentMapper.selectById",
+                            fetchType = FetchType.EAGER)
             ),
             //处理人
-            @Result(column="handler",property="handleUser",
-                    one=@One(
-                            select="com.zw.ft.modules.sys.repository.SysUserMapper.selectById",
-                            fetchType= FetchType.EAGER)
+            @Result(column = "handler", property = "handleUser",
+                    one = @One(
+                            select = "com.zw.ft.modules.sys.repository.SysUserMapper.selectById",
+                            fetchType = FetchType.EAGER)
             ),
             //确认人
-            @Result(column="confirmer",property="confirmerUser",
-                    one=@One(
-                            select="com.zw.ft.modules.sys.repository.SysUserMapper.selectById",
-                            fetchType= FetchType.EAGER)
+            @Result(column = "confirmer", property = "confirmerUser",
+                    one = @One(
+                            select = "com.zw.ft.modules.sys.repository.SysUserMapper.selectById",
+                            fetchType = FetchType.EAGER)
             )
     })
 
