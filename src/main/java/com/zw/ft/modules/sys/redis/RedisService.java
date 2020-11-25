@@ -16,7 +16,7 @@ public interface RedisService {
      * @Date: 2020/10/9 10:53
      */
 
-    void set(String key, String value,long expire);
+    void set(String key, String value, long expire);
 
     /*
      * 功能描述: <br>

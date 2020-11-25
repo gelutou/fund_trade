@@ -26,6 +26,7 @@ public interface SysCompanyMapper extends BaseMapper<SysCompany> {
     /**
      * 功能描述: <br>
      * 〈模糊查询用户所在公司，用于登录页展示〉
+     *
      * @Param: [username, shortName 前台输入的公司简称]
      * @Return: com.zw.ft.common.utils.R
      * @Author: Oliver
@@ -38,11 +39,11 @@ public interface SysCompanyMapper extends BaseMapper<SysCompany> {
             " WHERE ID IN (SELECT dept_id" +
             " FROM rel_user_department" +
             " WHERE user_id = (SELECT ID FROM sys_user WHERE username = #{username}))) AND ${ew.SqlSegment}")
-    List<SysCompany> getFuzzy(@Param("username") String username,@Param("ew") QueryWrapper<SysCompany> queryWrapper);
+    List<SysCompany> getFuzzy(@Param("username") String username, @Param("ew") QueryWrapper<SysCompany> queryWrapper);
 
     /**
      * @Author savior
-     * @Description  各个公司加价档案列表
+     * @Description 各个公司加价档案列表
      * @Date: 2020/11/11
      */
     @Select("select scy.id,scy.com_name,scy.city,dice.des,pi.fixed,pi.rise_price from sys_company scy " +

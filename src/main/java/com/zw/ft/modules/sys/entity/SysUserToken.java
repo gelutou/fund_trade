@@ -6,7 +6,7 @@ import com.zw.ft.common.base.BaseEntity;
 
 /**
  * <p>
- *  系统用户token表
+ * 系统用户token表
  * </p>
  *
  * @author Oliver
@@ -27,7 +27,7 @@ public class SysUserToken extends BaseEntity {
     private String token;
 
     /**
-     *@description: 用户实体
+     * @description: 用户实体
      */
     @TableField(exist = false)
     private SysUser user;

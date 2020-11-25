@@ -38,7 +38,7 @@ public class RunRisePriceServiceImpl extends ServiceImpl<RunRisePriceMapper, Run
 
     /**
      * @Author savior
-     * @Description  各个公司加价档案列表
+     * @Description 各个公司加价档案列表
      * @Date: 2020/11/11
      */
     @Override
@@ -60,7 +60,7 @@ public class RunRisePriceServiceImpl extends ServiceImpl<RunRisePriceMapper, Run
         String[] convert = Convert.convert(String[].class, string);
         if (Constant.TRUE.equals(id)) {
             if (params.toString().contains(",")) {
-                queryWrapper.in("scy.id",  convert);
+                queryWrapper.in("scy.id", convert);
             }
         }
 
@@ -74,8 +74,8 @@ public class RunRisePriceServiceImpl extends ServiceImpl<RunRisePriceMapper, Run
 
         queryWrapper.eq("scy.deleted", 0);
         queryWrapper.eq("scy.STATUS", 0);
-        queryWrapper.orderByDesc("pi.rise_price","pi.updated_time");
-        return runRisePriceMapper.queryRunRisePrice(page,queryWrapper);
+        queryWrapper.orderByDesc("pi.rise_price", "pi.updated_time");
+        return runRisePriceMapper.queryRunRisePrice(page, queryWrapper);
     }
 
     /**
@@ -92,7 +92,7 @@ public class RunRisePriceServiceImpl extends ServiceImpl<RunRisePriceMapper, Run
             QueryWrapper<SysCompany> sysWrapper = new QueryWrapper<>();
             sysWrapper.eq("id", runRisePrice.getComId());
             List<SysCompany> sysCompanies = sysCompanyMapper.selectList(sysWrapper);
-            for (SysCompany sys:sysCompanies) {
+            for (SysCompany sys : sysCompanies) {
                 runRisePrice.setComId(sys.getId().toString());
             }
             int insert = runRisePriceMapper.insert(runRisePrice);

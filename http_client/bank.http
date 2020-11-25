@@ -1,8 +1,8 @@
 POST http://localhost:8090/ft/sys-bank/bankall
 Content-Type: application/json
-token:5f15eba46fec91b301d38ca4e36933f9
+token:1e299919ed4cd5a3625ee0f50c0f8077
 
-{}
+{"currentPage":1,"pageSize":10,"bankName":"北京建设银行支行"}
 
 ###
 POST http://localhost:8090/ft/sys-bank/updateBank

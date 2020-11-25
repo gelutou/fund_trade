@@ -20,12 +20,13 @@ public interface RunRisePriceService extends IService<RunRisePrice> {
     /**
      * 功能描述: <br>
      * 查询各个公司加价档案信息
+     *
      * @Param: [params 查询条件]
      * @Return: com.zw.ft.common.utils.R
      * @Author: Savior
      * @Date: 2020/11/11
      */
-    Page<RunRisePrice> getRun(Map<String,Object> params);
+    Page<RunRisePrice> getRun(Map<String, Object> params);
 
     /**
      * @Author savior

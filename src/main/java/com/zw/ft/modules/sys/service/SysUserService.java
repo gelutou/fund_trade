@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *@description: 系统用户服务
- *@author:  Oliver
- *@date  2020/9/15
+ * @description: 系统用户服务
+ * @author: Oliver
+ * @date 2020/9/15
  */
 public interface SysUserService extends IService<SysUser> {
 
@@ -24,10 +24,12 @@ public interface SysUserService extends IService<SysUser> {
      * @Date: 2020/11/24 11:19
      */
 
-    Page<SysUser> getUserInDepartmentPage(Map<String,Object> params);
+    Page<SysUser> getUserInDepartmentPage(Map<String, Object> params);
+
     /**
      * 功能描述: <br>
      * 〈查询用户信息（包括角色）〉
+     *
      * @Param: [sysUserQueryWrapper]
      * @Return: java.util.List<com.zw.ft.modules.sys.entity.SysUserEntity>
      * @Author: Oliver
@@ -38,6 +40,7 @@ public interface SysUserService extends IService<SysUser> {
     /**
      * 功能描述: <br>
      * 〈查询用户的权限〉
+     *
      * @Param: [userId]
      * @Return: java.util.List<java.lang.String>
      * @Author: Oliver
@@ -46,9 +49,9 @@ public interface SysUserService extends IService<SysUser> {
     List<String> getUserPerms(long userId);
 
     /**
-     *@description: 返回公司下所有符合条件的人员分页
-     *@author:  Oliver
-     *@date  2020/9/21
+     * @description: 返回公司下所有符合条件的人员分页
+     * @author: Oliver
+     * @date 2020/9/21
      */
     Page<SysUser> queryUsersPageByComAndWrapper(Page<SysUser> page, long comId, QueryWrapper<SysUser> userEntityQueryWrapper);
 }

@@ -12,13 +12,14 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.stereotype.Component;
+
 import javax.annotation.Resource;
 
 /**
- *@description: 认证授权
- *@author:  Oliver
- *@date  2020/9/28
- *@修改人和其它信息
+ * @description: 认证授权
+ * @author: Oliver
+ * @date 2020/9/28
+ * @修改人和其它信息
  */
 @Component
 public class OAuth2Realm extends AuthorizingRealm {
@@ -55,15 +56,15 @@ public class OAuth2Realm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        String accessToken =  token.getPrincipal().toString();
+        String accessToken = token.getPrincipal().toString();
 
         QueryWrapper<SysUserToken> tokenQueryWrapper = new QueryWrapper<>();
-        tokenQueryWrapper.eq("token",accessToken);
+        tokenQueryWrapper.eq("token", accessToken);
         SysUserToken tokenUserByToken = tokenService.getTokenUserByToken(tokenQueryWrapper);
         SysUser user = tokenUserByToken.getUser();
         String username = user.getUsername();
         String rKey = redisService.get(username);
-        if(rKey == null){
+        if (rKey == null) {
             throw new IncorrectCredentialsException("token失效，请重新登录");
         }
         return new SimpleAuthenticationInfo(user, accessToken, getName());

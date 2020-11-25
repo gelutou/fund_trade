@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
- *  系统用户token表 服务类
+ * 系统用户token表 服务类
  * </p>
  *
  * @author Oliver
@@ -16,9 +16,9 @@ import org.apache.ibatis.annotations.Param;
 public interface SysUserTokenService extends IService<SysUserToken> {
 
     /**
-     *@description: 查询token 带 user 信息
-     *@author:  Oliver
-     *@date  2020/9/27
+     * @description: 查询token 带 user 信息
+     * @author: Oliver
+     * @date 2020/9/27
      */
     SysUserToken getTokenUserByToken(QueryWrapper<SysUserToken> tokenQueryWrapper);
 

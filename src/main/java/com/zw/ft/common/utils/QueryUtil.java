@@ -12,7 +12,7 @@ import java.util.Map;
  * @Date 2020/9/23 18:01
  * @Version 1.0
  **/
-public class QueryUtil<T> extends LinkedHashMap<String,Object> {
+public class QueryUtil<T> extends LinkedHashMap<String, Object> {
 
     private static final long serialVersionUID = -103551643233726060L;
 
@@ -22,14 +22,14 @@ public class QueryUtil<T> extends LinkedHashMap<String,Object> {
 
     private long limit = 10L;
 
-    public QueryUtil(Map<String, Object> params){
+    public QueryUtil(Map<String, Object> params) {
         this.putAll(params);
 
         //分页参数
-        if(params.get("currentPage") != null){
+        if (params.get("currentPage") != null) {
             current = Convert.toLong(params.get("currentPage"));
         }
-        if(params.get("pageSize") != null){
+        if (params.get("pageSize") != null) {
             limit = Convert.toLong(params.get("pageSize"));
         }
         //mybatis-plus分页

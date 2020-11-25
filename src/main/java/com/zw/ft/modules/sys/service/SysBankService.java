@@ -18,7 +18,7 @@ import java.util.Map;
 public interface SysBankService extends IService<SysBank> {
 
 
-     Page<SysBank> getBank(Map<String,Object> params);
+    Page<SysBank> getBank(Map<String, Object> params);
 
-     R delBank(String delIds);
+    R delBank(String delIds);
 }

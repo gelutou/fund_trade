@@ -42,9 +42,11 @@ public class LoginController extends BaseController {
     SysUserService sysUserService;
     @Resource
     SysUserTokenService sysUserTokenService;
+
     /**
      * 功能描述: <br>
      * 〈用户登录〉
+     *
      * @Param: [username, password]
      * @Return: com.zw.ft.common.utils.R
      * @Author: Oliver
@@ -52,44 +54,44 @@ public class LoginController extends BaseController {
      */
     @PostMapping("/login/{username}/{password}")
     @ApiOperation(value = "登录")
-    public R login(@PathVariable("username") String username,@PathVariable("password") String password){
+    public R login(@PathVariable("username") String username, @PathVariable("password") String password) {
         //判断有无此用户
         QueryWrapper<SysUser> entityQueryWrapper = new QueryWrapper<>();
-        entityQueryWrapper.eq("username",username);
+        entityQueryWrapper.eq("username", username);
         SysUser one = sysUserService.getOne(entityQueryWrapper);
 
         Digester digester = new Digester(DigestAlgorithm.SHA256);
 
-        if(one == null){
+        if (one == null) {
             return R.error("无此用户");
             //判断密码是否相等
-        }else if (digester.digestHex(password).equals(one.getPassword())){
+        } else if (digester.digestHex(password).equals(one.getPassword())) {
             //判断token是否过期
             String token = redisService.get(username);
             String newToken;
-            if(token == null){
+            if (token == null) {
                 newToken = SecureUtil.md5(RandomUtil.randomString(16));
-                redisService.set(username,newToken, Constant.AN_DAY);
-            }else {
+                redisService.set(username, newToken, Constant.AN_DAY);
+            } else {
                 newToken = token;
             }
 
             //将token存进数据库
             QueryWrapper<SysUserToken> tokenQueryWrapper = new QueryWrapper<>();
-            tokenQueryWrapper.eq("user_id",one.getId());
+            tokenQueryWrapper.eq("user_id", one.getId());
             SysUserToken userToken = sysUserTokenService.getOne(tokenQueryWrapper);
-            if(userToken == null){
+            if (userToken == null) {
                 userToken = new SysUserToken();
                 userToken.setUserId(one.getId());
                 userToken.setToken(newToken);
                 sysUserTokenService.save(userToken);
-            }else if(token == null){
+            } else if (token == null) {
                 SysUserToken updateToke = new SysUserToken();
                 updateToke.setId(userToken.getId());
                 updateToke.setUserId(userToken.getUserId());
                 updateToke.setToken(newToken);
                 sysUserTokenService.updateById(updateToke);
-            }else if(!userToken.getToken().equals(newToken)){
+            } else if (!userToken.getToken().equals(newToken)) {
                 SysUserToken updateToke = new SysUserToken();
                 updateToke.setId(userToken.getId());
                 updateToke.setUserId(userToken.getUserId());
@@ -99,7 +101,7 @@ public class LoginController extends BaseController {
             OAuth2Token oAuth2Token = new OAuth2Token(newToken);
             SecurityUtils.getSubject().login(oAuth2Token);
             return R.ok(newToken);
-        }else {
+        } else {
             return R.error("密码错误");
         }
     }
@@ -112,7 +114,7 @@ public class LoginController extends BaseController {
      */
 
     @PostMapping("/logout")
-    public R logout(){
+    public R logout() {
         SecurityUtils.getSubject().logout();
         return R.ok();
     }

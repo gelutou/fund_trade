@@ -13,15 +13,16 @@ import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreato
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import javax.servlet.Filter;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- *@description: shiro 配置
- *@author:  Oliver
- *@date  2020/9/28
+ * @description: shiro 配置
+ * @author: Oliver
+ * @date 2020/9/28
  */
 @Configuration
 public class ShiroConfig {
@@ -49,7 +50,7 @@ public class ShiroConfig {
     }
 
     @Bean("securityManager")
-    public DefaultWebSecurityManager  getDefaultWebSecurityManager( @Qualifier("oAuth2Realm") OAuth2Realm oAuth2Realm) {
+    public DefaultWebSecurityManager getDefaultWebSecurityManager(@Qualifier("oAuth2Realm") OAuth2Realm oAuth2Realm) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
 
         //securityManager.setSessionManager(sessionManager);
@@ -58,7 +59,7 @@ public class ShiroConfig {
     }
 
     @Bean("sessionManager")
-    public SessionManager sessionManager(){
+    public SessionManager sessionManager() {
         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
         sessionManager.setSessionValidationSchedulerEnabled(true);
         sessionManager.setSessionIdCookieEnabled(true);

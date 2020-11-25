@@ -34,27 +34,27 @@ public class SysPermissionServiceImpl extends ServiceImpl<SysPermissionMapper, S
 
     @Override
     public List<SysPermission> getChildMenu(long userId, long parentId) {
-        return sysPermissionMapper.getChildMenu(userId,parentId);
+        return sysPermissionMapper.getChildMenu(userId, parentId);
     }
 
     @Override
     public Set<String> getUserPermissions(long userId) {
         List<String> permsList;
         //当是超级管理员拥有全部权限
-        if(userId == Constant.SUPER_ADMIN){
+        if (userId == Constant.SUPER_ADMIN) {
             List<SysPermission> sysPermissionEntities = sysPermissionMapper.selectList(null);
             permsList = new ArrayList<>(sysPermissionEntities.size());
-            for(SysPermission perm : sysPermissionEntities){
+            for (SysPermission perm : sysPermissionEntities) {
                 permsList.add(perm.getPerms());
             }
-        }else{
+        } else {
             //查询用户的所有权限
             permsList = sysUserService.getUserPerms(userId);
         }
         //进行权限的拼接后返回
         Set<String> permsSet = new HashSet<>();
-        for(String perms : permsList){
-            if(StringUtils.isBlank(perms)){
+        for (String perms : permsList) {
+            if (StringUtils.isBlank(perms)) {
                 continue;
             }
             permsSet.addAll(Arrays.asList(perms.trim().split(",")));

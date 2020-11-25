@@ -19,16 +19,16 @@ public class SysRole extends BaseEntity {
 
     private static final long serialVersionUID = 2102161014072264011L;
     /**
-     *@description: 角色编号
+     * @description: 角色编号
      */
     private String roleCode;
     /**
-     *@description: 角色编号
+     * @description: 角色编号
      */
     private String roleName;
 
     /**
-     *@description: 用户集合
+     * @description: 用户集合
      */
     private List<SysUser> users;
 }

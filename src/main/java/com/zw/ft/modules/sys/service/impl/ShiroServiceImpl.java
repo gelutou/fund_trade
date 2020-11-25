@@ -5,12 +5,13 @@ import com.zw.ft.modules.sys.entity.SysUserToken;
 import com.zw.ft.modules.sys.service.ShiroService;
 import com.zw.ft.modules.sys.service.SysUserTokenService;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 
 /**
- *@description: shiro服务实现
- *@author:  Oliver
- *@date  2020/9/27
+ * @description: shiro服务实现
+ * @author: Oliver
+ * @date 2020/9/27
  */
 @Service
 public class ShiroServiceImpl implements ShiroService {
@@ -46,7 +47,7 @@ public class ShiroServiceImpl implements ShiroService {
     @Override
     public SysUserToken queryByToken(String token) {
         QueryWrapper<SysUserToken> tokenQueryWrapper = new QueryWrapper<>();
-        tokenQueryWrapper.eq("token",token);
+        tokenQueryWrapper.eq("token", token);
         return sysUserTokenService.getOne(tokenQueryWrapper);
     }
 }

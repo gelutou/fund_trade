@@ -9,23 +9,25 @@ package com.zw.ft.common.base;
  **/
 public class Constant {
 
-    /** 超级管理员ID */
+    /**
+     * 超级管理员ID
+     */
     public static final int SUPER_ADMIN = 1;
     public static final String ADMIN = "admin";
     public static final String TRUE = "true";
     public static final String FALSE = "false";
 
     /**
-     *@description: 半个小时
+     * @description: 半个小时
      */
     public static final long HALF_AN_HOUR = 1800;
     /**
-     *@description: 一个小时
+     * @description: 一个小时
      */
     public static final long AN_HOUR = 3600;
 
     /**
-     *@descrip
+     * @descrip
      */
     public static final long AN_DAY = 43200;
 
@@ -36,13 +38,13 @@ public class Constant {
      * @Date: 2020/10/9 9:59
      */
 
-    public enum DatabaseOperation{
+    public enum DatabaseOperation {
         /**
-         *@description: 添加
+         * @description: 添加
          */
         ADD("add"),
         /**
-         *@description: 更新
+         * @description: 更新
          */
         UPDATE("update");
 
@@ -63,17 +65,17 @@ public class Constant {
      * @Author: Oliver
      */
 
-    public enum NeedStatus{
+    public enum NeedStatus {
         /**
-         *@description: 未解决
+         * @description: 未解决
          */
         unresolved(0),
         /**
-         *@description: 已解决
+         * @description: 已解决
          */
         resolved(1),
         /**
-         *@description: 已确认
+         * @description: 已确认
          */
         confirmed(2);
 

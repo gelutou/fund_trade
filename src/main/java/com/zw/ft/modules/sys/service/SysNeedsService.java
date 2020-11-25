@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  系统需求表 服务类
+ * 系统需求表 服务类
  * </p>
  *
  * @author Oliver
@@ -23,6 +23,6 @@ public interface SysNeedsService extends IService<SysNeeds> {
      * @Date: 2020/10/30 14:03
      */
 
-    Page<SysNeeds> queryPage(Map<String,Object> params);
+    Page<SysNeeds> queryPage(Map<String, Object> params);
 
 }

@@ -1,41 +1,41 @@
 #tomcat config
-server :
-  port : 8090
-  ##项目名字配置
-  tomcat :
-    uri-encoding : UTF-8
-    #shiro 报错修改的地方
-    max-connections: 200000
-    max-http-form-post-size: 9000000
-    threads:
-      max: 128
-      min-spare: 5
+server:
+    port: 8090
+    ##项目名字配置
+    tomcat:
+        uri-encoding: UTF-8
+        #shiro 报错修改的地方
+        max-connections: 200000
+        max-http-form-post-size: 9000000
+        threads:
+            max: 128
+            min-spare: 5
 
-spring :
-  redis:
-    host: localhost
-    port: 6379
-    timeout: 10000
-    jedis:
-      pool:
-        time-between-eviction-runs: 60000
-  # 环境 dev|prod
-  profiles :
-    active : dev
-    #引入其他配置文件，例如ftpHX 未配置文件application-ftpHX.yml
-    #include: ftpHX,ftpCloud
-  servlet:
-    multipart:
-      #设置总上传的数据大小
-      max-request-size: 100MB
-      #单个文件大小
-      maxFileSize : 30MB
-      #shiro 报错修改的地方
-    # 服务模块
-  devtools:
-    restart:
-      # 热部署开关
-      enabled: true
-  jackson:
-    time-zone: GMT+8
-    date-format: yyyy-MM-dd HH:mm:ss
+spring:
+    redis:
+        host: localhost
+        port: 6379
+        timeout: 10000
+        jedis:
+            pool:
+                time-between-eviction-runs: 60000
+    # 环境 dev|prod
+    profiles:
+        active: dev
+        #引入其他配置文件，例如ftpHX 未配置文件application-ftpHX.yml
+        #include: ftpHX,ftpCloud
+    servlet:
+        multipart:
+            #设置总上传的数据大小
+            max-request-size: 100MB
+            #单个文件大小
+            maxFileSize: 30MB
+            #shiro 报错修改的地方
+        # 服务模块
+    devtools:
+        restart:
+            # 热部署开关
+            enabled: true
+    jackson:
+        time-zone: GMT+8
+        date-format: yyyy-MM-dd HH:mm:ss

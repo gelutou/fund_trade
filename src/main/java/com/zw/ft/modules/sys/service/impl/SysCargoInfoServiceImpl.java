@@ -94,7 +94,7 @@ public class SysCargoInfoServiceImpl extends ServiceImpl<SysCargoInfoMapper, Sys
         queryWrapper.eq("sci.deleted", 0);
         queryWrapper.eq("sci.STATUS", 0);
         queryWrapper.orderByDesc("sci.updated_time");
-        return sysCargoInfoMapper.queryCargoInfo(page,queryWrapper);
+        return sysCargoInfoMapper.queryCargoInfo(page, queryWrapper);
     }
 
     /**

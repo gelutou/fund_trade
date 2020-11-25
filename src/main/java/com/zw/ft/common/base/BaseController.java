@@ -24,7 +24,7 @@ public class BaseController {
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
     @GetMapping(value = "/{url}")
-    public String redirect(@PathVariable("url") String url){
+    public String redirect(@PathVariable("url") String url) {
         return url;
     }
 
@@ -34,7 +34,7 @@ public class BaseController {
 
     protected String getUserName() {
         SysUser sysUer = getUser();
-        if(sysUer==null){
+        if (sysUer == null) {
             return "admin";
         }
         return sysUer.getUsername();
@@ -42,7 +42,7 @@ public class BaseController {
 
     protected Long getUserId() {
         SysUser sysUer = getUser();
-        if(sysUer==null){
+        if (sysUer == null) {
             return -1L;
         }
         return sysUer.getId();

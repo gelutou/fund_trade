@@ -25,7 +25,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  系统需求表 前端控制器
+ * 系统需求表 前端控制器
  * </p>
  *
  * @author Oliver
@@ -33,7 +33,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/ft/sys-needs")
-public class SysNeedsController extends AbstractController{
+public class SysNeedsController extends AbstractController {
 
     @Resource
     SysNeedsService sysNeedsService;
@@ -52,7 +52,7 @@ public class SysNeedsController extends AbstractController{
      */
 
     @RequestMapping("/queryPage")
-    public R queryPage(@RequestBody(required = false) Map<String,Object> params){
+    public R queryPage(@RequestBody(required = false) Map<String, Object> params) {
         return R.page(sysNeedsService.queryPage(params));
     }
 
@@ -64,7 +64,7 @@ public class SysNeedsController extends AbstractController{
      */
 
     @RequestMapping("/add")
-    public R add(@RequestBody(required = false) SysNeeds sysNeeds){
+    public R add(@RequestBody(required = false) SysNeeds sysNeeds) {
         //获取当前登录人的部门ID
         Long userId = ShiroUtils.getUserId();
         SysDepartment deptByUserId = sysDepartmentService.getDeptByUserId(userId);
@@ -81,23 +81,23 @@ public class SysNeedsController extends AbstractController{
      */
 
     @RequestMapping("/update")
-    public R update(@RequestBody(required = false) SysNeeds sysNeeds){
+    public R update(@RequestBody(required = false) SysNeeds sysNeeds) {
 
-        if(!ObjectUtil.isEmpty(sysNeeds.getStatus())){
+        if (!ObjectUtil.isEmpty(sysNeeds.getStatus())) {
             Integer status = sysNeeds.getStatus();
             SysUser user = getUser();
-            if(status.equals(Constant.NeedStatus.resolved.getValue())){
+            if (status.equals(Constant.NeedStatus.resolved.getValue())) {
                 //修改处理人和处理时间
                 sysNeeds.setHandler(user.getId());
                 sysNeeds.setHandlerTime(DateUtil.now());
-            }else if(status.equals(Constant.NeedStatus.confirmed.getValue())){
+            } else if (status.equals(Constant.NeedStatus.confirmed.getValue())) {
                 //修改确认人和确认时间
                 sysNeeds.setConfirmer(user.getId());
                 sysNeeds.setConfirmTime(DateUtil.now());
             }
         }
         UpdateWrapper<SysNeeds> needsUpdateWrapper = new UpdateWrapper<>();
-        needsUpdateWrapper.eq("id",sysNeeds.getId());
+        needsUpdateWrapper.eq("id", sysNeeds.getId());
         sysNeedsService.update(sysNeeds, needsUpdateWrapper);
         return R.ok();
     }
@@ -112,29 +112,29 @@ public class SysNeedsController extends AbstractController{
      */
 
     @RequestMapping("/delete/{needIds}")
-    public R delete(@PathVariable("needIds") String needIds){
+    public R delete(@PathVariable("needIds") String needIds) {
         String[] ids;
-        if(needIds.contains(",")){
+        if (needIds.contains(",")) {
             ids = needIds.split(",");
-        }else {
+        } else {
             ids = new String[1];
             ids[0] = needIds;
         }
         UpdateWrapper<SysNeeds> needsUpdateWrapper = new UpdateWrapper<>();
-        needsUpdateWrapper.in("id",ids);
+        needsUpdateWrapper.in("id", ids);
         StringBuilder stringBuilder = new StringBuilder();
         //判断需求，只有未处理的可以删除
         List<SysNeeds> list = sysNeedsService.list(needsUpdateWrapper);
-        for(int i=0;i<list.size();i++){
+        for (int i = 0; i < list.size(); i++) {
             SysNeeds needs = list.get(i);
             Integer status = needs.getStatus();
-            if(status != 0){
+            if (status != 0) {
                 stringBuilder.append(needs.getTitle()).append(",");
-            }else {
+            } else {
                 sysNeedsService.removeById(needs.getId());
             }
         }
-        if(!"".equals(stringBuilder.toString())){
+        if (!"".equals(stringBuilder.toString())) {
             return R.ok(stringBuilder.append("状态不是未处理,不能删除").toString());
         }
         return R.ok();
@@ -150,9 +150,8 @@ public class SysNeedsController extends AbstractController{
      * @Author: Oliver
      * @Date: 2020/11/2 11:09
      */
-
     @RequestMapping("/reply/add")
-    public R addReply(@RequestBody(required = false) Map<String,Object> params){
+    public R addReply(@RequestBody(required = false) Map<String, Object> params) {
         SysReply sysReply = Convert.convert(SysReply.class, params);
         sysReplyService.save(sysReply);
         return R.ok();
@@ -168,7 +167,7 @@ public class SysNeedsController extends AbstractController{
      */
 
     @RequestMapping("/reply/update")
-    public R updateReply(@RequestBody(required = false) Map<String,Object> params){
+    public R updateReply(@RequestBody(required = false) Map<String, Object> params) {
         SysReply sysReply = Convert.convert(SysReply.class, params);
         sysReplyService.updateById(sysReply);
         return R.ok();
@@ -184,17 +183,17 @@ public class SysNeedsController extends AbstractController{
      */
 
     @RequestMapping("/reply/delete/{replyIds}")
-    public R deleteReply(@PathVariable("replyIds") String replyIds){
+    public R deleteReply(@PathVariable("replyIds") String replyIds) {
         String[] ids;
-        if(replyIds.contains(",")){
+        if (replyIds.contains(",")) {
             ids = replyIds.split(",");
-        }else {
+        } else {
             ids = new String[1];
             ids[0] = replyIds;
         }
 
         UpdateWrapper<SysReply> replyUpdateWrapper = new UpdateWrapper<>();
-        replyUpdateWrapper.in("id",ids);
+        replyUpdateWrapper.in("id", ids);
         sysReplyService.remove(replyUpdateWrapper);
         return R.ok();
     }
@@ -208,7 +207,7 @@ public class SysNeedsController extends AbstractController{
      */
 
     @RequestMapping("/reply/queryOne/{needId}")
-    public R deleteReply(@PathVariable("needId") long needId){
+    public R deleteReply(@PathVariable("needId") long needId) {
         return R.data(sysReplyService.getReplyInfo(needId));
     }
 }
