@@ -17,7 +17,7 @@ import java.util.ArrayList;
 /**
  * @ClassName CodeGenerator
  * @Description 代码生成器
- * @Author Oliver
+ * @Author Savior
  * @Date 2020/8/17 16:00
  * @Version 1.0
  **/
@@ -34,14 +34,14 @@ public class CodeGenerator {
         //输出目录
         globalConfig.setOutputDir(currentPath+"/src/main/java");
         //作者
-        globalConfig.setAuthor("Oliver");
+        globalConfig.setAuthor("Savior");
         //是否打开资源管理器
         globalConfig.setOpen(false);
         //是否覆盖之前代码
         globalConfig.setFileOverride(false);
         //省略Service接口前缀
         globalConfig.setServiceName("%sService");
-        //日期格式
+        //日期格式Bankroll/need/subExcute
         globalConfig.setDateType(DateType.ONLY_DATE);
         //是否生成swagger配置
         //globalConfig.setSwagger2(true);

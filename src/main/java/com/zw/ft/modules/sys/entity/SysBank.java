@@ -1,6 +1,7 @@
 package com.zw.ft.modules.sys.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.zw.ft.common.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,8 +16,11 @@ import java.time.LocalDateTime;
  * @Date 2020/9/27
  */
 @EqualsAndHashCode(callSuper = true)
+@TableName(value = "sys_bank")
 @Data
 public class SysBank extends BaseEntity {
+
+    private static final long serialVersionUID= -2993525210700517999L;
 
     /** 公司id */
     private String comId ;

@@ -1,9 +1,7 @@
 package com.zw.ft.modules.sys.repository;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.modules.sys.entity.SysCompany;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -31,6 +29,7 @@ public interface SysCompanyMapper extends BaseMapper<SysCompany> {
      * @Author: Oliver
      * @Date: 2020/9/21 10:53
      */
+<<<<<<< HEAD
     @Select(" SELECT *" +
             " FROM sys_company" +
             " WHERE ID IN (SELECT com_id" +
@@ -51,4 +50,12 @@ public interface SysCompanyMapper extends BaseMapper<SysCompany> {
             "WHERE p_id = (SELECT ID FROM sys_dictionary WHERE name = 'RUN_RISE' AND value IS NULL)) dice ON pi.fixed = dice.value " +
             "${ew.customSqlSegment}")
     Page<SysCompany> queryRunRisePrice(Page<SysCompany> page, @Param("ew") QueryWrapper<SysCompany> queryWrapper);
+=======
+    @Select("SELECT *" +
+            " FROM sys_company sc" +
+            " LEFT JOIN sys_user_company suc ON sc.ID = suc.com_id" +
+            " WHERE suc.user_id = (SELECT ID FROM sys_user WHERE username = #{username})" +
+            " AND (sc.com_name LIKE CONCAT('%',#{shortname},'%') OR sc.com_code LIKE CONCAT('%',#{shortname},'%'))")
+    List<SysCompany> getFuzzy(@Param("username") String username, @Param("shortname") String shortName);
+>>>>>>> 331d82a7ec0f2c1c46e0f33fe1ab97d0cc3cb530
 }
