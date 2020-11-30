@@ -47,7 +47,7 @@ token:88a260b86cf99278bd99b11b5cf319b1
 {}
 
 ###
-POST http://localhost:8090/ft/sys/login/admin/1
+POST http://192.168.3.222:8091/ft/sys/login/admin/1
 Content-Type: application/json
 
 {}
