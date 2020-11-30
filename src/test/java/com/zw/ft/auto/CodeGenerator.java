@@ -25,7 +25,7 @@ public class CodeGenerator {
 
     public static void main(String[] args) {
         //设置要映射的表名
-        String setInclude = "rel_user_department";
+        String setInclude = "sys_cargo_category";
 
         AutoGenerator autoGenerator = new AutoGenerator();
         GlobalConfig globalConfig = new GlobalConfig();
@@ -49,10 +49,10 @@ public class CodeGenerator {
 
         //设置数据源
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
-        dataSourceConfig.setUrl("jdbc:mysql://81.68.92.240:3306/fund_trade?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=UTC");
+        dataSourceConfig.setUrl("jdbc:mysql://192.168.3.222:3306/fund_trade?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=UTC");
         dataSourceConfig.setUsername("root");
         dataSourceConfig.setDriverName("com.mysql.cj.jdbc.Driver");
-        dataSourceConfig.setPassword("314159");
+        dataSourceConfig.setPassword("!111qqq666");
         dataSourceConfig.setDbType(DbType.MYSQL);
         autoGenerator.setDataSource(dataSourceConfig);
 

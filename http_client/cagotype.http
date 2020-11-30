@@ -1,0 +1,7 @@
+POST http://localhost:8090/sys-cargo-category/getSysCargoType
+Content-Type: application/json
+token:ea8f6c1bca0d93aceca16a468eea228b
+
+{}
+
+###
