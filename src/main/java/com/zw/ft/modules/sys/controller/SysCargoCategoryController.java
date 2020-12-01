@@ -1,7 +1,6 @@
 package com.zw.ft.modules.sys.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysCargoCategory;
@@ -48,7 +47,6 @@ public class SysCargoCategoryController {
      */
     @PostMapping("/query/{id}")
     public R queryId(@PathVariable("id") long id){
-        QueryWrapper<SysCargoCategory> wrapper = new QueryWrapper<>();
         SysCargoCategory byId = sysCargoCategoryService.getById(id);
         SysCargoCategory serviceOne = sysCargoCategoryService.getById(byId.getParentPkid());
         byId.setParentName(serviceOne==null?"":serviceOne.getCategoryName());

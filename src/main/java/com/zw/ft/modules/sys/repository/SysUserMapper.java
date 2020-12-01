@@ -31,8 +31,7 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
 
     @Select(" SELECT id, username, realname, gender" +
             " FROM sys_user" +
-            " WHERE ID IN (SELECT user_id FROM rel_user_department WHERE dept_id = #{deptId})" +
-            " AND username <> 'admin' AND ${ew.SqlSegment}")
+            " WHERE username <> 'admin' AND ${ew.SqlSegment}")
     @Results({
             @Result(column = "id", property = "id"),
             @Result(column = "id", property = "exception",
@@ -40,7 +39,7 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
                             select = "com.zw.ft.modules.sys.repository.SysUserExpansionMapper.queryUserExpansionByUserId",
                             fetchType = FetchType.EAGER))
     })
-    List<SysUser> getUserInDepartment(Page<SysUser> page, @Param("deptId") long deptId, @Param("ew") QueryWrapper<SysUser> queryWrapper);
+    List<SysUser> getUserInDepartment(Page<SysUser> page, @Param("ew") QueryWrapper<SysUser> queryWrapper);
 
     /**
      * @description: 查询用户的主要信息，包含角色等

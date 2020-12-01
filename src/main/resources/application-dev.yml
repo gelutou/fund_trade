@@ -1,4 +1,11 @@
 spring:
+    redis:
+        host: 192.168.3.222
+        port: 6379
+        timeout: 10000
+        jedis:
+            pool:
+                time-between-eviction-runs: 60000
     thymeleaf:
         prefix: classpath:/templates/
         suffix: .html

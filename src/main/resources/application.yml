@@ -1,6 +1,6 @@
 #tomcat config
 server:
-    port: 8090
+    port: 8091
     ##项目名字配置
     tomcat:
         uri-encoding: UTF-8
@@ -12,13 +12,6 @@ server:
             min-spare: 5
 
 spring:
-    redis:
-        host: localhost
-        port: 6379
-        timeout: 10000
-        jedis:
-            pool:
-                time-between-eviction-runs: 60000
     # 环境 dev|prod
     profiles:
         active: dev

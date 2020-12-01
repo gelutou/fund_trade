@@ -1,18 +1,16 @@
 package com.zw.ft.modules.sys.service.impl;
 
-import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zw.ft.common.base.Constant;
 import com.zw.ft.common.utils.FormatUtil;
 import com.zw.ft.common.utils.QueryUtil;
-import com.zw.ft.modules.sys.entity.SysCompany;
 import com.zw.ft.modules.sys.entity.SysUser;
+import com.zw.ft.modules.sys.repository.RelUserDepartmentMapper;
 import com.zw.ft.modules.sys.repository.SysUserMapper;
 import com.zw.ft.modules.sys.service.SysUserService;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
@@ -27,13 +25,23 @@ import java.util.Map;
 @Service("sysUserService")
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
 
+    @Resource
+    RelUserDepartmentMapper relUserDepartmentMapper;
+
     @Override
     public Page<SysUser> getUserInDepartmentPage(Map<String, Object> params) {
         Page<SysUser> page = new QueryUtil<SysUser>(params).getPage();
-        long deptId = Long.parseLong(params.get("deptId").toString());
+
         QueryWrapper<SysUser> userQueryWrapper = new QueryWrapper<>();
         userQueryWrapper.eq("deleted", "0");
 
+        //部门
+        String deptId = FormatUtil.isSelectKey("deptId", params);
+        if (Constant.TRUE.equals(deptId)) {
+            String dId = params.get("deptId").toString();
+            List<Long> userIdInDept = relUserDepartmentMapper.getUserIdInDept(dId);
+            userQueryWrapper.in("id",userIdInDept);
+        }
         //账号模糊查询
         String username = FormatUtil.isSelectKey("username", params);
         if (Constant.TRUE.equals(username)) {
@@ -51,7 +59,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         if (Constant.TRUE.equals(status)) {
             userQueryWrapper.eq("status", params.get("status").toString());
         }
-        return page.setRecords(sysUserMapper.getUserInDepartment(page, deptId, userQueryWrapper));
+        return page.setRecords(sysUserMapper.getUserInDepartment(page, userQueryWrapper));
     }
 
     @Resource

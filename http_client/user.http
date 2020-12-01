@@ -1,8 +1,8 @@
 POST http://localhost:8090/ft/sys/user/user_in_dept
 Content-Type: application/json
-token:7066e704ab955d36507fc60d0f9bdcfb
+token:edd99c035a635049ae98d401622eb926
 
-{"deptId": "12","username":"dl0002"}
+{"deptId": "12"}
 
 ###
 POST http://localhost:8090/ft/sys/login/admin/1
@@ -47,7 +47,7 @@ token:88a260b86cf99278bd99b11b5cf319b1
 {}
 
 ###
-POST http://localhost:8090/ft/sys/login/admin/1
+POST http://192.168.3.222:8091/ft/sys/login/admin/1
 Content-Type: application/json
 
 {}
