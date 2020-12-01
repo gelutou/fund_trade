@@ -48,6 +48,8 @@ public class SysCargoCategory extends BaseEntity {
      */
     private String comId;
 
+    @TableField(exist = false)
+    private String parentName;
 
     public String getCategoryCode() {
         return categoryCode;
@@ -116,5 +118,13 @@ public class SysCargoCategory extends BaseEntity {
         ", flagSort=" + flagSort +
         ", comId=" + comId +
         "}";
+    }
+
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
     }
 }
