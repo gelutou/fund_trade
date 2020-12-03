@@ -29,8 +29,8 @@ token:1e299919ed4cd5a3625ee0f50c0f8077
 ###
 POST http://localhost:8090/ft/sys-cargo-info/getSysCargoInfo
 Content-Type: application/json
-token:1e299919ed4cd5a3625ee0f50c0f8077
+token:ea8f6c1bca0d93aceca16a468eea228b
 
-{"keyWord": "扁锭"}
+{}
 
 ###

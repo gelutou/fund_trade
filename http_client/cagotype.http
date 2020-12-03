@@ -1,0 +1,41 @@
+POST http://localhost:8090/ft/sys-cargo-category/addCargoCategory
+Content-Type: application/json
+token:9b36081de640c644d45483241becd0a9
+
+{
+  "categoryName": "碳块",
+  "categoryCode": "13",
+  "parentPkid": "1"
+}
+
+###
+POST http://localhost:8090/ft/sys-cargo-category/updaCargoCategory
+Content-Type: application/json
+token:9b36081de640c644d45483241becd0a9
+
+{
+  "id":2,"categoryName": "铝块"
+}
+
+###
+POST http://localhost:8090/ft/sys-categoryName-category/query/2
+Content-Type: application/json
+token:9b36081de640c644d45483241becd0a9
+
+{}
+
+###
+POST http://localhost:8090/ft/sys-cargo-category/del/1
+Content-Type: application/json
+token:9b36081de640c644d45483241becd0a9
+
+{}
+
+###
+POST http://localhost:8090/ft/sys-cargo-category/getSysCargoTypeTree
+Content-Type: application/json
+token:9b36081de640c644d45483241becd0a9
+
+{}
+
+###
