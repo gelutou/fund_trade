@@ -2,16 +2,13 @@ package com.zw.ft.modules.sys.controller;
 
 
 import cn.hutool.core.convert.Convert;
-import cn.hutool.core.util.ReUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysDictionary;
 import com.zw.ft.modules.sys.service.SysDictionaryService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
@@ -53,6 +50,18 @@ public class SysDictionaryController {
             params = new HashMap<>(1);
         }
         return R.page(sysDictionaryService.getDictionaryPage(params));
+    }
+
+    /*
+     * 功能描述: <br>
+     * 〈查询字典项详情〉
+     * @Author: Oliver
+     * @Date: 2020/12/3 9:23
+     */
+
+    @RequestMapping(value = "/get_dictionary_children")
+    public R getDictionaryChildren(@RequestBody(required = false) Map<String, Object> params) {
+        return sysDictionaryService.getDictionaryChildren(params);
     }
 
 

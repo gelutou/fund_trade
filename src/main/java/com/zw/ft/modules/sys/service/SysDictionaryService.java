@@ -1,9 +1,11 @@
 package com.zw.ft.modules.sys.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysDictionary;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -24,5 +26,14 @@ public interface SysDictionaryService extends IService<SysDictionary> {
      */
 
     Page<SysDictionary> getDictionaryPage(Map<String,Object> params);
+
+    /*
+     * 功能描述: <br>
+     * 〈查询字典项详情〉
+     * @Author: Oliver
+     * @Date: 2020/12/3 9:23
+     */
+
+    R getDictionaryChildren(Map<String,Object> params);
 
 }

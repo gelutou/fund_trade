@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.common.base.Constant;
 import com.zw.ft.common.utils.FormatUtil;
 import com.zw.ft.common.utils.QueryUtil;
+import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysDictionary;
 import com.zw.ft.modules.sys.repository.SysDictionaryMapper;
 import com.zw.ft.modules.sys.service.SysDictionaryService;
@@ -49,18 +50,17 @@ public class SysDictionaryServiceImpl extends ServiceImpl<SysDictionaryMapper, S
             queryWrapper.like("des", "");
         }
 
-        //项内容 模糊查询
-        String value = FormatUtil.isSelectKey("value", params);
-        if (Constant.TRUE.equals(value)) {
-            queryWrapper.like("value", params.get("value"));
-        } else if ("".equals(des)) {
-            queryWrapper.like("value", "");
-        }
+        return this.baseMapper.selectPage(page, queryWrapper);
+    }
 
-        Page<SysDictionary> sysDictionaryPage = this.baseMapper.selectPage(page, queryWrapper);
-        List<SysDictionary> records = sysDictionaryPage.getRecords();
-        setChildren(records);
-        return sysDictionaryPage.setRecords(records);
+    @Override
+    public R getDictionaryChildren(Map<String, Object> params) {
+        String id = params.get("id").toString();
+        QueryWrapper<SysDictionary> dictionaryQueryWrapper = new QueryWrapper<>();
+        dictionaryQueryWrapper.eq("p_id",id);
+        List<SysDictionary> sysDictionaries = this.baseMapper.selectList(dictionaryQueryWrapper);
+        setChildren(sysDictionaries);
+        return R.data(sysDictionaries);
     }
 
     /*
