@@ -31,7 +31,7 @@ public class SysDictionary extends BaseEntity {
     /**
      * 父id
      */
-    private String pId;
+    private Long pId;
 
     /**
      * 描述
