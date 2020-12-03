@@ -1,5 +1,6 @@
 package com.zw.ft.modules.sys.repository;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zw.ft.modules.sys.entity.RelUserDepartment;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
@@ -28,7 +29,7 @@ public interface RelUserDepartmentMapper extends BaseMapper<RelUserDepartment> {
      * @Date: 2020/11/30 11:39
      */
 
-    @Select("SELECT user_id FROM rel_user_department WHERE dept_id IN (#{deptIds})")
-    List<Long> getUserIdInDept(@Param("deptIds") String deptIds);
+    @Select("SELECT user_id FROM rel_user_department WHERE ${ew.sqlSegment}")
+    List<Long> getUserIdInDept(@Param("ew")QueryWrapper<RelUserDepartment> relUserDepartmentQueryWrapper);
 
 }

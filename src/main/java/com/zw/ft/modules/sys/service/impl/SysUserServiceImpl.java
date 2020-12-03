@@ -6,12 +6,14 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zw.ft.common.base.Constant;
 import com.zw.ft.common.utils.FormatUtil;
 import com.zw.ft.common.utils.QueryUtil;
+import com.zw.ft.modules.sys.entity.RelUserDepartment;
 import com.zw.ft.modules.sys.entity.SysUser;
 import com.zw.ft.modules.sys.repository.RelUserDepartmentMapper;
 import com.zw.ft.modules.sys.repository.SysUserMapper;
 import com.zw.ft.modules.sys.service.SysUserService;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -38,8 +40,22 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         //部门
         String deptId = FormatUtil.isSelectKey("deptId", params);
         if (Constant.TRUE.equals(deptId)) {
+            QueryWrapper<RelUserDepartment> relUserDepartmentQueryWrapper = new QueryWrapper<>();
             String dId = params.get("deptId").toString();
-            List<Long> userIdInDept = relUserDepartmentMapper.getUserIdInDept(dId);
+            String[] ids;
+            if(dId.contains(",")){
+                ids = dId.split(",");
+            }else {
+                ids = new String[1];
+                ids[0] = dId;
+            }
+
+            relUserDepartmentQueryWrapper.in("dept_id",ids);
+            List<Long> userIdInDept = relUserDepartmentMapper.getUserIdInDept(relUserDepartmentQueryWrapper);
+            if(userIdInDept.size() == 0){
+                page.setRecords(new ArrayList<>());
+                return page;
+            }
             userQueryWrapper.in("id",userIdInDept);
         }
         //账号模糊查询

@@ -8,6 +8,7 @@ import com.zw.ft.modules.sys.service.SysUserService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -34,7 +35,10 @@ public class SysUserController {
      */
 
     @PostMapping(value = "/user_in_dept")
-    public R getUserInDepartmentPage(@RequestBody Map<String, Object> params) {
+    public R getUserInDepartmentPage(@RequestBody(required = false) Map<String, Object> params) {
+        if(params == null){
+            params = new HashMap<>(1);
+        }
         return R.page(sysUserService.getUserInDepartmentPage(params));
     }
 }

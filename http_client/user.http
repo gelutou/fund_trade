@@ -1,8 +1,9 @@
-POST http://localhost:8090/ft/sys/user/user_in_dept
+POST http://localhost:8091/ft/sys/user/user_in_dept
 Content-Type: application/json
-token:edd99c035a635049ae98d401622eb926
+token:8fedff396e2addeb9e6ac9faf388eac8
 
-{"deptId": "12"}
+{"currentPage": 1,"pageSize":10,"deptId": "-1,1,2,3,4,5,6,7,8,9,10,2035"}
+
 
 ###
 POST http://localhost:8090/ft/sys/login/admin/1
