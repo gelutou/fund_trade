@@ -34,12 +34,6 @@ public class SysDictionaryController {
     SysDictionaryService sysDictionaryService;
 
     /*
-     * 包含中文正则
-     */
-
-    Pattern p = Pattern.compile("[\u4e00-\u9fa5]");
-
-    /*
      * 功能描述: <br>
      * 〈获取字典表信息〉
      * @Author: Oliver
@@ -70,46 +64,7 @@ public class SysDictionaryController {
 
     @RequestMapping(value = "/add_dictionary")
     public R addDictionary(@RequestBody(required = false) Map<String, Object> params) {
-        SysDictionary dictionary = Convert.convert(SysDictionary.class, params);
-        List<SysDictionary> children = dictionary.getChildren();
-        if(children == null){
-            children = new ArrayList<>();
-        }
-
-        QueryWrapper<SysDictionary> sysDictionaryQueryWrapper = new QueryWrapper<>();
-        sysDictionaryQueryWrapper.eq("p_id", "").or().isNull("p_id");
-        List<SysDictionary> list = sysDictionaryService.list(sysDictionaryQueryWrapper);
-
-        //查询数据是否合法
-        String name = dictionary.getName();
-
-        Matcher m = p.matcher(name);
-        if (m.find()) {
-            return R.error("项标识不能包含中文");
-        } else {
-
-            for (SysDictionary d : list) {
-                String name1 = d.getName();
-                if (name.equals(name1)) {
-                    return R.error("父项标识与原有标识有冲突，请修改");
-                }
-            }
-
-            for (SysDictionary d : children) {
-                String name1 = d.getName();
-                if (!name.equals(name1)) {
-                    return R.error("所有子项标识必须和父项标识相同");
-                }
-            }
-        }
-        sysDictionaryService.save(dictionary);
-
-        Long id = dictionary.getId();
-        for (SysDictionary dictionary1 : children) {
-            dictionary1.setPId(id);
-            sysDictionaryService.save(dictionary1);
-        }
-        return R.ok();
+        return sysDictionaryService.addDictionary(params);
     }
 
     /*
@@ -121,53 +76,7 @@ public class SysDictionaryController {
 
     @RequestMapping(value = "/update_dictionary")
     public R updateDictionary(@RequestBody(required = false) Map<String, Object> params) {
-
-        SysDictionary dictionary = Convert.convert(SysDictionary.class, params);
-        List<SysDictionary> children = dictionary.getChildren();
-        if(children == null){
-            children = new ArrayList<>();
-        }
-
-        //查询数据是否合法
-        String name = dictionary.getName();
-        Matcher m = p.matcher(name);
-
-        QueryWrapper<SysDictionary> sysDictionaryQueryWrapper = new QueryWrapper<>();
-        sysDictionaryQueryWrapper.eq("p_id", "").or().isNull("p_id");
-        Consumer<QueryWrapper<SysDictionary>> consumer = queryWrapper -> queryWrapper.ne("name",name);
-        sysDictionaryQueryWrapper.and(consumer);
-        List<SysDictionary> list = sysDictionaryService.list(sysDictionaryQueryWrapper);
-
-        if (m.find()) {
-            return R.error("项标识不能包含中文");
-        } else {
-
-            for (SysDictionary d : list) {
-                String name1 = d.getName();
-                if (name.equals(name1)) {
-                    return R.error("父项标识与原有标识有冲突，请修改");
-                }
-            }
-
-            for (SysDictionary d : children) {
-                String name1 = d.getName();
-                if (!name.equals(name1)) {
-                    return R.error("所有子项标识必须和父项标识相同");
-                }
-            }
-        }
-
-        sysDictionaryService.updateById(dictionary);
-        for(SysDictionary dictionary1 : children){
-            Long id = dictionary1.getId();
-            Long pId = dictionary.getId();
-            dictionary1.setPId(pId);
-            if(id == null){
-                sysDictionaryService.save(dictionary1);
-            }
-            sysDictionaryService.updateById(dictionary1);
-        }
-        return R.ok();
+        return sysDictionaryService.updateDictionary(params);
     }
 
     /*

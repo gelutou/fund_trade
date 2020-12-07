@@ -21,13 +21,9 @@ token:2def66623b4e7d6c375beb9b619e78fa
   "value":"",
   "children":[
     {
-      "des":"1",
+      "id": "84",
+      "des":"测试更新子项",
       "value":"11",
-      "name":"tag11"
-    },
-    {
-      "des":"2",
-      "value":"22",
       "name":"tag11"
     }
   ],

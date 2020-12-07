@@ -18,6 +18,10 @@ import java.util.Map;
  */
 public interface SysDictionaryService extends IService<SysDictionary> {
 
+    R addDictionary(Map<String, Object> params);
+
+    R updateDictionary(Map<String, Object> params);
+
     /*
      * 功能描述: <br>
      * 〈查询字典表〉

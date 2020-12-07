@@ -1,5 +1,6 @@
 package com.zw.ft.modules.sys.service.impl;
 
+import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.common.base.Constant;
@@ -11,9 +12,13 @@ import com.zw.ft.modules.sys.repository.SysDictionaryMapper;
 import com.zw.ft.modules.sys.service.SysDictionaryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * <p>
@@ -25,6 +30,128 @@ import java.util.function.Consumer;
  */
 @Service("sysDictionaryService")
 public class SysDictionaryServiceImpl extends ServiceImpl<SysDictionaryMapper, SysDictionary> implements SysDictionaryService {
+
+    /*
+     * 包含中文正则
+     */
+
+    Pattern p = Pattern.compile("[\u4e00-\u9fa5]");
+
+    @Override
+    public R addDictionary(Map<String, Object> params) {
+        SysDictionary dictionary = Convert.convert(SysDictionary.class, params);
+        List<SysDictionary> children = dictionary.getChildren();
+        if(children == null){
+            children = new ArrayList<>();
+        }
+
+        QueryWrapper<SysDictionary> sysDictionaryQueryWrapper = new QueryWrapper<>();
+        sysDictionaryQueryWrapper.eq("p_id", "").or().isNull("p_id");
+        List<SysDictionary> list = this.baseMapper.selectList(sysDictionaryQueryWrapper);
+
+        //查询数据是否合法
+        String name = dictionary.getName();
+
+        Matcher m = p.matcher(name);
+        if (m.find()) {
+            return R.error("项标识不能包含中文");
+        } else {
+
+            for (SysDictionary d : list) {
+                String name1 = d.getName();
+                if (name.equals(name1)) {
+                    return R.error("父项标识与原有标识有冲突，请修改");
+                }
+            }
+
+            for (SysDictionary d : children) {
+                String name1 = d.getName();
+                if (!name.equals(name1)) {
+                    return R.error("所有子项标识必须和父项标识相同");
+                }
+            }
+        }
+        this.baseMapper.insert(dictionary);
+
+        Long id = dictionary.getId();
+        for (SysDictionary dictionary1 : children) {
+            dictionary1.setPId(id);
+            this.baseMapper.insert(dictionary1);
+        }
+        return R.ok();
+    }
+
+    @Override
+    public R updateDictionary(Map<String, Object> params) {
+        SysDictionary dictionary = Convert.convert(SysDictionary.class, params);
+
+        //oldDictionaries 原有的字典子项
+        QueryWrapper<SysDictionary> dictionaryQueryWrapper = new QueryWrapper<>();
+        dictionaryQueryWrapper.eq("p_id",dictionary.getId());
+        List<SysDictionary> oldDictionaries = this.baseMapper.selectList(dictionaryQueryWrapper);
+
+        List<SysDictionary> children = dictionary.getChildren();
+        if(children == null){
+            children = new ArrayList<>();
+        }
+
+        //查询数据是否合法
+        String name = dictionary.getName();
+        Matcher m = p.matcher(name);
+
+        QueryWrapper<SysDictionary> sysDictionaryQueryWrapper = new QueryWrapper<>();
+        sysDictionaryQueryWrapper.eq("p_id", "").or().isNull("p_id");
+        Consumer<QueryWrapper<SysDictionary>> consumer = queryWrapper -> queryWrapper.ne("name",name);
+        sysDictionaryQueryWrapper.and(consumer);
+        List<SysDictionary> list = this.baseMapper.selectList(sysDictionaryQueryWrapper);
+
+        if (m.find()) {
+            return R.error("项标识不能包含中文");
+        } else {
+
+            for (SysDictionary d : list) {
+                String name1 = d.getName();
+                if (name.equals(name1)) {
+                    return R.error("父项标识与原有标识有冲突，请修改");
+                }
+            }
+
+            for (SysDictionary d : children) {
+                String name1 = d.getName();
+                if (!name.equals(name1)) {
+                    return R.error("所有子项标识必须和父项标识相同");
+                }
+            }
+        }
+
+        this.baseMapper.updateById(dictionary);
+        for(SysDictionary dictionary1 : children){
+            Long id = dictionary1.getId();
+            Long pId = dictionary.getId();
+            dictionary1.setPId(pId);
+            if(id == null){
+                this.baseMapper.insert(dictionary1);
+            }
+            this.baseMapper.updateById(dictionary1);
+        }
+
+        //删除子项
+        for(SysDictionary old : oldDictionaries){
+            Long id = old.getId();
+            boolean del = true;
+            for(SysDictionary n : children){
+                Long id1 = n.getId();
+                if(id.equals(id1)){
+                    del = false;
+                    break;
+                }
+            }
+            if(del){
+                this.baseMapper.deleteById(id);
+            }
+        }
+        return R.ok();
+    }
 
     @Override
     public Page<SysDictionary> getDictionaryPage(Map<String, Object> params) {
