@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -70,6 +72,9 @@ public class SysDictionaryController {
     public R addDictionary(@RequestBody(required = false) Map<String, Object> params) {
         SysDictionary dictionary = Convert.convert(SysDictionary.class, params);
         List<SysDictionary> children = dictionary.getChildren();
+        if(children == null){
+            children = new ArrayList<>();
+        }
 
         QueryWrapper<SysDictionary> sysDictionaryQueryWrapper = new QueryWrapper<>();
         sysDictionaryQueryWrapper.eq("p_id", "").or().isNull("p_id");
@@ -119,15 +124,20 @@ public class SysDictionaryController {
 
         SysDictionary dictionary = Convert.convert(SysDictionary.class, params);
         List<SysDictionary> children = dictionary.getChildren();
-
-        QueryWrapper<SysDictionary> sysDictionaryQueryWrapper = new QueryWrapper<>();
-        sysDictionaryQueryWrapper.eq("p_id", "").or().isNull("p_id");
-        List<SysDictionary> list = sysDictionaryService.list(sysDictionaryQueryWrapper);
+        if(children == null){
+            children = new ArrayList<>();
+        }
 
         //查询数据是否合法
         String name = dictionary.getName();
-
         Matcher m = p.matcher(name);
+
+        QueryWrapper<SysDictionary> sysDictionaryQueryWrapper = new QueryWrapper<>();
+        sysDictionaryQueryWrapper.eq("p_id", "").or().isNull("p_id");
+        Consumer<QueryWrapper<SysDictionary>> consumer = queryWrapper -> queryWrapper.ne("name",name);
+        sysDictionaryQueryWrapper.and(consumer);
+        List<SysDictionary> list = sysDictionaryService.list(sysDictionaryQueryWrapper);
+
         if (m.find()) {
             return R.error("项标识不能包含中文");
         } else {
@@ -149,6 +159,12 @@ public class SysDictionaryController {
 
         sysDictionaryService.updateById(dictionary);
         for(SysDictionary dictionary1 : children){
+            Long id = dictionary1.getId();
+            Long pId = dictionary.getId();
+            dictionary1.setPId(pId);
+            if(id == null){
+                sysDictionaryService.save(dictionary1);
+            }
             sysDictionaryService.updateById(dictionary1);
         }
         return R.ok();

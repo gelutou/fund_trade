@@ -36,7 +36,7 @@ build/
 !/mvnw
 !/mvnw.cmd
 !/.mvn/
-!/doc/
+!/docs/
 !/http_client/
 /logs/
-/doc/
+/docs/

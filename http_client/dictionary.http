@@ -7,16 +7,39 @@ token:bf61792791c22d64ac205cffd48109c8
 ###
 POST http://localhost:8091/ft/sys-dictionary/update_dictionary
 Content-Type: application/json
-token:bf61792791c22d64ac205cffd48109c8
+token:2def66623b4e7d6c375beb9b619e78fa
 
-{"id":"52","name": "TEST_UPDATE","des": "修改描述","children": [{"id":"53","name": "TEST_UPDATE","des": "测试添加01","value": "01"},{"id":"54","name": "TEST_UPDATE","des": "测试添加02","value": "02"}]}
+{
+  "id":65,
+  "createdBy":4,
+  "createdTime":"2020-12-04 16:46:34",
+  "updatedBy":4,
+  "updatedTime":"2020-12-04 16:46:35",
+  "deleted":0,
+  "name":"tag11",
+  "des":"描述11",
+  "value":"",
+  "children":[
+    {
+      "des":"1",
+      "value":"11",
+      "name":"tag11"
+    },
+    {
+      "des":"2",
+      "value":"22",
+      "name":"tag11"
+    }
+  ],
+  "pid":null
+}
 
 ###
 POST http://localhost:8091/ft/sys-dictionary/add_dictionary
 Content-Type: application/json
-token:bf61792791c22d64ac205cffd48109c8
+token:2def66623b4e7d6c375beb9b619e78fa
 
-{"name": "TEST_ADD","des": "添加描述","children": [{"name": "TEST_ADD","des": "测试添加01","value": "01"},{"name": "TEST_ADD","des": "测试添加02","value": "02"}]}
+{"name": "TEST_ADD","des": "添加描述","children":[] }
 
 ###
 POST http://localhost:8091/ft/sys-dictionary/get_dictionary_children

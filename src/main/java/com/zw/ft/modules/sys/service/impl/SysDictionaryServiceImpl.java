@@ -56,11 +56,13 @@ public class SysDictionaryServiceImpl extends ServiceImpl<SysDictionaryMapper, S
     @Override
     public R getDictionaryChildren(Map<String, Object> params) {
         String id = params.get("id").toString();
+        SysDictionary dictionary = this.baseMapper.selectById(Long.parseLong(id));
         QueryWrapper<SysDictionary> dictionaryQueryWrapper = new QueryWrapper<>();
-        dictionaryQueryWrapper.eq("p_id",id);
+        dictionaryQueryWrapper.eq("p_id",dictionary.getId());
         List<SysDictionary> sysDictionaries = this.baseMapper.selectList(dictionaryQueryWrapper);
         setChildren(sysDictionaries);
-        return R.data(sysDictionaries);
+        dictionary.setChildren(sysDictionaries);
+        return R.data(dictionary);
     }
 
     /*
