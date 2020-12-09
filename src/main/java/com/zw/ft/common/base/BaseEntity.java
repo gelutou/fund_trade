@@ -1,11 +1,13 @@
 package com.zw.ft.common.base;
 
-import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 /**
  * @ClassName BaseEntity
@@ -58,6 +60,7 @@ public class BaseEntity implements Serializable {
      * @description: 逻辑删除
      */
     @TableLogic
+    @TableField(exist = false)
     private Integer deleted;
 
     @Override

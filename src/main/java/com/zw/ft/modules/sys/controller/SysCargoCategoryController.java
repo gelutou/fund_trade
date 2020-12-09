@@ -78,6 +78,7 @@ public class SysCargoCategoryController {
         if (update) {
             return R.ok("更新成功");
         } else {
+
             return R.error("更新失败");
         }
     }
