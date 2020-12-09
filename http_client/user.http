@@ -43,12 +43,12 @@ token:3ea639567f339845dd7dedcc3de5098f
 ###
 POST http://localhost:8090/ft/sys-company/get_fuzzy/admin/sh
 Content-Type: application/json
-token:88a260b86cf99278bd99b11b5cf319b1
+token:efdb271e9c30caf4c450e1c68fdf41ec
 
 {}
 
 ###
-POST http://192.168.3.222:8091/ft/sys/login/admin/1
+POST http://localhost:8091/ft/sys/login/admin/1
 Content-Type: application/json
 
 {}
