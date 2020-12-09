@@ -1,20 +1,14 @@
-<<<<<<< HEAD
 POST http://localhost:8090/ft/sys-company/get_com
 Content-Type: application/json
 token:1e299919ed4cd5a3625ee0f50c0f8077
 
 {}
-=======
-POST http://localhost:8090/ft/sys-company/get_fuzzy
+
+### POST http://localhost:8091/ft/sys-company/get_fuzzy/
+POST http://192.168.3.222:8091/ft/sys-company/get_fuzzy/
 Content-Type: application/json
 
-{"username": "admin","shortname": "鑫抚源"}
->>>>>>> 635a539291ac3f3585b74c79051386bc65417e8a
-
-###
-### POST http://localhost:8088/ft/sys-company/get_fuzzy/admin/xfy
-POST http://localhost:8090/ft/sys-company/get_fuzzy/sh0086/
-Content-Type: application/json
+{"username": "admin","shortname": "xfy"}
 
 ###
 POST http://localhost:8088/ft/sys-company/del_coms/3

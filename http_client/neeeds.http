@@ -38,20 +38,20 @@ token:627367b9cbf7b253a572c60a315b05d5
 {"id":1,"title":"我是测试修改系统需求标题00","status": "2"}
 
 ###
-POST http://localhost:8088/ft/sys-needs/add
+POST http://localhost:8091/ft/sys-needs/add
 Content-Type: application/json
-token:f26a954be0c281e24d51294f4ea0a0c6
+token:efdb271e9c30caf4c450e1c68fdf41ec
 
 {"title":"我是测试添加系统需求标题02","content": "我是测试添加系统需求内容","expectedTime": "2020-11-14"}
 
 ###
-POST http://localhost:8090/ft/sys-needs/queryPage
+POST http://localhost:8091/ft/sys-needs/queryPage
 Content-Type: application/json
-token:627367b9cbf7b253a572c60a315b05d5
+token:efdb271e9c30caf4c450e1c68fdf41ec
 
-{"title": "我是测试修改系统需求标题00"}
+{"title": "我是测试添加系统需求标题02"}
 ### 81.68.92.240
-POST http://localhost:8090/ft/sys/login/admin/1
+POST http://localhost:8091/ft/sys/login/admin/1
 Content-Type: application/json
 
 ###

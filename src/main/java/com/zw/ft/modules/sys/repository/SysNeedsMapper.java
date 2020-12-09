@@ -21,6 +21,16 @@ import java.util.List;
 @Mapper
 public interface SysNeedsMapper extends BaseMapper<SysNeeds> {
 
+    /*
+     * 功能描述: <br>
+     * 〈查询系统需求列表〉
+     * @Param: [page, queryWrapper]
+     * @Return: com.baomidou.mybatisplus.extension.plugins.pagination.Page<com.zw.ft.modules.sys.entity.SysNeeds>
+     * @Author: Oliver
+     * @Date: 2020/10/30 15:33
+     */
+
+    @Select("SELECT *,sd.des statusDes FROM sys_needs sy LEFT JOIN (SELECT * FROM sys_dictionary WHERE p_id = (SELECT ID FROM sys_dictionary WHERE name = 'NEEDS_STATUS' AND (p_id = '' OR p_id is null ))) sd ON sy.status = sd.value ${ew.customSqlSegment}")
     @Results({
             @Result(column = "id", property = "id"),
             @Result(column = "CREATED_BY", property = "createdBy"),
@@ -52,16 +62,5 @@ public interface SysNeedsMapper extends BaseMapper<SysNeeds> {
                             fetchType = FetchType.EAGER)
             )
     })
-
-    /*
-     * 功能描述: <br>
-     * 〈查询系统需求列表〉
-     * @Param: [page, queryWrapper]
-     * @Return: com.baomidou.mybatisplus.extension.plugins.pagination.Page<com.zw.ft.modules.sys.entity.SysNeeds>
-     * @Author: Oliver
-     * @Date: 2020/10/30 15:33
-     */
-
-    @Select("SELECT *,sd.des statusDes FROM sys_needs sy LEFT JOIN (SELECT * FROM sys_dictionary WHERE p_id = (SELECT ID FROM sys_dictionary WHERE des = '系统需求状态')) sd ON sy.status = sd.value ${ew.customSqlSegment}")
     Page<SysNeeds> queryNeedsPage(IPage<SysNeeds> page, @Param("ew") Wrapper<SysNeeds> queryWrapper);
 }

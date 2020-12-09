@@ -53,6 +53,11 @@ public class SysUser extends BaseEntity {
     private Integer fundOrTrade;
 
     /**
+     * 旧的部门PKID，只用于合并数据，系统上线后删除
+     */
+    private String oldPkidWilldel;
+
+    /**
      * @description: 角色集合
      */
     @TableField(exist = false)

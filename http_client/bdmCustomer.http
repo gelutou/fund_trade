@@ -1,0 +1,7 @@
+POST http://localhost:8091/ft/bdm-customer/query
+Content-Type: application/json
+token:efdb271e9c30caf4c450e1c68fdf41ec
+
+{"condition": "邵丽姗"}
+
+###

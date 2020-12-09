@@ -66,9 +66,15 @@ public class SysNeedsController extends AbstractController {
     @RequestMapping("/add")
     public R add(@RequestBody(required = false) SysNeeds sysNeeds) {
         //获取当前登录人的部门ID
-        Long userId = ShiroUtils.getUserId();
-        SysDepartment deptByUserId = sysDepartmentService.getDeptByUserId(userId);
-        sysNeeds.setDeptId(deptByUserId.getId());
+        SysUser user = getUser();
+        if(user.getUsername().equals(Constant.ADMIN)){
+            sysNeeds.setDeptId(-1L);
+        }else {
+            Long userId = user.getId();
+            SysDepartment deptByUserId = sysDepartmentService.getDeptByUserId(userId);
+            sysNeeds.setDeptId(deptByUserId.getId());
+        }
+
         sysNeedsService.save(sysNeeds);
         return R.ok();
     }
