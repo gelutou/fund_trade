@@ -25,11 +25,7 @@ public class CodeGenerator {
 
     public static void main(String[] args) {
         //设置要映射的表名
-<<<<<<< HEAD
-        String setInclude = "sys_dictionary";
-=======
         String setInclude = "sys_cargo_month_price";
->>>>>>> savior
 
         AutoGenerator autoGenerator = new AutoGenerator();
         GlobalConfig globalConfig = new GlobalConfig();
