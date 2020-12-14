@@ -2,7 +2,7 @@ package com.zw.ft.modules.sys.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.zw.ft.common.base.Constant;
+import com.zw.ft.common.constants.Constant;
 import com.zw.ft.common.utils.FormatUtil;
 import com.zw.ft.common.utils.QueryUtil;
 import com.zw.ft.modules.sys.entity.SysNeeds;

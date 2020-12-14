@@ -1,7 +1,7 @@
 package com.zw.ft.modules.sys.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zw.ft.common.base.Constant;
+import com.zw.ft.common.constants.Constant;
 import com.zw.ft.modules.sys.entity.SysPermission;
 import com.zw.ft.modules.sys.repository.SysPermissionMapper;
 import com.zw.ft.modules.sys.service.SysPermissionService;

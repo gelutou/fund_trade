@@ -43,7 +43,7 @@ public class SysCargoInfoController {
      * @Description 货品档案修改信息
      * @Date: 2020/11/23
      */
-    @PostMapping("/updaCargoInfo")
+    @PostMapping("/updateCargoInfo")
     public R updateCargoInfo(@RequestBody(required = false) SysCargoInfo sysCargoInfo) {
         UpdateWrapper<SysCargoInfo> updateWrapper = new UpdateWrapper<>();
         updateWrapper.eq("id", sysCargoInfo.getId());
@@ -91,7 +91,7 @@ public class SysCargoInfoController {
      * @Date: 2020/11/25
      */
     @PostMapping("/getCargoList")
-    public R getCargsoList() {
+    public R getCargoList() {
         return R.data(sysCargoInfoService.list());
     }
 }

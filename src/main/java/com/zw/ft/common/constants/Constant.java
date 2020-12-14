@@ -1,4 +1,4 @@
-package com.zw.ft.common.base;
+package com.zw.ft.common.constants;
 
 /**
  * @ClassName Constant

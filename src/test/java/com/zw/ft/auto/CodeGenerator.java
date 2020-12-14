@@ -25,7 +25,7 @@ public class CodeGenerator {
 
     public static void main(String[] args) {
         //设置要映射的表名
-        String setInclude = "sys_cargo_month_price";
+        String setInclude = "sys_dictionary";
 
         AutoGenerator autoGenerator = new AutoGenerator();
         GlobalConfig globalConfig = new GlobalConfig();
