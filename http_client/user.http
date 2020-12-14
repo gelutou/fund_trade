@@ -1,8 +1,12 @@
 POST http://localhost:8091/ft/sys/user/user_in_dept
 Content-Type: application/json
-token:8fedff396e2addeb9e6ac9faf388eac8
+token:78802a2d37844c7b922e44d0f2b57f76
 
-{"currentPage": 1,"pageSize":10,"deptId": "-1,1,2,3,4,5,6,7,8,9,10,2035"}
+{
+  "currentPage": 1,
+  "pageSize": 10,
+  "deptId": [-1,1,2,3,4,5,6,7,8,9,10,2035]
+}
 
 
 ###
@@ -21,13 +25,19 @@ Content-Type: application/json
 POST http://localhost:8088/ft/sys-company/get_by_wrapper
 Content-Type: application/json
 
-{"name":"上海鑫抚源"}
+{
+  "name": "上海鑫抚源"
+}
 
 ###
 POST http://localhost:8088/ft/sys-department/addDept
 Content-Type: application/json
 
-{"comId": "1","deptname": "11111","parentId": "2"}
+{
+  "comId": "1",
+  "deptname": "11111",
+  "parentId": "2"
+}
 
 ###
 POST http://localhost:8088/ft/sys/testId
@@ -48,7 +58,7 @@ token:88a260b86cf99278bd99b11b5cf319b1
 {}
 
 ###
-POST http://192.168.3.222:8091/ft/sys/login/admin/1
+POST http://localhost:8091/ft/sys/login/admin/2
 Content-Type: application/json
 
 {}
@@ -57,6 +67,11 @@ Content-Type: application/json
 POST http://localhost:8088/ft/sys/signup
 Content-Type: application/json
 
-{"username": "admin","password": "1","gender": "0","realname": "管理员"}
+{
+  "username": "admin",
+  "password": "1",
+  "gender": "0",
+  "realname": "管理员"
+}
 
 ###

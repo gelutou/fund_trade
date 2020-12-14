@@ -6,6 +6,8 @@ import com.zw.ft.common.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * <p>
  * 客商实体
@@ -15,7 +17,7 @@ import lombok.EqualsAndHashCode;
  * @since 2020-12-09
  */
 @EqualsAndHashCode(callSuper = true)
-@TableName(value = "rel_user_department")
+@TableName(value = "bdm_customer")
 @Data
 public class BdmCustomer extends BaseEntity {
 
@@ -23,21 +25,25 @@ public class BdmCustomer extends BaseEntity {
     /**
      * 公司ID
      */
+    @NotNull
     private Long comId;
 
     /**
      * 客商编码
      */
+    @NotNull
     private String code;
 
     /**
      * 客商名
      */
+    @NotNull
     private String name;
 
     /**
      * 客商简称
      */
+    @NotNull
     private String shortname;
 
     /**
@@ -48,6 +54,7 @@ public class BdmCustomer extends BaseEntity {
     /**
      * 类型
      */
+    @NotNull
     private Integer type;
 
     /**
@@ -77,8 +84,9 @@ public class BdmCustomer extends BaseEntity {
     private String contactPosition;
 
     /**
-     * 区域
+     * 客商地址
      */
+    @NotNull
     private String area;
 
     /**

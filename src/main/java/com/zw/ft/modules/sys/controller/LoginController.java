@@ -6,7 +6,7 @@ import cn.hutool.crypto.digest.DigestAlgorithm;
 import cn.hutool.crypto.digest.Digester;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zw.ft.common.base.BaseController;
-import com.zw.ft.common.base.Constant;
+import com.zw.ft.common.constants.Constant;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysUser;
 import com.zw.ft.modules.sys.entity.SysUserToken;

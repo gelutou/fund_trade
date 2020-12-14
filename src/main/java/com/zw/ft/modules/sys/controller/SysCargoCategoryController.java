@@ -55,14 +55,13 @@ public class SysCargoCategoryController {
 
     /**
      * @Author savior
-     * @Descriptionc 根据id删除货品分类信息
+     * @Description 根据id删除货品分类信息
      * @Date: 2020/11/30
      */
-    @PostMapping("/del/{ids}")
-    public R delCargoCategory(@PathVariable("ids") long ids){
-        boolean b = sysCargoCategoryService.removeById(ids);
-        if (b) return R.ok("删除成功");
-        else return R.error("删除失败");
+    @PostMapping("/del/{id}")
+    public R delCargoCategory(@PathVariable("id") long id){
+        sysCargoCategoryService.removeById(id);
+        return R.ok();
     }
 
     /**
@@ -70,7 +69,7 @@ public class SysCargoCategoryController {
      * @Description 修改货品分类信息
      * @Date: 2020/12/1
      */
-    @PostMapping("/updaCargoCategory")
+    @PostMapping("/updateCargoCategory")
     public R updateCargoCategory(@RequestBody(required = false) SysCargoCategory sysCargoCategory) {
         UpdateWrapper<SysCargoCategory> updateWrapper = new UpdateWrapper<>();
         updateWrapper.eq("id", sysCargoCategory.getId());

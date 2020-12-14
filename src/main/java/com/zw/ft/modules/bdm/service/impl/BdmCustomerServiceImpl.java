@@ -2,7 +2,7 @@ package com.zw.ft.modules.bdm.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.zw.ft.common.base.Constant;
+import com.zw.ft.common.constants.Constant;
 import com.zw.ft.common.utils.FormatUtil;
 import com.zw.ft.common.utils.QueryUtil;
 import com.zw.ft.common.utils.R;
@@ -10,7 +10,6 @@ import com.zw.ft.modules.bdm.entity.BdmCustomer;
 import com.zw.ft.modules.bdm.repository.BdmCustomerMapper;
 import com.zw.ft.modules.bdm.service.BdmCustomerService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zw.ft.modules.sys.entity.SysNeeds;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;

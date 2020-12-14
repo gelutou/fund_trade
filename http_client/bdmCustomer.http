@@ -1,3 +1,10 @@
+POST http://localhost:8091/ft/bdm-customer/add
+Content-Type: application/json
+token:78802a2d37844c7b922e44d0f2b57f76
+
+{"code": "TEST"}
+
+###
 POST http://localhost:8091/ft/bdm-customer/query
 Content-Type: application/json
 token:efdb271e9c30caf4c450e1c68fdf41ec
