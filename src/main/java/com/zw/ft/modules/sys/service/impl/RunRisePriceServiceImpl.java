@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zw.ft.common.base.Constant;
 import com.zw.ft.common.utils.FormatUtil;
 import com.zw.ft.common.utils.QueryUtil;
+import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.RunRisePrice;
 import com.zw.ft.modules.sys.entity.SysCompany;
 import com.zw.ft.modules.sys.repository.RunRisePriceMapper;
@@ -84,7 +85,7 @@ public class RunRisePriceServiceImpl extends ServiceImpl<RunRisePriceMapper, Run
      * @Date: 2020/11/17
      */
     @Override
-    public List<RunRisePrice> getRunRise(RunRisePrice runRisePrice) {
+    public R getRunRise(RunRisePrice runRisePrice) {
         QueryWrapper<RunRisePrice> RunWrapper = new QueryWrapper<>();
         RunWrapper.eq("com_id", runRisePrice.getComId());
         List<RunRisePrice> runRisePrices = runRisePriceMapper.selectList(RunWrapper);
@@ -96,10 +97,20 @@ public class RunRisePriceServiceImpl extends ServiceImpl<RunRisePriceMapper, Run
                 runRisePrice.setComId(sys.getId().toString());
             }
             int insert = runRisePriceMapper.insert(runRisePrice);
+            if (insert!=0){
+                return R.ok("添加成功");
+            }else {
+                return R.error("添加失败");
+            }
         } else {
             int update = runRisePriceMapper.update(runRisePrice, RunWrapper);
+            if (update!=0){
+                return R.ok("更新成功");
+            }else {
+                return R.error("更新失败");
+            }
         }
-        return runRisePrices;
+
     }
 
 }

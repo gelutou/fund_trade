@@ -34,7 +34,7 @@ public class CodeGenerator {
         //输出目录
         globalConfig.setOutputDir(currentPath+"/src/main/java");
         //作者
-        globalConfig.setAuthor("Oliver");
+        globalConfig.setAuthor("Savior");
         //是否打开资源管理器
         globalConfig.setOpen(false);
         //是否覆盖之前代码

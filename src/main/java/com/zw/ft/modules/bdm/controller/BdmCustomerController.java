@@ -26,6 +26,7 @@ import java.util.Map;
 public class BdmCustomerController extends AbstractController {
 
     @Resource
+
     BdmCustomerService bdmCustomerService;
     @RequestMapping(value = "/query")
     public R query(@RequestBody(required = false) Map<String,Object> params){

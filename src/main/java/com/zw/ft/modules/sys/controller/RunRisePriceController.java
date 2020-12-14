@@ -3,7 +3,10 @@ package com.zw.ft.modules.sys.controller;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.RunRisePrice;
 import com.zw.ft.modules.sys.service.RunRisePriceService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.Map;
@@ -41,7 +44,7 @@ public class RunRisePriceController {
      */
     @PostMapping("/updateRunRisePrice")
     public R updateRunRisePrice(@RequestBody RunRisePrice runRisePrice) {
-        return R.data(runRisePriceService.getRunRise(runRisePrice));
+        return runRisePriceService.getRunRise(runRisePrice);
     }
 
 }

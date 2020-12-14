@@ -2,9 +2,9 @@ package com.zw.ft.modules.sys.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.RunRisePrice;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,5 +33,5 @@ public interface RunRisePriceService extends IService<RunRisePrice> {
      * @Description 加价档案修改添加
      * @Date: 2020/11/17
      */
-    List<RunRisePrice> getRunRise(RunRisePrice runRisePrice);
+    R getRunRise(RunRisePrice runRisePrice);
 }

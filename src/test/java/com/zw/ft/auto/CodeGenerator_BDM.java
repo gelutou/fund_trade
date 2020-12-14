@@ -25,7 +25,7 @@ public class CodeGenerator_BDM {
 
     public static void main(String[] args) {
         //设置要映射的表名
-        String setInclude = "bdm_customer";
+        String setInclude = "bdm_warehouse";
 
         AutoGenerator autoGenerator = new AutoGenerator();
         GlobalConfig globalConfig = new GlobalConfig();
@@ -34,7 +34,7 @@ public class CodeGenerator_BDM {
         //输出目录
         globalConfig.setOutputDir(currentPath+"/src/main/java");
         //作者
-        globalConfig.setAuthor("Oliver");
+        globalConfig.setAuthor("Savior");
         //是否打开资源管理器
         globalConfig.setOpen(false);
         //是否覆盖之前代码
