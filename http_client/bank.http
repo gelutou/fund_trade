@@ -1,20 +1,20 @@
-POST http://localhost:8090/ft/sys-bank/bankall
+POST http://localhost:8091/ft/sys-bank/bankall
 Content-Type: application/json
-token:1e299919ed4cd5a3625ee0f50c0f8077
+token:efdb271e9c30caf4c450e1c68fdf41ec
 
-{"currentPage":1,"pageSize":10,"bankName":"北京建设银行支行"}
+{"comName":"1,2"}
 
 ###
 POST http://localhost:8090/ft/sys-bank/updateBank
 Content-Type: application/json
-token:5f15eba46fec91b301d38ca4e36933f9
+token:efdb271e9c30caf4c450e1c68fdf41ec
 
 {"comId" : "5"}
 
 ###
 POST http://localhost:8090/ft/sys-bank/addBank
 Content-Type: application/json
-token:6847c7e1ec7ecb16445e3887501b5e12
+token:efdb271e9c30caf4c450e1c68fdf41ec
 
 {"comId": 3,"bankFullName":"test","shortName":"tt","bankAccount":"11111111","accountStyle":"D","accountType":"zzz","accountBalance": "10000"}
 

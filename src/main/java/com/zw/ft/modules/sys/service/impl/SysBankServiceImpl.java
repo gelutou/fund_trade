@@ -1,6 +1,5 @@
 package com.zw.ft.modules.sys.service.impl;
 
-import cn.hutool.core.convert.Convert;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -15,7 +14,10 @@ import com.zw.ft.modules.sys.service.SysBankService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.*;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -45,23 +47,26 @@ public class SysBankServiceImpl extends ServiceImpl<SysBankMapper, SysBank> impl
 
         //模糊搜索公司id
         String comId = FormatUtil.isSelectKey("comId", params);
-        String string = JSON.toJSONString(params);
+        String string = JSON.toJSONString(params.get("comId"));
         string = string.replace("[", "").replace("]", "");
-        String[] convert1 = Convert.convert(String[].class, string);
+        List<String> lists = new LinkedList<>();
         if (Constant.TRUE.equals(comId)) {
             if (params.toString().contains(",")) {
-                //convert1.replace("[","").replace("]",""));
-                queryWrapper.in("su.com_id", convert1);
+                String[] split = string.split(",");
+                Collections.addAll(lists, split);
+                queryWrapper.in("su.com_id", lists);
+            }else {
+                queryWrapper.in("su.com_id", string);
             }
         }
 
-        //模糊搜索公司名称
+       /* //模糊搜索公司名称
         String comName = FormatUtil.isSelectKey("comName", params);
         if (Constant.TRUE.equals(comName)) {
             queryWrapper.like("scy.com_name", params.get("comName").toString().replace("[", "").replace("]", ""));
         } else if ("".equals(comName)) {
             queryWrapper.like("scy.com_name", "");
-        }
+        }*/
 
         //模糊搜索银行账号
         String bankAccount = FormatUtil.isSelectKey("bankAccount", params);
@@ -70,6 +75,7 @@ public class SysBankServiceImpl extends ServiceImpl<SysBankMapper, SysBank> impl
         } else if ("".equals(bankAccount)) {
             queryWrapper.like("su.BANK_ACCOUNT", "");
         }
+
         //模糊搜索账号类别
         String accountStyle = FormatUtil.isSelectKey("accountStyle", params);
         if (Constant.TRUE.equals(accountStyle)) {
