@@ -3,9 +3,8 @@ package com.zw.ft.common.utils;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.zw.ft.common.base.BaseEntity;
-import com.zw.ft.common.base.Constant;
+import com.zw.ft.common.constants.Constant;
 
 import java.util.Map;
 

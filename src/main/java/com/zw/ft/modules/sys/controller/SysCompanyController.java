@@ -20,7 +20,7 @@ import java.util.Map;
  * @since 2020-09-21
  */
 @RestController
-@RequestMapping("/ft/sys-company")
+@RequestMapping("/ft/sys-company/")
 public class SysCompanyController extends BaseController {
 
     @Resource

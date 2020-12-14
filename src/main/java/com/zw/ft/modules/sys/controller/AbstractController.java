@@ -1,7 +1,12 @@
 package com.zw.ft.modules.sys.controller;
 
+import com.zw.ft.modules.sys.entity.SysDepartment;
 import com.zw.ft.modules.sys.entity.SysUser;
+import com.zw.ft.modules.sys.service.RelUserDepartmentService;
+import com.zw.ft.modules.sys.service.SysDepartmentService;
 import org.apache.shiro.SecurityUtils;
+
+import javax.annotation.Resource;
 
 /*
  * 功能描述: <br>
@@ -12,6 +17,9 @@ import org.apache.shiro.SecurityUtils;
 
 public abstract class AbstractController {
 
+    @Resource
+    SysDepartmentService departmentService;
+
     protected SysUser getUser() {
         return (SysUser) SecurityUtils.getSubject().getPrincipal();
     }
@@ -19,7 +27,7 @@ public abstract class AbstractController {
     protected String getUserName() {
         SysUser sysUer = getUser();
         if (sysUer == null) {
-            return "系统管理员";
+            return "admin";
         }
         return sysUer.getUsername();
     }
@@ -30,5 +38,9 @@ public abstract class AbstractController {
             return -1L;
         }
         return sysUer.getId();
+    }
+
+    protected SysDepartment getCompany(){
+        return departmentService.getDeptByUserId(getUserId());
     }
 }

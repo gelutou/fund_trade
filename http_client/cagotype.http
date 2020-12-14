@@ -9,12 +9,12 @@ token:9b36081de640c644d45483241becd0a9
 }
 
 ###
-POST http://localhost:8090/ft/sys-cargo-category/updaCargoCategory
+POST http://localhost:8091/ft/sys-cargo-category/updaCargoCategory
 Content-Type: application/json
-token:9b36081de640c644d45483241becd0a9
+token:254a7ad32a265f9a21a444e7f8c3f900
 
 {
-  "id":2,"categoryName": "铝块"
+  "categoryName": "铝块"
 }
 
 ###
