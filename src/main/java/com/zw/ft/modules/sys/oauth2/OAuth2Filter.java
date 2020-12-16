@@ -45,7 +45,7 @@ public class OAuth2Filter extends AuthenticatingFilter {
             HttpServletResponse httpResponse = (HttpServletResponse) response;
             httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
             httpResponse.setHeader("Access-Control-Allow-Origin", HttpContextUtils.getOrigin());
-            String json = new Gson().toJson(R.error(HttpStatus.UNAUTHORIZED.value(), "Invalid token"));
+            String json = new Gson().toJson(R.error(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase()));
             httpResponse.getWriter().print(json);
             return false;
         }
@@ -60,9 +60,7 @@ public class OAuth2Filter extends AuthenticatingFilter {
         httpResponse.setHeader("Access-Control-Allow-Origin", HttpContextUtils.getOrigin());
         try {
             //处理登录失败的异常
-            Throwable throwable = e.getCause() == null ? e : e.getCause();
-            R r = R.error(HttpStatus.UNAUTHORIZED.value(), throwable.getMessage());
-
+            R r = R.error(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase());
             String json = new Gson().toJson(r);
             httpResponse.getWriter().print(json);
         } catch (IOException e1) {

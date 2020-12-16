@@ -64,12 +64,8 @@ public class SysCargoInfoController {
      */
     @PostMapping("/addCargoInfo")
     public R addCargoInfo(@RequestBody(required = false) SysCargoInfo sysCargoInfo) {
-        boolean save = sysCargoInfoService.save(sysCargoInfo);
-        if (save) {
-            return R.ok("添加成功");
-        } else {
-            return R.error("添加失败");
-        }
+        sysCargoInfoService.save(sysCargoInfo);
+        return R.ok();
     }
 
     /**

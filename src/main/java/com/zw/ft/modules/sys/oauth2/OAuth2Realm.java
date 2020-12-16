@@ -11,6 +11,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -65,7 +66,7 @@ public class OAuth2Realm extends AuthorizingRealm {
         String username = user.getUsername();
         String rKey = redisService.get(username);
         if (rKey == null) {
-            throw new IncorrectCredentialsException("token失效，请重新登录");
+            throw new IncorrectCredentialsException(HttpStatus.UNAUTHORIZED.getReasonPhrase());
         }
         return new SimpleAuthenticationInfo(user, accessToken, getName());
     }
