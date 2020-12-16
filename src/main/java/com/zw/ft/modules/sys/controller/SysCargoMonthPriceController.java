@@ -35,14 +35,7 @@ public class SysCargoMonthPriceController {
     @PostMapping("/queryCargo/{pkId}")
     public R queryCargoId(@PathVariable("pkId") String pkId){
         //获取当前年份
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
-        Date date = new Date();
-        List<SysCargoMonthPrice> sysCargoMonthPrices = sysCargoMonthPriceService.selectPriceById(pkId,sdf.format(date));
-        if(sysCargoMonthPrices.size() != 0){
-            return R.data(sysCargoMonthPrices);
-        }else {
-            return R.error("失败");
-        }
+        return R.data(sysCargoMonthPriceService.selectPriceById(pkId,DateUtil.today()));
     }
 
     /** 

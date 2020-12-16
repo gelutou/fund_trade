@@ -1,4 +1,4 @@
-package com.zw.ft.common.web;
+package com.zw.ft.handler;
 
 import com.zw.ft.common.utils.R;
 import org.springframework.core.MethodParameter;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 // 只拦截我们的 Controller 所在包，避免其它类似 swagger 提供的 API 被切面拦截
-@ControllerAdvice(basePackages = "cn.iocoder.springboot.lab22.validation.controller")
+@ControllerAdvice(basePackages = "com.zw.ft.modules")
 public class GlobalResponseBodyHandler implements ResponseBodyAdvice {
 
     @Override

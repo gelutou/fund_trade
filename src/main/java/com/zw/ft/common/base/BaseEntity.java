@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 
 /**
@@ -21,17 +21,27 @@ public class BaseEntity implements Serializable {
     private static final long serialVersionUID = -8496506980578081121L;
 
     /**
+     * 添加校验组
+     */
+    public interface Add {}
+
+    /**
+     * 更新校验组
+     */
+    public interface Update {}
+
+    /**
      * @description: 主键ID
      */
     @TableId
-    @NotEmpty(message = "主键不能为空")
+    @NotNull(message = "ID值必须是一个正整数",groups = Update.class)
+    @Null(message = "ID值必须为空",groups = Add.class)
     private Long id;
 
     /**
      * @description: 创建人ID
      */
 
-    @NotEmpty(message = "创建者不能为空")
     @TableField(fill = FieldFill.INSERT)
     private Long createdBy;
 
@@ -40,7 +50,6 @@ public class BaseEntity implements Serializable {
      */
 
     @TableField(fill = FieldFill.INSERT)
-    @NotEmpty(message = "创建时间不能为空")
     private String createdTime;
 
     /**
@@ -60,7 +69,6 @@ public class BaseEntity implements Serializable {
      * @description: 逻辑删除
      */
     @TableLogic
-    @TableField(exist = false)
     private Integer deleted;
 
     @Override
