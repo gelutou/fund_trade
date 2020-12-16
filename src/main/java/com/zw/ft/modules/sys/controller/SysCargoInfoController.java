@@ -47,12 +47,8 @@ public class SysCargoInfoController {
     public R updateCargoInfo(@RequestBody(required = false) SysCargoInfo sysCargoInfo) {
         UpdateWrapper<SysCargoInfo> updateWrapper = new UpdateWrapper<>();
         updateWrapper.eq("id", sysCargoInfo.getId());
-        boolean update = sysCargoInfoService.update(sysCargoInfo, updateWrapper);
-        if (update) {
-            return R.ok("更新成功");
-        } else {
-            return R.error("更新失败");
-        }
+        sysCargoInfoService.update(sysCargoInfo, updateWrapper);
+        return R.ok();
     }
 
     /**

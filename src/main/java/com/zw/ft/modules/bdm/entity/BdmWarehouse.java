@@ -1,7 +1,10 @@
 package com.zw.ft.modules.bdm.entity;
 
-import com.zw.ft.common.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.zw.ft.common.base.BaseEntity;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * <p>
@@ -11,6 +14,9 @@ import com.baomidou.mybatisplus.annotation.TableField;
  * @author Savior
  * @since 2020-12-14
  */
+@EqualsAndHashCode(callSuper = true)
+@TableName(value = "bdm_warehouse")
+@Data
 public class BdmWarehouse extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -131,190 +137,14 @@ public class BdmWarehouse extends BaseEntity {
     @TableField("DELETED")
     private Integer deleted;
 
+    /**
+     * 父级仓库名称
+     */
+    @TableField(exist = false)
+    private String parentName;
 
-    public String getParentPkid() {
-        return parentPkid;
-    }
-
-    public void setParentPkid(String parentPkid) {
-        this.parentPkid = parentPkid;
-    }
-
-    public String getWarehouseCode() {
-        return warehouseCode;
-    }
-
-    public void setWarehouseCode(String warehouseCode) {
-        this.warehouseCode = warehouseCode;
-    }
-
-    public String getCustomerPkid() {
-        return customerPkid;
-    }
-
-    public void setCustomerPkid(String customerPkid) {
-        this.customerPkid = customerPkid;
-    }
-
-    public String getWarehouseName() {
-        return warehouseName;
-    }
-
-    public void setWarehouseName(String warehouseName) {
-        this.warehouseName = warehouseName;
-    }
-
-    public String getWarehouseManager() {
-        return warehouseManager;
-    }
-
-    public void setWarehouseManager(String warehouseManager) {
-        this.warehouseManager = warehouseManager;
-    }
-
-    public String getWarehousePhone() {
-        return warehousePhone;
-    }
-
-    public void setWarehousePhone(String warehousePhone) {
-        this.warehousePhone = warehousePhone;
-    }
-
-    public String getFlagVirtual() {
-        return flagVirtual;
-    }
-
-    public void setFlagVirtual(String flagVirtual) {
-        this.flagVirtual = flagVirtual;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getComId() {
-        return comId;
-    }
-
-    public void setComId(String comId) {
-        this.comId = comId;
-    }
-
-    public Integer getFlagAudit() {
-        return flagAudit;
-    }
-
-    public void setFlagAudit(Integer flagAudit) {
-        this.flagAudit = flagAudit;
-    }
-
-    public String getAuditPid() {
-        return auditPid;
-    }
-
-    public void setAuditPid(String auditPid) {
-        this.auditPid = auditPid;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
-    public String getDetailAddress() {
-        return detailAddress;
-    }
-
-    public void setDetailAddress(String detailAddress) {
-        this.detailAddress = detailAddress;
-    }
-
-    public String getQq() {
-        return qq;
-    }
-
-    public void setQq(String qq) {
-        this.qq = qq;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getWeChat() {
-        return WeChat;
-    }
-
-    public void setWeChat(String WeChat) {
-        this.WeChat = WeChat;
-    }
-
-    public Integer getDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(Integer deleted) {
-        this.deleted = deleted;
-    }
-
-    @Override
-    public String toString() {
-        return "BdmWarehouse{" +
-        "parentPkid=" + parentPkid +
-        ", warehouseCode=" + warehouseCode +
-        ", customerPkid=" + customerPkid +
-        ", warehouseName=" + warehouseName +
-        ", warehouseManager=" + warehouseManager +
-        ", warehousePhone=" + warehousePhone +
-        ", flagVirtual=" + flagVirtual +
-        ", remark=" + remark +
-        ", status=" + status +
-        ", comId=" + comId +
-        ", flagAudit=" + flagAudit +
-        ", auditPid=" + auditPid +
-        ", province=" + province +
-        ", city=" + city +
-        ", district=" + district +
-        ", detailAddress=" + detailAddress +
-        ", qq=" + qq +
-        ", email=" + email +
-        ", WeChat=" + WeChat +
-        ", deleted=" + deleted +
-        "}";
-    }
+    /**
+     */
+    @TableField(exist = false)
+    private String customerName;
 }

@@ -32,7 +32,7 @@ public class RunRisePriceController {
      * @Description 分页查询加价档案基本信息
      * @Date: 2020/11/13
      */
-    @PostMapping("/RunRisePricekall")
+    @PostMapping("/runRisePricekall")
     public R RunRisePricekall(@RequestBody Map<String, Object> params) {
         return R.page(runRisePriceService.getRun(params));
     }
@@ -46,5 +46,4 @@ public class RunRisePriceController {
     public R updateRunRisePrice(@RequestBody RunRisePrice runRisePrice) {
         return runRisePriceService.getRunRise(runRisePrice);
     }
-
 }

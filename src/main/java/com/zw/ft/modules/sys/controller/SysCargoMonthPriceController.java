@@ -9,7 +9,6 @@ import com.zw.ft.modules.sys.service.SysCargoMonthPriceService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -35,14 +34,11 @@ public class SysCargoMonthPriceController {
     @PostMapping("/queryCargo/{pkId}")
     public R queryCargoId(@PathVariable("pkId") String pkId){
         //获取当前年份
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
-        Date date = new Date();
-        List<SysCargoMonthPrice> sysCargoMonthPrices = sysCargoMonthPriceService.selectPriceById(pkId,sdf.format(date));
-        if(sysCargoMonthPrices.size() != 0){
-            return R.data(sysCargoMonthPrices);
-        }else {
-            return R.error("失败");
-        }
+       /* SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+        Date date = new Date();*/
+        String year = String.valueOf(DateUtil.year(new Date()));
+        List<SysCargoMonthPrice> sysCargoMonthPrices = sysCargoMonthPriceService.selectPriceById(pkId,year);
+        return R.data(sysCargoMonthPrices);
     }
 
     /** 

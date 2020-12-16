@@ -45,7 +45,7 @@ public class SysCargoInfoServiceImpl extends ServiceImpl<SysCargoInfoMapper, Sys
         //模糊搜索货品编号
         String cargoCode = FormatUtil.isSelectKey("keyWord", params);
         if (Constant.TRUE.equals(cargoCode)) {
-            queryWrapper.like("sci.cargo_code", params.get("keyWord").toString().replace("[", "").replace("]", ""));
+            queryWrapper.like("sci.cargo_code", params.get("keyWord"));
         } else if ("".equals(cargoCode)) {
             queryWrapper.like("sci.cargo_code", "");
         }
@@ -54,7 +54,7 @@ public class SysCargoInfoServiceImpl extends ServiceImpl<SysCargoInfoMapper, Sys
         //模糊搜索货品名称
         String cargoName = FormatUtil.isSelectKey("keyWord", params);
         if (Constant.TRUE.equals(cargoName)) {
-            queryWrapper.or().like("sci.cargo_name", params.get("keyWord").toString().replace("[", "").replace("]", ""));
+            queryWrapper.or().like("sci.cargo_name", params.get("keyWord"));
         } else if ("".equals(cargoName)) {
             queryWrapper.or().like("sci.cargo_name", "");
         }
@@ -62,7 +62,7 @@ public class SysCargoInfoServiceImpl extends ServiceImpl<SysCargoInfoMapper, Sys
         //模糊搜索货品品牌
         String brand = FormatUtil.isSelectKey("keyWord", params);
         if (Constant.TRUE.equals(brand)) {
-            queryWrapper.or().like("sci.brand", params.get("keyWord").toString().replace("[", "").replace("]", ""));
+            queryWrapper.or().like("sci.brand", params.get("keyWord"));
         } else if ("".equals(brand)) {
             queryWrapper.or().like("sci.brand", "");
         }
@@ -70,7 +70,7 @@ public class SysCargoInfoServiceImpl extends ServiceImpl<SysCargoInfoMapper, Sys
         //模糊搜索货品规格
         String specification = FormatUtil.isSelectKey("keyWord", params);
         if (Constant.TRUE.equals(specification)) {
-            queryWrapper.or().like("sci.specification", params.get("keyWord").toString().replace("[", "").replace("]", ""));
+            queryWrapper.or().like("sci.specification", params.get("keyWord"));
         } else if ("".equals(specification)) {
             queryWrapper.or().like("sci.specification", "");
         }
@@ -78,7 +78,7 @@ public class SysCargoInfoServiceImpl extends ServiceImpl<SysCargoInfoMapper, Sys
         //模糊搜索货品型号
         String cargoModel = FormatUtil.isSelectKey("keyWord", params);
         if (Constant.TRUE.equals(cargoModel)) {
-            queryWrapper.or().like("sci.cargo_model", params.get("keyWord").toString().replace("[", "").replace("]", ""));
+            queryWrapper.or().like("sci.cargo_model", params.get("keyWord"));
         } else if ("".equals(cargoModel)) {
             queryWrapper.or().like("sci.cargo_model", "");
         }
@@ -86,7 +86,7 @@ public class SysCargoInfoServiceImpl extends ServiceImpl<SysCargoInfoMapper, Sys
         //模糊搜索货品类型
         String categoryName = FormatUtil.isSelectKey("keyWord", params);
         if (Constant.TRUE.equals(categoryName)) {
-            queryWrapper.or().like("scc.category_name", params.get("keyWord").toString().replace("[", "").replace("]", ""));
+            queryWrapper.or().like("scc.category_name", params.get("keyWord"));
         } else if ("".equals(categoryName)) {
             queryWrapper.or().like("scc.category_name", "");
         }

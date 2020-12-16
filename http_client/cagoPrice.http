@@ -7,7 +7,7 @@ token:efdb271e9c30caf4c450e1c68fdf41ec
 ###
 POST http://localhost:8091/ft/sys-cargo-month-price/queryCargo/1
 Content-Type: application/json
-token:efdb271e9c30caf4c450e1c68fdf41ec
+token:0543a30aa72698a7671155d514b2a1a5
 
 {}
 

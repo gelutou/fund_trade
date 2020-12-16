@@ -46,13 +46,6 @@ public class RunRisePriceServiceImpl extends ServiceImpl<RunRisePriceMapper, Run
     public Page<RunRisePrice> getRun(Map<String, Object> params) {
         Page<RunRisePrice> page = new QueryUtil<RunRisePrice>(params).getPage();
         QueryWrapper<RunRisePrice> queryWrapper = new QueryWrapper<>();
-        //模糊搜索公司名称
-        String comName = FormatUtil.isSelectKey("comName", params);
-        if (Constant.TRUE.equals(comName)) {
-            queryWrapper.like("scy.com_name", params.get("comName").toString().replace("[", "").replace("]", ""));
-        } else if ("".equals(comName)) {
-            queryWrapper.like("scy.com_name", "");
-        }
 
         //模糊搜索公司id
         String id = FormatUtil.isSelectKey("id", params);
@@ -110,7 +103,6 @@ public class RunRisePriceServiceImpl extends ServiceImpl<RunRisePriceMapper, Run
                 return R.error("更新失败");
             }
         }
-
     }
 
 }
