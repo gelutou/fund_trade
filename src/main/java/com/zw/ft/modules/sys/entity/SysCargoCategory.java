@@ -48,6 +48,7 @@ public class SysCargoCategory extends BaseEntity {
      */
     private String comId;
 
+    //父级分类名称
     @TableField(exist = false)
     private String parentName;
 

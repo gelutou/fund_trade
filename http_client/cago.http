@@ -27,10 +27,10 @@ token:1e299919ed4cd5a3625ee0f50c0f8077
 
 {"id": "5","aluminumPlant": "常山铁龙","specification": "178*5.8","brand": "铁龙","cargoName": "铁石"}
 ###
-POST http://localhost:8090/ft/sys-cargo-info/getSysCargoInfo
+POST http://localhost:8091/ft/sys-cargo-info/getSysCargoInfo
 Content-Type: application/json
-token:ea8f6c1bca0d93aceca16a468eea228b
+token:0543a30aa72698a7671155d514b2a1a5
 
-{}
+{"keyWord": "铁石"}
 
 ###

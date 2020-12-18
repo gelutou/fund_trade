@@ -36,5 +36,4 @@ public class SysCargoMonthPriceServiceImpl extends ServiceImpl<SysCargoMonthPric
         wrapper.eq("year",year);
         return sysCargoMonthPriceMapper.selectList(wrapper);
     }
-
 }

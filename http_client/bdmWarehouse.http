@@ -1,0 +1,7 @@
+POST http://localhost:8091/ft/bdm-warehouse/query/2
+Content-Type: application/json
+token:28545823f7fbe4cd0550a212b6c2169c
+
+{}
+
+###
