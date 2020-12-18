@@ -33,7 +33,7 @@ public class RunRisePriceController {
      * @Date: 2020/11/13
      */
     @PostMapping("/runRisePricekall")
-    public R RunRisePricekall(@RequestBody Map<String, Object> params) {
+    public R RunRisePricekall(@RequestBody Map<String, Object> params){
         return R.page(runRisePriceService.getRun(params));
     }
 
@@ -43,7 +43,7 @@ public class RunRisePriceController {
      * @Date: 2020/11/13
      */
     @PostMapping("/updateRunRisePrice")
-    public R updateRunRisePrice(@RequestBody RunRisePrice runRisePrice) {
+    public R updateRunRisePrice(@RequestBody RunRisePrice runRisePrice){
         return runRisePriceService.getRunRise(runRisePrice);
     }
 }

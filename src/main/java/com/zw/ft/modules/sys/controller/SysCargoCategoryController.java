@@ -30,7 +30,7 @@ public class SysCargoCategoryController {
  * @Description 获取货品分类树信息
  * @Date: 2020/11/30
  */
-    @PostMapping("/getSysCargoTypeTree")
+    @PostMapping("/get_cargotypetree")
     public R getSysCargoCategoryTree() {
         return R.data(sysCargoCategoryService.list());
     }
@@ -64,10 +64,11 @@ public class SysCargoCategoryController {
      * @Description 修改货品分类信息
      * @Date: 2020/12/1
      */
-    @PostMapping("/updateCargoCategory")
+    @PostMapping("/update_cargocategory")
     public R updateCargoCategory(@RequestBody(required = false) SysCargoCategory sysCargoCategory) {
         UpdateWrapper<SysCargoCategory> updateWrapper = new UpdateWrapper<>();
         updateWrapper.eq("id", sysCargoCategory.getId());
+        Preconditions.checkNotNull(sysCargoCategory.getId(),"请传入货品分类信息id值！");
         sysCargoCategoryService.update(sysCargoCategory, updateWrapper);
         return R.ok();
     }
@@ -77,7 +78,7 @@ public class SysCargoCategoryController {
      * @Description 添加货品分类信息
      * @Date: 2020/12/1
      */
-    @PostMapping("/addCargoCategory")
+    @PostMapping("/add_cargocategory")
     public R addCargoCategory(@RequestBody(required = false) SysCargoCategory sysCargoCategory) {
         Preconditions.checkNotNull(sysCargoCategory,"请传入货品分类信息！");
         sysCargoCategoryService.save(sysCargoCategory);

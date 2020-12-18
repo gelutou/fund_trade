@@ -131,11 +131,6 @@ public class BdmWarehouse extends BaseEntity {
     @TableField("WeChat")
     private String WeChat;
 
-    /**
-     * 逻辑删除 0正常1删除
-     */
-    @TableField("DELETED")
-    private Integer deleted;
 
     /**
      * 父级仓库名称
@@ -144,6 +139,7 @@ public class BdmWarehouse extends BaseEntity {
     private String parentName;
 
     /**
+     * 客商仓储公司名称
      */
     @TableField(exist = false)
     private String customerName;

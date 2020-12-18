@@ -60,14 +60,6 @@ public class SysBankServiceImpl extends ServiceImpl<SysBankMapper, SysBank> impl
             }
         }
 
-       /* //模糊搜索公司名称
-        String comName = FormatUtil.isSelectKey("comName", params);
-        if (Constant.TRUE.equals(comName)) {
-            queryWrapper.like("scy.com_name", params.get("comName").toString().replace("[", "").replace("]", ""));
-        } else if ("".equals(comName)) {
-            queryWrapper.like("scy.com_name", "");
-        }*/
-
         //模糊搜索银行账号
         String bankAccount = FormatUtil.isSelectKey("bankAccount", params);
         if (Constant.TRUE.equals(bankAccount)) {

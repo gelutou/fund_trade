@@ -1,6 +1,6 @@
-POST http://localhost:8090/ft/sys-cargo-category/addCargoCategory
+POST http://localhost:8091/ft/sys-cargo-category/add_cargocategory
 Content-Type: application/json
-token:9b36081de640c644d45483241becd0a9
+token:0543a30aa72698a7671155d514b2a1a5
 
 {
   "categoryName": "碳块",
@@ -9,11 +9,12 @@ token:9b36081de640c644d45483241becd0a9
 }
 
 ###
-POST http://localhost:8091/ft/sys-cargo-category/updaCargoCategory
+POST http://localhost:8091/ft/sys-cargo-category/update_cargocategory
 Content-Type: application/json
-token:254a7ad32a265f9a21a444e7f8c3f900
+token:0543a30aa72698a7671155d514b2a1a5
 
 {
+  "id": "3",
   "categoryName": "铝块"
 }
 

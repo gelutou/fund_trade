@@ -2,9 +2,10 @@ package com.zw.ft.modules.sys.controller;
 
 import com.zw.ft.modules.sys.entity.SysDepartment;
 import com.zw.ft.modules.sys.entity.SysUser;
-import com.zw.ft.modules.sys.service.RelUserDepartmentService;
 import com.zw.ft.modules.sys.service.SysDepartmentService;
 import org.apache.shiro.SecurityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 
@@ -19,6 +20,8 @@ public abstract class AbstractController {
 
     @Resource
     SysDepartmentService departmentService;
+
+    protected Logger logger = LoggerFactory.getLogger(getClass());
 
     protected SysUser getUser() {
         return (SysUser) SecurityUtils.getSubject().getPrincipal();

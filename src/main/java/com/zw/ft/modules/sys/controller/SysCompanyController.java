@@ -1,11 +1,10 @@
 package com.zw.ft.modules.sys.controller;
 
-import cn.hutool.core.convert.Convert;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.zw.ft.common.base.BaseController;
+import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysCompany;
 import com.zw.ft.modules.sys.service.SysCompanyService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -20,8 +19,9 @@ import java.util.Map;
  * @since 2020-09-21
  */
 @RestController
+@Validated
 @RequestMapping("/ft/sys-company/")
-public class SysCompanyController extends BaseController {
+public class SysCompanyController extends AbstractController {
 
     @Resource
     SysCompanyService sysCompanyService;
@@ -49,14 +49,9 @@ public class SysCompanyController extends BaseController {
      * @Date: 2020/9/21 10:53
      */
     @PostMapping(value = "/add")
-    public R addCom(@RequestBody(required = false) Map<String, Object> params) {
-        SysCompany sysCompany = Convert.convert(SysCompany.class, params);
-        boolean save = sysCompanyService.save(sysCompany);
-        if (save) {
-            return R.ok();
-        } else {
-            return R.error();
-        }
+    public R addCom(@RequestBody(required = false) @Validated(BaseEntity.Add.class) SysCompany sysCompany) {
+        sysCompanyService.save(sysCompany);
+        return R.ok();
     }
 
     /*
@@ -67,16 +62,9 @@ public class SysCompanyController extends BaseController {
      */
 
     @PostMapping(value = "/update")
-    public R updateCom(@RequestBody(required = false) Map<String, Object> params) {
-        SysCompany sysCompany = Convert.convert(SysCompany.class, params);
-        UpdateWrapper<SysCompany> sysCompanyUpdateWrapper = new UpdateWrapper<>();
-        sysCompanyUpdateWrapper.eq("id", sysCompany.getId());
-        boolean update = sysCompanyService.update(sysCompany, sysCompanyUpdateWrapper);
-        if (update) {
-            return R.ok();
-        } else {
-            return R.error();
-        }
+    public R update(@RequestBody(required = false) @Validated(BaseEntity.Update.class) SysCompany sysCompany) {
+        sysCompanyService.updateById(sysCompany);
+        return R.ok();
     }
 
     /**

@@ -1,15 +1,13 @@
 package com.zw.ft.modules.bdm.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.google.common.base.Preconditions;
 import com.zw.ft.common.utils.R;
-import com.zw.ft.modules.bdm.entity.BdmCustomer;
 import com.zw.ft.modules.bdm.entity.BdmWarehouse;
-import com.zw.ft.modules.bdm.service.BdmCustomerService;
 import com.zw.ft.modules.bdm.service.BdmWarehouseService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.zw.ft.modules.sys.controller.AbstractController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -23,21 +21,20 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/ft/bdm-warehouse")
-public class BdmWarehouseController {
+public class BdmWarehouseController extends AbstractController {
 
     @Resource
     BdmWarehouseService bdmWarehouseService;
-    @Resource
-    BdmCustomerService bdmCustomerService;
+
 
     /**
      * @Author savior
      * @Description 获取仓库档案树信息
      * @Date: 2020/12/15
      */
-    @PostMapping("/getBdmWarehouseTree")
+    @PostMapping("/get_warehousetree")
     public R getBdmWarehouseTree(){
-        return R.data(bdmWarehouseService.list());
+        return R.data(bdmWarehouseService.getWarehouseTree());
     }
 
     /**
@@ -47,19 +44,44 @@ public class BdmWarehouseController {
      */
     @PostMapping("/query/{id}")
     public R queryId(@PathVariable("id") long id){
-        BdmWarehouse byId = bdmWarehouseService.getById(id);
-        //把仓库父级显示出来
-        BdmWarehouse bdmWarehouseById = bdmWarehouseService.getById(byId.getParentPkid());
-        byId.setParentName(bdmWarehouseById==null?"":bdmWarehouseById.getWarehouseName());
-        //查询客商名称
-        BdmCustomer comName = bdmCustomerService.getById(byId.getComId());
-        byId.setCustomerName(bdmCustomerService==null?"":comName.getContactName());
-        return R.data(byId);
+        return R.data(bdmWarehouseService.getWarehouseId(id));
     }
 
-    @PostMapping("")
-    public R addBdmWarehouse() {
-        return null;
+    /**
+     * @Author savior
+     * @Description 添加仓库信息
+     * @Date: 2020/12/18
+     */
+    @PostMapping("add_warehouse")
+    public R addBdmWarehouse(@RequestBody(required = false) BdmWarehouse bdmWarehouse) {
+        Preconditions.checkNotNull(bdmWarehouse,"请传入仓库信息！");
+        bdmWarehouseService.save(bdmWarehouse);
+        return R.ok();
+    }
+
+    /**
+     * @Author savior
+     * @Description 修改仓库信息
+     * @Date: 2020/12/18
+     */
+    @PostMapping("update_warehouse")
+    public R updateBdmWarehouse(@RequestBody(required = false) BdmWarehouse bdmWarehouse){
+        UpdateWrapper<BdmWarehouse> updateWrapper = new UpdateWrapper<>();
+        Preconditions.checkNotNull(bdmWarehouse,"请传入客商信息");
+        updateWrapper.eq("id",bdmWarehouse.getId());
+        bdmWarehouseService.update(bdmWarehouse,updateWrapper);
+        return R.ok();
+    }
+
+    /**
+     * @Author savior
+     * @Description 删除仓库信息
+     * @Date: 2020/12/18
+     */
+    @PostMapping("delete_warehouse")
+    public R deleteBdmWarehouse (@PathVariable("id")long id){
+        bdmWarehouseService.removeById(id);
+        return R.ok();
     }
 }
 

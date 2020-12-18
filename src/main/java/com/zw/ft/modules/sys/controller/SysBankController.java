@@ -61,12 +61,7 @@ public class SysBankController {
     public R updateBank(@RequestBody(required = false) SysBank sysBank) {
         UpdateWrapper<SysBank> bankUpdateWrapper = new UpdateWrapper<>();
         bankUpdateWrapper.eq("id", sysBank.getId());
-        boolean update = sysBankService.update(sysBank, bankUpdateWrapper);
-        if (update) {
-            return R.ok("更新成功");
-        } else {
-            return R.error("更新失败");
-        }
+        return R.ok("更新成功");
     }
 
     /**
@@ -79,12 +74,7 @@ public class SysBankController {
     @PostMapping("/addBank")
     public R addBank(@RequestBody(required = false) Map<String, Object> params) {
         SysBank sysBank = Convert.convert(SysBank.class, params);
-        boolean save = sysBankService.save(sysBank);
-        if (save) {
-            return R.ok("添加成功");
-        } else {
-            return R.error("添加失败");
-        }
+        sysBankService.save(sysBank);
+        return R.ok("添加成功");
     }
-
 }

@@ -5,7 +5,6 @@ import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.digest.DigestAlgorithm;
 import cn.hutool.crypto.digest.Digester;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.zw.ft.common.base.BaseController;
 import com.zw.ft.common.constants.Constant;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysUser;
@@ -34,7 +33,7 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping(value = "/ft/sys/")
 @Api(tags = "系统登录")
-public class LoginController extends BaseController {
+public class LoginController extends AbstractController {
 
     @Resource
     RedisService redisService;

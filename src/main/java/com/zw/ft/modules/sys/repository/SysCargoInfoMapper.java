@@ -30,8 +30,4 @@ public interface SysCargoInfoMapper extends BaseMapper<SysCargoInfo> {
             "${ew.customSqlSegment}")
     Page<SysCargoInfo> queryCargoInfo(Page<SysCargoInfo> page, @Param("ew") QueryWrapper<SysCargoInfo> queryWrapper);
 
-
-   /* @Select("")
-    List<SysCargoInfo> getCargoList();*/
-
 }
