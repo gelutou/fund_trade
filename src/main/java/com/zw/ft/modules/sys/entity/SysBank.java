@@ -5,7 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.zw.ft.common.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -25,9 +26,10 @@ public class SysBank extends BaseEntity {
     private static final long serialVersionUID = -2993525210700517999L;
 
     /**
-     * 公司id
+     * 客商ID
      */
-    private String comId;
+    @Pattern(regexp = "/^\\d+$|^\\d+[.]?\\d+$/",message = "只能输入数字",groups = Add.class)
+    private Long comId;
 
     //客商ID
     /* private Integer customerId ;*/
@@ -35,16 +37,20 @@ public class SysBank extends BaseEntity {
     /**
      * 开户行全称
      */
+    @NotNull(message = "银行全称必填",groups = Add.class)
     private String bankFullName;
+
 
     /**
      * 银行简称
      */
+    @NotNull(message = "银行简称必填",groups = Add.class)
     private String shortName;
 
     /**
      * 账号
      */
+    @Pattern(regexp = "^^[0-9a-zA-Z]+$",message = "请传入正确的客商编码：数字和字母",groups = Add.class)
     private String bankAccount;
 
     /**
@@ -60,6 +66,7 @@ public class SysBank extends BaseEntity {
     /**
      * 账户余额
      */
+    @Pattern(regexp = "/(^[1-9]([0-9]+)?(\\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\\.[0-9]([0-9])?$)/",message = "最多输入两位小数",groups = Add.class)
     private BigDecimal accountBalance;
 
     /**

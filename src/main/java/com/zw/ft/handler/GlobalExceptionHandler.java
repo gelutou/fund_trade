@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @ControllerAdvice(basePackages = "com.zw.ft.modules")
 public class GlobalExceptionHandler {

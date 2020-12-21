@@ -25,5 +25,4 @@ public interface SysBankMapper extends BaseMapper<SysBank> {
             "${ew.customSqlSegment}")
     Page<SysBank> querySysBankPageByComId(Page<SysBank> page, @Param("ew") QueryWrapper<SysBank> queryWrapper);
 
-
 }

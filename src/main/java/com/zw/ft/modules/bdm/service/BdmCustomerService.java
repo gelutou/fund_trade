@@ -24,4 +24,13 @@ public interface BdmCustomerService extends IService<BdmCustomer> {
      */
 
     R query(Map<String,Object> params);
+
+    /*
+     * 功能描述: <br>
+     * 〈导出客商列表〉
+     * @Author: Oliver
+     * @Date: 2020/12/9 15:42
+     */
+
+    R export(Map<String,Object> params);
 }

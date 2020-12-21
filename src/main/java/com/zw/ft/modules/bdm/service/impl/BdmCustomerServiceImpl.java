@@ -1,5 +1,6 @@
 package com.zw.ft.modules.bdm.service.impl;
 
+import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.common.constants.Constant;
@@ -12,6 +13,7 @@ import com.zw.ft.modules.bdm.service.BdmCustomerService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,22 +32,53 @@ public class BdmCustomerServiceImpl extends ServiceImpl<BdmCustomerMapper, BdmCu
 
         Page<BdmCustomer> page = new QueryUtil<BdmCustomer>(params).getPage();
         QueryWrapper<BdmCustomer> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("sd.name","CUSTOMER_TYPE").eq("bc.DELETED",0);
-        //WHERE sd.name = 'CUSTOMER_TYPE' AND bc.DELETED = 0
+        queryWrapper.eq("sd.name", "CUSTOMER_TYPE").eq("bc.DELETED", 0);
         String codition = FormatUtil.isSelectKey("condition", params);
-        if(Constant.TRUE.equals(codition)){
-            queryWrapper.and(i ->  i
-                    .like("bc.code",params.get("condition").toString()).or()
-                    .like("bc.name",params.get("condition").toString()).or()
-                    .like("bc.shortname",params.get("condition").toString()).or()
-                    .like("bc.tax_num",params.get("condition").toString()).or()
-                    .like("bc.contact_name",params.get("condition").toString()).or()
-                    .like("bc.contact_phone",params.get("condition").toString()).or()
-                    .like("bc.contact_email",params.get("condition").toString()).or()
-                    .like("bc.contact_position",params.get("condition").toString()).or()
-                    .like("bc.area",params.get("condition").toString()).or()
-                    .like("sd.des",params.get("condition").toString()).or());
+        if (Constant.TRUE.equals(codition)) {
+            String cond = params.get("condition").toString();
+            queryWrapper.and(i -> i
+                    .like("bc.code", cond).or()
+                    .like("bc.name", cond).or()
+                    .like("bc.shortname", cond).or()
+                    .like("bc.tax_num", cond).or()
+                    .like("bc.contact_name", cond).or()
+                    .like("bc.contact_phone", cond).or()
+                    .like("bc.contact_email", cond).or()
+                    .like("bc.contact_position", cond).or()
+                    .like("bc.area", cond).or()
+                    .like("sd.des", cond).or());
         }
         return R.page(this.baseMapper.queryCustomerPage(page, queryWrapper));
+    }
+
+    @Override
+    public R export(Map<String, Object> params) {
+
+        QueryWrapper<BdmCustomer> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("sd.name", "CUSTOMER_TYPE").eq("bc.DELETED", 0);
+
+        //复选ID
+        String ids = FormatUtil.isSelectKey("ids", params);
+        if (Constant.TRUE.equals(ids)) {
+            List idList = Convert.convert(List.class, params.get("ids"));
+            queryWrapper.in("bc.id", idList);
+        }
+        //搜索条件
+        String condition = FormatUtil.isSelectKey("condition", params);
+        if (Constant.TRUE.equals(condition)) {
+            String cond = params.get("condition").toString();
+            queryWrapper.and(i -> i
+                    .like("bc.code", cond).or()
+                    .like("bc.name", cond).or()
+                    .like("bc.shortname", cond).or()
+                    .like("bc.tax_num", cond).or()
+                    .like("bc.contact_name", cond).or()
+                    .like("bc.contact_phone", cond).or()
+                    .like("bc.contact_email", cond).or()
+                    .like("bc.contact_position", cond).or()
+                    .like("bc.area", cond).or()
+                    .like("sd.des", cond).or());
+        }
+        return R.data(this.baseMapper.queryCustomerList(queryWrapper));
     }
 }
