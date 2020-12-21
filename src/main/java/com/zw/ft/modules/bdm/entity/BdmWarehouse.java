@@ -6,6 +6,9 @@ import com.zw.ft.common.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 /**
  * <p>
  * 仓库信息表
@@ -24,24 +27,28 @@ public class BdmWarehouse extends BaseEntity {
     /**
      * 上级仓库ID
      */
+    @NotNull(message = "请传入上级仓库ID",groups = Add.class)
     @TableField("PARENT_PKID")
     private String parentPkid;
 
     /**
      * 仓库编号
      */
+    @Pattern(regexp = "^^[0-9a-zA-Z]+$",message = "请传入正确的仓库编号：数字和字母",groups = Add.class)
     @TableField("WAREHOUSE_CODE")
     private String warehouseCode;
 
     /**
      * 仓储公司ID
      */
+    @NotNull(message = "请传入仓储公司ID",groups = Add.class)
     @TableField("CUSTOMER_PKID")
     private String customerPkid;
 
     /**
      * 仓库名称
      */
+    @NotNull(message = "请传入仓库名称",groups = Add.class)
     @TableField("WAREHOUSE_NAME")
     private String warehouseName;
 
@@ -76,8 +83,9 @@ public class BdmWarehouse extends BaseEntity {
     private String status;
 
     /**
-     * 公司ID
+     * 客商ID
      */
+    @Pattern(regexp = "/^\\d+$|^\\d+[.]?\\d+$/",message = "只能输入数字",groups = Add.class)
     private String comId;
 
     @TableField("FLAG_AUDIT")

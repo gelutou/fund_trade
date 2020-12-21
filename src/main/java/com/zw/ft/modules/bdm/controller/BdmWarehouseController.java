@@ -54,7 +54,6 @@ public class BdmWarehouseController extends AbstractController {
      */
     @PostMapping("add_warehouse")
     public R addBdmWarehouse(@RequestBody(required = false) BdmWarehouse bdmWarehouse) {
-        Preconditions.checkNotNull(bdmWarehouse,"请传入仓库信息！");
         bdmWarehouseService.save(bdmWarehouse);
         return R.ok();
     }
