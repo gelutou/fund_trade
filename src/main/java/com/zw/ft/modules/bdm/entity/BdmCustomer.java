@@ -3,10 +3,13 @@ package com.zw.ft.modules.bdm.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.zw.ft.common.base.BaseEntity;
+import com.zw.ft.modules.sys.entity.SysBank;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import java.util.List;
 
 /**
  * <p>
@@ -22,28 +25,23 @@ import javax.validation.constraints.NotNull;
 public class BdmCustomer extends BaseEntity {
 
     private static final long serialVersionUID = 5093346423530256838L;
-    /**
-     * 公司ID
-     */
-    @NotNull
-    private Long comId;
 
     /**
      * 客商编码
      */
-    @NotNull
+    @Pattern(regexp = "^^[0-9a-zA-Z]+$",message = "请传入正确的客商编码：数字和字母",groups = Add.class)
     private String code;
 
     /**
      * 客商名
      */
-    @NotNull
+    @NotNull(message = "请传入客商名",groups = Add.class)
     private String name;
 
     /**
      * 客商简称
      */
-    @NotNull
+    @NotNull(message = "请传入客商简称",groups = Add.class)
     private String shortname;
 
     /**
@@ -52,9 +50,9 @@ public class BdmCustomer extends BaseEntity {
     private String taxNum;
 
     /**
-     * 类型
+     * 类型 1内部公司 2外部公司 3仓储公司 4集团公司
      */
-    @NotNull
+    @NotNull(message = "请传入客商类型，1内部公司 2外部公司 3仓储公司 4集团公司",groups = Add.class)
     private Integer type;
 
     /**
@@ -86,7 +84,7 @@ public class BdmCustomer extends BaseEntity {
     /**
      * 客商地址
      */
-    @NotNull
+    @NotNull(message = "请传入客商地址",groups = Add.class)
     private String area;
 
     /**
@@ -104,4 +102,11 @@ public class BdmCustomer extends BaseEntity {
      */
     @TableField(exist = false)
     private String creator;
+
+    /**
+     * 银行
+     */
+
+    @TableField(exist = false)
+    private List<SysBank> banks;
 }

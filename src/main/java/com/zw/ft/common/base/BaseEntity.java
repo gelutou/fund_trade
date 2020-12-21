@@ -34,7 +34,7 @@ public class BaseEntity implements Serializable {
      * @description: 主键ID
      */
     @TableId
-    @NotNull(message = "ID值必须是一个正整数",groups = Update.class)
+    @NotNull(message = "ID不能为空并且只能为数字",groups = Update.class)
     @Null(message = "ID值必须为空",groups = Add.class)
     private Long id;
 
