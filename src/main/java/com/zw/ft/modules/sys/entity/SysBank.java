@@ -5,11 +5,9 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.zw.ft.common.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 /**
  * * <p>
@@ -30,16 +28,19 @@ public class SysBank extends BaseEntity {
      * 公司id
      */
     @Pattern(regexp = "/^\\d+$|^\\d+[.]?\\d+$/",message = "只能输入数字",groups = Add.class)
-    private Long comId;
+    private Long cusId;
 
-    //客商ID
-    /* private Integer customerId ;*/
+    /**
+     * 银行编码
+     */
+    @Pattern(regexp = "^^[0-9a-zA-Z]+$",message = "请传入正确的银行编码：数字和字母",groups = Add.class)
+    private String code;
 
     /**
      * 开户行全称
      */
     @NotNull(message = "银行全称必填",groups = Add.class)
-    private String bankFullName;
+    private String name;
 
     /**
      * 银行简称
@@ -50,29 +51,29 @@ public class SysBank extends BaseEntity {
     /**
      * 账号
      */
-    @Pattern(regexp = "^^[0-9a-zA-Z]+$",message = "请传入正确的客商编码：数字和字母",groups = Add.class)
-    private String bankAccount;
+    @Pattern(regexp = "^^[0-9a-zA-Z]+$",message = "请传入正确的银行账户：数字和字母",groups = Add.class)
+    private String account;
 
     /**
      * 账户类别
      */
-    private String accountStyle;
+    private Integer type;
 
     /**
      * 账户性质
      */
-    private String accountType;
+    private Integer nature;
 
     /**
      * 账户余额
      */
     @Pattern(regexp = "/(^[1-9]([0-9]+)?(\\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\\.[0-9]([0-9])?$)/",message = "最多输入两位小数",groups = Add.class)
-    private BigDecimal accountBalance;
+    private BigDecimal balance;
 
     /**
      * 银行地区分类
      */
-    private String areaType;
+    private Integer area;
 
     /**
      * 备注
@@ -96,7 +97,9 @@ public class SysBank extends BaseEntity {
      */
     private Integer fundOrTrade;
 
-
+    /**
+     * @description: 税号
+     */
     private String taxNumber;
 
     /**
@@ -107,17 +110,17 @@ public class SysBank extends BaseEntity {
     /**
      * 所属银行
      */
-    private String bankName;
+    private Integer belongTo;
 
     /**
      * 开户行地址
      */
-    private String bankAddress;
+    private String address;
 
     /**
      * 银行联系人
      */
-    private String contacts;
+    private String contactUser;
 
     /**
      * 联系电话
@@ -127,7 +130,7 @@ public class SysBank extends BaseEntity {
     /**
      * 币种
      */
-    private String currType;
+    private Integer currencyType;
 
     /**
      * 网银存放处
@@ -137,7 +140,7 @@ public class SysBank extends BaseEntity {
     /**
      * 银行会计窗口电话
      */
-    private Long bankPhone;
+    private String accountingPhone;
 
     /**
      * 网银系统
@@ -152,117 +155,117 @@ public class SysBank extends BaseEntity {
     /**
      * 网银累计
      */
-    private String internetAdd;
+    private BigDecimal internetAccumulate;
 
     /**
      * 网银关闭时间
      */
-    private LocalDateTime internetClose;
+    private String internetCloseTime;
 
     /**
      * 网银是否关联
      */
-    private String internetRelation;
+    private Integer internetIsRelated;
 
     /**
      * 是否开通电票系统
      */
-    private String internetElectric;
+    private Integer internetIsOpenElectric;
 
     /**
      * 网银到期时间
      */
-    private LocalDateTime internetDued;
+    private String internetExpirationTime;
 
     /**
      * 大额行号
      */
-    private Long bigRow;
+    private String largeLineNumber;
 
     /**
      * 当天进出款是否备头寸
      */
-    private String billRemark;
+    private Integer isPreparePosition;
 
     /**
      * 当天走款多少万需备头寸
      */
-    private String billOut;
+    private BigDecimal preparePositionOut;
 
     /**
      * 备头寸联系人
      */
-    private String billContact;
+    private String preparePositionContactUser;
 
     /**
      * 大额核实人
      */
-    private String bigContact;
-
-    /**
-     * 是否有支票
-     */
-    private String billHas;
+    private String largeVerifyUser;
 
     /**
      * 是否有电汇单
      */
-    private String electricHas;
+    private Integer hasElectric;
+
+    /**
+     * 是否有支票
+     */
+    private Integer hasBill;
 
     /**
      * 是否盖章
      */
-    private String electricSave;
+    private Integer hasSeal;
 
     /**
      * 久悬期限
      */
-    private LocalDateTime unuseTime;
+    private String unuseTime;
 
     /**
      * 账户是否年检
      */
-    private String accountCheck;
+    private Integer accountIsCheck;
 
     /**
      * 证照日期
      */
-    private LocalDateTime cardDate;
+    private String cardDate;
 
     /**
      * 印鉴日期
      */
-    private LocalDateTime sealDate;
+    private String sealDate;
 
     /**
      * 凭证日期
      */
-    private LocalDateTime proofDate;
+    private String proofDate;
 
     /**
      * 身份证
      */
-    private String personCard;
+    private String idCard;
 
     /**
      * 协定存款金额
      */
-    private Double accordAmount;
+    private BigDecimal accordAmount;
 
     /**
      * 协定期限
      */
-    private LocalDateTime accordDate;
+    private String accordDate;
 
     /**
-     * 协定存款利率(%)
+     * 协定存款利率
      */
-    private String accordRate;
+    private BigDecimal accordRate;
 
     /**
      * 是否具有管户权
      */
-    private String accountManage;
+    private Integer hasAccountManage;
 
     /**
      * 电票系统
@@ -272,7 +275,7 @@ public class SysBank extends BaseEntity {
     /**
      * 是否新印鉴
      */
-    private String sealNew;
+    private Integer isNewSeal;
 
     /**
      * 网银对账
@@ -282,7 +285,7 @@ public class SysBank extends BaseEntity {
     /**
      * 是否有支付密码器
      */
-    private String passwordAuth;
+    private Integer hasPasswordAuth;
 
     /**
      * 打印对账单
@@ -297,11 +300,5 @@ public class SysBank extends BaseEntity {
     /**
      * 业务联系人
      */
-    private String bussynessContact;
-
-    /**
-     * 银行编码
-     */
-    private String bankCode;
-
+    private String businessContactUser;
 }

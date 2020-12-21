@@ -177,6 +177,7 @@ public class SysDictionaryServiceImpl extends ServiceImpl<SysDictionaryMapper, S
             queryWrapper.like("des", "");
         }
 
+        queryWrapper.orderByAsc("sort");
         return this.baseMapper.selectPage(page, queryWrapper);
     }
 

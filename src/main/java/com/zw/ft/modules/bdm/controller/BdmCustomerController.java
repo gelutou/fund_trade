@@ -3,7 +3,6 @@ package com.zw.ft.modules.bdm.controller;
 
 import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.google.common.base.Preconditions;
 import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.bdm.entity.BdmCustomer;
@@ -17,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
-import javax.validation.Valid;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,7 +68,7 @@ public class BdmCustomerController extends AbstractController {
         List<SysBank> banks = bdmCustomer.getBanks();
         if(banks.size() > 0){
             for(SysBank bank : banks){
-                bank.setComId(bdmCustomer.getId());
+                bank.setCusId(bdmCustomer.getId());
                 bankService.save(bank);
             }
         }
@@ -93,7 +90,7 @@ public class BdmCustomerController extends AbstractController {
         List<SysBank> banks = bdmCustomer.getBanks();
         if(banks.size() > 0){
             for(SysBank bank : banks){
-                bank.setComId(bdmCustomer.getId());
+                bank.setCusId(bdmCustomer.getId());
                 bankService.updateById(bank);
             }
         }
