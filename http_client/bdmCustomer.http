@@ -21,36 +21,26 @@ token:28545823f7fbe4cd0550a212b6c2169c
 ###
 POST http://localhost:8091/ft/bdm-customer/delete
 Content-Type: application/json
-token:28545823f7fbe4cd0550a212b6c2169c
+token:b778d40a6c24814aa1197ad7da83b7c7
 
 {
   "ids": [
-    499,
-    500
+    1,2
   ]
 }
 
 ###
 POST http://localhost:8091/ft/bdm-customer/update
 Content-Type: application/json
-token:9b2886d99282f655c83cb20a4fcd2c76
-
-{}
-
-###
-POST http://localhost:8091/ft/bdm-customer/add
-Content-Type: application/json
-token:9b2886d99282f655c83cb20a4fcd2c76
+token:b778d40a6c24814aa1197ad7da83b7c7
 
 {
-  "name": "测试更新客商",
-  "code": "UPDATETEST",
-  "shortname": "测试更新客商简称",
-  "type": "1",
-  "area": "上海",
+  "id": 1,
+  "name": "上海五锐金属集团有限公司_UPDATE",
   "banks": [
     {
-      "bankFullName": "银行名称1",
+      "id": 17,
+      "bankFullName": "银行名称1修改",
       "shortName": "银行简称1",
       "accountBalance": "100.22",
       "bankAccount": "aaaaaaa",
@@ -73,12 +63,47 @@ token:9b2886d99282f655c83cb20a4fcd2c76
 }
 
 ###
-POST http://localhost:8091/ft/bdm-customer/query
+POST http://localhost:8091/ft/bdm-customer/add
 Content-Type: application/json
-token:28545823f7fbe4cd0550a212b6c2169c
+token:b778d40a6c24814aa1197ad7da83b7c7
 
 {
-  "condition": "邵丽姗"
+  "name": "测试更新客商",
+  "code": "UPDATETEST",
+  "shortname": "测试更新客商简称",
+  "type": "1",
+  "area": "上海",
+  "banks": [
+    {
+      "bankFullName": "银行名称1",
+      "shortName": "银行简称1",
+       "accountBalance": "100.22",
+      "bankAccount": "aaaaaaa",
+      "areaType": "0",
+      "bankName": "0",
+      "accountStyle": "0",
+      "accountType": "0"
+    },
+    {
+      "bankFullName": "银行名称2",
+      "shortName": "银行简称2",
+      "accountBalance": "99.99",
+      "bankAccount": "bbbbbbb",
+      "areaType": "1",
+      "bankName": "1",
+      "accountStyle": "0",
+      "accountType": "1"
+    }
+  ]
+}
+
+###
+POST http://localhost:8091/ft/bdm-customer/query
+Content-Type: application/json
+token:b778d40a6c24814aa1197ad7da83b7c7
+
+{
+  "id": "1"
 }
 
 ###

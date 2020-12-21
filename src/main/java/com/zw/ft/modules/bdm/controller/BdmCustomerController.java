@@ -2,6 +2,7 @@ package com.zw.ft.modules.bdm.controller;
 
 
 import cn.hutool.core.convert.Convert;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.google.common.base.Preconditions;
 import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
@@ -86,8 +87,16 @@ public class BdmCustomerController extends AbstractController {
      */
 
     @RequestMapping(value = "/update")
+    @Transactional(rollbackFor = Exception.class)
     public R update(@RequestBody(required = false) @Validated(BaseEntity.Update.class) BdmCustomer bdmCustomer){
         bdmCustomerService.updateById(bdmCustomer);
+        List<SysBank> banks = bdmCustomer.getBanks();
+        if(banks.size() > 0){
+            for(SysBank bank : banks){
+                bank.setComId(bdmCustomer.getId());
+                bankService.updateById(bank);
+            }
+        }
         return R.ok();
     }
 
@@ -99,9 +108,16 @@ public class BdmCustomerController extends AbstractController {
      */
 
     @RequestMapping(value = "/delete")
+    @Transactional(rollbackFor = Exception.class)
     public R update(@RequestBody Map<String,Object> parma){
         List ids = Convert.convert(List.class, parma.get("ids"));
         bdmCustomerService.removeByIds(ids);
+
+        for(Object id : ids){
+            QueryWrapper<SysBank> bankQueryWrapper = new QueryWrapper<>();
+            bankQueryWrapper.eq("com_id",id);
+            bankService.remove(bankQueryWrapper);
+        }
         return R.ok();
     }
 

@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 /**
  * <p>
  * 银行信息表 Mapper 接口
@@ -24,6 +26,9 @@ public interface SysBankMapper extends BaseMapper<SysBank> {
             "LEFT JOIN sys_user us ON us.ID=su.CREATED_BY " +
             "${ew.customSqlSegment}")
     Page<SysBank> querySysBankPageByComId(Page<SysBank> page, @Param("ew") QueryWrapper<SysBank> queryWrapper);
+
+    @Select("SELECT * FROM sys_bank WHERE DELETED = 0 AND com_id = #{comId}")
+    List<SysBank> queryBanksUnderCompany(@Param("comId") Long comId);
 
 
 }
