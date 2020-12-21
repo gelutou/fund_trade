@@ -42,7 +42,7 @@ public class SysBankController {
      * 功能描述: <br>
      *
      * @Author savior
-     * @Description 跟据Id逻辑批量删除银行信息
+     * @Description 跟据Id 逻辑批量删除银行信息
      * @Date: 2020/10/16
      */
     @PostMapping("/deleteByIds/{ids}")

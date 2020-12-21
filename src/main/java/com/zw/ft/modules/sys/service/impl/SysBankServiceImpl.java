@@ -38,11 +38,11 @@ public class SysBankServiceImpl extends ServiceImpl<SysBankMapper, SysBank> impl
         Page<SysBank> page = new QueryUtil<SysBank>(params).getPage();
         QueryWrapper<SysBank> queryWrapper = new QueryWrapper<>();
         //模糊搜索开户行全称
-        String bankFullName = FormatUtil.isSelectKey("bankFullName", params);
-        if (Constant.TRUE.equals(bankFullName)) {
-            queryWrapper.like("bank_full_name", params.get("bankFullName"));
-        } else if ("".equals(bankFullName)) {
-            queryWrapper.like("bank_full_name", "");
+        String bankName = FormatUtil.isSelectKey("bankName", params);
+        if (Constant.TRUE.equals(bankName)) {
+            queryWrapper.like("bank_name", params.get("bankName"));
+        } else if ("".equals(bankName)) {
+            queryWrapper.like("bank_name", "");
         }
 
         //模糊搜索公司id

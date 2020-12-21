@@ -6,6 +6,7 @@ import com.zw.ft.common.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -59,7 +60,7 @@ public class SysBank extends BaseEntity {
     /**
      * 账户余额
      */
-    private Double accountBalance;
+    private BigDecimal accountBalance;
 
     /**
      * 银行地区分类
@@ -139,7 +140,7 @@ public class SysBank extends BaseEntity {
     /**
      * 网银单笔
      */
-    private Double internetSingle;
+    private BigDecimal internetSingle;
 
     /**
      * 网银累计
