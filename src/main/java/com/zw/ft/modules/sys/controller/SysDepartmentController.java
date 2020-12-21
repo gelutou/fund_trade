@@ -9,7 +9,6 @@ import com.zw.ft.modules.sys.service.SysDepartmentService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 import java.util.Map;
 
 
@@ -37,12 +36,7 @@ public class SysDepartmentController {
 
     @PostMapping("/getDeptTree")
     public R loadManagerLeftTreeJson(@RequestBody Map<String, Object> params) {
-        List<SysDepartment> menu = sysDepartmentService.getMenu(params);
-        if (menu != null) {
-            return R.data(menu);
-        } else {
-            return R.error("获取部门失败");
-        }
+        return R.data(sysDepartmentService.getMenu(params));
     }
 
 
@@ -62,12 +56,8 @@ public class SysDepartmentController {
 
     @RequestMapping(value = "/delete/{id}")
     public R del(@PathVariable("id") long deptId) {
-        boolean b = sysDepartmentService.removeById(deptId);
-        if (b) {
-            return R.ok("删除成功");
-        } else {
-            return R.error("删除失败");
-        }
+        sysDepartmentService.removeById(deptId);
+        return R.ok("删除成功");
     }
 
     /*
@@ -83,13 +73,8 @@ public class SysDepartmentController {
     public R update(@RequestBody(required = false) SysDepartment sysDepartment) {
         UpdateWrapper<SysDepartment> departmentUpdateWrapper = new UpdateWrapper<>();
         departmentUpdateWrapper.eq("id", sysDepartment.getId());
-        boolean update = sysDepartmentService.update(sysDepartment, departmentUpdateWrapper);
-
-        if (update) {
-            return R.ok("修改成功");
-        } else {
-            return R.error("修改失败");
-        }
+        sysDepartmentService.update(sysDepartment, departmentUpdateWrapper);
+        return R.ok("修改成功");
     }
 
     /*
@@ -103,13 +88,8 @@ public class SysDepartmentController {
 
     @RequestMapping(value = "/add")
     public R add(@RequestBody(required = false) SysDepartment sysDepartment) {
-
-        boolean save = sysDepartmentService.save(sysDepartment);
-        if (save) {
-            return R.ok("添加成功");
-        } else {
-            return R.error("添加失败");
-        }
+        sysDepartmentService.save(sysDepartment);
+        return R.ok("添加成功");
     }
 
 }

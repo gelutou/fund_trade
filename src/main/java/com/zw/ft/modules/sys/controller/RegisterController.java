@@ -8,7 +8,6 @@ import com.zw.ft.modules.sys.entity.SysUser;
 import com.zw.ft.modules.sys.entity.SysUserExpansion;
 import com.zw.ft.modules.sys.service.SysUserExpansionService;
 import com.zw.ft.modules.sys.service.SysUserService;
-import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
