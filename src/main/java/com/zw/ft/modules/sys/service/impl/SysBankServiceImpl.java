@@ -46,7 +46,7 @@ public class SysBankServiceImpl extends ServiceImpl<SysBankMapper, SysBank> impl
             queryWrapper.like("bank_name", "");
         }
 
-        //根据客商id模糊搜索
+        //根据客商id模糊搜索银行信息
         String cusId = FormatUtil.isSelectKey("cusId", params);
         String string = JSON.toJSONString(params.get("cusId"));
         string = string.replace("[", "").replace("]", "");

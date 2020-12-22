@@ -2,7 +2,9 @@ POST http://localhost:8091/ft/sys-bank/bankall
 Content-Type: application/json
 token:f390ff663cacbb263803e3bdaa6451f1
 
-{}
+{
+  "type":"2"
+}
 
 ###
 POST http://localhost:8091/ft/sys-bank/updateBank
@@ -19,7 +21,7 @@ POST http://localhost:8091/ft/sys-bank/addBank
 Content-Type: application/json
 token:f390ff663cacbb263803e3bdaa6451f1
 
-{"cusId": 3,"bankName":"未知地骆家庄建设银行分行","shortName":"骆家庄建设银行","account":"11111111","type":"1","nature":"2","balance": "10000"}
+{"cusId": 2,"bankName":"山东太原中国银行分行","shortName":"骆家庄建设银行","account":"11111111","type":"2","nature":"4","balance": "0"}
 
 ###
 POST http://localhost:8091/ft/sys-bank/deleteByIds/1
