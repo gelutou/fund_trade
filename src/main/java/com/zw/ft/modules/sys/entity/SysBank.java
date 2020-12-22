@@ -29,16 +29,19 @@ public class SysBank extends BaseEntity {
      * 客商ID
      */
     @Pattern(regexp = "/^\\d+$|^\\d+[.]?\\d+$/",message = "只能输入数字",groups = Add.class)
-    private Long comId;
+    private Long cusId;
 
-    //客商ID
-    /* private Integer customerId ;*/
+    /**
+     * 银行编码
+     */
+    @Pattern(regexp = "^^[0-9a-zA-Z]+$",message = "请传入正确的银行编码：数字和字母",groups = Add.class)
+    private String code;
 
     /**
      * 开户行全称
      */
     @NotNull(message = "银行全称必填",groups = Add.class)
-    private String bankFullName;
+    private String bankName;
 
 
     /**
@@ -50,7 +53,7 @@ public class SysBank extends BaseEntity {
     /**
      * 账号
      */
-    @Pattern(regexp = "^^[0-9a-zA-Z]+$",message = "请传入正确的客商编码：数字和字母",groups = Add.class)
+    @Pattern(regexp = "^^[0-9a-zA-Z]+$",message = "请传入正确的银行账号：数字和字母",groups = Add.class)
     private String bankAccount;
 
     /**
@@ -107,7 +110,7 @@ public class SysBank extends BaseEntity {
     /**
      * 所属银行
      */
-    private String bankName;
+    private String belong_to;
 
     /**
      * 开户行地址
@@ -299,9 +302,5 @@ public class SysBank extends BaseEntity {
      */
     private String bussynessContact;
 
-    /**
-     * 银行编码
-     */
-    private String bankCode;
 
 }

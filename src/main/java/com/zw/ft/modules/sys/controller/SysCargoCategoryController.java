@@ -68,7 +68,6 @@ public class SysCargoCategoryController {
     public R updateCargoCategory(@RequestBody(required = false) SysCargoCategory sysCargoCategory) {
         UpdateWrapper<SysCargoCategory> updateWrapper = new UpdateWrapper<>();
         updateWrapper.eq("id", sysCargoCategory.getId());
-        Preconditions.checkNotNull(sysCargoCategory.getId(),"请传入货品分类信息id值！");
         sysCargoCategoryService.update(sysCargoCategory, updateWrapper);
         return R.ok();
     }
