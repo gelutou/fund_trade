@@ -37,6 +37,7 @@ public class SysBankServiceImpl extends ServiceImpl<SysBankMapper, SysBank> impl
     public Page<SysBank> getBank(Map<String, Object> params) {
         Page<SysBank> page = new QueryUtil<SysBank>(params).getPage();
         QueryWrapper<SysBank> queryWrapper = new QueryWrapper<>();
+
         //模糊搜索开户行全称
         String bankName = FormatUtil.isSelectKey("bankName", params);
         if (Constant.TRUE.equals(bankName)) {
@@ -45,45 +46,48 @@ public class SysBankServiceImpl extends ServiceImpl<SysBankMapper, SysBank> impl
             queryWrapper.like("bank_name", "");
         }
 
-        //模糊搜索公司id
-        String comId = FormatUtil.isSelectKey("comId", params);
-        String string = JSON.toJSONString(params.get("comId"));
+        //根据客商id模糊搜索
+        String cusId = FormatUtil.isSelectKey("cusId", params);
+        String string = JSON.toJSONString(params.get("cusId"));
         string = string.replace("[", "").replace("]", "");
         List<String> lists = new LinkedList<>();
-        if (Constant.TRUE.equals(comId)) {
+        if (Constant.TRUE.equals(cusId)) {
             if (params.toString().contains(",")) {
                 String[] split = string.split(",");
                 Collections.addAll(lists, split);
-                queryWrapper.in("su.com_id", lists);
+                queryWrapper.in("su.cus_id", lists);
             }else {
-                queryWrapper.in("su.com_id", string);
+                queryWrapper.in("su.cus_id", string);
             }
         }
 
         //模糊搜索银行账号
-        String bankAccount = FormatUtil.isSelectKey("bankAccount", params);
-        if (Constant.TRUE.equals(bankAccount)) {
-            queryWrapper.like("su.BANK_ACCOUNT", params.get("bankAccount"));
-        } else if ("".equals(bankAccount)) {
-            queryWrapper.like("su.BANK_ACCOUNT", "");
+        String account = FormatUtil.isSelectKey("account", params);
+        if (Constant.TRUE.equals(account)) {
+            queryWrapper.like("su.account", params.get("account"));
+        } else if ("".equals(account)) {
+            queryWrapper.like("su.account", "");
         }
 
         //模糊搜索账号类别
-        String accountStyle = FormatUtil.isSelectKey("accountStyle", params);
-        if (Constant.TRUE.equals(accountStyle)) {
-            queryWrapper.like("su.ACCOUNT_STYLE", params.get("accountStyle"));
-        } else if ("".equals(accountStyle)) {
-            queryWrapper.like("su.ACCOUNT_STYLE", "");
+        String type = FormatUtil.isSelectKey("type", params);
+        if (Constant.TRUE.equals(type)) {
+            queryWrapper.like("su.type", params.get("type"));
+        } else if ("".equals(type)) {
+            queryWrapper.like("su.type", "");
         }
+
         //模糊搜索账号性质
-        String accountType = FormatUtil.isSelectKey("accountType", params);
-        if (Constant.TRUE.equals(accountType)) {
-            queryWrapper.like("su.ACCOUNT_TYPE", params.get("accountType"));
-        } else if ("".equals(accountType)) {
-            queryWrapper.like("su.ACCOUNT_TYPE", "");
+        String nature = FormatUtil.isSelectKey("nature", params);
+        if (Constant.TRUE.equals(nature)) {
+            queryWrapper.like("su.nature", params.get("nature"));
+        } else if ("".equals(nature)) {
+            queryWrapper.like("su.nature", "");
         }
+
         queryWrapper.eq("su.deleted", 0);
-        queryWrapper.orderByAsc("su.updated_time");
+
+        queryWrapper.orderByDesc("su.id");;
         return sysBankMapper.querySysBankPageByComId(page, queryWrapper);
     }
 

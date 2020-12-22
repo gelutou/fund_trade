@@ -2,9 +2,11 @@ package com.zw.ft.modules.sys.controller;
 
 import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysBank;
 import com.zw.ft.modules.sys.service.SysBankService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -20,6 +22,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/ft/sys-bank")
+@Validated
 public class SysBankController {
 
     @Resource
@@ -58,9 +61,10 @@ public class SysBankController {
      * @Date: 2020/10/16
      */
     @PostMapping("/updateBank")
-    public R updateBank(@RequestBody(required = false) SysBank sysBank) {
+    public R updateBank(@RequestBody(required = false) @Validated(BaseEntity.Update.class) SysBank sysBank) {
         UpdateWrapper<SysBank> bankUpdateWrapper = new UpdateWrapper<>();
         bankUpdateWrapper.eq("id", sysBank.getId());
+        sysBankService.update(sysBank,bankUpdateWrapper);
         return R.ok("更新成功");
     }
 
@@ -72,7 +76,7 @@ public class SysBankController {
      * @Date: 2020/10/16
      */
     @PostMapping("/addBank")
-    public R addBank(@RequestBody(required = false) Map<String, Object> params) {
+    public R addBank(@RequestBody(required = false) @Validated(BaseEntity.Add.class) Map<String, Object> params) {
         SysBank sysBank = Convert.convert(SysBank.class, params);
         sysBankService.save(sysBank);
         return R.ok("添加成功");

@@ -1,26 +1,30 @@
 POST http://localhost:8091/ft/sys-bank/bankall
 Content-Type: application/json
-token:efdb271e9c30caf4c450e1c68fdf41ec
+token:f390ff663cacbb263803e3bdaa6451f1
 
-{"comName":"1,2"}
-
-###
-POST http://localhost:8090/ft/sys-bank/updateBank
-Content-Type: application/json
-token:efdb271e9c30caf4c450e1c68fdf41ec
-
-{"comId" : "5"}
+{}
 
 ###
-POST http://localhost:8090/ft/sys-bank/addBank
+POST http://localhost:8091/ft/sys-bank/updateBank
 Content-Type: application/json
-token:efdb271e9c30caf4c450e1c68fdf41ec
+token:f390ff663cacbb263803e3bdaa6451f1
 
-{"comId": 3,"bankFullName":"test","shortName":"tt","bankAccount":"11111111","accountStyle":"D","accountType":"zzz","accountBalance": "10000"}
+{
+  "id":"1",
+  "cusId": "5"
+}
 
 ###
-POST http://localhost:8088/ft/sys-bank/deleteByIds
+POST http://localhost:8091/ft/sys-bank/addBank
 Content-Type: application/json
+token:f390ff663cacbb263803e3bdaa6451f1
 
-{"ids": "[1,2]"}
+{"cusId": 3,"bankName":"未知地骆家庄建设银行分行","shortName":"骆家庄建设银行","account":"11111111","type":"1","nature":"2","balance": "10000"}
+
+###
+POST http://localhost:8091/ft/sys-bank/deleteByIds/1
+Content-Type: application/json
+token:f390ff663cacbb263803e3bdaa6451f1
+
+{}
 ###

@@ -44,6 +44,16 @@ public class SysDictionary extends BaseEntity {
     private String value;
 
     /**
+     * 顺序排序
+     */
+    private Integer sort;
+
+    /**
+     * 选择次数，用于排序
+     */
+    private Integer time;
+
+    /**
      * 子项
      */
     @TableField(exist = false)

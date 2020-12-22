@@ -47,7 +47,7 @@ token:bf61792791c22d64ac205cffd48109c8
 ###
 POST http://localhost:8091/ft/sys-dictionary/get_dictionary_page
 Content-Type: application/json
-token:bf61792791c22d64ac205cffd48109c8
+token:b778d40a6c24814aa1197ad7da83b7c7
 
 {"name": "RUN_RISE","des":"加价类别","pageSize": "2"}
 

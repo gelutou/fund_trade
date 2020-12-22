@@ -69,7 +69,7 @@ public class BdmCustomerController extends AbstractController {
         List<SysBank> banks = bdmCustomer.getBanks();
         if(banks.size() > 0){
             for(SysBank bank : banks){
-                bank.setComId(bdmCustomer.getId());
+                bank.setCusId(bdmCustomer.getId());
                 bankService.save(bank);
             }
         }
@@ -91,7 +91,7 @@ public class BdmCustomerController extends AbstractController {
         List<SysBank> banks = bdmCustomer.getBanks();
         if(banks.size() > 0){
             for(SysBank bank : banks){
-                bank.setComId(bdmCustomer.getId());
+                bank.setCusId(bdmCustomer.getId());
                 bankService.updateById(bank);
             }
         }
