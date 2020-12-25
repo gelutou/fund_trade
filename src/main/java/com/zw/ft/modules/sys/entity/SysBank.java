@@ -72,12 +72,13 @@ public class SysBank extends BaseEntity {
     /**
      * 账户余额
      */
-    @Pattern(regexp = "/(^[1-9]([0-9]+)?(\\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\\.[0-9]([0-9])?$)/",message = "最多输入两位小数",groups = Add.class)
+    @Pattern(regexp = "/(^[1-9]([0-9]+)?(\\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\\.[0-9]([0-9])?$)/",message = "账户余额必填,最多输入两位小数",groups = Add.class)
     private BigDecimal balance;
 
     /**
-     * 银行地区分类
+     * 银行地区
      */
+    @NotNull(message = "所属地区必填",groups = Add.class)
     private Integer area;
     @TableField(exist = false)
     private String areaDes;

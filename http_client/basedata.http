@@ -1,0 +1,7 @@
+POST http://localhost:8091/ft/sys/base-data/query
+Content-Type: application/json
+token:bd1f683fb8b7de0638bfd7d534b5a137
+
+{}
+
+###
