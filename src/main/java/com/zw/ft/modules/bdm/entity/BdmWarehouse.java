@@ -28,127 +28,68 @@ public class BdmWarehouse extends BaseEntity {
      * 上级仓库ID
      */
     @NotNull(message = "请传入上级仓库ID",groups = Add.class)
-    @TableField("PARENT_PKID")
-    private String parentPkid;
+    private Integer parentId;
+
+    /**
+     * 父级仓库名称
+     *
+     */
+    @TableField(exist = false)
+    private String parentName;
+
 
     /**
      * 仓库编号
      */
     @Pattern(regexp = "^^[0-9a-zA-Z]+$",message = "请传入正确的仓库编号：数字和字母",groups = Add.class)
-    @TableField("WAREHOUSE_CODE")
-    private String warehouseCode;
-
-    /**
-     * 仓储公司ID
-     */
-    @NotNull(message = "请传入仓储公司ID",groups = Add.class)
-    @TableField("CUSTOMER_PKID")
-    private String customerPkid;
-
-    /**
-     * 仓库名称
-     */
-    @NotNull(message = "请传入仓库名称",groups = Add.class)
-    @TableField("WAREHOUSE_NAME")
-    private String warehouseName;
-
-    /**
-     * 仓库管理员
-     */
-    @TableField("WAREHOUSE_MANAGER")
-    private String warehouseManager;
-
-    /**
-     * 仓库联系电话
-     */
-    @TableField("WAREHOUSE_PHONE")
-    private String warehousePhone;
-
-    /**
-     * 虚拟仓库位
-     */
-    @TableField("FLAG_VIRTUAL")
-    private String flagVirtual;
-
-    /**
-     * 备注
-     */
-    @TableField("REMARK")
-    private String remark;
-
-    /**
-     * 状态
-     */
-    @TableField("STATUS")
-    private String status;
+    private String code;
 
     /**
      * 客商ID
      */
-    @Pattern(regexp = "/^\\d+$|^\\d+[.]?\\d+$/",message = "只能输入数字",groups = Add.class)
-    private String comId;
-
-    @TableField("FLAG_AUDIT")
-    private Integer flagAudit;
-
-    /**
-     * 流程实例ID
-     */
-    @TableField("AUDIT_PID")
-    private String auditPid;
-
-    /**
-     * 省
-     */
-    @TableField("PROVINCE")
-    private String province;
-
-    /**
-     * 城市
-     */
-    @TableField("CITY")
-    private String city;
-
-    /**
-     * 地区
-     */
-    @TableField("DISTRICT")
-    private String district;
-
-    /**
-     * 详细地址
-     */
-    @TableField("DETAIL_ADDRESS")
-    private String detailAddress;
-
-    /**
-     * QQ号
-     */
-    @TableField("QQ")
-    private String qq;
-
-    /**
-     * 邮箱
-     */
-    @TableField("EMAIL")
-    private String email;
-
-    /**
-     * 微信
-     */
-    @TableField("WeChat")
-    private String WeChat;
-
-
-    /**
-     * 父级仓库名称
-     */
-    @TableField(exist = false)
-    private String parentName;
+    @NotNull(message = "ID不能为空并且只能为数字",groups = Add.class)
+    private Long cusId;
 
     /**
      * 客商仓储公司名称
      */
     @TableField(exist = false)
     private String customerName;
+
+    /**
+     * 仓库名称
+     */
+    @NotNull(message = "请传入仓库名称",groups = Add.class)
+    private String name;
+
+    /**
+     * 仓库负责人
+     */
+    @NotNull(message = "请传入仓库负责人",groups = Add.class)
+    private String personCharge;
+
+    /**
+     * 仓库联系电话
+     */
+    @NotNull(message = "请传入仓库联系电话",groups = Add.class)
+    private String phone;
+
+    /**
+     * 虚拟仓库位  0:非虚拟仓库  1：虚拟仓库
+     */
+    @NotNull(message = "请传入虚拟仓库位,0:非虚拟仓库 1：虚拟仓库",groups = Add.class)
+    private Integer isVirtual;
+    @TableField(exist = false)
+    private String isVirtualName;
+
+    /**
+     * 备注
+     */
+    private String remark;
+
+    /**
+     * 详细地址
+     */
+    private String detailAddress;
+
 }

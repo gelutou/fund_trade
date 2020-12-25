@@ -1,6 +1,5 @@
 package com.zw.ft.modules.sys.controller;
 
-import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
@@ -76,8 +75,8 @@ public class SysBankController {
      * @Date: 2020/10/16
      */
     @PostMapping("/addBank")
-    public R addBank(@RequestBody(required = false) @Validated(BaseEntity.Add.class) Map<String, Object> params) {
-        SysBank sysBank = Convert.convert(SysBank.class, params);
+    public R addBank(@RequestBody(required = false) @Validated(BaseEntity.Add.class) SysBank sysBank) {
+        //SysBank sysBank = Convert.convert(SysBank.class, params);
         sysBankService.save(sysBank);
         return R.ok("添加成功");
     }

@@ -14,11 +14,11 @@ token:1e299919ed4cd5a3625ee0f50c0f8077
 {}
 
 ###
-POST http://localhost:8090/ft/sys-cargo-info/addCargoInfo
+POST http://localhost:8091/ft/sys-cargo-info/add_cargoinfo
 Content-Type: application/json
-token:1e299919ed4cd5a3625ee0f50c0f8077
+token:ae4b6e1340cd50474e99e2d4b4d966d7
 
-{"cargoCode": "LD67","cargoName": "铁石","categoryPkid": "4","cargoUnit": "2"}
+{"cargoCode": "LD67","cargoName": "铁石","categoryPkid":"","cargoUnit": "2","flagCargoInventory": "0"}
 
 ###
 POST http://localhost:8090/ft/sys-cargo-info/updaCargoInfo

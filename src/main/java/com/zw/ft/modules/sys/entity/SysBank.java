@@ -27,7 +27,7 @@ public class SysBank extends BaseEntity {
     /**
      * 客商ID
      */
-    @Pattern(regexp = "/^\\d+$|^\\d+[.]?\\d+$/",message = "只能输入数字",groups = Add.class)
+    @Pattern(regexp = "/[^\\d]/g",message = "客商ID只能输入数字，请传入",groups = Add.class)
     private Long cusId;
 
     /**
@@ -59,6 +59,7 @@ public class SysBank extends BaseEntity {
      */
     @NotNull(message = "账户类别必填",groups = Add.class)
     private Integer type;
+
     @TableField(exist = false)
     private String typeDes;
 
@@ -67,8 +68,10 @@ public class SysBank extends BaseEntity {
      */
     @NotNull(message = "账户性质必填",groups = Add.class)
     private Integer nature;
+
     @TableField(exist = false)
     private String natureDes;
+
     /**
      * 账户余额
      */
@@ -78,7 +81,9 @@ public class SysBank extends BaseEntity {
     /**
      * 银行地区分类
      */
+    @NotNull(message = "银行地区分类必填",groups = Add.class)
     private Integer area;
+
     @TableField(exist = false)
     private String areaDes;
 
@@ -119,6 +124,7 @@ public class SysBank extends BaseEntity {
      */
     @NotNull(message = "所属银行必填",groups = Add.class)
     private Integer belongTo;
+
     @TableField(exist = false)
     private String belongToDes;
 
@@ -141,6 +147,7 @@ public class SysBank extends BaseEntity {
      * 币种
      */
     private Integer currencyType;
+
     @TableField(exist = false)
     private String currencyTypeDes;
 

@@ -3,9 +3,11 @@ package com.zw.ft.modules.sys.controller;
 
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.google.common.base.Preconditions;
+import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysCargoCategory;
 import com.zw.ft.modules.sys.service.SysCargoCategoryService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -19,6 +21,7 @@ import javax.annotation.Resource;
  * @since 2020-11-30
  */
 @RestController
+@Validated
 @RequestMapping("/ft/sys-cargo-category")
 public class SysCargoCategoryController {
 
@@ -65,7 +68,7 @@ public class SysCargoCategoryController {
      * @Date: 2020/12/1
      */
     @PostMapping("/update_cargocategory")
-    public R updateCargoCategory(@RequestBody(required = false) SysCargoCategory sysCargoCategory) {
+    public R updateCargoCategory(@RequestBody(required = false) @Validated(BaseEntity.Update.class) SysCargoCategory sysCargoCategory) {
         UpdateWrapper<SysCargoCategory> updateWrapper = new UpdateWrapper<>();
         updateWrapper.eq("id", sysCargoCategory.getId());
         sysCargoCategoryService.update(sysCargoCategory, updateWrapper);
@@ -78,7 +81,7 @@ public class SysCargoCategoryController {
      * @Date: 2020/12/1
      */
     @PostMapping("/add_cargocategory")
-    public R addCargoCategory(@RequestBody(required = false) SysCargoCategory sysCargoCategory) {
+    public R addCargoCategory(@RequestBody(required = false) @Validated(BaseEntity.Add.class) SysCargoCategory sysCargoCategory) {
         Preconditions.checkNotNull(sysCargoCategory,"请传入货品分类信息！");
         sysCargoCategoryService.save(sysCargoCategory);
         return R.ok();

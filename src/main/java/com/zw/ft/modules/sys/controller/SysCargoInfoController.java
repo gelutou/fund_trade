@@ -1,9 +1,11 @@
 package com.zw.ft.modules.sys.controller;
 
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysCargoInfo;
 import com.zw.ft.modules.sys.service.SysCargoInfoService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -18,6 +20,7 @@ import java.util.Map;
  * @since 2020-11-19
  */
 @RestController
+@Validated
 @RequestMapping("/ft/sys-cargo-info")
 public class SysCargoInfoController {
 
@@ -44,7 +47,7 @@ public class SysCargoInfoController {
      * @Date: 2020/11/23
      */
     @PostMapping("/update_cargoInfo")
-    public R updateCargoInfo(@RequestBody(required = false) SysCargoInfo sysCargoInfo) {
+    public R updateCargoInfo(@RequestBody(required = false) @Validated(BaseEntity.Update.class) SysCargoInfo sysCargoInfo) {
         UpdateWrapper<SysCargoInfo> updateWrapper = new UpdateWrapper<>();
         updateWrapper.eq("id", sysCargoInfo.getId());
         sysCargoInfoService.update(sysCargoInfo, updateWrapper);
@@ -59,7 +62,7 @@ public class SysCargoInfoController {
      * @Date: 2020/11/23
      */
     @PostMapping("/add_cargoinfo")
-    public R addCargoInfo(@RequestBody(required = false) SysCargoInfo sysCargoInfo) {
+    public R addCargoInfo(@RequestBody(required = false) @Validated(BaseEntity.Add.class) SysCargoInfo sysCargoInfo) {
         sysCargoInfoService.save(sysCargoInfo);
         return R.ok();
     }
