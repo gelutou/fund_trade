@@ -59,8 +59,9 @@ public class SysCargoInfoServiceImpl extends ServiceImpl<SysCargoInfoMapper, Sys
             );
         }
         //SELECT * FROM TABLE WHERE KE01 LIKE() OR KEY02 LIKE OR (key03 like () AND key04 like())
-        queryWrapper.eq("sci.deleted", 0).orderByDesc("sci.CREATED_TIME");
-        return sysCargoInfoMapper.queryCargoInfo(page, queryWrapper);
+        queryWrapper.eq("sci.deleted", 0);
+        queryWrapper.orderByDesc("sci.CREATED_TIME");
+        return sysCargoInfoMapper.queryCargoInfo(page,queryWrapper);
     }
 
     /**

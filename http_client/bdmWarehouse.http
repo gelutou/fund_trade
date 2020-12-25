@@ -1,6 +1,48 @@
+POST http://localhost:8091/ft/bdm-warehouse/delete_warehouse/4
+Content-Type: application/json
+token:72a0c80059d33603366f7969c1d93ff6
+
+{}
+
+###
+POST http://localhost:8091/ft/bdm-warehouse/update_warehouse
+Content-Type: application/json
+token:72a0c80059d33603366f7969c1d93ff6
+
+{
+  "id":"3",
+  "code": "sgwl002",
+  "name": "上海上港苏州苏锡库区",
+  "personCharge": "夏宗粹",
+  "phone": "021-51642507"
+}
+
+###
+POST http://localhost:8091/ft/bdm-warehouse/get_warehousetree
+Content-Type: application/json
+token:72a0c80059d33603366f7969c1d93ff6
+
+{}
+
+###
+POST http://localhost:8091/ft/bdm-warehouse/add_warehouse
+Content-Type: application/json
+token:72a0c80059d33603366f7969c1d93ff6
+
+{
+  "parentId": 1,
+  "code": "SGWL001",
+  "cusId": 1,
+  "personCharge": "张三",
+  "phone": "1516545",
+  "name": "上海上港库",
+  "isVirtual": 0
+}
+
+###
 POST http://localhost:8091/ft/bdm-warehouse/query/2
 Content-Type: application/json
-token:28545823f7fbe4cd0550a212b6c2169c
+token:ae4b6e1340cd50474e99e2d4b4d966d7
 
 {}
 

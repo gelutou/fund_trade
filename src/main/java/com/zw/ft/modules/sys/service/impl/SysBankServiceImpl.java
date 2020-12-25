@@ -85,8 +85,12 @@ public class SysBankServiceImpl extends ServiceImpl<SysBankMapper, SysBank> impl
             queryWrapper.like("su.nature", "");
         }
 
-        queryWrapper.eq("su.deleted", 0);
-
+        queryWrapper
+                .eq("sd1.name","ACCOUNT_TYPE")
+                .eq("sd2.name","ACCOUNT_NATURE")
+                .eq("sd3.name","ACCOUNT_AREA")
+                .eq("sd4.name","BELONG_BANK")
+                .eq("su.deleted", 0);
         queryWrapper.orderByDesc("su.id");;
         return sysBankMapper.querySysBankPageByComId(page, queryWrapper);
     }

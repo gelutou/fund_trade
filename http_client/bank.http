@@ -1,6 +1,6 @@
 POST http://localhost:8091/ft/sys-bank/bankall
 Content-Type: application/json
-token:f390ff663cacbb263803e3bdaa6451f1
+token:ae4b6e1340cd50474e99e2d4b4d966d7
 
 {
   "type":"2"
@@ -19,16 +19,19 @@ token:f390ff663cacbb263803e3bdaa6451f1
 ###
 POST http://localhost:8091/ft/sys-bank/addBank
 Content-Type: application/json
-token:f390ff663cacbb263803e3bdaa6451f1
+token:ae4b6e1340cd50474e99e2d4b4d966d7
 
 {
-  "cusId": 2,
+  "cusId":4,
+  "code": "SDTYZGYHZH",
   "bankName": "山东太原中国银行分行",
-  "shortName": "骆家庄建设银行",
-  "account": "11111111",
+  "shortName": "太原银行",
+  "account": "1234474X848",
+  "area": "2",
   "type": "2",
   "nature": "4",
-  "balance": "0"
+  "belongTo": "5",
+  "balance": 12.25
 }
 
 ###
