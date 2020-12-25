@@ -32,7 +32,7 @@ token:b778d40a6c24814aa1197ad7da83b7c7
 ###
 POST http://localhost:8091/ft/bdm-customer/update
 Content-Type: application/json
-token:b778d40a6c24814aa1197ad7da83b7c7
+token:bd1f683fb8b7de0638bfd7d534b5a137
 
 {
   "id": 1,
@@ -65,9 +65,10 @@ token:b778d40a6c24814aa1197ad7da83b7c7
 ###
 POST http://localhost:8091/ft/bdm-customer/add
 Content-Type: application/json
-token:b778d40a6c24814aa1197ad7da83b7c7
+token:bd1f683fb8b7de0638bfd7d534b5a137
 
 {
+
   "name": "测试更新客商",
   "code": "UPDATETEST",
   "shortname": "测试更新客商简称",
@@ -75,24 +76,25 @@ token:b778d40a6c24814aa1197ad7da83b7c7
   "area": "上海",
   "banks": [
     {
-      "bankFullName": "银行名称1",
+      "cusId": "1",
+      "code": "12222",
+      "bankName": "银行名称1",
       "shortName": "银行简称1",
-       "accountBalance": "100.22",
-      "bankAccount": "aaaaaaa",
-      "areaType": "0",
-      "bankName": "0",
-      "accountStyle": "0",
-      "accountType": "0"
+      "account": "1111111",
+      "type": 0,
+      "nature": 0,
+      "balance": 111.11,
+      "belongTo": 1
     },
     {
-      "bankFullName": "银行名称2",
-      "shortName": "银行简称2",
-      "accountBalance": "99.99",
-      "bankAccount": "bbbbbbb",
-      "areaType": "1",
-      "bankName": "1",
-      "accountStyle": "0",
-      "accountType": "1"
+      "cusId": "1",
+      "bankName": "银行名称12",
+      "shortName": "银行简称12",
+      "account": "11111112",
+      "type": 0,
+      "nature": 0,
+      "balance": 111.11,
+      "belongTo": 1
     }
   ]
 }
