@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @ClassName MapperTest
@@ -25,5 +27,18 @@ public class MapperTest {
     @Test
     void bdmTest(){
         bdmCustomerMapper.queryCustomerPage(new Page<>(),new QueryWrapper<BdmCustomer>());
+    }
+
+    @Test
+    void ztTest() {
+        String s = "12";//目标字符串
+        String regex = "/\\S/";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(s);
+        if (m.matches()) {
+            System.out.println("匹配");
+        } else {
+            System.out.println("不匹配");
+        }
     }
 }
