@@ -27,7 +27,7 @@ public class SysBank extends BaseEntity {
     /**
      * 客商ID
      */
-    @Pattern(regexp = "/[^\\d]/g",message = "客商ID只能输入数字，请传入",groups = Add.class)
+    @Pattern(regexp = "-?[1-9]\\d*",message = "客商ID只能输入数字请传入",groups = Add.class)
     private Long cusId;
 
     /**
@@ -75,7 +75,7 @@ public class SysBank extends BaseEntity {
     /**
      * 账户余额
      */
-    @Pattern(regexp = "/(^[1-9]([0-9]+)?(\\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\\.[0-9]([0-9])?$)/",message = "最多输入两位小数",groups = Add.class)
+   // @Pattern(regexp = "/-?[1-9]\\d*/,",message = "最多输入两位小数",groups = Add.class)
     private BigDecimal balance;
 
     /**

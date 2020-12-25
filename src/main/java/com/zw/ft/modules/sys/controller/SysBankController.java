@@ -76,7 +76,6 @@ public class SysBankController {
      */
     @PostMapping("/addBank")
     public R addBank(@RequestBody(required = false) @Validated(BaseEntity.Add.class) SysBank sysBank) {
-        //SysBank sysBank = Convert.convert(SysBank.class, params);
         sysBankService.save(sysBank);
         return R.ok("添加成功");
     }
