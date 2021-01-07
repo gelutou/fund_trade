@@ -118,24 +118,36 @@ token:07953581ecbb2e4f93be6da50f570812
 ###
 POST http://localhost:8091/ft/bdm-customer/add
 Content-Type: application/json
-token:eacd8aa8b0cdad1febf28a1c5f8877f9
+token:29c156be8d9e66da23d110815e6f026b
 
 {
   "banks": [
     {
-      "account": "3",
-      "belongTo": "3",
-      "remark": "3",
+      "account": "41",
+      "belongTo": "41",
+      "remark": "41",
       "isCustomerDefault": "0"
+    },
+    {
+      "account": "42",
+      "belongTo": "42",
+      "remark": "42",
+      "isCustomerDefault": "0"
+    },
+    {
+      "account": "43",
+      "belongTo": "43",
+      "remark": "43",
+      "isCustomerDefault": "1"
     }
   ],
-  "code": "003",
-  "name": "3",
-  "shortname": "3",
+  "code": "004",
+  "name": "4",
+  "shortname": "4",
   "type": 1,
-  "area": "水电费",
-  "contactName": "我都是",
-  "contactPhone": "15567777777"
+  "area": "sfs",
+  "contactName": "df",
+  "contactPhone": "15566666666"
 }
 
 ###

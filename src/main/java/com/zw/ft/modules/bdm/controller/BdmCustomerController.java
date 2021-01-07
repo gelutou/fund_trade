@@ -72,7 +72,7 @@ public class BdmCustomerController extends AbstractController {
             int time = 0;
             for(SysBank bank : banks){
                 Integer isCustomerDefault = bank.getIsCustomerDefault();
-                if(isCustomerDefault == 0){
+                if(isCustomerDefault == 1){
                     time++;
                 }
             }
