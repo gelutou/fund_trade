@@ -1,4 +1,4 @@
-package com.zw.ft.auto;
+package com.zw.ft.auto.Oliver;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.FieldFill;
@@ -21,11 +21,11 @@ import java.util.ArrayList;
  * @Date 2020/8/17 16:00
  * @Version 1.0
  **/
-public class CodeGenerator_BDM {
+public class CodeGenerator {
 
     public static void main(String[] args) {
         //设置要映射的表名
-        String setInclude = "bdm_warehouse";
+        String setInclude = "sys_bank";
 
         AutoGenerator autoGenerator = new AutoGenerator();
         GlobalConfig globalConfig = new GlobalConfig();
@@ -34,7 +34,7 @@ public class CodeGenerator_BDM {
         //输出目录
         globalConfig.setOutputDir(currentPath+"/src/main/java");
         //作者
-        globalConfig.setAuthor("Savior");
+        globalConfig.setAuthor("Oliver");
         //是否打开资源管理器
         globalConfig.setOpen(false);
         //是否覆盖之前代码
@@ -59,7 +59,7 @@ public class CodeGenerator_BDM {
         //包的配置
         PackageConfig packageConfig = new PackageConfig();
         //packageConfig.setModuleName("blog");
-        packageConfig.setParent("com.zw.ft.modules.bdm");
+        packageConfig.setParent("com.zw.ft.modules.sys");
         packageConfig.setEntity("entity");
         packageConfig.setMapper("repository");
         packageConfig.setController("controller");
@@ -87,7 +87,7 @@ public class CodeGenerator_BDM {
         tableField.add(gmtModified);
         strategy.setTableFillList(tableField);
         //乐观锁
-        //strategy.setVersionFieldName("version");
+        strategy.setVersionFieldName("version");
         //restful 格式
         strategy.setRestControllerStyle(true);
         //url 设置成下划线

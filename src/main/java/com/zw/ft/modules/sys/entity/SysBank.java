@@ -27,7 +27,7 @@ public class SysBank extends BaseEntity {
     /**
      * 客商ID
      */
-    @NotNull
+    @NotNull(message = "客商ID不能为空",groups = Add.class)
     private Long cusId;
 
     /**
@@ -165,6 +165,11 @@ public class SysBank extends BaseEntity {
      * 网银系统
      */
     private String internetBank;
+
+    /**
+     * 是否是客商默认银行
+     */
+    private Integer isCustomerDefault;
 
     /**
      * 网银单笔

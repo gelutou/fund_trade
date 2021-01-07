@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 /**
  * <p>
  * 银行信息表 Mapper 接口
@@ -35,4 +37,8 @@ public interface SysBankMapper extends BaseMapper<SysBank> {
             "LEFT JOIN (SELECT * FROM sys_dictionary WHERE p_id = (SELECT ID FROM sys_dictionary WHERE name = 'CURRENCY_TYPE' AND value IS NULL)) sd5 ON sd5.value=su.currency_type " +
             "${ew.customSqlSegment}")
     Page<SysBank> querySysBankPageByComId(Page<SysBank> page, @Param("ew") QueryWrapper<SysBank> queryWrapper);
+
+
+    @Select("SELECT * FROM sys_bank WHERE cus_id = #{cusId}")
+    List<SysBank> queryBanksUnderCustomer(@Param("cusId") Long cusId);
 }
