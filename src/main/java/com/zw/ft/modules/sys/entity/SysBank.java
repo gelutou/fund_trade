@@ -60,17 +60,11 @@ public class SysBank extends BaseEntity {
     @NotNull(message = "账户类别必填",groups = Add.class)
     private Integer type;
 
-    @TableField(exist = false)
-    private String typeDes;
-
     /**
      * 账户性质
      */
     @NotNull(message = "账户性质必填",groups = Add.class)
     private Integer nature;
-
-    @TableField(exist = false)
-    private String natureDes;
 
     /**
      * 账户余额
@@ -83,9 +77,6 @@ public class SysBank extends BaseEntity {
      */
     @NotNull(message = "银行地区分类必填",groups = Add.class)
     private Integer area;
-
-    @TableField(exist = false)
-    private String areaDes;
 
     /**
      * 备注
@@ -102,7 +93,7 @@ public class SysBank extends BaseEntity {
      * 用户名称
      */
     @TableField(exist = false)
-    private String username;
+    private String creator;
 
     /**
      * @description: 数据来源 0资金 1商贸
@@ -125,9 +116,6 @@ public class SysBank extends BaseEntity {
     @NotNull(message = "所属银行必填",groups = Add.class)
     private Integer belongTo;
 
-    @TableField(exist = false)
-    private String belongToDes;
-
     /**
      * 开户行地址
      */
@@ -147,9 +135,6 @@ public class SysBank extends BaseEntity {
      * 币种
      */
     private Integer currencyType;
-
-    @TableField(exist = false)
-    private String currencyTypeDes;
 
     /**
      * 网银存放处

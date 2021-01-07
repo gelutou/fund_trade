@@ -34,8 +34,8 @@ public class SysBankController {
      * @Description 分页查询银行基本信息
      * @Date: 2020/9/28
      */
-    @PostMapping("/bankall")
-    public R Banckall(@RequestBody Map<String, Object> params) {
+    @PostMapping("/query")
+    public R query(@RequestBody Map<String, Object> params) {
         return R.page(sysBankService.getBank(params));
     }
 
@@ -76,7 +76,6 @@ public class SysBankController {
      */
     @PostMapping("/addBank")
     public R addBank(@RequestBody(required = false) @Validated(BaseEntity.Add.class) SysBank sysBank) {
-        //SysBank sysBank = Convert.convert(SysBank.class, params);
         sysBankService.save(sysBank);
         return R.ok("添加成功");
     }

@@ -1,9 +1,10 @@
-POST http://localhost:8091/ft/sys-bank/bankall
+POST http://localhost:8091/ft/sys-bank/query
 Content-Type: application/json
-token:ae4b6e1340cd50474e99e2d4b4d966d7
+token:29c156be8d9e66da23d110815e6f026b
 
 {
-  "type":"2"
+  "cusId": "2194",
+  "pageSize": 1
 }
 
 ###
