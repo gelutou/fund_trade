@@ -1,9 +1,67 @@
-POST http://localhost:8091/ft/sys-bank/bankall
+POST http://localhost:80/api/item
 Content-Type: application/json
-token:ae4b6e1340cd50474e99e2d4b4d966d7
 
 {
-  "type":"2"
+  "id": "银行id",
+  "cusId": "客商ID",
+  "code": "银行编码",
+  "bankName": "开户行全称",
+  "shortName": "银行简称",
+  "account": "银行账户",
+  "type": "账户类别,0 A,1 B,2 现金,3 贴现",
+  "nature": "账户性质",
+  "balance":" 账户余额",
+  "area": "银行地区分类",
+  "remark":" 备注",
+  "taxNumber": "税号",
+  "belongTo": "所属银行",
+  "address": "开户行地址",
+  "contactUser": "银行联系人",
+  "contactNumber": "联系电话",
+  "currencyType": "币种",
+  "storage": "网银存放处",
+  "accountingPhone": "银行会计窗口电话",
+  "internetBank":" 网银系统",
+  "internetSingle": "网银单笔",
+  "internetAccumulate":" 网银累计",
+  "internetCloseTime": "网银关闭时间",
+  "internetIsRelated": "网银是否关联",
+  "internetIsOpenElectric": "是否开通电票系统",
+  "internetExpirationTime": "网银到期时间",
+  "largeLineNumber": "大额行号",
+  "isPreparePosition":"当天进出款是否备头寸",
+  "preparePositionOut":" 当天走款多少万需备头寸",
+  "preparePositionContactUser": "备头寸联系人",
+  "largeVerifyUser": "大额核实人",
+  "hasElectric": "是否有电汇单",
+  "hasBill": "是否有支票",
+  "hasSeal": "是否盖章",
+  "unuseTime": "久悬期限",
+  "accountIsCheck":"账户是否年检",
+  "cardDate": "证照日期",
+  "sealDate": "印鉴日期",
+  "proofDate": "凭证日期",
+  "idCard": "身份证",
+  "accordAmount": "协定存款金额",
+  "accordDate": "协定期限",
+  "accordRate": "协定存款利率",
+  "hasAccountManage": "是否具有管户权",
+  "electricSys": "电票系统",
+  "isNewSeal": "是否新印鉴",
+  "internetBalance": "网银对账",
+  "hasPasswordAuth": "是否有支付密码器",
+  "printBalance": "打印对账单",
+  "printBack": "打印回单",
+  "businessContactUser": "业务联系人"
+}
+
+###
+POST http://localhost:8091/ft/sys-bank/bankall
+Content-Type: application/json
+token:29c156be8d9e66da23d110815e6f026b
+
+{
+  "bankName": "sdsd"
 }
 
 ###

@@ -37,7 +37,7 @@ public class SysCargoInfo extends BaseEntity {
     /**
      * 货品分类ID
      */
-    //@Pattern(regexp = "/^\\d+$|^\\d+[.]?\\d+$/",message = "只能输入数字 请传入货品分类ID",groups = Add.class)
+    @NotNull(message = "请传入货品分类ID",groups = Add.class)
     private String categoryPkid;
     /**
      * 铝厂

@@ -1,0 +1,49 @@
+POST http://localhost:8091/ft/storage-expense-type/delete/29
+Content-Type: application/json
+token:07953581ecbb2e4f93be6da50f570812
+
+{}
+
+###
+POST http://localhost:8091/ft/storage-expense-type/add
+Content-Type: application/json
+token:07953581ecbb2e4f93be6da50f570812
+
+{
+  "parentId": 1,
+  "code": "007",
+  "name": ""
+}
+
+###
+POST http://localhost:8091/ft/storage-expense-type/update
+Content-Type: application/json
+token:07953581ecbb2e4f93be6da50f570812
+
+{
+  "id": "5",
+  "code": "仓储费"
+}
+
+###
+POST http://localhost:8091/ft/storage-expense-type/query/5
+Content-Type: application/json
+token:07953581ecbb2e4f93be6da50f570812
+
+{}
+
+###
+POST http://localhost:8091/ft/storage-expense-type/querytree
+Content-Type: application/json
+token:07953581ecbb2e4f93be6da50f570812
+
+{}
+
+###
+POST http://localhost:8091/ft/storage-expense-type/delete/{id}
+Content-Type: application/json
+token:07953581ecbb2e4f93be6da50f570812
+
+{}
+
+###
