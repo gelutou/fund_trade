@@ -13,8 +13,6 @@ import com.zw.ft.modules.sys.oauth2.OAuth2Token;
 import com.zw.ft.modules.sys.redis.RedisService;
 import com.zw.ft.modules.sys.service.SysUserService;
 import com.zw.ft.modules.sys.service.SysUserTokenService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,7 +30,6 @@ import javax.annotation.Resource;
  **/
 @RestController
 @RequestMapping(value = "/ft/sys/")
-@Api(tags = "系统登录")
 public class LoginController extends AbstractController {
 
     @Resource
@@ -52,7 +49,6 @@ public class LoginController extends AbstractController {
      * @Date: 2020/9/19 22:17
      */
     @PostMapping("/login/{username}/{password}")
-    @ApiOperation(value = "登录")
     public R login(@PathVariable("username") String username, @PathVariable("password") String password) {
         //判断有无此用户
         QueryWrapper<SysUser> entityQueryWrapper = new QueryWrapper<>();

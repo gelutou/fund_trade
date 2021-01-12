@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 /**
  * <p>
  * 银行信息表 Mapper 接口
@@ -19,20 +21,19 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface SysBankMapper extends BaseMapper<SysBank> {
 
-    @Select("SELECT su.*,bc.`name` AS cusName,us.username," +
-            "sd1.`des` as typeDes," +
-            "sd2.`des` as natureDes," +
-            "sd3.`des` as areaDes," +
-            "sd4.`des` as belongToDes," +
-            "sd5.`des` as currencyTypeDes " +
-            "FROM sys_bank su " +
-            "LEFT JOIN bdm_customer bc ON bc.ID = su.cus_id " +
-            "LEFT JOIN sys_user us ON us.ID=su.CREATED_BY " +
-            "LEFT JOIN sys_dictionary sd1 ON sd1.`value`=su.type " +
-            "LEFT JOIN sys_dictionary sd2 ON sd2.`value`=su.nature " +
-            "LEFT JOIN sys_dictionary sd3 ON sd3.`value`=su.area " +
-            "LEFT JOIN sys_dictionary sd4 ON sd4.`value`=su.belong_to " +
-            "LEFT JOIN (SELECT * FROM sys_dictionary WHERE p_id = (SELECT ID FROM sys_dictionary WHERE name = 'CURRENCY_TYPE' AND value IS NULL)) sd5 ON sd5.value=su.currency_type " +
-            "${ew.customSqlSegment}")
-    Page<SysBank> querySysBankPageByComId(Page<SysBank> page, @Param("ew") QueryWrapper<SysBank> queryWrapper);
+
+    /**
+     * 功能描述 : 银行信息查询
+     * @return 银行分页
+     * @author Oliver 2021-1-7 15:06
+     */
+    @Select("SELECT su.*, bc.name cusName, us.realname creator FROM sys_bank su " +
+            " LEFT JOIN bdm_customer bc ON bc.ID = su.cus_id" +
+            " LEFT JOIN sys_user us ON us.ID = su.CREATED_BY" +
+            " AND su.deleted = 0 ${ew.customSqlSegment}")
+    Page<SysBank> querySysBankPageByWrapper(Page<SysBank> page, @Param("ew") QueryWrapper<SysBank> queryWrapper);
+
+
+    @Select("SELECT * FROM sys_bank WHERE cus_id = #{cusId}")
+    List<SysBank> queryBanksUnderCustomer(@Param("cusId") Long cusId);
 }

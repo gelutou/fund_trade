@@ -68,6 +68,17 @@ public class BdmCustomerController extends AbstractController {
 
         List<SysBank> banks = bdmCustomer.getBanks();
         if(banks.size() > 0){
+            //校验只能有一个默认银行
+            int time = 0;
+            for(SysBank bank : banks){
+                Integer isCustomerDefault = bank.getIsCustomerDefault();
+                if(isCustomerDefault == 1){
+                    time++;
+                }
+            }
+            if(time > 1){
+                return R.error("只能设置一个默认银行");
+            }
             for(SysBank bank : banks){
                 bank.setCusId(bdmCustomer.getId());
                 bankService.save(bank);
@@ -90,6 +101,17 @@ public class BdmCustomerController extends AbstractController {
         bdmCustomerService.updateById(bdmCustomer);
         List<SysBank> banks = bdmCustomer.getBanks();
         if(banks.size() > 0){
+
+            //校验只能有一个默认银行
+            for(SysBank bank : banks){
+                Integer isCustomerDefault = bank.getIsCustomerDefault();
+                for(SysBank bankTemp : banks){
+                    Integer isCustomerDefault1 = bankTemp.getIsCustomerDefault();
+                    if(isCustomerDefault == 0 && isCustomerDefault1 == 0){
+                        return R.error("只能设置一个默认银行");
+                    }
+                }
+            }
             for(SysBank bank : banks){
                 bankService.updateById(bank);
             }
