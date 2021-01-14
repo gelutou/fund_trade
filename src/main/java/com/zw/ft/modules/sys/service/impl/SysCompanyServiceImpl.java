@@ -51,7 +51,7 @@ public class SysCompanyServiceImpl extends ServiceImpl<SysCompanyMapper, SysComp
         companyQueryWrapper.eq("deleted", "0");
         String shortname = FormatUtil.isSelectKey("shortname", params);
         if (Constant.TRUE.equals(shortname)) {
-            companyQueryWrapper.like("com_code", params.get("shortname")).or().like("com_name", params.get("shortname"));
+            companyQueryWrapper.like("acronym", params.get("shortname")).or().like("name", params.get("shortname"));
         }
         if (Constant.ADMIN.equals(username)) {
             return sysCompanyMapper.selectList(companyQueryWrapper);

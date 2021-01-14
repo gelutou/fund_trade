@@ -1,6 +1,7 @@
 package com.zw.ft.modules.sys.controller;
 
 import cn.hutool.core.util.RandomUtil;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.digest.DigestAlgorithm;
 import cn.hutool.crypto.digest.Digester;
@@ -13,6 +14,7 @@ import com.zw.ft.modules.sys.oauth2.OAuth2Token;
 import com.zw.ft.modules.sys.redis.RedisService;
 import com.zw.ft.modules.sys.service.SysUserService;
 import com.zw.ft.modules.sys.service.SysUserTokenService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +32,7 @@ import javax.annotation.Resource;
  **/
 @RestController
 @RequestMapping(value = "/ft/sys/")
+@Slf4j
 public class LoginController extends AbstractController {
 
     @Resource
@@ -95,6 +98,7 @@ public class LoginController extends AbstractController {
             }
             OAuth2Token oAuth2Token = new OAuth2Token(newToken);
             SecurityUtils.getSubject().login(oAuth2Token);
+            logger.info(StrUtil.format("{} 登录成功",username));
             return R.ok(newToken);
         } else {
             return R.error("密码错误");
