@@ -30,7 +30,7 @@ public interface SysBankMapper extends BaseMapper<SysBank> {
     @Select("SELECT su.*, bc.name cusName, us.realname creator FROM sys_bank su " +
             " LEFT JOIN bdm_customer bc ON bc.ID = su.cus_id" +
             " LEFT JOIN sys_user us ON us.ID = su.CREATED_BY" +
-            " AND su.deleted = 0 ${ew.customSqlSegment}")
+            " ${ew.customSqlSegment}")
     Page<SysBank> querySysBankPageByWrapper(Page<SysBank> page, @Param("ew") QueryWrapper<SysBank> queryWrapper);
 
 

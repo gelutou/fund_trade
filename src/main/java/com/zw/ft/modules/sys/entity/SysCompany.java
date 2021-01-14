@@ -25,23 +25,23 @@ public class SysCompany extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /**
-     * @description: 公司代码
+     * @description: 公司名称首字母缩略词
      */
-    @NotNull(message = "公司代码必填",groups = Add.class)
+    @NotNull(message = "公司名称首字母缩略词必填",groups = Add.class)
     @Pattern(regexp = "^[0-9a-zA-Z]+$",message = "只能输入英文和数字",groups = Update.class)
-    private String comCode;
+    private String acronym;
 
     /**
      * @description: 公司名称
      */
     @NotNull(message = "公司名称必填",groups = Add.class)
-    private String comName;
+    private String name;
 
     /**
      * @description: 公司简称
      */
-    @NotNull(message = "公司名称必填",groups = Add.class)
-    private String shortComName;
+    @NotNull(message = "公司简称必填",groups = Add.class)
+    private String shortName;
 
     /**
      * @description: 联系人
@@ -80,17 +80,20 @@ public class SysCompany extends BaseEntity {
     private String mobile;
 
     /**
-     * @description: 公司类型 1内部 2 外部 3 仓储 4集团
+     * @description: 公司类型 1内部 2 外部 3 仓储 4集团  COMPANY_TYPE
      */
     @NotNull(message = "公司类型必填",groups = Add.class)
-    private Integer status;
+    private Integer type;
+
+    /**
+     * @description: 税号
+     */
+    private String taxNumber;
 
     /**
      * @description: 数据来源 0资金 1商贸
      */
     private Integer fundOrTrade;
-
-    private String taxNumber;
 
     /**
      * @description: 旧公司ID，上线后删除

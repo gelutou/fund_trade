@@ -72,6 +72,7 @@ public class SysBankServiceImpl extends ServiceImpl<SysBankMapper, SysBank> impl
         } else if ("".equals(nature)) {
             queryWrapper.eq("su.nature", "");
         }
+        queryWrapper.eq("su.deleted",0);
         queryWrapper.orderByAsc("su.UPDATED_time","su.CREATED_TIME");
         return sysBankMapper.querySysBankPageByWrapper(page, queryWrapper);
     }

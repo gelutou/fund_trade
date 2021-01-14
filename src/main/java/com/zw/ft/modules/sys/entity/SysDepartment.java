@@ -33,12 +33,12 @@ public class SysDepartment extends BaseEntity {
     /**
      * 部门名称
      */
-    private String deptName;
+    private String name;
 
     /**
      * @description: 表示此部门是几级部门 1 = 一级部门
      */
-    private Integer deptLevel;
+    private Integer level;
 
     /**
      * 状态
@@ -48,7 +48,7 @@ public class SysDepartment extends BaseEntity {
     /**
      * 部门负责人
      */
-    private String leader;
+    private Integer leader;
 
     /**
      * 旧的部门PKID，只用于合并数据，系统上线后删除
@@ -56,6 +56,6 @@ public class SysDepartment extends BaseEntity {
     private String oldPkidWilldel;
 
     @TableField(exist = false)
-    private SysCompany comName;
+    private SysCompany company;
 
 }

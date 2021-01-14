@@ -84,6 +84,11 @@ public class CoContract extends BaseEntity {
     private String expiryDate;
 
     /**
+     * 币种
+     */
+    private Integer currency;
+
+    /**
      * 部门ID
      */
     private Long deptId;
@@ -94,7 +99,7 @@ public class CoContract extends BaseEntity {
     private Long userId;
 
     /**
-     * 类型 1采购合同 2销售合同 3仓储合同
+     * 类型 1采购合同 2销售合同 3仓储合同 CONTRACT_TYPE
      */
     private Integer type;
 
@@ -137,6 +142,17 @@ public class CoContract extends BaseEntity {
      * 收货单位
      */
     private String receiverUnit;
+
+    /**
+     * 收货人
+     */
+    private String receiverName;
+
+    /**
+     * 收货人电话
+     */
+    private String receiverPhone;
+
 
     /**
      * 货物数量

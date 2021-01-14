@@ -44,7 +44,7 @@ public class SysUserExpansion extends BaseEntity {
     /**
      * @description: 生日
      */
-    private Date birthday;
+    private String birthday;
     /**
      * @description: 所属省份
      */

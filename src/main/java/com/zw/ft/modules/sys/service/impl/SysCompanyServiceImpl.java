@@ -32,8 +32,6 @@ public class SysCompanyServiceImpl extends ServiceImpl<SysCompanyMapper, SysComp
 
     @Resource
     SysCompanyMapper sysCompanyMapper;
-    @Resource
-    SysUserMapper userMapper;
 
     /**
      * 功能描述: <br>

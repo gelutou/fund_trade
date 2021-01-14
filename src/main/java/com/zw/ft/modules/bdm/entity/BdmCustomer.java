@@ -1,5 +1,6 @@
 package com.zw.ft.modules.bdm.entity;
 
+import com.alibaba.fastjson.JSONArray;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.zw.ft.common.base.BaseEntity;
@@ -10,6 +11,7 @@ import lombok.EqualsAndHashCode;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -47,6 +49,8 @@ public class BdmCustomer extends BaseEntity {
     /**
      * 税务号码
      */
+    @NotNull(message = "请传入税务号码",groups = Add.class)
+    @Pattern(regexp = "^^[0-9a-zA-Z]+$",message = "请传入正确的税务号码：数字和字母",groups = Add.class)
     private String taxNum;
 
     /**
@@ -106,7 +110,12 @@ public class BdmCustomer extends BaseEntity {
     /**
      * 银行
      */
-
     @TableField(exist = false)
     private List<SysBank> banks;
+
+    /**
+     * 银行id和是否默认Map
+     */
+    @TableField(exist = false)
+    private JSONArray bankIdAndIsDefault;
 }

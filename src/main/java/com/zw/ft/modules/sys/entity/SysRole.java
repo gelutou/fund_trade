@@ -1,5 +1,6 @@
 package com.zw.ft.modules.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.zw.ft.common.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,17 +16,18 @@ import java.util.List;
  **/
 @EqualsAndHashCode(callSuper = true)
 @Data
+@TableName(value = "sys_role")
 public class SysRole extends BaseEntity {
 
     private static final long serialVersionUID = 2102161014072264011L;
     /**
      * @description: 角色编号
      */
-    private String roleCode;
+    private String code;
     /**
-     * @description: 角色编号
+     * @description: 角色名称
      */
-    private String roleName;
+    private String name;
 
     /**
      * @description: 用户集合
