@@ -19,7 +19,9 @@ public class SysCargoMonthPrice extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @TableField("CUS_PKID")
+    /**
+     * 客商id
+     */
     private String cusPkid;
 
     /**

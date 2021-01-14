@@ -37,7 +37,7 @@ public class SysPermission extends BaseEntity {
     /**
      * @description: 父菜单ID
      */
-    private long parentId;
+    private Long parentId;
     /**
      * @description: 权限
      */

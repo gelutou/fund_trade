@@ -44,7 +44,6 @@ public class SysCargoCategory extends BaseEntity {
     /**
      * 状态
      */
-    @TableField("STATUS")
     private Integer status;
 
     private Integer flagSort;

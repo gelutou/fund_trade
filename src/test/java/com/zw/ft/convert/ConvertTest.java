@@ -43,7 +43,7 @@ public class ConvertTest {
         String[] convert1 = Convert.convert(String[].class, aa);
         QueryWrapper<SysBank> bankQueryWrapper = new QueryWrapper<>();
         bankQueryWrapper.in("scy.id", convert1);
-        Page<SysBank> sysBankPage = sysBankMapper.querySysBankPageByComId(new Page<>(), bankQueryWrapper);
+        Page<SysBank> sysBankPage = sysBankMapper.querySysBankPageByWrapper(new Page<>(), bankQueryWrapper);
         List<SysBank> records = sysBankPage.getRecords();
         records.forEach(System.out::println);
     }

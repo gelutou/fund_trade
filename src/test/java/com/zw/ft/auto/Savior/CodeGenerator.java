@@ -1,4 +1,4 @@
-package com.zw.ft.auto;
+package com.zw.ft.auto.Savior;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.FieldFill;

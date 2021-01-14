@@ -35,7 +35,7 @@ public interface BdmCustomerMapper extends BaseMapper<BdmCustomer> {
             @Result(column = "id", property = "id"),
             @Result(column = "id", property = "banks",
                     many = @Many(
-                            select = "com.zw.ft.modules.sys.repository.SysBankMapper.queryBanksUnderCompany",fetchType = FetchType.EAGER
+                            select = "com.zw.ft.modules.sys.repository.SysBankMapper.queryBanksUnderCustomer",fetchType = FetchType.EAGER
                     )
             )
     })

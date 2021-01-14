@@ -12,6 +12,8 @@ server:
             min-spare: 5
 
 spring:
+    application:
+        name: fund_trade
     # 环境 dev|prod
     profiles:
         active: dev

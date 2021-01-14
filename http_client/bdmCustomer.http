@@ -1,3 +1,12 @@
+POST http://192.168.3.222:8888/Trade/baseData/getBaseData
+Content-Type: application/json
+late_token:2d51deee26c62d3530a771c62d54420b
+
+{
+  "pageSize": "30"
+}
+
+###
 POST http://localhost:8091/ft/bdm-customer/export
 Content-Type: application/json
 token:28545823f7fbe4cd0550a212b6c2169c
@@ -25,39 +34,83 @@ token:b778d40a6c24814aa1197ad7da83b7c7
 
 {
   "ids": [
-    1,2
+    1,
+    2
   ]
 }
 
 ###
 POST http://localhost:8091/ft/bdm-customer/update
 Content-Type: application/json
-token:bd1f683fb8b7de0638bfd7d534b5a137
+token:07953581ecbb2e4f93be6da50f570812
 
 {
   "id": 1,
+  "comId": 1,
+  "code": "CODE",
   "name": "上海五锐金属集团有限公司_UPDATE",
+  "shortname": "shortname",
+  "type": 1,
+  "area": "客商地址",
+  "taxNum": "111",
+  "contactName": "张",
+  "contactPhone": "13513511234",
+  "contactEmail": "xxxx@163.com",
+  "contactPosition": "财务",
   "banks": [
     {
-      "id": 17,
+      "id": 15,
+      "cusId": 15,
+      "code": "CODE",
       "bankFullName": "银行名称1修改",
       "shortName": "银行简称1",
-      "accountBalance": "100.22",
-      "bankAccount": "aaaaaaa",
-      "areaType": "0",
-      "bankName": "0",
-      "accountStyle": "0",
-      "accountType": "0"
-    },
-    {
-      "bankFullName": "银行名称2",
-      "shortName": "银行简称2",
-      "accountBalance": "99.99",
-      "bankAccount": "bbbbbbb",
-      "areaType": "1",
-      "bankName": "1",
-      "accountStyle": "0",
-      "accountType": "1"
+      "account": "10022000225554455",
+      "type": 0,
+      "nature": 0,
+      "balance": 100.22,
+      "belongTo": 0,
+      "area": 0,
+      "isCustomerDefault": 0,
+      "remark": "备注",
+      "taxNumber": "10022000225554455",
+      "address": "开户地址",
+      "contactUser": "银行联系人",
+      "contactNumber": "10210211025",
+      "currencyType": 0,
+      "storage": "网银存放处",
+      "accountingPhone": "10210211025",
+      "internetBank": "网银系统",
+      "internetSingle": 1.11,
+      "internetAccumulate": "网银累计",
+      "internetCloseTime": "2020-01-01 12:12:12",
+      "internetIsRelated": 0,
+      "internetIsOpenElectric": 0,
+      "internetExpirationTime": "2020-01-01 12:12:12",
+      "largeLineNumber": "10022000225554455",
+      "isPreparePosition": 1.11,
+      "preparePositionOut": 1.11,
+      "preparePositionContactUser": "备头寸联系人",
+      "largeVerifyUser": "大额核实人",
+      "hasBill": 0,
+      "hasElectric": 0,
+      "hasSeal": 0,
+      "unuseTime": "2020-01-01 12:12:12",
+      "accountIsCheck": 0,
+      "cardDate": "2020-01-01 12:12:12",
+      "sealDate": "2020-01-01 12:12:12",
+      "proofDate": "2020-01-01 12:12:12",
+      "idCard": "130130133113131313",
+      "accordAmount": 1.11,
+      "accordDate": "2020-01-01 12:12:12",
+      "accordRate": 1.11,
+      "hasAccountManage": 0,
+      "electricSys": "点票系统",
+      "isNewSeal": 0,
+      "internetBalance": "网银对账",
+      "hasPasswordAuth": 0,
+      "printBalance": "打印对账单",
+      "printBack": "打印回单",
+      "businessContactUser": "业务联系人"
     }
   ]
 }
@@ -65,36 +118,25 @@ token:bd1f683fb8b7de0638bfd7d534b5a137
 ###
 POST http://localhost:8091/ft/bdm-customer/add
 Content-Type: application/json
-token:bd1f683fb8b7de0638bfd7d534b5a137
+token:d5d9afcb2e5fc45702daf0c0fd538556
 
 {
-
-  "name": "测试更新客商",
-  "code": "UPDATETEST",
-  "shortname": "测试更新客商简称",
-  "type": "1",
-  "area": "上海",
-  "banks": [
+  "code": "004112",
+  "name": "4",
+  "shortname": "4",
+  "type": 1,
+  "area": "sfs",
+  "contactName": "df",
+  "contactPhone": "15566666666",
+  "taxNum": "1111",
+  "bankIdAndIsDefault": [
     {
-      "cusId": "1",
-      "code": "12222",
-      "bankName": "银行名称1",
-      "shortName": "银行简称1",
-      "account": "1111111",
-      "type": 0,
-      "nature": 0,
-      "balance": 111.11,
-      "belongTo": 1
+      "id": 13,
+      "isDefault": 0
     },
     {
-      "cusId": "1",
-      "bankName": "银行名称12",
-      "shortName": "银行简称12",
-      "account": "11111112",
-      "type": 0,
-      "nature": 0,
-      "balance": 111.11,
-      "belongTo": 1
+      "id": 14,
+      "isDefault": 1
     }
   ]
 }
@@ -102,10 +144,9 @@ token:bd1f683fb8b7de0638bfd7d534b5a137
 ###
 POST http://localhost:8091/ft/bdm-customer/query
 Content-Type: application/json
-token:b778d40a6c24814aa1197ad7da83b7c7
+token:d5d9afcb2e5fc45702daf0c0fd538556
 
 {
-  "id": "1"
 }
 
 ###

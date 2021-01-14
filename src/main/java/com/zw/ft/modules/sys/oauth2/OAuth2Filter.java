@@ -1,6 +1,6 @@
 package com.zw.ft.modules.sys.oauth2;
 
-import com.google.gson.Gson;
+import com.alibaba.fastjson.JSONObject;
 import com.zw.ft.common.utils.HttpContextUtils;
 import com.zw.ft.common.utils.R;
 import org.apache.commons.lang3.StringUtils;
@@ -45,8 +45,8 @@ public class OAuth2Filter extends AuthenticatingFilter {
             HttpServletResponse httpResponse = (HttpServletResponse) response;
             httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
             httpResponse.setHeader("Access-Control-Allow-Origin", HttpContextUtils.getOrigin());
-            String json = new Gson().toJson(R.error(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase()));
-            httpResponse.getWriter().print(json);
+            Object o = JSONObject.toJSON(R.error(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase()));
+            httpResponse.getWriter().print(o);
             return false;
         }
         return executeLogin(request, response);
@@ -60,9 +60,8 @@ public class OAuth2Filter extends AuthenticatingFilter {
         httpResponse.setHeader("Access-Control-Allow-Origin", HttpContextUtils.getOrigin());
         try {
             //处理登录失败的异常
-            R r = R.error(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase());
-            String json = new Gson().toJson(r);
-            httpResponse.getWriter().print(json);
+            Object o = JSONObject.toJSON(R.error(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase()));
+            httpResponse.getWriter().print(o);
         } catch (IOException e1) {
         }
         return false;
