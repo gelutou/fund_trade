@@ -1,8 +1,11 @@
 package com.zw.ft.modules.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.zw.ft.common.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.Version;
 import com.baomidou.mybatisplus.annotation.TableField;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * <p>
@@ -12,6 +15,9 @@ import com.baomidou.mybatisplus.annotation.TableField;
  * @author Oliver
  * @since 2020-09-30
  */
+@EqualsAndHashCode(callSuper = true)
+@TableName("model_configuration")
+@Data
 public class ModelConfiguration extends BaseEntity {
 
     private static final long serialVersionUID = -1135379310221837422L;
@@ -29,39 +35,4 @@ public class ModelConfiguration extends BaseEntity {
      * 描述
      */
     private String des;
-
-
-    public String getIdentification() {
-        return identification;
-    }
-
-    public void setIdentification(String identification) {
-        this.identification = identification;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getDes() {
-        return des;
-    }
-
-    public void setDes(String des) {
-        this.des = des;
-    }
-
-
-    @Override
-    public String toString() {
-        return "ModelConfiguration{" +
-                "identification=" + identification +
-                ", content=" + content +
-                ", des=" + des +
-                "}";
-    }
 }

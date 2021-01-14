@@ -118,42 +118,33 @@ token:07953581ecbb2e4f93be6da50f570812
 ###
 POST http://localhost:8091/ft/bdm-customer/add
 Content-Type: application/json
-token:29c156be8d9e66da23d110815e6f026b
+token:d5d9afcb2e5fc45702daf0c0fd538556
 
 {
-  "banks": [
-    {
-      "account": "41",
-      "belongTo": "41",
-      "remark": "41",
-      "isCustomerDefault": "0"
-    },
-    {
-      "account": "42",
-      "belongTo": "42",
-      "remark": "42",
-      "isCustomerDefault": "0"
-    },
-    {
-      "account": "43",
-      "belongTo": "43",
-      "remark": "43",
-      "isCustomerDefault": "1"
-    }
-  ],
-  "code": "004",
+  "code": "004112",
   "name": "4",
   "shortname": "4",
   "type": 1,
   "area": "sfs",
   "contactName": "df",
-  "contactPhone": "15566666666"
+  "contactPhone": "15566666666",
+  "taxNum": "1111",
+  "bankIdAndIsDefault": [
+    {
+      "id": 13,
+      "isDefault": 0
+    },
+    {
+      "id": 14,
+      "isDefault": 1
+    }
+  ]
 }
 
 ###
 POST http://localhost:8091/ft/bdm-customer/query
 Content-Type: application/json
-token:617830aa740c573dec4994934a229d25
+token:d5d9afcb2e5fc45702daf0c0fd538556
 
 {
 }

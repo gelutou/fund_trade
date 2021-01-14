@@ -15,17 +15,13 @@ import javax.validation.constraints.NotEmpty;
  * @author Oliver
  * @since 2020-11-03
  */
+@EqualsAndHashCode(callSuper = true)
 @TableName(value = "rel_user_department")
 @Data
-public class RelUserDepartment {
+public class RelUserDepartment extends BaseEntity{
 
     private static final long serialVersionUID = 7100356565731267027L;
 
-    /**
-     * @description: 主键ID
-     */
-    @TableId
-    private Long id;
     /**
      * 人员 人员ID
      */
@@ -36,30 +32,4 @@ public class RelUserDepartment {
      */
     private Integer deptId;
 
-    /**
-     * @description: 创建人ID
-     */
-
-    @TableField(fill = FieldFill.INSERT)
-    private Long createdBy;
-
-    /**
-     * @description: 创建时间
-     */
-
-    @NotEmpty(message = "创建时间不能为空")
-    private String createdTime;
-
-    /**
-     * @description: 修改人ID
-     */
-
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Long updatedBy;
-
-    /**
-     * @description: 修改时间
-     */
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private String updatedTime;
 }

@@ -2,6 +2,8 @@ package com.zw.ft.modules.bdm.controller;
 
 
 import cn.hutool.core.convert.Convert;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.SQLNonTransientException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,28 +67,42 @@ public class BdmCustomerController extends AbstractController {
 
     @RequestMapping(value = "/add")
     @Transactional(rollbackFor = Exception.class)
-    public R add(@RequestBody(required = false) @Validated(BaseEntity.Add.class) BdmCustomer bdmCustomer){
-        bdmCustomerService.save(bdmCustomer);
+    public R add(@RequestBody(required = false) @Validated(BaseEntity.Add.class) BdmCustomer bdmCustomer) {
 
-        List<SysBank> banks = bdmCustomer.getBanks();
-        if(banks.size() > 0){
-            //校验只能有一个默认银行
-            int time = 0;
-            for(SysBank bank : banks){
-                Integer isCustomerDefault = bank.getIsCustomerDefault();
-                if(isCustomerDefault == 1){
-                    time++;
-                }
-            }
-            if(time > 1){
-                return R.error("只能设置一个默认银行");
-            }
-            for(SysBank bank : banks){
-                bank.setCusId(bdmCustomer.getId());
-                bankService.save(bank);
+        //验证只能有一个默认银行
+        JSONArray bankIdAndIsDefault = bdmCustomer.getBankIdAndIsDefault();
+        int time = 0;
+        for(int i=0;i<bankIdAndIsDefault.size();i++){
+            JSONObject jsonObject = bankIdAndIsDefault.getJSONObject(i);
+            Integer isDefault = jsonObject.getInteger("isDefault");
+            if(isDefault == 1){
+                time++;
             }
         }
 
+        if(time > 1){
+            return R.error("只能设置一个默认银行");
+        }
+
+        //此处会抛SQLIntegrityConstraintViolationException异常给前端
+        try {
+            bdmCustomerService.save(bdmCustomer);
+        }catch (Exception ex){
+            Throwable cause = ex.getCause();
+            String[] split = cause.getMessage().split("'");
+            return R.error("'"+split[1]+"'已经在系统中录入，不能重复");
+
+        }
+        for(int i=0;i<bankIdAndIsDefault.size();i++){
+            JSONObject jsonObject = bankIdAndIsDefault.getJSONObject(i);
+            long id = jsonObject.getLong("id");
+            int isDefault = jsonObject.getInteger("isDefault");
+            SysBank bank = new SysBank();
+            bank.setIsCustomerDefault(isDefault);
+            bank.setId(id);
+            bank.setCusId(bdmCustomer.getId());
+            bankService.updateById(bank);
+        }
         return R.ok();
     }
 

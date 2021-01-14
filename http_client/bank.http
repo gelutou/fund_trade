@@ -1,9 +1,8 @@
 POST http://localhost:8091/ft/sys-bank/query
 Content-Type: application/json
-token:29c156be8d9e66da23d110815e6f026b
+token:d5d9afcb2e5fc45702daf0c0fd538556
 
 {
-  "cusId": "2194",
   "pageSize": 1
 }
 

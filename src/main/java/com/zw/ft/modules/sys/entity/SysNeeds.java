@@ -1,6 +1,7 @@
 package com.zw.ft.modules.sys.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.zw.ft.common.base.BaseEntity;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-/**
+/*
  * <p>
  * 系统需求表
  * </p>
@@ -18,6 +19,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
+@TableName(value = "sys_needs")
 public class SysNeeds extends BaseEntity {
 
     private static final long serialVersionUID = -6708994052557758569L;
