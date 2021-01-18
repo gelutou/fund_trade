@@ -52,10 +52,5 @@ public class BdmStorageExpenseType extends BaseEntity {
      */
     private String remark;
 
-    /**
-     * 公司ID
-     */
-    private String comId;
-
 
 }

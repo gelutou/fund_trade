@@ -33,8 +33,7 @@ public class BdmWarehouseServiceImpl extends ServiceImpl<BdmWarehouseMapper, Bdm
         QueryWrapper<BdmWarehouse> queryWrapper = new QueryWrapper<>();
         queryWrapper
                 .eq("bw.id",id)
-                .eq("sd.name","IS_VIRTUAL")
-                .eq("bw.DELETED",0);
+                .eq("bw.deleted",0);
         return bdmWarehouseMapper.getWarehouseId(queryWrapper);
     }
 }

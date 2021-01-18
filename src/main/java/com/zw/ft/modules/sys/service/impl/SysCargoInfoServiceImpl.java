@@ -58,9 +58,8 @@ public class SysCargoInfoServiceImpl extends ServiceImpl<SysCargoInfoMapper, Sys
                     .like("scc.category_name", params.get("keyWord"))
             );
         }
-        //SELECT * FROM TABLE WHERE KE01 LIKE() OR KEY02 LIKE OR (key03 like () AND key04 like())
         queryWrapper.eq("sci.deleted", 0);
-        queryWrapper.orderByDesc("sci.CREATED_TIME");
+        queryWrapper.orderByDesc("sci.created_time");
         return sysCargoInfoMapper.queryCargoInfo(page,queryWrapper);
     }
 
