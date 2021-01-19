@@ -96,11 +96,6 @@ public class SysBank extends BaseEntity {
     private String creator;
 
     /**
-     * @description: 数据来源 0资金 1商贸
-     */
-    private Integer fundOrTrade;
-
-    /**
      * @description: 税号
      */
     private String taxNumber;

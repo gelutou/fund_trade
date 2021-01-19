@@ -1,7 +1,10 @@
 package com.zw.ft.modules.sys.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.zw.ft.common.base.BaseEntity;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -14,6 +17,9 @@ import javax.validation.constraints.Pattern;
  * @author Savior
  * @since 2020-11-30
  */
+@EqualsAndHashCode(callSuper = true)
+@TableName(value = "sys_cargo_category")
+@Data
 public class SysCargoCategory extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -34,7 +40,7 @@ public class SysCargoCategory extends BaseEntity {
      * 上级货物分类ID
      */
     @NotNull(message = "请传入上级货物分类ID",groups = Add.class)
-    private String parentPkid;
+    private Long parentPkid;
 
     /**
      * 备注
@@ -42,96 +48,13 @@ public class SysCargoCategory extends BaseEntity {
     private String remark;
 
     /**
-     * 状态
+     * 货品分类状态
      */
-    @TableField("STATUS")
     private Integer status;
 
-    private Integer flagSort;
-
-    /**
-     * 公司ID
-     */
-    private String comId;
 
     //父级分类名称
     @TableField(exist = false)
     private String parentName;
 
-    public String getCategoryCode() {
-        return categoryCode;
-    }
-
-    public void setCategoryCode(String categoryCode) {
-        this.categoryCode = categoryCode;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
-    public String getParentPkid() {
-        return parentPkid;
-    }
-
-    public void setParentPkid(String parentPkid) {
-        this.parentPkid = parentPkid;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public Integer getFlagSort() {
-        return flagSort;
-    }
-
-    public void setFlagSort(Integer flagSort) {
-        this.flagSort = flagSort;
-    }
-
-    public String getComId() {
-        return comId;
-    }
-
-    public void setComId(String comId) {
-        this.comId = comId;
-    }
-
-    @Override
-    public String toString() {
-        return "SysCargoCategory{" +
-        "categoryCode=" + categoryCode +
-        ", categoryName=" + categoryName +
-        ", parentPkid=" + parentPkid +
-        ", remark=" + remark +
-        ", status=" + status +
-        ", flagSort=" + flagSort +
-        ", comId=" + comId +
-        "}";
-    }
-
-    public String getParentName() {
-        return parentName;
-    }
-
-    public void setParentName(String parentName) {
-        this.parentName = parentName;
-    }
 }

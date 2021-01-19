@@ -82,7 +82,6 @@ public class SysCargoCategoryController {
      */
     @PostMapping("/add_cargocategory")
     public R addCargoCategory(@RequestBody(required = false) @Validated(BaseEntity.Add.class) SysCargoCategory sysCargoCategory) {
-        Preconditions.checkNotNull(sysCargoCategory,"请传入货品分类信息！");
         sysCargoCategoryService.save(sysCargoCategory);
         return R.ok();
     }

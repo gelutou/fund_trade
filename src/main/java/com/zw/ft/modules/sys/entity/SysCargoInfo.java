@@ -37,8 +37,8 @@ public class SysCargoInfo extends BaseEntity {
     /**
      * 货品分类ID
      */
-    @Pattern(regexp = "/^\\d+$|^\\d+[.]?\\d+$/",message = "只能输入数字 请传入货品分类ID",groups = Add.class)
-    private String categoryPkid;
+    @NotNull(message = "请传入货品分类ID",groups = Add.class)
+    private Long categoryPkid;
     /**
      * 铝厂
      */
@@ -59,7 +59,7 @@ public class SysCargoInfo extends BaseEntity {
      * 计量单位
      */
 
-    private String cargoUnit;
+    private Integer cargoUnit;
 
     /**
      * 是否为库存货品 0:否  1:是
@@ -70,24 +70,6 @@ public class SysCargoInfo extends BaseEntity {
      * 备注
      */
     private String remark;
-    /**
-     * 状态
-     */
-    private Integer status;
-
-    /**
-     * 所属公司
-     */
-    private String comId;
-
-    private Integer flagSort;
-
-
-    /**
-     * 描述
-     */
-    @TableField(exist = false)
-    private String des;
 
     /**
      * 货品分类

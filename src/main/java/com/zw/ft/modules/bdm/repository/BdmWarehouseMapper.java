@@ -23,10 +23,10 @@ public interface BdmWarehouseMapper extends BaseMapper<BdmWarehouse> {
      * @Description 根据id获取仓库信息
      * @Date: 2020/12/17
      */
-    @Select("SELECT bw.*,ware.`name` AS parentName,bc.`name` as customer_name,sd.des AS isVirtualName " +
+    @Select("SELECT bw.*,ware.`name` AS parentName,bc.`name` as customer_name " +
             "FROM bdm_warehouse bw " +
             "LEFT JOIN bdm_customer bc ON bw.cus_id = bc.id " +
             "LEFT JOIN bdm_warehouse ware ON ware.id = bw.parent_id " +
-            "LEFT JOIN sys_dictionary sd ON sd.`value`=bw.is_virtual ${ew.customSqlSegment}")
+            "${ew.customSqlSegment}")
     BdmWarehouse getWarehouseId(@Param("ew") Wrapper<BdmWarehouse> queryWrapper);
 }

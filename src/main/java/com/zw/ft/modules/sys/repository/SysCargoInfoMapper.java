@@ -23,9 +23,7 @@ public interface SysCargoInfoMapper extends BaseMapper<SysCargoInfo> {
      * @Description 分页查询货品信息
      * @Date: 2020/11/19
      */
-    @Select("SELECT sci.*,dice.des,scc.category_name FROM sys_cargo_info sci " +
-            "LEFT JOIN (SELECT * FROM sys_dictionary " +
-            "WHERE p_id = (SELECT ID FROM sys_dictionary WHERE name = 'CARGO_UNIT' AND value IS NULL)) dice ON sci.cargo_unit=dice.value " +
+    @Select("SELECT sci.*,scc.category_name FROM sys_cargo_info sci " +
             "LEFT JOIN sys_cargo_category scc ON sci.category_pkid=scc.ID " +
             "${ew.customSqlSegment}")
     Page<SysCargoInfo> queryCargoInfo(Page<SysCargoInfo> page, @Param("ew") QueryWrapper<SysCargoInfo> queryWrapper);

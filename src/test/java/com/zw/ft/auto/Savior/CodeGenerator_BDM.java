@@ -25,7 +25,7 @@ public class CodeGenerator_BDM {
 
     public static void main(String[] args) {
         //设置要映射的表名
-        String setInclude = "bdm_warehouse";
+        String setInclude = "bdm_storage_expense_type";
 
         AutoGenerator autoGenerator = new AutoGenerator();
         GlobalConfig globalConfig = new GlobalConfig();

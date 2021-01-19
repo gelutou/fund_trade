@@ -1,6 +1,7 @@
 package com.zw.ft.modules.co.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.zw.ft.common.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,6 +15,7 @@ import lombok.EqualsAndHashCode;
  * @Date 2020/11/11
  */
 @EqualsAndHashCode(callSuper = true)
+@TableName(value = "run_rise_price")
 @Data
 public class RunRisePrice extends BaseEntity {
 
