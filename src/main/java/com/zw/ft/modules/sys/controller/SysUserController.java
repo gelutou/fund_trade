@@ -36,9 +36,6 @@ public class SysUserController {
 
     @PostMapping(value = "/user_in_dept")
     public R getUserInDepartmentPage(@RequestBody(required = false) Map<String, Object> params) {
-        if(params == null){
-            params = new HashMap<>(1);
-        }
         return R.page(sysUserService.getUserInDepartmentPage(params));
     }
 }

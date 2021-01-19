@@ -25,11 +25,11 @@ public class RelUserDepartment extends BaseEntity{
     /**
      * 人员 人员ID
      */
-    private Integer userId;
+    private Long userId;
 
     /**
      * 部门 部门ID
      */
-    private Integer deptId;
+    private Long deptId;
 
 }

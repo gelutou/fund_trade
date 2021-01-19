@@ -1,5 +1,6 @@
 package com.zw.ft.modules.sys.service.impl;
 
+import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -37,20 +38,13 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         QueryWrapper<SysUser> userQueryWrapper = new QueryWrapper<>();
         userQueryWrapper.eq("deleted", "0");
 
-        //部门
+        //部门ID
         String deptId = FormatUtil.isSelectKey("deptId", params);
         if (Constant.TRUE.equals(deptId)) {
+            Integer[] deptIds = Convert.convert(Integer[].class, params.get("deptId"));
             QueryWrapper<RelUserDepartment> relUserDepartmentQueryWrapper = new QueryWrapper<>();
-            String dId = params.get("deptId").toString();
-            String[] ids;
-            if(dId.contains(",")){
-                ids = dId.split(",");
-            }else {
-                ids = new String[1];
-                ids[0] = dId;
-            }
 
-            relUserDepartmentQueryWrapper.in("dept_id",ids);
+            relUserDepartmentQueryWrapper.in("dept_id",deptIds);
             List<Long> userIdInDept = relUserDepartmentMapper.getUserIdInDept(relUserDepartmentQueryWrapper);
             if(userIdInDept.size() == 0){
                 page.setRecords(new ArrayList<>());

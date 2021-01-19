@@ -24,8 +24,8 @@ import java.util.Date;
 @Data
 public class CoContract extends BaseEntity {
 
-    private static final long serialVersionUID = 1L;
 
+    private static final long serialVersionUID = -1566825516496117594L;
     /**
      * 合同编码
      */
@@ -102,6 +102,21 @@ public class CoContract extends BaseEntity {
      * 类型 1采购合同 2销售合同 3仓储合同 CONTRACT_TYPE
      */
     private Integer type;
+
+    /**
+     * 付款类型 CONTRACT_PAYMENT_TYPE
+     */
+    private Integer paymentType;
+
+    /**
+     * 状态 CONTRACT_STATUS
+     */
+    private Integer status;
+
+    /**
+     * 合同审核状态 CONTRACT_AUDIT_STATUS
+     */
+    private Integer auditStatus;
 
     /**
      * 合同总金额

@@ -1,8 +1,8 @@
-package com.zw.ft.modules.sys.controller;
+package com.zw.ft.modules.co.controller;
 
 import com.zw.ft.common.utils.R;
-import com.zw.ft.modules.sys.entity.RunRisePrice;
-import com.zw.ft.modules.sys.service.RunRisePriceService;
+import com.zw.ft.modules.co.entity.RunRisePrice;
+import com.zw.ft.modules.co.service.RunRisePriceService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

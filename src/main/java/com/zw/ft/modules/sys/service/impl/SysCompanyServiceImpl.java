@@ -56,7 +56,6 @@ public class SysCompanyServiceImpl extends ServiceImpl<SysCompanyMapper, SysComp
         if (Constant.ADMIN.equals(username)) {
             return sysCompanyMapper.selectList(companyQueryWrapper);
         }
-
         return sysCompanyMapper.getFuzzy(username, companyQueryWrapper);
     }
 
@@ -67,23 +66,23 @@ public class SysCompanyServiceImpl extends ServiceImpl<SysCompanyMapper, SysComp
 
         String name = FormatUtil.isSelectKey("name", params);
         if (Constant.TRUE.equals(name)) {
-            queryWrapper.like("com_name", params.get("name"));
+            queryWrapper.like("name", params.get("name"));
         } else if ("".equals(name)) {
-            queryWrapper.like("com_name", "");
+            queryWrapper.like("name", "");
         }
 
         String shortName = FormatUtil.isSelectKey("shortName", params);
         if (Constant.TRUE.equals(shortName)) {
-            queryWrapper.like("short_com_name", params.get("shortName"));
+            queryWrapper.like("short_name", params.get("shortName"));
         } else if ("".equals(shortName)) {
-            queryWrapper.like("short_com_name", "");
+            queryWrapper.like("short_name", "");
         }
 
-        String code = FormatUtil.isSelectKey("code", params);
+        String code = FormatUtil.isSelectKey("acronym", params);
         if (Constant.TRUE.equals(code)) {
-            queryWrapper.like("com_code", params.get("code"));
+            queryWrapper.like("acronym", params.get("acronym"));
         } else if ("".equals(code)) {
-            queryWrapper.like("com_code", "");
+            queryWrapper.like("acronym", "");
         }
 
         String startDateTime = FormatUtil.isSelectKey("startDateTime", params);
@@ -99,27 +98,8 @@ public class SysCompanyServiceImpl extends ServiceImpl<SysCompanyMapper, SysComp
         } else if ("".equals(endDateTime)) {
             queryWrapper.le("created_time", "");
         }
-
-        String mobile = FormatUtil.isSelectKey("mobile", params);
-        if (Constant.TRUE.equals(mobile)) {
-            queryWrapper.like("mobile", params.get("mobile"));
-        } else if ("".equals(mobile)) {
-            queryWrapper.like("mobile", "");
-        }
+        queryWrapper.eq("deleted",0);
         queryWrapper.orderByAsc("updated_time");
         return sysCompanyMapper.selectPage(page, queryWrapper);
-    }
-
-    @Override
-    public R delComs(String delIds) {
-        List<String> lists = new LinkedList<>();
-        if (delIds.contains(",")) {
-            String[] split = delIds.split(",");
-            Collections.addAll(lists, split);
-        } else {
-            lists.add(delIds);
-        }
-        sysCompanyMapper.deleteBatchIds(lists);
-        return R.ok();
     }
 }

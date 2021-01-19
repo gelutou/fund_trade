@@ -3,9 +3,11 @@ package com.zw.ft.modules.sys.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysDepartment;
 import com.zw.ft.modules.sys.service.SysDepartmentService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -80,16 +82,14 @@ public class SysDepartmentController {
     /*
      * 功能描述: <br>
      * 〈增加部门〉
-     * @Param:
-     * @Return:
      * @Author: Oliver
      * @Date: 2020/10/16 11:33
      */
 
     @RequestMapping(value = "/add")
-    public R add(@RequestBody(required = false) SysDepartment sysDepartment) {
+    public R add(@RequestBody @Validated(BaseEntity.Add.class) SysDepartment sysDepartment) {
         sysDepartmentService.save(sysDepartment);
-        return R.ok("添加成功");
+        return R.ok();
     }
 
 }

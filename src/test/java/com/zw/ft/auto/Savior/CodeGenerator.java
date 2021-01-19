@@ -52,7 +52,7 @@ public class CodeGenerator {
         dataSourceConfig.setUrl("jdbc:mysql://192.168.3.222:3306/fund_trade?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=UTC");
         dataSourceConfig.setUsername("root");
         dataSourceConfig.setDriverName("com.mysql.cj.jdbc.Driver");
-        dataSourceConfig.setPassword("!111qqq666");
+        dataSourceConfig.setPassword("dgdB20I5!@#");
         dataSourceConfig.setDbType(DbType.MYSQL);
         autoGenerator.setDataSource(dataSourceConfig);
 

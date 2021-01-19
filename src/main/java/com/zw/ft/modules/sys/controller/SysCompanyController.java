@@ -1,5 +1,6 @@
 package com.zw.ft.modules.sys.controller;
 
+import cn.hutool.core.convert.Convert;
 import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysCompany;
@@ -8,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -80,9 +82,15 @@ public class SysCompanyController extends AbstractController {
         return R.page(sysCompanyService.getComPage(params));
     }
 
-    @PostMapping(value = "/del_coms/{ids}")
-    public R delComs(@PathVariable("ids") String ids) {
-        return sysCompanyService.delComs(ids);
+    /**
+     * 功能描述 : 删除公司
+     * @author Oliver 2021-1-19 11:07
+     */
+    @PostMapping(value = "/delete")
+    public R delComs(@RequestBody Map<String,Object> param) {
+        List ids = Convert.convert(List.class, param.get("ids"));
+        sysCompanyService.removeByIds(ids);
+        return R.ok();
     }
 
     /**

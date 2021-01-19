@@ -129,7 +129,7 @@ public class SysBank extends BaseEntity {
     /**
      * 联系电话
      */
-    private Long contactNumber;
+    private String contactNumber;
 
     /**
      * 币种

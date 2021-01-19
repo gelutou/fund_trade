@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.sys.entity.SysCompany;
-
 import java.util.List;
 import java.util.Map;
 
@@ -39,8 +38,5 @@ public interface SysCompanyService extends IService<SysCompany> {
      * @Date: 2020/9/23 16:00
      */
     Page<SysCompany> getComPage(Map<String, Object> params);
-
-    R delComs(String delIds);
-
 
 }

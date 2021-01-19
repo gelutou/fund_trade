@@ -28,13 +28,14 @@ token:1e299919ed4cd5a3625ee0f50c0f8077
 POST http://localhost:8091/ft/sys-company/get_fuzzy/
 Content-Type: application/json
 
-{"username": "admin","shortname": "a"}
+{"username": "admin","shortname": "xfy"}
 
 ###
-POST http://localhost:8088/ft/sys-company/del_coms/3
+POST http://localhost:8091/ft/sys-company/delete
 Content-Type: application/json
+token:6785e990c71c3f8a2c528d9a5eaa9ef0
 
-{}
+{"ids": [415,416]}
 
 ###
 POST http://localhost:8088/ft/sys-company/add_update_com
@@ -65,8 +66,9 @@ Content-Type: application/json
 {"shortname": "sh"}
 
 ###
-POST http://localhost:8088/ft/sys-company/get_by_wrapper
+POST http://localhost:8091/ft/sys-company/get_by_wrapper
 Content-Type: application/json
+token:36f1a3c6e27a3fbb7ba7a8bc7c7e9e56
 
 {"currentPage": 1,"code": "sh"}
 

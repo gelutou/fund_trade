@@ -22,8 +22,8 @@ import javax.validation.constraints.Pattern;
 @Data
 public class SysCompany extends BaseEntity {
 
-    private static final long serialVersionUID = 1L;
 
+    private static final long serialVersionUID = 7435587701733126501L;
     /**
      * @description: 公司名称首字母缩略词
      */
@@ -46,6 +46,7 @@ public class SysCompany extends BaseEntity {
     /**
      * @description: 联系人
      */
+    @NotNull(message = "公司联系人必填",groups = Add.class)
     private String contactUser;
 
     /**
@@ -66,6 +67,7 @@ public class SysCompany extends BaseEntity {
     /**
      * @description: 详细地址
      */
+    @NotNull(message = "公司地址必填",groups = Add.class)
     private String address;
 
     /**
@@ -78,12 +80,6 @@ public class SysCompany extends BaseEntity {
      */
     @NotNull(message = "公司电话必填",groups = Add.class)
     private String mobile;
-
-    /**
-     * @description: 公司类型 1内部 2 外部 3 仓储 4集团  COMPANY_TYPE
-     */
-    @NotNull(message = "公司类型必填",groups = Add.class)
-    private Integer type;
 
     /**
      * @description: 税号

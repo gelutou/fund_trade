@@ -14,13 +14,11 @@ import com.zw.ft.modules.sys.oauth2.OAuth2Token;
 import com.zw.ft.modules.sys.redis.RedisService;
 import com.zw.ft.modules.sys.service.SysUserService;
 import com.zw.ft.modules.sys.service.SysUserTokenService;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.Resource;
 
 /**
@@ -32,7 +30,6 @@ import javax.annotation.Resource;
  **/
 @RestController
 @RequestMapping(value = "/ft/sys/")
-@Slf4j
 public class LoginController extends AbstractController {
 
     @Resource

@@ -1,4 +1,4 @@
-package com.zw.ft.modules.sys.entity;
+package com.zw.ft.modules.co.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.zw.ft.common.base.BaseEntity;

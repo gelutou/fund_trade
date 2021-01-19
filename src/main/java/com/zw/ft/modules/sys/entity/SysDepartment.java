@@ -6,6 +6,9 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 /**
  * <p>
  * 系统部门表
@@ -20,24 +23,29 @@ import lombok.EqualsAndHashCode;
 public class SysDepartment extends BaseEntity {
 
     private static final long serialVersionUID = -888106179543546494L;
+
     /**
      * 所属公司
      */
+    @NotNull(message = "所属公司必填",groups = Add.class)
     private Long comId;
 
     /**
      * 父级ID
      */
+    @NotNull(message = "上级部门ID必填",groups = Add.class)
     private Long parentId;
 
     /**
      * 部门名称
      */
+    @NotNull(message = "部门名称必填",groups = Add.class)
     private String name;
 
     /**
      * @description: 表示此部门是几级部门 1 = 一级部门
      */
+    @NotNull(message = "部门级别必填",groups = Add.class)
     private Integer level;
 
     /**

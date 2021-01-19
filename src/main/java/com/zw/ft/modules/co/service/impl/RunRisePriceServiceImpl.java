@@ -1,4 +1,4 @@
-package com.zw.ft.modules.sys.service.impl;
+package com.zw.ft.modules.co.service.impl;
 
 import cn.hutool.core.convert.Convert;
 import com.alibaba.fastjson.JSON;
@@ -9,11 +9,11 @@ import com.zw.ft.common.constants.Constant;
 import com.zw.ft.common.utils.FormatUtil;
 import com.zw.ft.common.utils.QueryUtil;
 import com.zw.ft.common.utils.R;
-import com.zw.ft.modules.sys.entity.RunRisePrice;
+import com.zw.ft.modules.co.entity.RunRisePrice;
 import com.zw.ft.modules.sys.entity.SysCompany;
-import com.zw.ft.modules.sys.repository.RunRisePriceMapper;
+import com.zw.ft.modules.co.repository.RunRisePriceMapper;
 import com.zw.ft.modules.sys.repository.SysCompanyMapper;
-import com.zw.ft.modules.sys.service.RunRisePriceService;
+import com.zw.ft.modules.co.service.RunRisePriceService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

@@ -1,7 +1,16 @@
-POST http://localhost:8088/ft/sys-department/add
-Content-Type: application/json
 
-{"comId": 1,"deptName": "测试部门新增","parentId": 100,"deptLevel": 2,"leader": "1"}
+###
+POST http://localhost:8091/ft/sys-department/add
+Content-Type: application/json
+token:0218be177de73bd8b1407008740cc720
+
+{
+  "comId": 1,
+  "name": "测试部门新增",
+  "parentId": -1,
+  "level": 1,
+  "leader": "1"
+}
 
 ###
 POST http://localhost:8088/ft/sys-department/update

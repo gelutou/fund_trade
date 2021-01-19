@@ -44,24 +44,6 @@ public class R extends HashMap<String, Object> {
         return r;
     }
 
-    public static R data(List<? extends BaseEntity> list) {
-        R r = new R();
-        r.put("data", list);
-        return r;
-    }
-
-    public static R data(BaseEntity entity) {
-        R r = new R();
-        r.put("data", entity);
-        return r;
-    }
-
-    public static R data(JSONArray jsonArray) {
-        R r = new R();
-        r.put("data", jsonArray);
-        return r;
-    }
-
     public static R data(Object o) {
         R r = new R();
         r.put("data", o);

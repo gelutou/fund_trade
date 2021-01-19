@@ -1,3 +1,10 @@
+POST http://localhost:8091/ft/sys/base-data/queryCity
+Content-Type: application/json
+token:6785e990c71c3f8a2c528d9a5eaa9ef0
+
+{"isMunicipality": "false","depth": 3,"parentId": "137"}
+
+###
 POST http://localhost:8091/ft/sys/base-data/query
 Content-Type: application/json
 token:bd1f683fb8b7de0638bfd7d534b5a137
@@ -5,3 +12,8 @@ token:bd1f683fb8b7de0638bfd7d534b5a137
 {}
 
 ###
+### POST http://192.168.3.222:8091/ft/sys/login/admin/1
+POST http://localhost:8091/ft/sys/login/admin/1
+Content-Type: application/json
+
+{}

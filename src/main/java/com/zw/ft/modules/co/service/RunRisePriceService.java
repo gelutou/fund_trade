@@ -1,9 +1,9 @@
-package com.zw.ft.modules.sys.service;
+package com.zw.ft.modules.co.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zw.ft.common.utils.R;
-import com.zw.ft.modules.sys.entity.RunRisePrice;
+import com.zw.ft.modules.co.entity.RunRisePrice;
 
 import java.util.Map;
 

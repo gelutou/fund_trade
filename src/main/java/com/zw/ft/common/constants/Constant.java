@@ -27,7 +27,7 @@ public class Constant {
     public static final long AN_HOUR = 3600;
 
     /**
-     * @descrip
+     * @description: 一天
      */
     public static final long AN_DAY = 43200;
 
@@ -57,6 +57,7 @@ public class Constant {
         public String getValue() {
             return value;
         }
+
     }
 
     /*
@@ -89,5 +90,145 @@ public class Constant {
             return value;
         }
     }
+
+    /**
+     * 功能描述 : 合同类型描述
+     * @author Oliver 2021-1-18 9:43
+     */
+    public enum ContractType {
+        /**
+         * @description: 采购合同
+         */
+        PROCUREMENT(1),
+
+        /**
+         * @description: 销售合同
+         */
+        SELL(2),
+
+        /**
+         * @description: 仓储合同
+         */
+        WAREHOUSE(3);
+
+        private final Integer value;
+
+        ContractType(Integer value) {
+            this.value = value;
+        }
+
+        public Integer getValue() {
+            return value;
+        }
+    }
+
+    /**
+     * 功能描述 : 合同状态描述
+     * @author Oliver 2021-1-18 9:43
+     */
+    public enum ContractStatus {
+        /**
+         * @description: 未解决
+         */
+        ORDER_MAKING(0),
+
+        /**
+         * @description: 已解决
+         */
+        EFFECTIVE(1),
+
+        /**
+         * @description: 已确认
+         */
+        DONE(2),
+
+        /**
+         * @description: 已确认
+         */
+        INVALIDATED(3);
+
+        private final Integer value;
+
+        ContractStatus(Integer value) {
+            this.value = value;
+        }
+
+        public Integer getValue() {
+            return value;
+        }
+    }
+
+    /**
+     * 功能描述 : 合同审批状态描述
+     * @author Oliver 2021-1-18 9:43
+     */
+    public enum ContractAuditStatus {
+        /**
+         * @description: 未提交
+         */
+        NOT_SUBMITTED(0),
+
+        /**
+         * @description: 待审批
+         */
+        PENDING_AUDIT(1),
+
+        /**
+         * @description: 已通过
+         */
+        PASSED(2),
+
+        /**
+         * @description: 未通过
+         */
+        FAILED(3);
+
+        private final Integer value;
+
+        ContractAuditStatus(Integer value) {
+            this.value = value;
+        }
+
+        public Integer getValue() {
+            return value;
+        }
+    }
+
+    /**
+     * 功能描述 : 合同付款类型
+     * @author Oliver 2021-1-18 9:43
+     */
+    public enum ContractPaymentType {
+        /**
+         * @description: 现汇
+         */
+        SPOT_EXCHANGE(1),
+
+        /**
+         * @description: 银承
+         */
+        BANK_ACCEPTANCE(2),
+
+        /**
+         * @description: 电子银承
+         */
+        ELECTRONIC_BANK_ACCEPTANCE(3),
+
+        /**
+         * @description: 其他
+         */
+        OTHER(0);
+
+        private final Integer value;
+
+        ContractPaymentType(Integer value) {
+            this.value = value;
+        }
+
+        public Integer getValue() {
+            return value;
+        }
+    }
+
 
 }

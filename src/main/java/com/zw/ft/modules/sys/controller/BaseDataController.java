@@ -1,16 +1,23 @@
 package com.zw.ft.modules.sys.controller;
 
+import cn.hutool.core.io.file.FileReader;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.zw.ft.common.constants.Constant;
+import com.zw.ft.common.utils.FormatUtil;
 import com.zw.ft.common.utils.R;
+import com.zw.ft.modules.sys.entity.ProvinceCityTownInfo;
 import com.zw.ft.modules.sys.entity.SysDictionary;
+import com.zw.ft.modules.sys.service.ProvinceCityTownInfoService;
 import com.zw.ft.modules.sys.service.SysDictionaryService;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName BaseDataController
@@ -24,6 +31,8 @@ public class BaseDataController {
 
     @Resource
     SysDictionaryService sysDictionaryService;
+    @Resource
+    ProvinceCityTownInfoService provinceCityTownInfoService;
 
     @RequestMapping(value = "/query")
     public R query(){
@@ -60,5 +69,29 @@ public class BaseDataController {
         }
 
         return R.data(keyObj);
+    }
+
+    /**
+     * 功能描述 : 获取省市区
+     * @author Oliver 2021-1-18 15:38
+     */
+    @RequestMapping(value = "/queryCity")
+    public R queryCity(@RequestBody(required = false) Map<String,Object> params){
+        QueryWrapper<ProvinceCityTownInfo> provinceWrapper = new QueryWrapper<>();
+
+        String isMunicipality = params.get("isMunicipality").toString();
+        String depth = params.get("depth").toString();
+
+        //如果查询市并且是直辖市的话直接返回这条数据
+        if(Constant.TRUE.equals(isMunicipality) && "2".equals(depth)){
+            String parentId = params.get("parentId").toString();
+            provinceWrapper.eq("data_id",parentId);
+        }else {
+            String parentId = FormatUtil.isSelectKey("parentId", params);
+            if(Constant.TRUE.equals(parentId)){
+                provinceWrapper.eq("parent_id",params.get("parentId"));
+            }
+        }
+        return R.data(provinceCityTownInfoService.list(provinceWrapper));
     }
 }
