@@ -11,13 +11,10 @@ import com.zw.ft.modules.sys.entity.ProvinceCityTownInfo;
 import com.zw.ft.modules.sys.service.ModelConfigurationService;
 import com.zw.ft.modules.sys.service.ProvinceCityTownInfoService;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -87,7 +84,6 @@ public class SyncBaseDataTask {
         assert JS_API_GET_PROVINCE_INTERFACE_ADDRESS != null;
 
         String result = HttpUtil.get(JS_API_GET_PROVINCE_INTERFACE_ADDRESS, paramMap);
-        System.out.println("result = " + result);
         JSONObject jsonObject = JSONObject.parseObject(result);
         log.info(jsonObject.toJSONString());
         JSONArray resultArray = jsonObject.getJSONArray("result");
@@ -129,7 +125,6 @@ public class SyncBaseDataTask {
             paramMap.put("parentid", provinceId);
             assert JS_API_GET_CITY_INTERFACE_ADDRESS != null;
             String cityResult = HttpUtil.get(JS_API_GET_CITY_INTERFACE_ADDRESS, paramMap);
-            System.out.println("cityResult = " + cityResult);
             JSONObject cityObj = JSONObject.parseObject(cityResult);
             JSONArray cityArray = cityObj.getJSONArray("result");
 
