@@ -28,12 +28,12 @@ public class RunRisePriceController {
     RunRisePriceService runRisePriceService;
 
     /**
-     * @Author savior
+     * @Author Oliver
      * @Description 分页查询加价档案基本信息
      * @Date: 2020/11/13
      */
-    @PostMapping("/runRisePricekall")
-    public R RunRisePricekall(@RequestBody Map<String, Object> params){
+    @PostMapping("/queryRunRisePage")
+    public R queryRunRisePage(@RequestBody Map<String, Object> params){
         return R.page(runRisePriceService.getRun(params));
     }
 

@@ -1,11 +1,10 @@
 package com.zw.ft.modules.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.zw.ft.common.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -52,17 +51,34 @@ public class SysCompany extends BaseEntity {
     /**
      * @description: 所属省份
      */
-    private String province;
+    private Long province;
+
+    /**
+     * @description: 所属省份名称
+     */
+    @TableField(exist = false)
+    private String provinceName;
 
     /**
      * @description: 所属城市
      */
-    private String city;
+    private Long city;
 
     /**
-     * @description: 所属区域
+     * @description: 所属城市名称
      */
-    private String district;
+    @TableField(exist = false)
+    private String cityName;
+
+    /**
+     * @description: 所属区县
+     */
+    private Long district;
+    /**
+     * @description: 所属区县名称
+     */
+    @TableField(exist = false)
+    private String districtName;
 
     /**
      * @description: 详细地址

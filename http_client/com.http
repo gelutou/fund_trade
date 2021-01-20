@@ -1,8 +1,18 @@
 POST http://localhost:8091/ft/sys-company/add
 Content-Type: application/json
-token:8c9c61578e2493b03216123038610a26
+token:d088456100d3328694b5d087337b58bf
 
-{"comCode": "中文"}
+{
+  "acronym": "TEST",
+  "name": "测试公司",
+  "shortName": "测试公司简称",
+  "contactUser": "contactUser",
+  "province": "1",
+  "city": "1",
+  "district": "1",
+  "address": "address",
+  "mobile": "mobile"
+}
 
 ###
 POST http://localhost:8091/ft/sys-company/update
@@ -68,8 +78,8 @@ Content-Type: application/json
 ###
 POST http://localhost:8091/ft/sys-company/get_by_wrapper
 Content-Type: application/json
-token:36f1a3c6e27a3fbb7ba7a8bc7c7e9e56
+token:d088456100d3328694b5d087337b58bf
 
-{"currentPage": 1,"code": "sh"}
+{"currentPage": 1,"acronym": "sh"}
 
 ###

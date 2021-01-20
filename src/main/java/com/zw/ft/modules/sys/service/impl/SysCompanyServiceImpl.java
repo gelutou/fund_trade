@@ -66,40 +66,40 @@ public class SysCompanyServiceImpl extends ServiceImpl<SysCompanyMapper, SysComp
 
         String name = FormatUtil.isSelectKey("name", params);
         if (Constant.TRUE.equals(name)) {
-            queryWrapper.like("name", params.get("name"));
+            queryWrapper.like("sc.name", params.get("name"));
         } else if ("".equals(name)) {
-            queryWrapper.like("name", "");
+            queryWrapper.like("sc.name", "");
         }
 
         String shortName = FormatUtil.isSelectKey("shortName", params);
         if (Constant.TRUE.equals(shortName)) {
-            queryWrapper.like("short_name", params.get("shortName"));
+            queryWrapper.like("sc.short_name", params.get("shortName"));
         } else if ("".equals(shortName)) {
-            queryWrapper.like("short_name", "");
+            queryWrapper.like("sc.short_name", "");
         }
 
         String code = FormatUtil.isSelectKey("acronym", params);
         if (Constant.TRUE.equals(code)) {
-            queryWrapper.like("acronym", params.get("acronym"));
+            queryWrapper.like("sc.acronym", params.get("acronym"));
         } else if ("".equals(code)) {
-            queryWrapper.like("acronym", "");
+            queryWrapper.like("sc.acronym", "");
         }
 
         String startDateTime = FormatUtil.isSelectKey("startDateTime", params);
         if (Constant.TRUE.equals(startDateTime)) {
-            queryWrapper.ge("created_time", params.get("startDateTime"));
+            queryWrapper.ge("sc.created_time", params.get("startDateTime"));
         } else if ("".equals(startDateTime)) {
-            queryWrapper.ge("created_time", "");
+            queryWrapper.ge("sc.created_time", "");
         }
 
         String endDateTime = FormatUtil.isSelectKey("endDateTime", params);
         if (Constant.TRUE.equals(endDateTime)) {
-            queryWrapper.le("created_time", params.get("endDateTime"));
+            queryWrapper.le("sc.created_time", params.get("endDateTime"));
         } else if ("".equals(endDateTime)) {
-            queryWrapper.le("created_time", "");
+            queryWrapper.le("sc.created_time", "");
         }
-        queryWrapper.eq("deleted",0);
-        queryWrapper.orderByAsc("updated_time");
-        return sysCompanyMapper.selectPage(page, queryWrapper);
+        queryWrapper.eq("sc.deleted",0);
+        queryWrapper.orderByAsc("sc.updated_time");
+        return sysCompanyMapper.queryPage(page, queryWrapper);
     }
 }

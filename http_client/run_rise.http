@@ -5,9 +5,9 @@ token:0a80db9324ae58d2e9a2e6952bfe69ba
 {"comId":"7","fixed":"1"}
 
 ###
-POST http://localhost:8091/ft/run-rise-price/RunRisePricekall
+POST http://localhost:8091/ft/run-rise-price/queryRunRisePage
 Content-Type: application/json
-token:0543a30aa72698a7671155d514b2a1a5
+token:d088456100d3328694b5d087337b58bf
 
 {}
 

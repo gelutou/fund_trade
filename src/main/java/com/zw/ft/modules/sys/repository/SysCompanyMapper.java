@@ -52,4 +52,15 @@ public interface SysCompanyMapper extends BaseMapper<SysCompany> {
             "WHERE p_id = (SELECT ID FROM sys_dictionary WHERE name = 'RUN_RISE' AND value IS NULL)) dice ON pi.fixed = dice.value " +
             "${ew.customSqlSegment}")
     Page<SysCompany> queryRunRisePrice(Page<SysCompany> page, @Param("ew") QueryWrapper<SysCompany> queryWrapper);
+
+    /**
+     * 功能描述 : 查询公司信息
+     * @author Oliver 2021-1-20 14:24
+     */
+    @Select("SELECT sc.*, pcti.name provinceName,pcti02.name cityName,pcti03.name distinctName" +
+            " FROM sys_company sc" +
+            " LEFT JOIN province_city_town_info pcti ON sc.province = pcti.ID" +
+            " LEFT JOIN province_city_town_info pcti02 ON sc.city = pcti02.ID" +
+            " LEFT JOIN province_city_town_info pcti03 ON sc.district = pcti03.ID ${ew.customSqlSegment}")
+    Page<SysCompany> queryPage(Page<SysCompany> page, @Param("ew") QueryWrapper<SysCompany> queryWrapper);
 }

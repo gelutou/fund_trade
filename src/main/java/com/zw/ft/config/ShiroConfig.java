@@ -40,6 +40,7 @@ public class ShiroConfig {
 
         filterMap.put("/ft/sys/login/**", "anon");
         filterMap.put("/ft/sys/signup/**", "anon");
+        filterMap.put("/actuator/shutdown/**", "anon");
         filterMap.put("/ft/sys-company/get_fuzzy/**", "anon");
         filterMap.put("/**", "oauth2");
 
