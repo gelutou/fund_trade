@@ -83,7 +83,6 @@ public class SysCompany extends BaseEntity {
     /**
      * @description: 详细地址
      */
-    @NotNull(message = "公司地址必填",groups = Add.class)
     private String address;
 
     /**
