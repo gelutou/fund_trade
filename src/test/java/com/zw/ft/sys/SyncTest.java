@@ -99,7 +99,7 @@ public class SyncTest {
                 Long dataId = p.getDataId();
                 if (provinceId.equals(dataId)) {
                     insert = false;
-                    updateId = p.getId();
+                    //updateId = p.getId();
                     break;
                 }
             }
@@ -114,7 +114,7 @@ public class SyncTest {
             if (insert) {
                 provinceCityTownInfosInsert.add(provinceCityTownInfo);
             } else {
-                provinceCityTownInfo.setId(updateId);
+                //provinceCityTownInfo.setId(updateId);
                 provinceCityTownInfosUpdate.add(provinceCityTownInfo);
             }
 
@@ -134,7 +134,7 @@ public class SyncTest {
                     Long dataId = p.getDataId();
                     if (cityId.equals(dataId)) {
                         cityInsert = false;
-                        cityUpdateId = p.getId();
+                        //cityUpdateId = p.getId();
                         break;
                     }
                 }
@@ -149,7 +149,7 @@ public class SyncTest {
                 if (cityInsert) {
                     provinceCityTownInfosInsert.add(provinceCity);
                 } else {
-                    provinceCityTownInfo.setId(cityUpdateId);
+                    //provinceCityTownInfo.setId(cityUpdateId);
                     provinceCityTownInfosUpdate.add(provinceCity);
                 }
             }
@@ -185,19 +185,27 @@ public class SyncTest {
         paramMap.put("appkey", JS_API_APP_KEY);
 
         log.info("=====>开始同步区县数据... ");
-        List<ProvinceCityTownInfo> provinceCityTownInfosInsert = new ArrayList<>();
-        List<ProvinceCityTownInfo> provinceCityTownInfosUpdate = new ArrayList<>();
         QueryWrapper<ProvinceCityTownInfo> provinceCityTownInfoQueryWrapper = new QueryWrapper<>();
         provinceCityTownInfoQueryWrapper.eq("depth", "2");
         provinceCityTownInfoQueryWrapper.orderByAsc("data_id");
         List<ProvinceCityTownInfo> list1 = provinceCityTownInfoService.list(provinceCityTownInfoQueryWrapper);
+
+        QueryWrapper<ProvinceCityTownInfo> wrapper02 = new QueryWrapper<>();
+        provinceCityTownInfoQueryWrapper.eq("depth", "3");
+        provinceCityTownInfoQueryWrapper.orderByAsc("data_id");
+        List<ProvinceCityTownInfo> townList = provinceCityTownInfoService.list(wrapper02);
+
         //获取上次同步位置 JS_API_SYNC_CITY_ID_LOG
         assert JS_API_SYNC_CITY_ID_LOG != null;
         for (ProvinceCityTownInfo p : list1) {
+
             Long dataId1 = p.getDataId();
+
             if (dataId1 < Long.parseLong(JS_API_SYNC_CITY_ID_LOG)) {
                 continue;
             }
+
+
             paramMap.put("parentid", dataId1);
             assert JS_API_GET_TOWN_INTERFACE_ADDRESS != null;
 
@@ -230,11 +238,11 @@ public class SyncTest {
                         ProvinceCityTownInfo provinceCityTownInfo = new ProvinceCityTownInfo();
                         Long provinceId = province.getLong("id");
 
-                        for (ProvinceCityTownInfo pro : list1) {
-                            Long dataId = pro.getDataId();
+                        for(ProvinceCityTownInfo town : townList){
+                            Long dataId = town.getDataId();
                             if (provinceId.equals(dataId)) {
                                 insert = false;
-                                updateId = pro.getId();
+                                updateId = town.getDataId();
                                 break;
                             }
                         }
@@ -247,10 +255,11 @@ public class SyncTest {
                         provinceCityTownInfo.setZipcode(province.getString("zipcode"));
                         provinceCityTownInfo.setDepth(province.getString("depth"));
                         if (insert) {
-                            provinceCityTownInfosInsert.add(provinceCityTownInfo);
+                            provinceCityTownInfoService.save(provinceCityTownInfo);
                         } else {
-                            provinceCityTownInfo.setId(updateId);
-                            provinceCityTownInfosUpdate.add(provinceCityTownInfo);
+                            UpdateWrapper<ProvinceCityTownInfo> provinceCityTownInfoUpdateWrapper = new UpdateWrapper<>();
+                            provinceCityTownInfoUpdateWrapper.eq("data_id",updateId);
+                            provinceCityTownInfoService.update(provinceCityTownInfo,provinceCityTownInfoUpdateWrapper);
                         }
                     }
                 }
@@ -264,8 +273,6 @@ public class SyncTest {
                 break;
             }
         }
-        provinceCityTownInfoService.saveBatch(provinceCityTownInfosInsert);
-        provinceCityTownInfoService.updateBatchById(provinceCityTownInfosUpdate);
         log.info("同步省市区数据结束 <===== ");
     }
 }

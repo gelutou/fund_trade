@@ -57,10 +57,10 @@ public interface SysCompanyMapper extends BaseMapper<SysCompany> {
      * 功能描述 : 查询公司信息
      * @author Oliver 2021-1-20 14:24
      */
-    @Select("SELECT sc.*, pcti.name provinceName,pcti02.name cityName,pcti03.name distinctName" +
+    @Select("SELECT sc.*, pcti.name provinceName,pcti02.name cityName,pcti03.name districtName" +
             " FROM sys_company sc" +
-            " LEFT JOIN province_city_town_info pcti ON sc.province = pcti.ID" +
-            " LEFT JOIN province_city_town_info pcti02 ON sc.city = pcti02.ID" +
-            " LEFT JOIN province_city_town_info pcti03 ON sc.district = pcti03.ID ${ew.customSqlSegment}")
+            " LEFT JOIN province_city_town_info pcti ON sc.province = pcti.data_id" +
+            " LEFT JOIN province_city_town_info pcti02 ON sc.city = pcti02.data_id" +
+            " LEFT JOIN province_city_town_info pcti03 ON sc.district = pcti03.data_id ${ew.customSqlSegment}")
     Page<SysCompany> queryPage(Page<SysCompany> page, @Param("ew") QueryWrapper<SysCompany> queryWrapper);
 }

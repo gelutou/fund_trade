@@ -78,8 +78,13 @@ Content-Type: application/json
 ###
 POST http://localhost:8091/ft/sys-company/get_by_wrapper
 Content-Type: application/json
-token:d088456100d3328694b5d087337b58bf
+token:c0e58c4297fdbc82918ff6c3a9f373f3
 
-{"currentPage": 1,"acronym": "sh"}
+{"currentPage": 1,"acronym": "003"}
 
 ###
+### POST http://192.168.3.222:8091/ft/sys/login/admin/1
+POST http://localhost:8091/ft/sys/login/admin/1
+Content-Type: application/json
+
+{}

@@ -1,8 +1,6 @@
 package com.zw.ft.modules.sys.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.zw.ft.common.base.BaseEntity;
-import com.baomidou.mybatisplus.annotation.Version;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -14,12 +12,9 @@ import lombok.EqualsAndHashCode;
  * @author Oliver
  * @since 2021-01-18
  */
-@EqualsAndHashCode(callSuper = true)
 @TableName(value = "province_city_town_info")
 @Data
-public class ProvinceCityTownInfo extends BaseEntity {
-
-    private static final long serialVersionUID = 1L;
+public class ProvinceCityTownInfo{
 
     /**
      * 数据ID
@@ -55,4 +50,33 @@ public class ProvinceCityTownInfo extends BaseEntity {
      * 深度 层级省1市2区3
      */
     private String depth;
+
+    @TableField(fill = FieldFill.INSERT)
+    private Long createdBy;
+
+    /**
+     * @description: 创建时间
+     */
+
+    @TableField(fill = FieldFill.INSERT)
+    private String createdTime;
+
+    /**
+     * @description: 修改人ID
+     */
+
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Long updatedBy;
+
+    /**
+     * @description: 修改时间
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private String updatedTime;
+
+    /**
+     * @description: 逻辑删除
+     */
+    @TableLogic
+    private Integer deleted;
 }
