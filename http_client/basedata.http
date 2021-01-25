@@ -1,12 +1,10 @@
 ###
 POST http://localhost:8091/ft/sys/base-data/queryCity
 Content-Type: application/json
-token:254c137aa57c8d64f9b6abac59962b2b
+token:773649c52e20abd4cb6c3332b1095f7c
 
 {
-  "isMunicipality": "false",
-  "depth": 1,
-  "parentId": "0"
+  "dataId": "1"
 }
 
 ###

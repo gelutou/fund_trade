@@ -79,18 +79,19 @@ public class BaseDataController {
     public R queryCity(@RequestBody(required = false) Map<String,Object> params){
         QueryWrapper<ProvinceCityTownInfo> provinceWrapper = new QueryWrapper<>();
 
-        String isMunicipality = params.get("isMunicipality").toString();
-        String depth = params.get("depth").toString();
+        String dataId = FormatUtil.isSelectKey("dataId", params);
+        if(Constant.TRUE.equals(dataId)){
+            provinceWrapper.eq("data_id",params.get("dataId"));
+        }
 
-        //如果查询市并且是直辖市的话直接返回这条数据
-        if(Constant.TRUE.equals(isMunicipality) && "2".equals(depth)){
-            String parentId = params.get("parentId").toString();
-            provinceWrapper.eq("data_id",parentId);
-        }else {
-            String parentId = FormatUtil.isSelectKey("parentId", params);
-            if(Constant.TRUE.equals(parentId)){
-                provinceWrapper.eq("parent_id",params.get("parentId"));
-            }
+        String depth = FormatUtil.isSelectKey("depth", params);
+        if(Constant.TRUE.equals(depth)){
+            provinceWrapper.eq("depth",params.get("depth"));
+        }
+
+        String parentId = FormatUtil.isSelectKey("parentId", params);
+        if(Constant.TRUE.equals(parentId)){
+            provinceWrapper.eq("parent_id",params.get("parentId"));
         }
         return R.data(provinceCityTownInfoService.list(provinceWrapper));
     }

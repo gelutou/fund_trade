@@ -16,7 +16,7 @@ spring:
         name: fund_trade
     # 环境 dev|prod
     profiles:
-        active: dev
+        active: prod
         #引入其他配置文件，例如ftpHX 未配置文件application-ftpHX.yml
         #include: ftpHX,ftpCloud
     servlet:

@@ -7,11 +7,12 @@ import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.modules.sys.entity.SysBank;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.checkerframework.checker.formatter.qual.Format;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.math.BigDecimal;
 import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
@@ -124,4 +125,28 @@ public class BdmCustomer extends BaseEntity {
      */
     @TableField(exist = false)
     private JSONArray bankIdAndIsDefault;
+
+    /**
+     * 客商ID
+     */
+    @TableField(exist = false)
+    private String cusId;
+
+    /**
+     * 客商 加价
+     */
+    @TableField(exist = false)
+    private BigDecimal riseAmount;
+
+    /**
+     * 客商 加价状态 0 暂无固定加价 1 固定加价 2 承担亏损
+     */
+    @TableField(exist = false)
+    private Integer riseStatus;
+
+    /**
+     * 客商加价状态描述
+     */
+    @TableField(exist = false)
+    private String riseStatusDesc;
 }

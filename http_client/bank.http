@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 POST http://localhost:80/api/item
 Content-Type: application/json
 
@@ -61,16 +60,13 @@ POST http://localhost:8091/ft/sys-bank/bankall
 Content-Type: application/json
 token:29c156be8d9e66da23d110815e6f026b
 
-{
-  "bankName": "sdsd"
-=======
+###
 POST http://localhost:8091/ft/sys-bank/query
 Content-Type: application/json
-token:d5d9afcb2e5fc45702daf0c0fd538556
+token:773649c52e20abd4cb6c3332b1095f7c
 
 {
-  "pageSize": 1
->>>>>>> dev
+  "condition": "辽宁"
 }
 
 ###

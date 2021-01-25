@@ -1,8 +1,10 @@
 package com.zw.ft.modules.bdm.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.bdm.entity.BdmCustomer;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zw.ft.modules.co.entity.RunRisePrice;
 
 import java.util.Map;
 
@@ -33,4 +35,10 @@ public interface BdmCustomerService extends IService<BdmCustomer> {
      */
 
     R export(Map<String,Object> params);
+
+    /**
+     * 功能描述 : 查询内部客商加价信息分页
+     * @author Oliver 2021-1-25 16:01
+     */
+    Page<BdmCustomer> getRun(Map<String, Object> params);
 }

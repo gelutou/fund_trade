@@ -6,6 +6,8 @@ import com.zw.ft.common.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.math.BigDecimal;
+
 /**
  * * <p>
  * * 加价档案表
@@ -23,39 +25,16 @@ public class RunRisePrice extends BaseEntity {
     /**
      * 公司ID
      */
-    private String comId;
+    private Long cusId;
 
     /**
      * 调整价格
      */
-    private Double risePrice;
+    private BigDecimal riseAmount;
 
     /**
-     * 1：固定加价0：暂无固定加价-1：承担亏损
+     * 加价状态 0 暂无加价状态 1 固定加价 2承担亏损 RISE_PRICE_STATUS
      */
-    private String fixed;
-
-    /**
-     * 备注
-     */
-    private String remark;
-
-    /**
-     * 公司名称
-     */
-    @TableField(exist = false)
-    private String comName;
-
-    /**
-     * 所属城市
-     */
-    @TableField(exist = false)
-    private String city;
-
-    /**
-     * 描述
-     */
-    @TableField(exist = false)
-    private String des;
+    private Integer status;
 
 }

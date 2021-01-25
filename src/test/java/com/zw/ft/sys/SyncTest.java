@@ -195,6 +195,7 @@ public class SyncTest {
         provinceCityTownInfoQueryWrapper.orderByAsc("data_id");
         List<ProvinceCityTownInfo> townList = provinceCityTownInfoService.list(wrapper02);
 
+        String status = "";
         //获取上次同步位置 JS_API_SYNC_CITY_ID_LOG
         assert JS_API_SYNC_CITY_ID_LOG != null;
         for (ProvinceCityTownInfo p : list1) {
@@ -212,7 +213,7 @@ public class SyncTest {
             String townResult = HttpUtil.get(JS_API_GET_TOWN_INTERFACE_ADDRESS, paramMap);
             JSONObject townObj = JSONObject.parseObject(townResult);
             //判断免费次数是否用完
-            String status = townObj.getString("status");
+            status = townObj.getString("status");
             List<String> errorCodes = new ArrayList<>();
             errorCodes.add("201");
             errorCodes.add("203");
@@ -274,5 +275,12 @@ public class SyncTest {
             }
         }
         log.info("同步省市区数据结束 <===== ");
+        if (!"104".equals(status)) {
+            UpdateWrapper<ModelConfiguration> updateWrapper = new UpdateWrapper<>();
+            updateWrapper.eq("identification", "JS_API_SYNC_CITY_ID_LOG");
+            ModelConfiguration modelConfiguration = new ModelConfiguration();
+            modelConfiguration.setContent("0");
+            modelConfigurationService.update(modelConfiguration, updateWrapper);
+        }
     }
 }

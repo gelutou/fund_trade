@@ -1,6 +1,7 @@
 package com.zw.ft.modules.co.controller;
 
 import com.zw.ft.common.utils.R;
+import com.zw.ft.modules.bdm.service.BdmCustomerService;
 import com.zw.ft.modules.co.entity.RunRisePrice;
 import com.zw.ft.modules.co.service.RunRisePriceService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,8 @@ public class RunRisePriceController {
 
     @Resource
     RunRisePriceService runRisePriceService;
+    @Resource
+    BdmCustomerService customerService;
 
     /**
      * @Author Oliver
@@ -34,7 +37,7 @@ public class RunRisePriceController {
      */
     @PostMapping("/queryRunRisePage")
     public R queryRunRisePage(@RequestBody Map<String, Object> params){
-        return R.page(runRisePriceService.getRun(params));
+        return R.page(customerService.getRun(params));
     }
 
     /**
