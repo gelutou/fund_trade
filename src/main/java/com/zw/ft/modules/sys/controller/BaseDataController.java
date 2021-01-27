@@ -34,40 +34,43 @@ public class BaseDataController {
     @Resource
     ProvinceCityTownInfoService provinceCityTownInfoService;
 
+    /**
+     * 功能描述 : 将字典表格式化为选择框数据
+     * @author Oliver 2021-1-27 16:24
+     */
     @RequestMapping(value = "/query")
     public R query(){
-        String[] keys = {"COMPANY_STATUS","ACCOUNT_NATURE","NEEDS_STATUS","RUN_RISE","CARGO_UNIT","CUSTOMER_TYPE","ACCOUNT_TYPE","ACCOUNT_AREA","CURRENCY_TYPE","BELONG_BANK","IS_VIRTUAL"};
-        //查询所有父描述
-
-        QueryWrapper<SysDictionary> fatherWrapper = new QueryWrapper<>();
-        fatherWrapper.in("name",keys).and(i -> i.isNull("p_id").or().eq("p_id",""));
-        List<SysDictionary> fatherList = sysDictionaryService.list(fatherWrapper);
+        List<SysDictionary> fatherList = sysDictionaryService.list(null);
         JSONObject keyObj = new JSONObject(true);
         JSONArray array = new JSONArray();
+
         for(SysDictionary dictionary : fatherList){
-            JSONObject dicObj = new JSONObject(2);
-            dicObj.put("des",dictionary.getDes());
-            dicObj.put("name",dictionary.getName());
-            array.add(dicObj);
-        }
-        keyObj.put("key",array);
-
-        QueryWrapper<SysDictionary> childWrapper = new QueryWrapper<>();
-        childWrapper.in("name",keys).and(i -> i.isNotNull("p_id").ne("p_id",""));
-
-        List<SysDictionary> childList = sysDictionaryService.list(childWrapper);
-
-        for(String str : keys){
-            JSONArray childArray = new JSONArray();
-            for(SysDictionary dictionary : childList){
+            if (dictionary.getPId() == null) {
                 JSONObject dicObj = new JSONObject(2);
                 dicObj.put("des",dictionary.getDes());
-                dicObj.put("value",dictionary.getValue());
-                childArray.add(dicObj);
+                String name = dictionary.getName();
+                dicObj.put("name",name);
+                array.add(dicObj);
             }
-            keyObj.put(str,childArray);
         }
-
+        keyObj.put("key",array);
+        //设置实际值和描述
+        for (int i=0;i<array.size();i++) {
+            JSONObject jsonObject = array.getJSONObject(i);
+            String name = jsonObject.getString("name");
+            JSONArray childArray = new JSONArray();
+            for(SysDictionary dic : fatherList){
+                String name1 = dic.getName();
+                Long pId = dic.getPId();
+                if(name.equals(name1) && pId != null){
+                    JSONObject obj = new JSONObject(2);
+                    obj.put("des",dic.getDes());
+                    obj.put("value",dic.getValue());
+                    childArray.add(obj);
+                }
+            }
+            keyObj.put(name,childArray);
+        }
         return R.data(keyObj);
     }
 

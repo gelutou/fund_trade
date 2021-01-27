@@ -1,7 +1,7 @@
 ###
 POST http://localhost:8091/ft/sys/base-data/queryCity
 Content-Type: application/json
-token:773649c52e20abd4cb6c3332b1095f7c
+token:d58d894073090e6f1d0c72d95e381055
 
 {
   "dataId": "1"
@@ -10,7 +10,7 @@ token:773649c52e20abd4cb6c3332b1095f7c
 ###
 POST http://localhost:8091/ft/sys/base-data/query
 Content-Type: application/json
-token:bd1f683fb8b7de0638bfd7d534b5a137
+token:d58d894073090e6f1d0c72d95e381055
 
 {}
 
