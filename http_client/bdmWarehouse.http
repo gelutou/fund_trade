@@ -1,18 +1,16 @@
-POST http://localhost:8091/ft/bdm-warehouse/delete_warehouse/4
+POST http://localhost:8091/ft/bdm-warehouse/delete_warehouse/58
 Content-Type: application/json
-token:72a0c80059d33603366f7969c1d93ff6
+token:254c137aa57c8d64f9b6abac59962b2b
 
 {}
 
 ###
 POST http://localhost:8091/ft/bdm-warehouse/update_warehouse
 Content-Type: application/json
-token:72a0c80059d33603366f7969c1d93ff6
+token:254c137aa57c8d64f9b6abac59962b2b
 
 {
-  "id":"3",
-  "code": "sgwl002",
-  "name": "上海上港苏州苏锡库区",
+  "id":"17",
   "personCharge": "夏宗粹",
   "phone": "021-51642507"
 }
@@ -20,14 +18,14 @@ token:72a0c80059d33603366f7969c1d93ff6
 ###
 POST http://localhost:8091/ft/bdm-warehouse/get_warehousetree
 Content-Type: application/json
-token:72a0c80059d33603366f7969c1d93ff6
+token:254c137aa57c8d64f9b6abac59962b2b
 
 {}
 
 ###
 POST http://localhost:8091/ft/bdm-warehouse/add_warehouse
 Content-Type: application/json
-token:72a0c80059d33603366f7969c1d93ff6
+token:254c137aa57c8d64f9b6abac59962b2b
 
 {
   "parentId": 1,
@@ -40,9 +38,9 @@ token:72a0c80059d33603366f7969c1d93ff6
 }
 
 ###
-POST http://localhost:8091/ft/bdm-warehouse/query/2
+POST http://localhost:8091/ft/bdm-warehouse/query/58
 Content-Type: application/json
-token:ae4b6e1340cd50474e99e2d4b4d966d7
+token:254c137aa57c8d64f9b6abac59962b2b
 
 {}
 

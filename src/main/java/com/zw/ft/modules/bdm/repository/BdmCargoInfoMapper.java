@@ -1,10 +1,10 @@
-package com.zw.ft.modules.sys.repository;
+package com.zw.ft.modules.bdm.repository;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.zw.ft.modules.sys.entity.SysCargoInfo;
+import com.zw.ft.modules.bdm.entity.BdmCargoInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -16,7 +16,7 @@ import org.apache.ibatis.annotations.Select;
  */
 @DS("fundTrade")
 @Mapper
-public interface SysCargoInfoMapper extends BaseMapper<SysCargoInfo> {
+public interface BdmCargoInfoMapper extends BaseMapper<BdmCargoInfo> {
 
     /**
      * @Author savior
@@ -26,6 +26,6 @@ public interface SysCargoInfoMapper extends BaseMapper<SysCargoInfo> {
     @Select("SELECT sci.*,scc.category_name FROM sys_cargo_info sci " +
             "LEFT JOIN sys_cargo_category scc ON sci.category_pkid=scc.ID " +
             "${ew.customSqlSegment}")
-    Page<SysCargoInfo> queryCargoInfo(Page<SysCargoInfo> page, @Param("ew") QueryWrapper<SysCargoInfo> queryWrapper);
+    Page<BdmCargoInfo> queryCargoInfo(Page<BdmCargoInfo> page, @Param("ew") QueryWrapper<BdmCargoInfo> queryWrapper);
 
 }

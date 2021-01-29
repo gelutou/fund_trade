@@ -1,6 +1,7 @@
 package com.zw.ft.modules.bdm.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
@@ -36,7 +37,9 @@ public class BdmWarehouseController extends AbstractController {
      */
     @PostMapping("/get_warehousetree")
     public R getBdmWarehouseTree(){
-        return R.data(bdmWarehouseService.list());
+        QueryWrapper<BdmWarehouse> wrapper = new QueryWrapper<>();
+        wrapper.select("id","parent_id","name");
+        return R.data(bdmWarehouseService.list(wrapper));
     }
 
     /**

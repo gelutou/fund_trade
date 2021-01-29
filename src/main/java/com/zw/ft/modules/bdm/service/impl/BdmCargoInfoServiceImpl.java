@@ -1,4 +1,4 @@
-package com.zw.ft.modules.sys.service.impl;
+package com.zw.ft.modules.bdm.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -7,9 +7,9 @@ import com.zw.ft.common.constants.Constant;
 import com.zw.ft.common.utils.FormatUtil;
 import com.zw.ft.common.utils.QueryUtil;
 import com.zw.ft.common.utils.R;
-import com.zw.ft.modules.sys.entity.SysCargoInfo;
-import com.zw.ft.modules.sys.repository.SysCargoInfoMapper;
-import com.zw.ft.modules.sys.service.SysCargoInfoService;
+import com.zw.ft.modules.bdm.entity.BdmCargoInfo;
+import com.zw.ft.modules.bdm.repository.BdmCargoInfoMapper;
+import com.zw.ft.modules.bdm.service.BdmCargoInfoService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -27,10 +27,10 @@ import java.util.Map;
  * @since 2020-11-19
  */
 @Service("SysCargoInfoService")
-public class SysCargoInfoServiceImpl extends ServiceImpl<SysCargoInfoMapper, SysCargoInfo> implements SysCargoInfoService {
+public class BdmCargoInfoServiceImpl extends ServiceImpl<BdmCargoInfoMapper, BdmCargoInfo> implements BdmCargoInfoService {
 
     @Resource
-    SysCargoInfoMapper sysCargoInfoMapper;
+    BdmCargoInfoMapper bdmCargoInfoMapper;
 
     /**
      * @Author savior
@@ -38,9 +38,9 @@ public class SysCargoInfoServiceImpl extends ServiceImpl<SysCargoInfoMapper, Sys
      * @Date: 2020/11/19
      */
     @Override
-    public Page<SysCargoInfo> getCargoInfo(Map<String, Object> params) {
-        Page<SysCargoInfo> page = new QueryUtil<SysCargoInfo>(params).getPage();
-        QueryWrapper<SysCargoInfo> queryWrapper = new QueryWrapper<>();
+    public Page<BdmCargoInfo> getCargoInfo(Map<String, Object> params) {
+        Page<BdmCargoInfo> page = new QueryUtil<BdmCargoInfo>(params).getPage();
+        QueryWrapper<BdmCargoInfo> queryWrapper = new QueryWrapper<>();
         String keyWord = FormatUtil.isSelectKey("keyWord", params);
         if (Constant.TRUE.equals(keyWord)) {
             queryWrapper.and(i-> i
@@ -60,7 +60,7 @@ public class SysCargoInfoServiceImpl extends ServiceImpl<SysCargoInfoMapper, Sys
         }
         queryWrapper.eq("sci.deleted", 0);
         queryWrapper.orderByDesc("sci.created_time");
-        return sysCargoInfoMapper.queryCargoInfo(page,queryWrapper);
+        return bdmCargoInfoMapper.queryCargoInfo(page,queryWrapper);
     }
 
     /**
@@ -77,7 +77,7 @@ public class SysCargoInfoServiceImpl extends ServiceImpl<SysCargoInfoMapper, Sys
         } else {
             lists.add(delIds);
         }
-        sysCargoInfoMapper.deleteBatchIds(lists);
+        bdmCargoInfoMapper.deleteBatchIds(lists);
         return R.ok();
     }
 }

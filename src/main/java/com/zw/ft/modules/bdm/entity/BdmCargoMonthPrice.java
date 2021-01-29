@@ -1,4 +1,4 @@
-package com.zw.ft.modules.sys.entity;
+package com.zw.ft.modules.bdm.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -16,10 +16,10 @@ import java.math.BigDecimal;
  * @author Savior
  * @since 2020-12-08
  */
-@TableName(value = "sys_cargo_month_price")
+@TableName(value = "bdm_cargo_month_price")
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class SysCargoMonthPrice extends BaseEntity {
+public class BdmCargoMonthPrice extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 

@@ -1,8 +1,8 @@
-package com.zw.ft.modules.sys.repository;
+package com.zw.ft.modules.bdm.repository;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zw.ft.modules.sys.entity.SysCargoCategory;
+import com.zw.ft.modules.bdm.entity.BdmCargoCategory;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -15,6 +15,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @DS("fundTrade")
 @Mapper
-public interface SysCargoCategoryMapper extends BaseMapper<SysCargoCategory> {
+public interface BdmCargoCategoryMapper extends BaseMapper<BdmCargoCategory> {
 
 }

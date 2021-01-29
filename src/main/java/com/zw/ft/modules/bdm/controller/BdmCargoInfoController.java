@@ -1,10 +1,10 @@
-package com.zw.ft.modules.sys.controller;
+package com.zw.ft.modules.bdm.controller;
 
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
-import com.zw.ft.modules.sys.entity.SysCargoInfo;
-import com.zw.ft.modules.sys.service.SysCargoInfoService;
+import com.zw.ft.modules.bdm.entity.BdmCargoInfo;
+import com.zw.ft.modules.bdm.service.BdmCargoInfoService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,11 +21,11 @@ import java.util.Map;
  */
 @RestController
 @Validated
-@RequestMapping("/ft/sys-cargo-info")
-public class SysCargoInfoController {
+@RequestMapping("/ft/bdm-cargo-info")
+public class BdmCargoInfoController {
 
     @Resource
-    SysCargoInfoService sysCargoInfoService;
+    BdmCargoInfoService bdmCargoInfoService;
 
     /**
      * 功能描述: <br>
@@ -35,8 +35,8 @@ public class SysCargoInfoController {
      * @Date: 2020/11/19
      */
     @PostMapping("/get_cargoinfo")
-    public R getSysCargoInfo(@RequestBody Map<String, Object> params) {
-        return R.page(sysCargoInfoService.getCargoInfo(params));
+    public R getBdmCargoInfo(@RequestBody Map<String, Object> params) {
+        return R.page(bdmCargoInfoService.getCargoInfo(params));
     }
 
     /**
@@ -47,10 +47,10 @@ public class SysCargoInfoController {
      * @Date: 2020/11/23
      */
     @PostMapping("/update_cargoInfo")
-    public R updateCargoInfo(@RequestBody(required = false) @Validated(BaseEntity.Update.class) SysCargoInfo sysCargoInfo) {
-        UpdateWrapper<SysCargoInfo> updateWrapper = new UpdateWrapper<>();
-        updateWrapper.eq("id", sysCargoInfo.getId());
-        sysCargoInfoService.update(sysCargoInfo, updateWrapper);
+    public R updateCargoInfo(@RequestBody(required = false) @Validated(BaseEntity.Update.class) BdmCargoInfo bdmCargoInfo) {
+        UpdateWrapper<BdmCargoInfo> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("id", bdmCargoInfo.getId());
+        bdmCargoInfoService.update(bdmCargoInfo, updateWrapper);
         return R.ok();
     }
 
@@ -62,8 +62,8 @@ public class SysCargoInfoController {
      * @Date: 2020/11/23
      */
     @PostMapping("/add_cargoinfo")
-    public R addCargoInfo(@RequestBody(required = false) @Validated(BaseEntity.Add.class) SysCargoInfo sysCargoInfo) {
-        sysCargoInfoService.save(sysCargoInfo);
+    public R addCargoInfo(@RequestBody(required = false) @Validated(BaseEntity.Add.class) BdmCargoInfo bdmCargoInfo) {
+        bdmCargoInfoService.save(bdmCargoInfo);
         return R.ok();
     }
 
@@ -76,7 +76,7 @@ public class SysCargoInfoController {
      */
     @PostMapping("/delete_cargoinfo/{ids}")
     public R delCargoInfo(@PathVariable("ids") String ids) {
-        return sysCargoInfoService.delCargo(ids);
+        return bdmCargoInfoService.delCargo(ids);
     }
 
 
@@ -87,6 +87,6 @@ public class SysCargoInfoController {
      */
     @PostMapping("/getcargolist")
     public R getCargoList() {
-        return R.data(sysCargoInfoService.list());
+        return R.data(bdmCargoInfoService.list());
     }
 }

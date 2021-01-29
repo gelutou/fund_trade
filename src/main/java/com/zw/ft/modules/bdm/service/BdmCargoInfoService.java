@@ -1,9 +1,9 @@
-package com.zw.ft.modules.sys.service;
+package com.zw.ft.modules.bdm.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zw.ft.common.utils.R;
-import com.zw.ft.modules.sys.entity.SysCargoInfo;
+import com.zw.ft.modules.bdm.entity.BdmCargoInfo;
 
 import java.util.Map;
 
@@ -15,7 +15,7 @@ import java.util.Map;
  * @author Savior
  * @since 2020-11-19
  */
-public interface SysCargoInfoService extends IService<SysCargoInfo> {
+public interface BdmCargoInfoService extends IService<BdmCargoInfo> {
 
     /**
      * 功能描述: <br>
@@ -26,7 +26,7 @@ public interface SysCargoInfoService extends IService<SysCargoInfo> {
      * @Author: Savior
      * @Date: 2020-11-19
      */
-    Page<SysCargoInfo> getCargoInfo(Map<String, Object> params);
+    Page<BdmCargoInfo> getCargoInfo(Map<String, Object> params);
 
     /**
      * 功能描述: <br>
