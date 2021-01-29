@@ -18,7 +18,7 @@ import javax.validation.constraints.Pattern;
  * @since 2020-11-30
  */
 @EqualsAndHashCode(callSuper = true)
-@TableName(value = "sys_cargo_category")
+@TableName(value = "bdm_cargo_category")
 @Data
 public class SysCargoCategory extends BaseEntity {
 
@@ -52,9 +52,12 @@ public class SysCargoCategory extends BaseEntity {
      */
     private Integer status;
 
-
     //父级分类名称
     @TableField(exist = false)
     private String parentName;
 
+    /**
+     * @description: 旧公司ID，上线后删除
+     */
+    private String oldPkidWilldel;
 }

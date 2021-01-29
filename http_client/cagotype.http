@@ -33,9 +33,9 @@ token:9b36081de640c644d45483241becd0a9
 {}
 
 ###
-POST http://localhost:8090/ft/sys-cargo-category/getSysCargoTypeTree
+POST http://localhost:8091/ft/sys-cargo-category/get_cargotypetree
 Content-Type: application/json
-token:9b36081de640c644d45483241becd0a9
+token:f76e08ef869adba59c7beab3792912be
 
 {}
 
