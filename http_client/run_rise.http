@@ -1,19 +1,14 @@
 POST http://localhost:8091/ft/run-rise-price/updateRunRisePrice
 Content-Type: application/json
-token:773649c52e20abd4cb6c3332b1095f7c
+token:23455ca8c373b9499ffe4115b5acc267
 
-{}
+{"cusId": "243","riseAmount": "22","status":1}
 
 ###
 POST http://localhost:8091/ft/run-rise-price/queryRunRisePage
 Content-Type: application/json
 token:23455ca8c373b9499ffe4115b5acc267
 
-{"condition": "上海","pageSize": 1}
+{"condition": "上海惠禹铝制品有限公司"}
 
 ###
-### POST http://192.168.3.222:8091/ft/sys/login/admin/1
-POST http://localhost:8091/ft/sys/login/admin/1
-Content-Type: application/json
-
-{}

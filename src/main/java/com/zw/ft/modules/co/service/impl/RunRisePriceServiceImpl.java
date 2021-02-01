@@ -1,24 +1,17 @@
 package com.zw.ft.modules.co.service.impl;
 
-import cn.hutool.core.convert.Convert;
-import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zw.ft.common.constants.Constant;
-import com.zw.ft.common.utils.FormatUtil;
-import com.zw.ft.common.utils.QueryUtil;
 import com.zw.ft.common.utils.R;
+import com.zw.ft.modules.bdm.entity.BdmCustomer;
+import com.zw.ft.modules.bdm.repository.BdmCustomerMapper;
 import com.zw.ft.modules.co.entity.RunRisePrice;
-import com.zw.ft.modules.sys.entity.SysCompany;
 import com.zw.ft.modules.co.repository.RunRisePriceMapper;
-import com.zw.ft.modules.sys.repository.SysCompanyMapper;
 import com.zw.ft.modules.co.service.RunRisePriceService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
@@ -35,7 +28,7 @@ public class RunRisePriceServiceImpl extends ServiceImpl<RunRisePriceMapper, Run
     RunRisePriceMapper runRisePriceMapper;
 
     @Resource
-    SysCompanyMapper sysCompanyMapper;
+    BdmCustomerMapper bdmCustomerMapper;
 
     /**
      * @Author savior
@@ -45,14 +38,14 @@ public class RunRisePriceServiceImpl extends ServiceImpl<RunRisePriceMapper, Run
     @Override
     public R getRunRise(RunRisePrice runRisePrice) {
         QueryWrapper<RunRisePrice> runWrapper = new QueryWrapper<>();
-        runWrapper.eq("com_id", runRisePrice.getCusId());
+        runWrapper.eq("cus_id", runRisePrice.getCusId());
         List<RunRisePrice> runRisePrices = runRisePriceMapper.selectList(runWrapper);
         if (runRisePrices.size() == 0) {
-            QueryWrapper<SysCompany> sysWrapper = new QueryWrapper<>();
-            sysWrapper.eq("id", runRisePrice.getCusId());
-            List<SysCompany> sysCompanies = sysCompanyMapper.selectList(sysWrapper);
-            for (SysCompany sys : sysCompanies) {
-                //runRisePrice.setCusId(sys.getId().toString());
+            QueryWrapper<BdmCustomer> bdmWrapper = new QueryWrapper<>();
+            bdmWrapper.eq("id", runRisePrice.getCusId());
+            List<BdmCustomer> bdmCustomers = bdmCustomerMapper.selectList(bdmWrapper);
+            for (BdmCustomer bdmCustomer : bdmCustomers) {
+                runRisePrice.setCusId(bdmCustomer.getId());
             }
             int insert = runRisePriceMapper.insert(runRisePrice);
             if (insert!=0){
