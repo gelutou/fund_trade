@@ -1,6 +1,6 @@
-package com.zw.ft.modules.sys.service;
+package com.zw.ft.modules.bdm.service;
 
-import com.zw.ft.modules.sys.entity.SysCargoMonthPrice;
+import com.zw.ft.modules.bdm.entity.BdmCargoMonthPrice;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
@@ -13,14 +13,14 @@ import java.util.List;
  * @author Savior
  * @since 2020-12-08
  */
-public interface SysCargoMonthPriceService extends IService<SysCargoMonthPrice> {
+public interface BdmCargoMonthPriceService extends IService<BdmCargoMonthPrice> {
 
     /** 
      * @Author savior
      * @Description 根据货品ID查询货品价格
      * @Date: 2020/12/8
      */
-     List<SysCargoMonthPrice> selectPriceById(String cargoCategoryPkid, String year);
+     List<BdmCargoMonthPrice> selectPriceById(String cargoCategoryPkid, String year);
 
 
 }

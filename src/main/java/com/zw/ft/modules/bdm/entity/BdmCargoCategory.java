@@ -1,4 +1,4 @@
-package com.zw.ft.modules.sys.entity;
+package com.zw.ft.modules.bdm.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -20,7 +20,7 @@ import javax.validation.constraints.Pattern;
 @EqualsAndHashCode(callSuper = true)
 @TableName(value = "bdm_cargo_category")
 @Data
-public class SysCargoCategory extends BaseEntity {
+public class BdmCargoCategory extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
@@ -56,8 +56,4 @@ public class SysCargoCategory extends BaseEntity {
     @TableField(exist = false)
     private String parentName;
 
-    /**
-     * @description: 旧公司ID，上线后删除
-     */
-    private String oldPkidWilldel;
 }

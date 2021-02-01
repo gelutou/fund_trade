@@ -9,19 +9,19 @@ token:0543a30aa72698a7671155d514b2a1a5
 }
 
 ###
-POST http://localhost:8091/ft/sys-cargo-category/update_cargocategory
+POST http://localhost:8091/ft/bdm-cargo-category/update_cargocategory
 Content-Type: application/json
-token:0543a30aa72698a7671155d514b2a1a5
+token:23455ca8c373b9499ffe4115b5acc267
 
 {
   "id": "3",
-  "categoryName": "铝块"
+  "categoryName": "铝液"
 }
 
 ###
-POST http://localhost:8090/ft/sys-categoryName-category/query/2
+POST http://localhost:8091/ft/bdm-cargo-category/query/3
 Content-Type: application/json
-token:9b36081de640c644d45483241becd0a9
+token:23455ca8c373b9499ffe4115b5acc267
 
 {}
 
@@ -33,7 +33,7 @@ token:9b36081de640c644d45483241becd0a9
 {}
 
 ###
-POST http://localhost:8091/ft/sys-cargo-category/get_cargotypetree
+POST http://localhost:8091/ft/bdm-cargo-category/get_cargotypetree
 Content-Type: application/json
 token:f76e08ef869adba59c7beab3792912be
 

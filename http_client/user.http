@@ -57,7 +57,7 @@ token:07953581ecbb2e4f93be6da50f570812
 
 {}
 
-### POST http://192.168.3.222:8091/ft/sys/login/admin/1
+###
 POST http://localhost:8091/ft/sys/login/admin/1
 Content-Type: application/json
 

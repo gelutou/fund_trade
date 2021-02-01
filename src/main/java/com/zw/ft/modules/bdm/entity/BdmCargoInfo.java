@@ -1,4 +1,4 @@
-package com.zw.ft.modules.sys.entity;
+package com.zw.ft.modules.bdm.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -18,9 +18,9 @@ import javax.validation.constraints.Pattern;
  * @Date 2020/11/19
  */
 @EqualsAndHashCode(callSuper = true)
-@TableName(value = "sys_cargo_info")
+@TableName(value = "bdm_cargo_info")
 @Data
-public class SysCargoInfo extends BaseEntity {
+public class BdmCargoInfo extends BaseEntity {
 
     private static final long serialVersionUID = -8442917109871940228L;
 

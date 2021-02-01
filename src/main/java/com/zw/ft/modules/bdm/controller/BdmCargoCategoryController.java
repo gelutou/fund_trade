@@ -1,12 +1,11 @@
-package com.zw.ft.modules.sys.controller;
+package com.zw.ft.modules.bdm.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.google.common.base.Preconditions;
 import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
-import com.zw.ft.modules.sys.entity.SysCargoCategory;
-import com.zw.ft.modules.sys.service.SysCargoCategoryService;
+import com.zw.ft.modules.bdm.entity.BdmCargoCategory;
+import com.zw.ft.modules.bdm.service.BdmCargoCategoryService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,11 +21,11 @@ import javax.annotation.Resource;
  */
 @RestController
 @Validated
-@RequestMapping("/ft/sys-cargo-category")
-public class SysCargoCategoryController {
+@RequestMapping("/ft/bdm-cargo-category")
+public class BdmCargoCategoryController {
 
     @Resource
-    SysCargoCategoryService sysCargoCategoryService;
+    BdmCargoCategoryService bdmCargoCategoryService;
 
 /**
  * @Author savior
@@ -34,8 +33,8 @@ public class SysCargoCategoryController {
  * @Date: 2020/11/30
  */
     @PostMapping("/get_cargotypetree")
-    public R getSysCargoCategoryTree() {
-        return R.data(sysCargoCategoryService.list());
+    public R getBdmCargoCategoryTree() {
+        return R.data(bdmCargoCategoryService.list());
     }
 
     /**
@@ -45,8 +44,8 @@ public class SysCargoCategoryController {
      */
     @PostMapping("/query/{id}")
     public R queryId(@PathVariable("id") long id){
-        SysCargoCategory byId = sysCargoCategoryService.getById(id);
-        SysCargoCategory serviceOne = sysCargoCategoryService.getById(byId.getParentPkid());
+        BdmCargoCategory byId = bdmCargoCategoryService.getById(id);
+        BdmCargoCategory serviceOne = bdmCargoCategoryService.getById(byId.getParentPkid());
         byId.setParentName(serviceOne==null?"":serviceOne.getCategoryName());
         return R.data(byId);
     }
@@ -58,7 +57,7 @@ public class SysCargoCategoryController {
      */
     @PostMapping("/del/{id}")
     public R delCargoCategory(@PathVariable("id") long id){
-        sysCargoCategoryService.removeById(id);
+        bdmCargoCategoryService.removeById(id);
         return R.ok();
     }
 
@@ -68,10 +67,10 @@ public class SysCargoCategoryController {
      * @Date: 2020/12/1
      */
     @PostMapping("/update_cargocategory")
-    public R updateCargoCategory(@RequestBody(required = false) @Validated(BaseEntity.Update.class) SysCargoCategory sysCargoCategory) {
-        UpdateWrapper<SysCargoCategory> updateWrapper = new UpdateWrapper<>();
-        updateWrapper.eq("id", sysCargoCategory.getId());
-        sysCargoCategoryService.update(sysCargoCategory, updateWrapper);
+    public R updateCargoCategory(@RequestBody(required = false) @Validated(BaseEntity.Update.class) BdmCargoCategory bdmCargoCategory) {
+        UpdateWrapper<BdmCargoCategory> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("id", bdmCargoCategory.getId());
+        bdmCargoCategoryService.update(bdmCargoCategory, updateWrapper);
         return R.ok();
     }
 
@@ -81,8 +80,8 @@ public class SysCargoCategoryController {
      * @Date: 2020/12/1
      */
     @PostMapping("/add_cargocategory")
-    public R addCargoCategory(@RequestBody(required = false) @Validated(BaseEntity.Add.class) SysCargoCategory sysCargoCategory) {
-        sysCargoCategoryService.save(sysCargoCategory);
+    public R addCargoCategory(@RequestBody(required = false) @Validated(BaseEntity.Add.class) BdmCargoCategory bdmCargoCategory) {
+        bdmCargoCategoryService.save(bdmCargoCategory);
         return R.ok();
     }
 }

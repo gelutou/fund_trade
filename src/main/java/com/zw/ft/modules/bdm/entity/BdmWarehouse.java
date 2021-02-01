@@ -79,8 +79,6 @@ public class BdmWarehouse extends BaseEntity {
      */
     @NotNull(message = "请传入虚拟仓库位,0:非虚拟仓库 1：虚拟仓库",groups = Add.class)
     private Integer isVirtual;
-    @TableField(exist = false)
-    private String isVirtualName;
 
     /**
      * 备注
