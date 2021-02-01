@@ -58,13 +58,13 @@ public class SysBank extends BaseEntity {
      * 账户类别
      */
     @NotNull(message = "账户类别必填",groups = Add.class)
-    private Integer type;
+    private String type;
 
     /**
      * 账户性质
      */
     @NotNull(message = "账户性质必填",groups = Add.class)
-    private Integer nature;
+    private String nature;
 
     /**
      * 账户余额
@@ -109,7 +109,7 @@ public class SysBank extends BaseEntity {
      * 所属银行
      */
     @NotNull(message = "所属银行必填",groups = Add.class)
-    private Integer belongTo;
+    private String belongTo;
 
     /**
      * 开户行地址
@@ -129,7 +129,7 @@ public class SysBank extends BaseEntity {
     /**
      * 币种
      */
-    private Integer currencyType;
+    private String currencyType;
 
     /**
      * 网银存放处

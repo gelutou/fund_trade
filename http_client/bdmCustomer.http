@@ -1,10 +1,8 @@
-POST http://192.168.3.222:8888/Trade/baseData/getBaseData
+POST http://localhost:8091/ft/bdm-customer/queryList
 Content-Type: application/json
-late_token:2d51deee26c62d3530a771c62d54420b
+token:f65857300ce4388e5702384664d67592
 
-{
-  "pageSize": "30"
-}
+{}
 
 ###
 POST http://localhost:8091/ft/bdm-customer/export

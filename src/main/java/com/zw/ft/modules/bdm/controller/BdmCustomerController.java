@@ -58,6 +58,23 @@ public class BdmCustomerController extends AbstractController {
         return bdmCustomerService.query(params);
     }
 
+    /**
+     * 功能描述 : 客商列表，用于搜索框
+     * @author Oliver 2021-1-28 10:44
+     */
+    @RequestMapping(value = "/queryList")
+    public R queryList(){
+        List<BdmCustomer> list = bdmCustomerService.list();
+        JSONArray array = new JSONArray();
+        for(BdmCustomer bdmCustomer : list){
+            JSONObject object = new JSONObject(true);
+            object.put("id",bdmCustomer.getId());
+            object.put("name",bdmCustomer.getName());
+            array.add(object);
+        }
+        return R.data(array);
+    }
+
     /*
      * 功能描述: <br>
      * 〈添加客商〉
