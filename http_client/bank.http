@@ -63,7 +63,7 @@ token:29c156be8d9e66da23d110815e6f026b
 ###
 POST http://localhost:8091/ft/sys-bank/query
 Content-Type: application/json
-token:773649c52e20abd4cb6c3332b1095f7c
+token:23455ca8c373b9499ffe4115b5acc267
 
 {
   "condition": "辽宁"

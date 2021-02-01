@@ -1,14 +1,13 @@
 ###
 POST http://localhost:8091/ft/sys/base-data/queryCity
 Content-Type: application/json
-token:d58d894073090e6f1d0c72d95e381055
+token:23455ca8c373b9499ffe4115b5acc267
 
 {
-  "dataId": "1"
 }
 
 ###
-POST http://localhost:8091/ft/sys/base-data/query
+POST http://192.168.3.222:8091/ft/sys/base-data/query
 Content-Type: application/json
 token:d58d894073090e6f1d0c72d95e381055
 
