@@ -6,6 +6,8 @@ import com.zw.ft.modules.bdm.service.BdmCargoCategoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  * 货品分类表 服务实现类
@@ -17,4 +19,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class BdmCargoCategoryServiceImpl extends ServiceImpl<BdmCargoCategoryMapper, BdmCargoCategory> implements BdmCargoCategoryService {
 
+    @Override
+    public List<BdmCargoCategory> queryContainPrice() {
+        return this.baseMapper.queryContainPrice();
+    }
 }

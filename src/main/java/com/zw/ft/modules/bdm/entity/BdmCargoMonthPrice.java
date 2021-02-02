@@ -4,7 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.zw.ft.common.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
 
 /**
@@ -12,25 +13,20 @@ import java.math.BigDecimal;
  * 货品价格扩展信息表
  * </p>
  *
- * @author Savior
- * @since 2020-12-08
+ * @author Oliver
+ * @since 2020-02-02
  */
 @TableName(value = "bdm_cargo_month_price")
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class BdmCargoMonthPrice extends BaseEntity {
 
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * 客商id
-     */
-    private String cusPkid;
+    private static final long serialVersionUID = 7026643295352598212L;
 
     /**
      * 货品类别ID
      */
-    private Integer cargoCategoryPkid;
+    private Long cargoCategoryId;
 
     /**
      * 一月价格

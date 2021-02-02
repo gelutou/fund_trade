@@ -1,3 +1,17 @@
+POST http://192.168.3.222:8091/ft/bdm-cargo-category/query/1
+Content-Type: application/json
+token:8df2a985d934df55222a7d62c3c99024
+
+{}
+
+###
+POST http://192.168.3.222:8091/ft/bdm-cargo-category/get_cargotypetree
+Content-Type: application/json
+token:8df2a985d934df55222a7d62c3c99024
+
+{}
+
+###
 POST http://localhost:8091/ft/bdm-cargo-info/get_cargoinfo
 Content-Type: application/json
 token:8df2a985d934df55222a7d62c3c99024
@@ -6,31 +20,41 @@ token:8df2a985d934df55222a7d62c3c99024
 {}
 
 ###
-POST http://localhost:8091/ft/bdm-cargo-info/delCargoInfo/1,2
+POST http://localhost:8091/ft/bdm-cargo-category/updatePrice
 Content-Type: application/json
 token:8df2a985d934df55222a7d62c3c99024
 
+{"id": 2}
+###
+POST http://localhost:8091/ft/bdm-cargo-category/delete
+Content-Type: application/json
+token:8df2a985d934df55222a7d62c3c99024
+
+{"ids": [26,27]}
+
+###
+POST http://localhost:8091/ft/bdm-cargo-category/update
+Content-Type: application/json
+token:8df2a985d934df55222a7d62c3c99024
+
+{"id": "27","name": "修改11"}
+
+###
+POST http://localhost:8091/ft/bdm-cargo-category/add
+Content-Type: application/json
+token:8df2a985d934df55222a7d62c3c99024
+
+{"code": "CEHP","name": "测试货品"}
+###
+POST http://localhost:8091/ft/bdm-cargo-category/queryList
+Content-Type: application/json
+token:8df2a985d934df55222a7d62c3c99024
 
 {}
 
 ###
-POST http://localhost:8091/ft/bdm-cargo-info/add_cargoinfo
-Content-Type: application/json
-token:8df2a985d934df55222a7d62c3c99024
-
-{"cargoCode": "LD67","cargoName": "铁石","categoryPkid":"2","cargoUnit": "2","flagCargoInventory": "0"}
-
 ###
-POST http://localhost:8090/ft/bdm-cargo-info/updaCargoInfo
+POST http://localhost:8091/ft/sys/login/admin/1
 Content-Type: application/json
-token:8df2a985d934df55222a7d62c3c99024
 
-{"id": "5","aluminumPlant": "常山铁龙","specification": "178*5.8","brand": "铁龙","cargoName": "铁石"}
-###
-POST http://localhost:8091/ft/bdm-cargo-info/getSysCargoInfo
-Content-Type: application/json
-token:8df2a985d934df55222a7d62c3c99024
-
-{"keyWord": "铁石"}
-
-###
+{}

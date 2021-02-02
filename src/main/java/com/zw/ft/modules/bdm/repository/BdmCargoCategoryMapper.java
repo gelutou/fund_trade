@@ -1,9 +1,10 @@
 package com.zw.ft.modules.bdm.repository;
 
-import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zw.ft.modules.bdm.entity.BdmCargoCategory;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import java.util.List;
 
 /**
  * <p>
@@ -13,8 +14,13 @@ import org.apache.ibatis.annotations.Mapper;
  * @author Savior
  * @since 2020-11-30
  */
-@DS("fundTrade")
 @Mapper
 public interface BdmCargoCategoryMapper extends BaseMapper<BdmCargoCategory> {
 
+    /**
+     * 功能描述 : 查询包括价格信息的货品分类
+     * @author Oliver 2021-2-2 13:43
+     */
+    @Select("SELECT *,bcmp.id priceId FROM bdm_cargo_category bcc LEFT JOIN bdm_cargo_month_price bcmp ON bcc.id = bcmp.cargo_category_id WHERE year = year(now())")
+    List<BdmCargoCategory> queryContainPrice();
 }
