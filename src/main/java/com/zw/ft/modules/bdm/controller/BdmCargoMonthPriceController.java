@@ -34,6 +34,7 @@ public class BdmCargoMonthPriceController {
     public R queryCargoId(@PathVariable("pkId") String pkId){
         //获取当前年份
         String year = String.valueOf(DateUtil.year(new Date()));
+        System.out.println(year);
         return R.data(bdmCargoMonthPriceService.selectPriceById(pkId,year));
     }
 
@@ -48,11 +49,12 @@ public class BdmCargoMonthPriceController {
         //获取当前年份
         bdmCargoMonthPrice.setYear(String.valueOf(DateUtil.year(new Date())));
         updateWrapper.eq("year", bdmCargoMonthPrice.getYear());
-        updateWrapper.eq("CARGO_CATEGORY_PKID", bdmCargoMonthPrice.getCargoCategoryPkid());
+        updateWrapper.eq("cargo_category_pkid", bdmCargoMonthPrice.getCargoCategoryPkid());
         if (bdmCargoMonthPrice.getCargoCategoryPkid()!=null){
             bdmCargoMonthPriceService.saveOrUpdate(bdmCargoMonthPrice,updateWrapper);
         }
-        return R.ok("更新成功");
+        return R.ok();
     }
+
 }
 

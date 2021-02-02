@@ -45,21 +45,21 @@ public class BdmCargoInfoServiceImpl extends ServiceImpl<BdmCargoInfoMapper, Bdm
         if (Constant.TRUE.equals(keyWord)) {
             queryWrapper.and(i-> i
                     //模糊搜索货品编号
-                    .like("sci.cargo_code", params.get("keyWord").toString()).or()
+                    .like("bci.cargo_code", params.get("keyWord").toString()).or()
                     //模糊搜索货品名称
-                    .like("sci.cargo_name", params.get("keyWord").toString()).or()
+                    .like("bci.cargo_name", params.get("keyWord").toString()).or()
                     //模糊搜索货品品牌
-                    .like("sci.brand", params.get("keyWord")).or()
+                    .like("bci.brand", params.get("keyWord")).or()
                     //模糊搜索货品规格
-                    .like("sci.specification", params.get("keyWord")).or()
+                    .like("bci.specification", params.get("keyWord")).or()
                     //模糊搜索货品型号
-                    .like("sci.cargo_model", params.get("keyWord")).or()
+                    .like("bci.cargo_model", params.get("keyWord")).or()
                     //模糊搜索货品类型
-                    .like("scc.category_name", params.get("keyWord"))
+                    .like("bcc.category_name", params.get("keyWord"))
             );
         }
-        queryWrapper.eq("sci.deleted", 0);
-        queryWrapper.orderByDesc("sci.created_time");
+        queryWrapper.eq("bci.deleted", 0);
+        queryWrapper.orderByDesc("bci.created_time");
         return bdmCargoInfoMapper.queryCargoInfo(page,queryWrapper);
     }
 

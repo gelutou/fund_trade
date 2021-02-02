@@ -1,6 +1,6 @@
-POST http://localhost:8091/ft/sys-cargo-month-price/querycargo/2
+POST http://localhost:8091/ft/bdm-cargo-month-price/querycargo/2
 Content-Type: application/json
-token:0543a30aa72698a7671155d514b2a1a5
+token:8df2a985d934df55222a7d62c3c99024
 
 {}
 

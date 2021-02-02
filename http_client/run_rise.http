@@ -1,13 +1,13 @@
 POST http://localhost:8091/ft/run-rise-price/updateRunRisePrice
 Content-Type: application/json
-token:23455ca8c373b9499ffe4115b5acc267
+token:8df2a985d934df55222a7d62c3c99024
 
-{"cusId": "243","riseAmount": "22","status":1}
+{"cusId": "3","riseAmount": "22","status":1}
 
 ###
 POST http://localhost:8091/ft/run-rise-price/queryRunRisePage
 Content-Type: application/json
-token:23455ca8c373b9499ffe4115b5acc267
+token:8df2a985d934df55222a7d62c3c99024
 
 {"condition": "上海惠禹铝制品有限公司"}
 
