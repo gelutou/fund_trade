@@ -30,9 +30,9 @@ public class BdmCargoMonthPriceServiceImpl extends ServiceImpl<BdmCargoMonthPric
      * @Date: 2020/12/8
      */
     @Override
-    public List<BdmCargoMonthPrice> selectPriceById(String cargoCategoryPkid, String year) {
+    public List<BdmCargoMonthPrice> selectPriceById(Long cargoCategoryId, String year) {
         QueryWrapper<BdmCargoMonthPrice> wrapper = new QueryWrapper<>();
-        wrapper.eq("cargo_category_pkid",cargoCategoryPkid);
+        wrapper.eq("cargo_category_id",cargoCategoryId);
         wrapper.eq("year",year);
         return bdmCargoMonthPriceMapper.selectList(wrapper);
     }

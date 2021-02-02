@@ -5,7 +5,6 @@ import com.zw.ft.common.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
 
 /**
@@ -26,6 +25,7 @@ public class BdmCargoMonthPrice extends BaseEntity {
     /**
      * 货品类别ID
      */
+    @NotNull(message = "请传入货品类别",groups = Add.class)
     private Long cargoCategoryId;
 
     /**

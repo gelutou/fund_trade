@@ -24,6 +24,7 @@ import java.math.BigDecimal;
 public class BdmCargoCategory extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = -5983812632131343635L;
+
     /**
      * 货品分类编号
      */
