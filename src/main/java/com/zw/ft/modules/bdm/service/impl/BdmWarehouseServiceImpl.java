@@ -1,6 +1,5 @@
 package com.zw.ft.modules.bdm.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zw.ft.modules.bdm.entity.BdmWarehouse;
 import com.zw.ft.modules.bdm.repository.BdmWarehouseMapper;
@@ -8,6 +7,7 @@ import com.zw.ft.modules.bdm.service.BdmWarehouseService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -29,11 +29,7 @@ public class BdmWarehouseServiceImpl extends ServiceImpl<BdmWarehouseMapper, Bdm
      * @Date: 2020/12/18
      */
     @Override
-    public BdmWarehouse getWarehouseId(long id) {
-        QueryWrapper<BdmWarehouse> queryWrapper = new QueryWrapper<>();
-        queryWrapper
-                .eq("bw.id",id)
-                .eq("bw.deleted",0);
-        return bdmWarehouseMapper.getWarehouseId(queryWrapper);
+    public List<BdmWarehouse> getWarehouseId() {
+        return bdmWarehouseMapper.getWarehouseId();
     }
 }
