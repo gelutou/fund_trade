@@ -6,6 +6,7 @@ import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.bdm.entity.BdmWarehouse;
 import com.zw.ft.modules.bdm.service.BdmWarehouseService;
 import com.zw.ft.modules.sys.controller.AbstractController;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,8 +45,20 @@ public class BdmWarehouseController extends AbstractController {
      * @Date: 2020/12/18
      */
     @PostMapping("/add")
+    @Transactional(rollbackFor = Exception.class)
     public R addBdmWarehouse(@RequestBody(required = false) @Validated(BaseEntity.Add.class) BdmWarehouse bdmWarehouse) {
-        bdmWarehouseService.save(bdmWarehouse);
+        try {
+            bdmWarehouseService.save(bdmWarehouse);
+        }catch (Exception e){
+            String s = e.getMessage();
+            if(s.contains("for key 'bdm_warehouse.code'")){
+                return R.error("此编码已经存在，请重新输入");
+            }else if (s.contains("for key 'bdm_warehouse.name'")){
+                return R.error("此名称已经存在，请重新输入");
+            }else {
+                return R.error(s);
+            }
+        }
         return R.ok();
     }
 

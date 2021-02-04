@@ -5,6 +5,7 @@ import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.bdm.entity.BdmCargoInfo;
 import com.zw.ft.modules.bdm.service.BdmCargoInfoService;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -62,14 +63,23 @@ public class BdmCargoInfoController {
      * @Date: 2020/11/23
      */
     @PostMapping("/add")
+    @Transactional(rollbackFor = Exception.class)
     public R addCargoInfo(@RequestBody(required = false) @Validated(BaseEntity.Add.class) BdmCargoInfo bdmCargoInfo) {
-        bdmCargoInfoService.save(bdmCargoInfo);
+        try {
+            bdmCargoInfoService.save(bdmCargoInfo);
+        }catch (Exception e){
+            String message = e.getMessage();
+            if (message.contains("for key 'bdm_cargo_info.cargo_code'")){
+                return R.error("此编码已经存在，请重新输入");
+            }else{
+                return R.error(message);
+            }
+        }
         return R.ok();
     }
 
     /**
      * 功能描述: <br>
-     *
      * @Author savior
      * @Description 根据货品信息id 批量删除
      * @Date: 2020/11/23
