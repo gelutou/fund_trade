@@ -55,7 +55,7 @@ public class BdmCargoInfoServiceImpl extends ServiceImpl<BdmCargoInfoMapper, Bdm
                     //模糊搜索货品型号
                     .like("bci.cargo_model", params.get("keyWord")).or()
                     //模糊搜索货品类型
-                    .like("bcc.category_name", params.get("keyWord"))
+                    .like("bcc.name", params.get("keyWord"))
             );
         }
         queryWrapper.eq("bci.deleted", 0);

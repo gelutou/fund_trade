@@ -31,12 +31,6 @@ public class BdmWarehouse extends BaseEntity {
     private String code;
 
     /**
-     * ID数组
-     */
-    @TableField(exist = false)
-    private Long[] ids;
-
-    /**
      * 客商ID
      */
     @NotNull(message = "ID不能为空并且只能为数字",groups = Add.class)

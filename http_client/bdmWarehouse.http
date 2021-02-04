@@ -1,9 +1,9 @@
-POST http://localhost:8091/ft/bdm-warehouse/delete
+POST http://localhost:8091/ft/bdm-warehouse/delete/56
 Content-Type: application/json
-token:8df2a985d934df55222a7d62c3c99024
+token:f7cea56c5efb218ffe3b55e00dc356e0
 
 {
-  "ids":[59,60]
+
 }
 
 ###
@@ -23,7 +23,7 @@ token:8df2a985d934df55222a7d62c3c99024
 ###
 POST http://localhost:8091/ft/bdm-warehouse/queryList
 Content-Type: application/json
-token:8df2a985d934df55222a7d62c3c99024
+token:f7cea56c5efb218ffe3b55e00dc356e0
 
 {}
 

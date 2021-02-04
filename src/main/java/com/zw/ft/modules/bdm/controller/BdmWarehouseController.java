@@ -1,17 +1,13 @@
 package com.zw.ft.modules.bdm.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.bdm.entity.BdmWarehouse;
 import com.zw.ft.modules.bdm.service.BdmWarehouseService;
 import com.zw.ft.modules.sys.controller.AbstractController;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -66,15 +62,12 @@ public class BdmWarehouseController extends AbstractController {
 
     /**
      * @Author savior
-     * @Description 批量删除仓库信息
+     * @Description 删除仓库信息
      * @Date: 2020/12/18
      */
-    @PostMapping("/delete")
-    public R deleteBdmWarehouse (@RequestBody BdmWarehouse bdmWarehouse){
-        Object[] ids = bdmWarehouse.getIds();
-        UpdateWrapper<BdmWarehouse> wrapper = new UpdateWrapper<>();
-        wrapper.in("id",ids);
-        bdmWarehouseService.remove(wrapper);
+    @PostMapping("/delete/{id}")
+    public R deleteBdmWarehouse (@PathVariable("id") Long id){
+        bdmWarehouseService.removeById(id);
         return R.ok();
     }
 
