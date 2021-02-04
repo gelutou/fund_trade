@@ -21,6 +21,6 @@ public interface BdmCargoCategoryMapper extends BaseMapper<BdmCargoCategory> {
      * 功能描述 : 查询包括价格信息的货品分类
      * @author Oliver 2021-2-2 13:43
      */
-    @Select("SELECT *,bcmp.id priceId FROM bdm_cargo_category bcc LEFT JOIN bdm_cargo_month_price bcmp ON bcc.id = bcmp.cargo_category_id WHERE year = year(now())")
+    @Select("SELECT *,bcmp.id priceId FROM bdm_cargo_category bcc LEFT JOIN bdm_cargo_month_price bcmp ON bcc.id = bcmp.cargo_category_id WHERE year = year(now()) AND bcc.deleted = 0")
     List<BdmCargoCategory> queryContainPrice();
 }

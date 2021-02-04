@@ -30,7 +30,12 @@ POST http://localhost:8091/ft/bdm-cargo-category/delete
 Content-Type: application/json
 token:8df2a985d934df55222a7d62c3c99024
 
-{"ids": [26,27]}
+{
+  "ids": [
+    26,
+    27
+  ]
+}
 
 ###
 POST http://localhost:8091/ft/bdm-cargo-category/update
@@ -42,13 +47,13 @@ token:8df2a985d934df55222a7d62c3c99024
 ###
 POST http://localhost:8091/ft/bdm-cargo-category/add
 Content-Type: application/json
-token:8df2a985d934df55222a7d62c3c99024
+token:f7cea56c5efb218ffe3b55e00dc356e0
 
-{"code": "CEHP","name": "测试货品"}
+{"code": "111","name": "11a"}
 ###
 POST http://localhost:8091/ft/bdm-cargo-category/queryList
 Content-Type: application/json
-token:8df2a985d934df55222a7d62c3c99024
+token:f7cea56c5efb218ffe3b55e00dc356e0
 
 {}
 
