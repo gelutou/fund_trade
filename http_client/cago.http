@@ -29,7 +29,8 @@ Content-Type: application/json
 token:f7cea56c5efb218ffe3b55e00dc356e0
 
 {
-  "keyWord":"金块"
+  "currentPage": "1",
+  "pageSize": "3"
 }
 ###
 
