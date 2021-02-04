@@ -1,47 +1,44 @@
-POST http://localhost:8091/ft/bdm-warehouse/delete_warehouse/58
+POST http://localhost:8091/ft/bdm-warehouse/delete/56
 Content-Type: application/json
-token:254c137aa57c8d64f9b6abac59962b2b
-
-{}
-
-###
-POST http://localhost:8091/ft/bdm-warehouse/update_warehouse
-Content-Type: application/json
-token:254c137aa57c8d64f9b6abac59962b2b
+token:f7cea56c5efb218ffe3b55e00dc356e0
 
 {
-  "id":"17",
-  "personCharge": "夏宗粹",
-  "phone": "021-51642507"
+
 }
 
 ###
-POST http://localhost:8091/ft/bdm-warehouse/get_warehousetree
+POST http://localhost:8091/ft/bdm-warehouse/update
 Content-Type: application/json
-token:254c137aa57c8d64f9b6abac59962b2b
+token:8df2a985d934df55222a7d62c3c99024
+
+{
+  "id":"59",
+  "personCharge": "夏宗粹",
+  "phone": "021-51642507"
+
+
+
+}
+
+###
+POST http://localhost:8091/ft/bdm-warehouse/queryList
+Content-Type: application/json
+token:f7cea56c5efb218ffe3b55e00dc356e0
 
 {}
 
 ###
-POST http://localhost:8091/ft/bdm-warehouse/add_warehouse
+POST http://localhost:8091/ft/bdm-warehouse/add
 Content-Type: application/json
-token:254c137aa57c8d64f9b6abac59962b2b
+token:8df2a985d934df55222a7d62c3c99024
 
 {
-  "parentId": 1,
   "code": "SGWL001",
   "cusId": 1,
-  "personCharge": "张三",
+  "personCharge": "李四",
   "phone": "1516545",
   "name": "上海上港库",
   "isVirtual": 0
 }
-
-###
-POST http://localhost:8091/ft/bdm-warehouse/query/58
-Content-Type: application/json
-token:254c137aa57c8d64f9b6abac59962b2b
-
-{}
 
 ###

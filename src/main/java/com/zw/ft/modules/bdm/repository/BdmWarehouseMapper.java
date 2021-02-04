@@ -1,11 +1,11 @@
 package com.zw.ft.modules.bdm.repository;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zw.ft.modules.bdm.entity.BdmWarehouse;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 /**
  * <p>
@@ -23,10 +23,9 @@ public interface BdmWarehouseMapper extends BaseMapper<BdmWarehouse> {
      * @Description 根据id获取仓库信息
      * @Date: 2020/12/17
      */
-    @Select("SELECT bw.*,ware.`name` AS parentName,bc.`name` as customer_name " +
+    @Select("SELECT bw.*,bc.`name` as customerName " +
             "FROM bdm_warehouse bw " +
             "LEFT JOIN bdm_customer bc ON bw.cus_id = bc.id " +
-            "LEFT JOIN bdm_warehouse ware ON ware.id = bw.parent_id " +
-            "${ew.customSqlSegment}")
-    BdmWarehouse getWarehouseId(@Param("ew") Wrapper<BdmWarehouse> queryWrapper);
+            "WHERE bw.deleted=0 ")
+    List<BdmWarehouse> getWarehouseId();
 }

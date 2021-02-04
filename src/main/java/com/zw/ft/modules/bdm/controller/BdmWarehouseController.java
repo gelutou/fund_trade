@@ -1,8 +1,6 @@
 package com.zw.ft.modules.bdm.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.bdm.entity.BdmWarehouse;
@@ -35,21 +33,9 @@ public class BdmWarehouseController extends AbstractController {
      * @Description 获取仓库档案树信息
      * @Date: 2020/12/15
      */
-    @PostMapping("/get_warehousetree")
+    @PostMapping("/queryList")
     public R getBdmWarehouseTree(){
-        QueryWrapper<BdmWarehouse> wrapper = new QueryWrapper<>();
-        wrapper.select("id","parent_id","name");
-        return R.data(bdmWarehouseService.list(wrapper));
-    }
-
-    /**
-     * @Author savior
-     * @Description 根据id获取仓库信息
-     * @Date: 2020/12/15
-     */
-    @PostMapping("/query/{id}")
-    public R queryId(@PathVariable("id") long id){
-        return R.data(bdmWarehouseService.getWarehouseId(id));
+        return R.data(bdmWarehouseService.getWarehouseId());
     }
 
     /**
@@ -57,7 +43,7 @@ public class BdmWarehouseController extends AbstractController {
      * @Description 添加仓库信息
      * @Date: 2020/12/18
      */
-    @PostMapping("/add_warehouse")
+    @PostMapping("/add")
     public R addBdmWarehouse(@RequestBody(required = false) @Validated(BaseEntity.Add.class) BdmWarehouse bdmWarehouse) {
         bdmWarehouseService.save(bdmWarehouse);
         return R.ok();
@@ -68,11 +54,9 @@ public class BdmWarehouseController extends AbstractController {
      * @Description 修改仓库信息
      * @Date: 2020/12/18
      */
-    @PostMapping("/update_warehouse")
+    @PostMapping("/update")
     public R updateBdmWarehouse(@RequestBody(required = false) @Validated(BaseEntity.Update.class)BdmWarehouse bdmWarehouse){
-        UpdateWrapper<BdmWarehouse> updateWrapper = new UpdateWrapper<>();
-        updateWrapper.eq("id",bdmWarehouse.getId());
-        bdmWarehouseService.update(bdmWarehouse,updateWrapper);
+        bdmWarehouseService.updateById(bdmWarehouse);
         return R.ok();
     }
 
@@ -81,8 +65,8 @@ public class BdmWarehouseController extends AbstractController {
      * @Description 删除仓库信息
      * @Date: 2020/12/18
      */
-    @PostMapping("/delete_warehouse/{id}")
-    public R deleteBdmWarehouse (@PathVariable("id")long id){
+    @PostMapping("/delete/{id}")
+    public R deleteBdmWarehouse (@PathVariable("id") Long id){
         bdmWarehouseService.removeById(id);
         return R.ok();
     }

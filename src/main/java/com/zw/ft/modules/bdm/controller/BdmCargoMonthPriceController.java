@@ -53,7 +53,6 @@ public class BdmCargoMonthPriceController {
         updateWrapper.eq("cargo_category_id", bdmCargoMonthPrice.getCargoCategoryId());
         bdmCargoMonthPriceService.saveOrUpdate(bdmCargoMonthPrice,updateWrapper);
         return R.ok();
-
     }
 
 }

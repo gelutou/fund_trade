@@ -1,25 +1,30 @@
-POST http://192.168.3.222:8091/ft/bdm-cargo-category/query/1
+POST http://localhost:8091/ft/bdm-cargo-info/update
 Content-Type: application/json
-token:8df2a985d934df55222a7d62c3c99024
+token:f7cea56c5efb218ffe3b55e00dc356e0
+
+{"id":218,"": "铝锭"}
+
+###
+POST http://localhost:8091/ft/bdm-cargo-info/add
+Content-Type: application/json
+token:f7cea56c5efb218ffe3b55e00dc356e0
+
+{
+  "cargoCode": "1615",
+  "cargoName": "金块",
+  "categoryPkid": 3,
+  "flagCargoInventory":1
+}
+
+###
+POST http://localhost:8091/ft/bdm-cargo-info/delete/218,217
+Content-Type: application/json
+token:f7cea56c5efb218ffe3b55e00dc356e0
 
 {}
 
 ###
-POST http://192.168.3.222:8091/ft/bdm-cargo-category/get_cargotypetree
-Content-Type: application/json
-token:8df2a985d934df55222a7d62c3c99024
-
-{}
-
-###
-POST http://localhost:8091/ft/bdm-cargo-info/get_cargoinfo
-Content-Type: application/json
-token:8df2a985d934df55222a7d62c3c99024
-
-
-{}
-
-###
+<<<<<<< HEAD
 POST http://localhost:8091/ft/bdm-cargo-category/updatePrice
 Content-Type: application/json
 token:8df2a985d934df55222a7d62c3c99024
@@ -56,10 +61,14 @@ Content-Type: application/json
 token:f7cea56c5efb218ffe3b55e00dc356e0
 
 {}
-
-###
-###
-POST http://localhost:8091/ft/sys/login/admin/1
+=======
+POST http://localhost:8091/ft/bdm-cargo-info/get_cargoinfo
 Content-Type: application/json
+token:f7cea56c5efb218ffe3b55e00dc356e0
+>>>>>>> 57d69f855d26816cb6a28e3798d885f1dd38691b
 
-{}
+{
+  "keyWord":"金块"
+}
+###
+

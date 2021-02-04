@@ -39,6 +39,12 @@ public class BdmCargoInfo extends BaseEntity {
      */
     @NotNull(message = "请传入货品分类ID",groups = Add.class)
     private Long categoryPkid;
+
+    /**
+     * 货品分类名称
+     */
+    @TableField(exist = false)
+    private String categoryName;
     /**
      * 铝厂
      */
@@ -58,7 +64,6 @@ public class BdmCargoInfo extends BaseEntity {
     /**
      * 计量单位
      */
-
     private Integer cargoUnit;
 
     /**
@@ -71,10 +76,6 @@ public class BdmCargoInfo extends BaseEntity {
      */
     private String remark;
 
-    /**
-     * 货品分类
-     */
-    @TableField(exist = false)
-    private String categoryName;
+
 
 }

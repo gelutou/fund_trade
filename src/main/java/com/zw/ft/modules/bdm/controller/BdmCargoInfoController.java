@@ -46,7 +46,7 @@ public class BdmCargoInfoController {
      * @Description 货品档案修改信息
      * @Date: 2020/11/23
      */
-    @PostMapping("/update_cargoInfo")
+    @PostMapping("/update")
     public R updateCargoInfo(@RequestBody(required = false) @Validated(BaseEntity.Update.class) BdmCargoInfo bdmCargoInfo) {
         UpdateWrapper<BdmCargoInfo> updateWrapper = new UpdateWrapper<>();
         updateWrapper.eq("id", bdmCargoInfo.getId());
@@ -61,7 +61,7 @@ public class BdmCargoInfoController {
      * @Description 添加货品档案信息
      * @Date: 2020/11/23
      */
-    @PostMapping("/add_cargoinfo")
+    @PostMapping("/add")
     public R addCargoInfo(@RequestBody(required = false) @Validated(BaseEntity.Add.class) BdmCargoInfo bdmCargoInfo) {
         bdmCargoInfoService.save(bdmCargoInfo);
         return R.ok();
@@ -74,19 +74,9 @@ public class BdmCargoInfoController {
      * @Description 根据货品信息id 批量删除
      * @Date: 2020/11/23
      */
-    @PostMapping("/delete_cargoinfo/{ids}")
+    @PostMapping("/delete/{ids}")
     public R delCargoInfo(@PathVariable("ids") String ids) {
         return bdmCargoInfoService.delCargo(ids);
     }
 
-
-    /**
-     * @Author savior
-     * @Description 查询货品表一些下拉框信息
-     * @Date: 2020/11/25
-     */
-    @PostMapping("/getcargolist")
-    public R getCargoList() {
-        return R.data(bdmCargoInfoService.list());
-    }
 }

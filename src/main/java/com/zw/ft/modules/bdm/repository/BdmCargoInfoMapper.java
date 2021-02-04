@@ -23,8 +23,8 @@ public interface BdmCargoInfoMapper extends BaseMapper<BdmCargoInfo> {
      * @Description 分页查询货品信息
      * @Date: 2020/11/19
      */
-    @Select("SELECT bci.*,bcc.category_name FROM bdm_cargo_info bci " +
-            "LEFT JOIN bdm_cargo_category bcc ON bci.category_pkid=bcc.ID " +
+    @Select("SELECT bci.*,bcc.name AS categoryName FROM bdm_cargo_info bci " +
+            "LEFT JOIN bdm_cargo_category bcc ON bci.category_pkid=bcc.id " +
             "${ew.customSqlSegment}")
     Page<BdmCargoInfo> queryCargoInfo(Page<BdmCargoInfo> page, @Param("ew") QueryWrapper<BdmCargoInfo> queryWrapper);
 

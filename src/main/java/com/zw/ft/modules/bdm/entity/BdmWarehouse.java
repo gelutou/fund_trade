@@ -25,20 +25,6 @@ public class BdmWarehouse extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 上级仓库ID
-     */
-    @NotNull(message = "请传入上级仓库ID",groups = Add.class)
-    private Integer parentId;
-
-    /**
-     * 父级仓库名称
-     *
-     */
-    @TableField(exist = false)
-    private String parentName;
-
-
-    /**
      * 仓库编号
      */
     @Pattern(regexp = "^^[0-9a-zA-Z]+$",message = "请传入正确的仓库编号：数字和字母",groups = Add.class)
