@@ -10,11 +10,15 @@ import com.zw.ft.modules.bdm.entity.BdmCargoCategory;
 import com.zw.ft.modules.bdm.entity.BdmCargoMonthPrice;
 import com.zw.ft.modules.bdm.service.BdmCargoCategoryService;
 import com.zw.ft.modules.bdm.service.BdmCargoMonthPriceService;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.SQLNonTransientException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -44,40 +48,6 @@ public class BdmCargoCategoryController {
      */
     @PostMapping("/queryList")
     public R queryList() {
-        List<BdmCargoCategory> cargoCategories = bdmCargoCategoryService.list();
-        //判断一下加价信息，如果没有今年的进行初始化
-        int year = DateUtil.year(new Date());
-        QueryWrapper<BdmCargoMonthPrice> wrapper = new QueryWrapper<>();
-        wrapper.eq("year",year);
-        List<BdmCargoMonthPrice> monthPrices = monthPriceService.list(wrapper);
-        if(monthPrices.size() == 0){
-            //初始化所有货品今年价格，默认为0
-            List<BdmCargoMonthPrice> monthPriceList = new ArrayList<>();
-            for (BdmCargoCategory bdmCargoCategory : cargoCategories) {
-                Long id = bdmCargoCategory.getId();
-                BdmCargoMonthPrice monthPrice = new BdmCargoMonthPrice();
-                monthPrice.setCargoCategoryId(id);
-                monthPrice.setYear(year+"");
-                BigDecimal zero = new BigDecimal(0);
-                monthPrice.setJanuaryPrice(zero);
-                monthPrice.setFebruaryPrice(zero);
-                monthPrice.setMarchPrice(zero);
-
-                monthPrice.setAprilPrice(zero);
-                monthPrice.setMayPrice(zero);
-                monthPrice.setJunePrice(zero);
-
-                monthPrice.setJulyPrice(zero);
-                monthPrice.setAugustPrice(zero);
-                monthPrice.setSeptemberPrice(zero);
-
-                monthPrice.setOctoberPrice(zero);
-                monthPrice.setNovemberPrice(zero);
-                monthPrice.setDecemberPrice(zero);
-                monthPriceList.add(monthPrice);
-            }
-            monthPriceService.saveBatch(monthPriceList);
-        }
         return R.data(bdmCargoCategoryService.queryContainPrice());
     }
 
@@ -112,8 +82,25 @@ public class BdmCargoCategoryController {
      * @author Oliver 2021-2-2 10:58
      */
     @PostMapping("/add")
+    @Transactional(rollbackFor = Exception.class)
     public R add(@RequestBody(required = false) @Validated(BaseEntity.Add.class) BdmCargoCategory bdmCargoCategory) {
-        bdmCargoCategoryService.save(bdmCargoCategory);
+
+        try {
+            bdmCargoCategoryService.save(bdmCargoCategory);
+            BdmCargoMonthPrice bdmCargoPrice = new BdmCargoMonthPrice();
+            bdmCargoPrice.setYear(DateUtil.year(new Date())+"");
+            bdmCargoPrice.setCargoCategoryId(bdmCargoCategory.getId());
+            monthPriceService.save(bdmCargoPrice);
+        }catch (Exception e) {
+            String message = e.getMessage();
+            if(message.contains("for key 'bdm_cargo_category.category_code'")){
+                return R.error("此编码已经存在，请重新输入");
+            }else if (message.contains("for key 'bdm_cargo_category.category_name'")){
+                return R.error("此名称已经存在，请重新输入");
+            }else {
+                return R.error(message);
+            }
+        }
         return R.ok();
     }
 

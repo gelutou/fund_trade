@@ -24,9 +24,48 @@ token:f7cea56c5efb218ffe3b55e00dc356e0
 {}
 
 ###
+<<<<<<< HEAD
+POST http://localhost:8091/ft/bdm-cargo-category/updatePrice
+Content-Type: application/json
+token:8df2a985d934df55222a7d62c3c99024
+
+{"id": 2}
+###
+POST http://localhost:8091/ft/bdm-cargo-category/delete
+Content-Type: application/json
+token:8df2a985d934df55222a7d62c3c99024
+
+{
+  "ids": [
+    26,
+    27
+  ]
+}
+
+###
+POST http://localhost:8091/ft/bdm-cargo-category/update
+Content-Type: application/json
+token:8df2a985d934df55222a7d62c3c99024
+
+{"id": "27","name": "修改11"}
+
+###
+POST http://localhost:8091/ft/bdm-cargo-category/add
+Content-Type: application/json
+token:f7cea56c5efb218ffe3b55e00dc356e0
+
+{"code": "111","name": "11a"}
+###
+POST http://localhost:8091/ft/bdm-cargo-category/queryList
+Content-Type: application/json
+token:f7cea56c5efb218ffe3b55e00dc356e0
+
+{}
+=======
 POST http://localhost:8091/ft/bdm-cargo-info/get_cargoinfo
 Content-Type: application/json
 token:f7cea56c5efb218ffe3b55e00dc356e0
+>>>>>>> 57d69f855d26816cb6a28e3798d885f1dd38691b
 
 {
   "currentPage": "1",
