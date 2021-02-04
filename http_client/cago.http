@@ -68,7 +68,8 @@ token:f7cea56c5efb218ffe3b55e00dc356e0
 >>>>>>> 57d69f855d26816cb6a28e3798d885f1dd38691b
 
 {
-  "keyWord":"金块"
+  "currentPage": "1",
+  "pageSize": "3"
 }
 ###
 

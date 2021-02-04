@@ -2,7 +2,6 @@ package com.zw.ft.modules.bdm.controller;
 
 
 import cn.hutool.core.date.DateUtil;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
@@ -12,17 +11,13 @@ import com.zw.ft.modules.bdm.service.BdmCargoCategoryService;
 import com.zw.ft.modules.bdm.service.BdmCargoMonthPriceService;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.math.BigDecimal;
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.sql.SQLNonTransientException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
@@ -43,7 +38,7 @@ public class BdmCargoCategoryController {
     BdmCargoMonthPriceService monthPriceService;
 
     /**
-     * 功能描述 : 查询货品列表
+     * 功能描述 : 查询货品分类列表
      * @author Oliver 2021-2-2 10:58
      */
     @PostMapping("/queryList")
@@ -52,7 +47,7 @@ public class BdmCargoCategoryController {
     }
 
     /**
-     * 功能描述 : 批量删除货品
+     * 功能描述 : 批量删除货品分类
      * @author Oliver 2021-2-2 10:58
      */
     @PostMapping("/delete")
@@ -65,7 +60,7 @@ public class BdmCargoCategoryController {
     }
 
     /**
-     * 功能描述 : 更新货品信息
+     * 功能描述 : 更新货品分类信息
      * @author Oliver 2021-2-2 10:58
      */
     @PostMapping("/update")
@@ -78,7 +73,7 @@ public class BdmCargoCategoryController {
     }
 
     /**
-     * 功能描述 : 添加货品信息
+     * 功能描述 : 添加货品分类信息
      * @author Oliver 2021-2-2 10:58
      */
     @PostMapping("/add")
