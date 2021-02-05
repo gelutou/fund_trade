@@ -93,12 +93,6 @@ public class BdmCustomer extends BaseEntity {
     private String area;
 
     /**
-     * 城市
-     */
-    @NotNull(message = "请传入城市ID",groups = Add.class)
-    private String cityId;
-
-    /**
      * @description: 数据来源 0资金 1商贸
      */
     private Integer fundOrTrade;

@@ -7,26 +7,18 @@ token:bf61792791c22d64ac205cffd48109c8
 ###
 POST http://localhost:8091/ft/sys-dictionary/update_dictionary
 Content-Type: application/json
-token:2def66623b4e7d6c375beb9b619e78fa
+token:ea9246c1df9c4b78456ec20bc61cc6b5
 
 {
-  "id":65,
+  "id":196,
   "createdBy":4,
   "createdTime":"2020-12-04 16:46:34",
   "updatedBy":4,
   "updatedTime":"2020-12-04 16:46:35",
   "deleted":0,
-  "name":"tag11",
+  "name":"sadasdds",
   "des":"描述11",
   "value":"",
-  "children":[
-    {
-      "id": "84",
-      "des":"测试更新子项",
-      "value":"11",
-      "name":"tag11"
-    }
-  ],
   "pid":null
 }
 

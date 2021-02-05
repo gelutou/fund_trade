@@ -56,7 +56,6 @@ public class SysDictionaryServiceImpl extends ServiceImpl<SysDictionaryMapper, S
         if (m.find()) {
             return R.error("项标识不能包含中文");
         } else {
-
             for (SysDictionary d : list) {
                 String name1 = d.getName();
                 if (name.equals(name1)) {
@@ -101,7 +100,7 @@ public class SysDictionaryServiceImpl extends ServiceImpl<SysDictionaryMapper, S
 
         QueryWrapper<SysDictionary> sysDictionaryQueryWrapper = new QueryWrapper<>();
         sysDictionaryQueryWrapper.eq("p_id", "").or().isNull("p_id");
-        Consumer<QueryWrapper<SysDictionary>> consumer = queryWrapper -> queryWrapper.ne("name",name);
+        Consumer<QueryWrapper<SysDictionary>> consumer = queryWrapper -> queryWrapper.ne("id",dictionary.getId());
         sysDictionaryQueryWrapper.and(consumer);
         List<SysDictionary> list = this.baseMapper.selectList(sysDictionaryQueryWrapper);
 
