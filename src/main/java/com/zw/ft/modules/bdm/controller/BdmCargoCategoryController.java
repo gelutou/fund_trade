@@ -2,6 +2,7 @@ package com.zw.ft.modules.bdm.controller;
 
 
 import cn.hutool.core.date.DateUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -80,22 +82,27 @@ public class BdmCargoCategoryController {
     @Transactional(rollbackFor = Exception.class)
     public R add(@RequestBody(required = false) @Validated(BaseEntity.Add.class) BdmCargoCategory bdmCargoCategory) {
 
-        try {
-            bdmCargoCategoryService.save(bdmCargoCategory);
-            BdmCargoMonthPrice bdmCargoPrice = new BdmCargoMonthPrice();
-            bdmCargoPrice.setYear(DateUtil.year(new Date())+"");
-            bdmCargoPrice.setCargoCategoryId(bdmCargoCategory.getId());
-            monthPriceService.save(bdmCargoPrice);
-        }catch (Exception e) {
-            String message = e.getMessage();
-            if(message.contains("for key 'bdm_cargo_category.category_code'")){
-                return R.error("此编码已经存在，请重新输入");
-            }else if (message.contains("for key 'bdm_cargo_category.category_name'")){
-                return R.error("此名称已经存在，请重新输入");
-            }else {
-                return R.error(message);
+        //查询是否有相同的name或code
+        QueryWrapper<BdmCargoCategory> wrapper = new QueryWrapper<>();
+        String name = bdmCargoCategory.getName();
+        String code = bdmCargoCategory.getCode();
+        wrapper.eq("code",code).or().eq("name",name);
+        List<BdmCargoCategory> list = bdmCargoCategoryService.list(wrapper);
+        for (BdmCargoCategory category : list) {
+            String name1 = category.getName();
+            if (name.equals(name1)) {
+                return R.error("此编码已经使用，请修改");
+            }
+            String code1 = category.getCode();
+            if (code.equals(code1)) {
+                return R.error("此名称已经使用，请修改");
             }
         }
+        bdmCargoCategoryService.save(bdmCargoCategory);
+        BdmCargoMonthPrice bdmCargoPrice = new BdmCargoMonthPrice();
+        bdmCargoPrice.setYear(DateUtil.year(new Date())+"");
+        bdmCargoPrice.setCargoCategoryId(bdmCargoCategory.getId());
+        monthPriceService.save(bdmCargoPrice);
         return R.ok();
     }
 

@@ -116,9 +116,22 @@ token:07953581ecbb2e4f93be6da50f570812
 ###
 POST http://localhost:8091/ft/bdm-customer/add
 Content-Type: application/json
-token:d5d9afcb2e5fc45702daf0c0fd538556
+token:ea9246c1df9c4b78456ec20bc61cc6b5
 
 {
+  "bankIdAndIsDefault": [],
+  "code": "1",
+  "name": "2",
+  "shortname": "3",
+  "type": 1,
+  "area": "4",
+  "taxNum": "5",
+  "contactName": "6",
+  "contactPhone": "15777777777",
+  "contactEmail": "8",
+  "contactPosition": "9"
+}
+/*{
   "code": "004112",
   "name": "4",
   "shortname": "4",
@@ -137,7 +150,8 @@ token:d5d9afcb2e5fc45702daf0c0fd538556
       "isDefault": 1
     }
   ]
-}
+}*/
+
 
 ###
 POST http://localhost:8091/ft/bdm-customer/query
@@ -148,3 +162,8 @@ token:d5d9afcb2e5fc45702daf0c0fd538556
 }
 
 ###
+###
+POST http://localhost:8091/ft/sys/login/admin/1
+Content-Type: application/json
+
+{}

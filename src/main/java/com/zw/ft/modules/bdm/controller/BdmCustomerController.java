@@ -98,16 +98,7 @@ public class BdmCustomerController extends AbstractController {
         if(time > 1){
             return R.error("只能设置一个默认银行");
         }
-
-        //此处会抛SQLIntegrityConstraintViolationException异常给前端
-        try {
-            bdmCustomerService.save(bdmCustomer);
-        }catch (Exception ex){
-            Throwable cause = ex.getCause();
-            String[] split = cause.getMessage().split("'");
-            return R.error("'"+split[1]+"'已经在系统中录入，不能重复");
-
-        }
+        bdmCustomerService.save(bdmCustomer);
         for(int i=0;i<bankIdAndIsDefault.size();i++){
             JSONObject jsonObject = bankIdAndIsDefault.getJSONObject(i);
             long id = jsonObject.getLong("id");
