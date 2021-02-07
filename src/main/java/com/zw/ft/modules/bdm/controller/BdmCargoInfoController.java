@@ -1,6 +1,6 @@
 package com.zw.ft.modules.bdm.controller;
 
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.bdm.entity.BdmCargoInfo;
@@ -10,6 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -49,9 +50,7 @@ public class BdmCargoInfoController {
      */
     @PostMapping("/update")
     public R updateCargoInfo(@RequestBody(required = false) @Validated(BaseEntity.Update.class) BdmCargoInfo bdmCargoInfo) {
-        UpdateWrapper<BdmCargoInfo> updateWrapper = new UpdateWrapper<>();
-        updateWrapper.eq("id", bdmCargoInfo.getId());
-        bdmCargoInfoService.update(bdmCargoInfo, updateWrapper);
+        bdmCargoInfoService.updateById(bdmCargoInfo);
         return R.ok();
     }
 
@@ -65,16 +64,16 @@ public class BdmCargoInfoController {
     @PostMapping("/add")
     @Transactional(rollbackFor = Exception.class)
     public R addCargoInfo(@RequestBody(required = false) @Validated(BaseEntity.Add.class) BdmCargoInfo bdmCargoInfo) {
-        try {
-            bdmCargoInfoService.save(bdmCargoInfo);
-        }catch (Exception e){
-            String message = e.getMessage();
-            if (message.contains("for key 'bdm_cargo_info.cargo_code'")){
-                return R.error("此编码已经存在，请重新输入");
-            }else{
-                return R.error(message);
+        QueryWrapper<BdmCargoInfo> queryWrapper = new QueryWrapper<>();
+        String code = bdmCargoInfo.getCargoCode();
+        queryWrapper.eq("cargo_code",code);
+        List<BdmCargoInfo> list = bdmCargoInfoService.list(queryWrapper);
+        for (BdmCargoInfo cargoInfo : list){
+            if (code.equals(cargoInfo.getCargoCode())){
+                return R.error("此编码已经存在，请修改");
             }
         }
+        bdmCargoInfoService.save(bdmCargoInfo);
         return R.ok();
     }
 

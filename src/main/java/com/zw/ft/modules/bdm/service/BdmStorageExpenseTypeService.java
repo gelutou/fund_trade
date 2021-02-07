@@ -13,5 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface BdmStorageExpenseTypeService extends IService<BdmStorageExpenseType> {
 
-     BdmStorageExpenseType getStorageTypeId(long id);
+
 }

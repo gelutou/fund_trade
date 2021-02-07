@@ -1,6 +1,7 @@
 package com.zw.ft.modules.bdm.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zw.ft.common.base.BaseEntity;
 import com.zw.ft.common.utils.R;
 import com.zw.ft.modules.bdm.entity.BdmWarehouse;
@@ -11,6 +12,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -47,18 +49,20 @@ public class BdmWarehouseController extends AbstractController {
     @PostMapping("/add")
     @Transactional(rollbackFor = Exception.class)
     public R addBdmWarehouse(@RequestBody(required = false) @Validated(BaseEntity.Add.class) BdmWarehouse bdmWarehouse) {
-        try {
-            bdmWarehouseService.save(bdmWarehouse);
-        }catch (Exception e){
-            String s = e.getMessage();
-            if(s.contains("for key 'bdm_warehouse.code'")){
-                return R.error("此编码已经存在，请重新输入");
-            }else if (s.contains("for key 'bdm_warehouse.name'")){
-                return R.error("此名称已经存在，请重新输入");
-            }else {
-                return R.error(s);
+        QueryWrapper<BdmWarehouse> queryWrapper = new QueryWrapper<>();
+        String code = bdmWarehouse.getCode();
+        String name = bdmWarehouse.getName();
+        queryWrapper.eq("code",code).eq("name",name);
+        List<BdmWarehouse> list = bdmWarehouseService.list(queryWrapper);
+        for(BdmWarehouse warehouse : list){
+            if (code.equals(warehouse.getCode())){
+                return R.error("此编码已经使用,请修改");
+            }
+            if (name.equals(warehouse.getName())){
+                return R.error("此名称已经使用，请修改");
             }
         }
+        bdmWarehouseService.save(bdmWarehouse);
         return R.ok();
     }
 
@@ -69,6 +73,9 @@ public class BdmWarehouseController extends AbstractController {
      */
     @PostMapping("/update")
     public R updateBdmWarehouse(@RequestBody(required = false) @Validated(BaseEntity.Update.class)BdmWarehouse bdmWarehouse){
+        if (bdmWarehouse.getCode()==null && bdmWarehouse.getName()==null){
+            return R.error("仓储费用类型编码或名称不能都为空");
+        }
         bdmWarehouseService.updateById(bdmWarehouse);
         return R.ok();
     }

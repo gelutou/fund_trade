@@ -20,22 +20,7 @@ import javax.annotation.Resource;
 @Service("BdmStorageExpenseTypeService")
 public class BdmStorageExpenseTypeServiceImpl extends ServiceImpl<BdmStorageExpenseTypeMapper, BdmStorageExpenseType> implements BdmStorageExpenseTypeService {
 
-    @Resource
-    BdmStorageExpenseTypeMapper bdmStorageExpenseTypeMapper;
 
-    /** 
-     * @Author savior
-     * @Description
-     * @Date: 2020/12/30
-     */
-    @Override
-    public BdmStorageExpenseType getStorageTypeId(long id) {
-        QueryWrapper<BdmStorageExpenseType> queryWrapper = new QueryWrapper<>();
-        queryWrapper
-                .eq("bs.id",id)
-                .eq("bs.deleted",0);
-        return bdmStorageExpenseTypeMapper.getStorageTypeId(queryWrapper);
-    }
 
 
 }

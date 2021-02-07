@@ -1,6 +1,5 @@
 package com.zw.ft.modules.bdm.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.zw.ft.common.base.BaseEntity;
 import lombok.Data;
@@ -23,16 +22,6 @@ import javax.validation.constraints.Pattern;
 public class BdmStorageExpenseType extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
-
-    /**
-     * 父级分类ID
-     */
-    @NotNull(message = "请传入上级仓储ID",groups = Add.class)
-    private Integer parentId;
-
-    //父级分类ID名字
-    @TableField(exist = false)
-    private String pName;
 
     /**
      * 仓储分类编号

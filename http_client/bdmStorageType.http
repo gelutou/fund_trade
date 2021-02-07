@@ -1,49 +1,36 @@
-POST http://localhost:8091/ft/storage-expense-type/delete/29
+POST http://localhost:8091/ft/storage-expense-type/delete/27
 Content-Type: application/json
-token:07953581ecbb2e4f93be6da50f570812
+token:ea9246c1df9c4b78456ec20bc61cc6b5
 
 {}
 
 ###
 POST http://localhost:8091/ft/storage-expense-type/add
 Content-Type: application/json
-token:07953581ecbb2e4f93be6da50f570812
+token:ea9246c1df9c4b78456ec20bc61cc6b5
 
 {
-  "parentId": 1,
-  "code": "007",
-  "name": ""
+  "code": "030",
+  "name": "物业管理费"
 }
 
 ###
 POST http://localhost:8091/ft/storage-expense-type/update
 Content-Type: application/json
-token:07953581ecbb2e4f93be6da50f570812
+token:ea9246c1df9c4b78456ec20bc61cc6b5
 
 {
-  "id": "5",
-  "code": "仓储费"
+  "id": "2",
+  "code": "025"
 }
 
 ###
-POST http://localhost:8091/ft/storage-expense-type/query/5
+//理货费
+POST http://localhost:8091/ft/storage-expense-type/query
 Content-Type: application/json
-token:07953581ecbb2e4f93be6da50f570812
+token:ea9246c1df9c4b78456ec20bc61cc6b5
 
 {}
 
 ###
-POST http://localhost:8091/ft/storage-expense-type/querytree
-Content-Type: application/json
-token:07953581ecbb2e4f93be6da50f570812
 
-{}
-
-###
-POST http://localhost:8091/ft/storage-expense-type/delete/{id}
-Content-Type: application/json
-token:07953581ecbb2e4f93be6da50f570812
-
-{}
-
-###
